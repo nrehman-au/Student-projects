@@ -44,237 +44,6 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "",
-    "text": "Sixteen public-data projects in four categories. Every project has a concrete task, a reproducible starting point, required baselines, an evaluation protocol and a scoped research contribution.\nBrowse the projects Download the PDF",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#a-portfolio-built-for-feasible-evidence-driven-theses",
-    "href": "index.html#a-portfolio-built-for-feasible-evidence-driven-theses",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "",
-    "text": "Sixteen public-data projects in four categories. Every project has a concrete task, a reproducible starting point, required baselines, an evaluation protocol and a scoped research contribution.\nBrowse the projects Download the PDF",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#how-the-projects-are-structured",
-    "href": "index.html#how-the-projects-are-structured",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "How the projects are structured",
-    "text": "How the projects are structured\nBachelor projects emphasise implementation, fair comparison and one focused ablation. Master projects require a research question, a controlled methodological or protocol contribution, multi-seed evidence and a useful conclusion even when the proposed change does not improve average accuracy.\n\nIntegration assessment: approved with targeted corrections. The four-category structure is academically coherent and feasible. Categories 1 and 2 preserve the Graph ML core, Category 3 adds a representation-learning strand, and Category 4 is intentionally narrow to keep foundation-model work within student compute budgets.",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#portfolio-index",
-    "href": "index.html#portfolio-index",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Portfolio index",
-    "text": "Portfolio index\n\n\n\nID\nProject\nBest fit\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nModerate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc preferred\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n2.1\nInductive sensor embeddings for STAEformer\nMSc preferred\nModerate\n\n\n2.2\nInductive evaluation of GRACE\nBSc or MSc\nVery light\n\n\n2.3\nStructure-aware augmentations for graph contrastive learning\nBSc or MSc\nLight to moderate\n\n\n2.4\nCompute-aware routing between GraphGPS branches\nMSc preferred\nLight to moderate\n\n\n2.5\nQuestion-adaptive retrieval budgets for G-Retriever\nMSc optional\nModerate\n\n\n3.1\nContrastive learning for wearable activity recognition\nBSc or MSc\nLight\n\n\n3.2\nLead-aware masked learning for 12-lead ECG\nMSc preferred\nModerate\n\n\n3.3\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n3.4\nSelf-supervised learning on heat-pump smart-meter data\nConditional\nLight to moderate after preprocessing\n\n\n3.5\nGraph self-supervised learning from vibration signals\nMSc preferred\nModerate preprocessing\n\n\n4.1\nAdapting DINO backbones for land cover or industrial anomalies\nBSc or MSc\nModerate",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#what-counts-as-a-bachelor-or-master-contribution",
-    "href": "index.html#what-counts-as-a-bachelor-or-master-contribution",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "What counts as a Bachelor or Master contribution",
-    "text": "What counts as a Bachelor or Master contribution\n\n\n\n\n\n\n\n\nDimension\nBachelor project\nMaster project\n\n\n\n\nStarting point\nOne dataset and one established method\nVerified anchor-paper reproduction plus meaningful baselines\n\n\nContribution\nReliable pipeline, fair comparison and one focused ablation\nNew mechanism, protocol, graph/view construction or rigorous transfer/robustness study\n\n\nEvidence\nCorrect split, sensible baselines and error analysis\nMultiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant\n\n\nOutcome\nExplain whether and when the method helps\nAnswer a preregistered question; a controlled negative result is valid",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#shared-protocol-for-self-supervised-projects",
-    "href": "index.html#shared-protocol-for-self-supervised-projects",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Shared protocol for self-supervised projects",
-    "text": "Shared protocol for self-supervised projects\nEvery self-supervised or pretrained project should report these settings whenever they are meaningful:\n\nFrozen linear evaluation. Pretrain without labels, freeze the encoder and train only a lightweight head.\nFine-tuning. Initialise from the pretrained encoder and update it with labels.\nFully supervised baseline. Train the same encoder architecture from scratch using labels.\nRandom-initialisation control. Freeze a randomly initialised encoder and train the same head.\nLabel-efficiency curve. Report several label budgets, typically 1%, 5%, 10% and 100%.\n\n\nLeakage rule. Group splits by the real independent unit: subject, patient, household, engine or bearing—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#where-to-begin",
-    "href": "index.html#where-to-begin",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Where to begin",
-    "text": "Where to begin\n\nStart with Category 1 for practical GNN applications.\nStart with Category 2 to implement and extend a modern Graph ML paper.\nStart with Category 3 for representation learning on sensor, health or energy signals.\nStart with Category 4 for a carefully scoped DINO project.\nUse the selection guidance to match topics to experience and risk tolerance.",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html",
-    "href": "selection-guidance.html",
-    "title": "Selection guidance",
-    "section": "",
-    "text": "Student profile\nRecommended projects\n\n\n\n\nSafest BSc\n1.1 C-MAPSS, 1.4 MovieLens, 2.2 GRACE reproduction, 3.1 UCI-HAR, 4.1 EuroSAT RGB\n\n\nStrong balanced MSc\n2.1 inductive STAEformer, 2.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 2.4 GraphGPS routing\n\n\nHigh methodological risk\n3.2 lead-aware latent prediction, 3.3 decomposition-aware forecasting, 3.5 physics-grounded vibration graphs\n\n\nConditional or specialist\n3.4 HEAPO after licence audit; 2.5 G-Retriever for a strong student who requests graph RAG",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html#recommended-starting-points",
-    "href": "selection-guidance.html#recommended-starting-points",
-    "title": "Selection guidance",
-    "section": "",
-    "text": "Student profile\nRecommended projects\n\n\n\n\nSafest BSc\n1.1 C-MAPSS, 1.4 MovieLens, 2.2 GRACE reproduction, 3.1 UCI-HAR, 4.1 EuroSAT RGB\n\n\nStrong balanced MSc\n2.1 inductive STAEformer, 2.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 2.4 GraphGPS routing\n\n\nHigh methodological risk\n3.2 lead-aware latent prediction, 3.3 decomposition-aware forecasting, 3.5 physics-grounded vibration graphs\n\n\nConditional or specialist\n3.4 HEAPO after licence audit; 2.5 G-Retriever for a strong student who requests graph RAG",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html#a-simple-decision-process",
-    "href": "selection-guidance.html#a-simple-decision-process",
-    "title": "Selection guidance",
-    "section": "A simple decision process",
-    "text": "A simple decision process\n\nChoose the task, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.\nDownload the data and run one complete baseline on a small subset before the formal project begins.\nWrite a one-sentence research question and identify the comparison that could falsify the proposed explanation.\nFreeze the split, primary metric and compute budget before extensive development.\nTreat the authors’ repository as an executable specification—not as the thesis contribution.",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html#week-one-feasibility-checklist",
-    "href": "selection-guidance.html#week-one-feasibility-checklist",
-    "title": "Selection guidance",
-    "section": "Week-one feasibility checklist",
-    "text": "Week-one feasibility checklist\n\nDownload the exact dataset and record its version, size, licence and release date.\nRun the simplest baseline from raw input to final metric on a small subset.\nIdentify the independent split unit and verify that it cannot cross train and test.\nRecord the anchor paper, repository version and preprocessing deviations.\nEstimate training time and peak memory before planning seeds or ablations.\nFor MSc work, write the question, proposed mechanism, strongest alternative explanation and minimum viable ablation table.",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html#licences-and-access-that-affect-allocation",
-    "href": "selection-guidance.html#licences-and-access-that-affect-allocation",
-    "title": "Selection guidance",
-    "section": "Licences and access that affect allocation",
-    "text": "Licences and access that affect allocation\n\n\n\n\n\n\n\n\nResource\nLicence or status\nPractical consequence\n\n\n\n\nUCI-HAR\nCC BY 4.0\nOpen with attribution\n\n\nPTB-XL\nCC BY 4.0\nNo credentialing required\n\n\nPaderborn KAt\nCC BY-NC 4.0\nNon-commercial academic use\n\n\nMVTec AD\nCC BY-NC-SA 4.0\nNon-commercial and share-alike\n\n\nDINOv2\nApache 2.0\nUngated\n\n\nDINOv3 weights\nCustom Meta licence\nGated; non-standard; review for industry use\n\n\nHEAPO data\nNo dataset licence displayed in Zenodo Rights metadata\nConfirm before allocation; code and paper have separate licences",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "selection-guidance.html#recurring-failure-modes",
-    "href": "selection-guidance.html#recurring-failure-modes",
-    "title": "Selection guidance",
-    "section": "Recurring failure modes",
-    "text": "Recurring failure modes\n\nComparing with a number produced by a different split, metric, horizon, shot count or evaluation level.\nUsing windows from the same physical unit in both training and test sets.\nCalling an authors’ repository run a research contribution.\nReporting only in-distribution performance when transfer or cold start is the motivation.\nOmitting the random frozen encoder in a self-supervised study.\nTreating a recent preprint figure as a settled benchmark.\nExpanding to a second dataset before the first pipeline and evaluation protocol are stable.\n\n\nFinal principle. A good thesis does not need the largest model or a state-of-the-art number. It needs a precise question, public evidence, a fair comparison and a conclusion that tells the next student what to try—or avoid.\n\nTwo industrial-partner projects with Tetra Pak and Siemens Gamesa are offered separately and remain outside this portfolio.",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html",
-    "href": "graph-applications.html",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "",
-    "text": "Practical graph prediction problems with public benchmarks\nThese projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#learn-first-and-find-ideas",
-    "href": "graph-applications.html#learn-first-and-find-ideas",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "Learn first and find ideas",
-    "text": "Learn first and find ideas\n\nStanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#projects-in-this-category",
-    "href": "graph-applications.html#projects-in-this-category",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "Projects in this category",
-    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-1-1",
-    "href": "graph-applications.html#project-1-1",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "1.1 Remaining useful life prediction for aircraft engines",
-    "text": "1.1 Remaining useful life prediction for aircraft engines\n\nTaskGraph-level temporal regression Recommended levelBSc or MSc ComputeVery light to light; CPU or 4 GB GPU Starting paperHuang, He and Sick, Spatio-Temporal Attention GNN for RUL, 2024\n\n\nWhat you will do. Predict how many operating cycles remain before a turbofan engine fails. Each sensor channel becomes a node; edges express statistical or learned relationships among sensors. A temporal encoder then follows how the sensor graph changes as an engine ages.\n\nProject goal. Given a recent window of readings from one engine, predict one remaining-life value. The scientific question is whether explicitly modelling sensor interactions improves over treating the measurements as an ordinary multivariate sequence.\nData. Use NASA C-MAPSS. Start with FD001: 100 training engines, 100 test engines, three operating-condition variables and 21 sensor channels. FD002–FD004 are optional transfer sets. Split by engine, never by windows from the same engine.\nMethods and starting code. Linear or MLP regression, GRU/LSTM/TCN, GCN–GRU, GAT–GRU and the anchor spatiotemporal attention model. Compare correlation, random and learned sensor graphs. PHMGNNBenchmark and the GNN RUL benchmarking repository are useful code references; students should still document their own preprocessing.\nRequired baselines. A naive constant or degradation-stage baseline, one graph-free sequence model and one compact spatiotemporal GNN. The graph experiment must include a no-edge or random-edge control.\nEvaluation. MAE or RMSE is primary; the asymmetric NASA score is optional. Report error by early, middle and late life. Fit normalization and graph construction on training engines only and report at least three seeds for MSc work.\n\nBachelor scope. Use FD001. Compare a GRU with one compact GNN, one graph construction and one random/no-edge ablation. The contribution is a trustworthy pipeline and a clear answer to whether the graph helps.\n\n\nMaster research question and contribution. Research question: Can a sparse, time-varying sensor graph improve RUL accuracy and robustness when sensors become noisy or unavailable? Develop one graph-learning mechanism, compare it with fixed correlation and random graphs, and include missing-sensor, uncertainty or cross-subset transfer analysis. Merely rerunning an available implementation is not the contribution.\n\nFeasibility and guardrails. FD001 is easy to run. The main risks are window leakage, inconsistent RUL capping and comparing results produced with different normalization or scoring rules. Freeze these choices before modelling.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-1-2",
-    "href": "graph-applications.html#project-1-2",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "1.2 Multi-horizon traffic forecasting with data-driven graph structure",
-    "text": "1.2 Multi-horizon traffic forecasting with data-driven graph structure\n\nTaskNode-level temporal regression Recommended levelBSc or MSc ComputeLight to moderate; 4–8 GB GPU Starting paperLi et al., DCRNN, and Wu et al., Graph WaveNet\n\n\nWhat you will do. Forecast traffic speed at every road sensor 15, 30 and 60 minutes ahead. The supplied road graph is a useful starting point, but congestion can couple sensors in ways that do not follow the shortest road distance.\n\nProject goal. Determine whether a road-distance graph, a training-only correlation graph or a learned graph gives the most reliable forecasts, especially at the 60-minute horizon.\nData. Use METR-LA from the official DCRNN repository: 207 sensors and 34,272 five-minute observations. PEMS-BAY with 325 sensors is the optional transfer target. Use the established chronological 70/10/20 split.\nMethods and starting code. Historical average, linear regression, GRU, DCRNN, STGCN, Graph WaveNet code, MTGNN and a compact Transformer. A dynamic graph should be sparse or low-rank so its cost is explicit.\nRequired baselines. Historical average, graph-free GRU/Transformer and one fixed-graph spatiotemporal GNN. Compare supplied distance adjacency, training-only correlation adjacency, a single learned static adjacency and the proposed variant.\nEvaluation. MAE is primary; report RMSE and MAPE at 15/30/60 minutes. Fit scalers and correlation graphs on the training period only. For dynamic adjacency, report memory, latency and edge stability as well as forecast error.\n\nBachelor scope. Compare historical average, GRU and one spatiotemporal GNN on the supplied graph. Add one no-edge or randomized-edge control.\n\n\nMaster research question and contribution. Research question: Does a time-of-day and traffic-regime-conditioned sparse adjacency improve long-horizon forecasting over both the road graph and a single learned static graph? Match depth and width, use at least three seeds, and examine whether rush-hour edges differ from free-flow edges and whether learned edges correspond to plausible topology. A robustness-and-transfer route using missing sensors and METR-LA to PEMS-BAY transfer is an alternative, but it must be narrowed to one preregistered question.\n\nFeasibility and guardrails. Per-timestep dense adjacency is unnecessarily expensive and unstable. Profile early and enforce top-k sparsity or low rank. This project and Project 2.1 both use traffic data, but this one studies the graph itself; 2.1 studies unseen-sensor representations.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-1-3",
-    "href": "graph-applications.html#project-1-3",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "1.3 Illicit Bitcoin transaction detection",
-    "text": "1.3 Illicit Bitcoin transaction detection\n\nTaskNode classification on a temporal graph Recommended levelBSc or MSc ComputeModerate; sparse mini-batches on 4–8 GB GPU Starting paperWeber et al., Anti-Money Laundering in Bitcoin\n\n\nWhat you will do. Each Bitcoin transaction is a node, and directed payment flows are edges. The model predicts whether a labelled transaction is licit or illicit while respecting the order in which transactions occurred.\n\nProject goal. Test whether neighbourhood information helps detect rare illicit transactions beyond the transaction’s own features, without allowing information from future time steps to leak into training.\nData. Use the PyG Elliptic Bitcoin Temporal loader: 203,769 transaction nodes, 234,355 edges, 165 features and 49 time steps. Unknown labels are unlabelled, not negatives.\nMethods and starting code. Logistic regression or gradient boosting on node features; GCN, GraphSAGE or GAT; EvolveGCN or TGN for an MSc extension. Use class weighting or focal loss only after establishing an unweighted baseline. PyG’s loader is the recommended data starting point.\nRequired baselines. Feature-only classifier, static GCN/GraphSAGE and a no-edge or random-edge control. A temporal model is required only for the MSc temporal route.\nEvaluation. Chronological splits only. Use AUPRC or illicit-class F1 as the primary metric and report illicit recall at a fixed false-positive rate. Exclude unknown nodes from supervised loss and labelled-node metrics; examine performance over time.\n\nBachelor scope. Compare a feature-only model with GCN or GraphSAGE and analyse how edge removal changes performance. Include class-imbalance and per-time-step error analysis.\n\n\nMaster research question and contribution. Research question: Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges? Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift, and connect threshold choices to investigator workload. A strong negative result may show that features dominate topology during particular regimes.\n\nFeasibility and guardrails. Random splitting makes this task unrealistically easy. Keep time ordering, labels and threshold selection fixed across methods. Mini-batching or snapshot processing keeps the graph manageable.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-1-4",
-    "href": "graph-applications.html#project-1-4",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "1.4 Graph-based movie recommendation with accuracy and coverage",
-    "text": "1.4 Graph-based movie recommendation with accuracy and coverage\n\nTaskLink prediction and ranking on a bipartite graph Recommended levelBSc recommended; weak MSc ceiling ComputeVery light; CPU or low-memory GPU Starting paperHe et al., LightGCN, SIGIR 2020\n\n\nWhat you will do. Represent users and movies as two node types. A rating or interaction is an edge. The model scores unseen user–movie pairs and recommends a ranked list, while also checking whether recommendations collapse onto popular titles.\n\nProject goal. Measure whether message passing improves top-k ranking over popularity and matrix factorization and whether any gain comes at the cost of catalogue coverage.\nData. Use MovieLens 100K: 100,000 timestamped ratings from about 1,000 users on 1,700 movies, roughly a 5 MB download.\nMethods and starting code. Popularity, item/user nearest neighbours, matrix factorization and LightGCN. The official LightGCN repository is a reference, but its data protocol must be adapted transparently to MovieLens 100K.\nRequired baselines. Popularity and matrix factorization are mandatory; LightGCN is the graph model. Use identical candidate sets and negative-sampling rules.\nEvaluation. Use a per-user chronological split and remove validation/test interactions from the training graph. NDCG@20 or Recall@20 is primary; also report catalogue coverage and average popularity of recommended items.\n\nBachelor scope. Compare popularity, matrix factorization and LightGCN. Study depth or negative sampling and report both accuracy and coverage.\n\n\nMaster research question and contribution. Only allocate as an MSc project if the question is strengthened, for example: Can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG? This requires user-activity and item-popularity subgroup analysis, multiple seeds and a well-defined Pareto trade-off. Otherwise choose a higher-ceiling topic.\n\nFeasibility and guardrails. This is the portfolio’s safest BSc project. The principal pitfalls are leakage from future interactions and evaluation on sampled negatives that differ across methods.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-1-5",
-    "href": "graph-applications.html#project-1-5",
-    "title": "Category 1 GNN applications for real-world data",
-    "section": "1.5 Molecular HIV activity prediction with calibrated GNNs",
-    "text": "1.5 Molecular HIV activity prediction with calibrated GNNs\n\nTaskGraph classification Recommended levelBSc or MSc ComputeLight to moderate; 4–8 GB GPU Starting paperHu et al., Open Graph Benchmark\n\n\nWhat you will do. A molecule is a graph: atoms are nodes and bonds are edges. Predict whether the complete molecule is active in the HIV benchmark assay and test whether confidence estimates remain useful on molecular scaffolds not seen during training.\n\nProject goal. Compare learned graph representations with established chemical fingerprints under the official out-of-scaffold split.\nData. Use OGB ogbg-molhiv: 41,127 molecular graphs, official scaffold split and official ROC-AUC evaluator. The OGB loader guide handles download and split indices.\nMethods and starting code. Morgan fingerprints with logistic regression or random forest; GCN; GIN/GINE; PNA; compact GraphGPS. OGB provides baseline code, and PyG provides the layers and loader.\nRequired baselines. Fingerprint classifier, GCN and GIN/GINE. Bond-feature and pooling ablations are required. If self-supervised pretraining is added, follow the shared SSL protocol.\nEvaluation. Use only the official scaffold split and evaluator. ROC-AUC is primary; AUPRC, Brier score or expected calibration error are supporting metrics. Report at least three seeds. Do not compare scaffold-split results with random-split figures.\n\nBachelor scope. Compare fingerprints, GCN and GIN/GINE and inspect errors on unfamiliar scaffolds. Include one bond-feature or pooling ablation.\n\n\nMaster research question and contribution. Research question: Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination? Compare temperature scaling, deep ensembles or a compact evidential/uncertainty variant on identical predictions and report both performance and calibration by scaffold novelty. A self-supervised route is possible, but it must be distinct from Project 2.3.\n\nFeasibility and guardrails. The dataset is well established and manageable. The main danger is silently changing the split or selecting a threshold on test data.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  GNN applications"
-    ]
-  },
-  {
     "objectID": "time-series-ssl.html",
     "href": "time-series-ssl.html",
     "title": "Category 3 Self-supervised representation learning for time series",
@@ -448,6 +217,237 @@
     "crumbs": [
       "Home",
       "2  Modern Graph ML"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "",
+    "text": "Sixteen public-data projects in four categories. Every project has a concrete task, a reproducible starting point, required baselines, an evaluation protocol and a scoped research contribution.\nBrowse the projects Download the PDF",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#a-portfolio-built-for-feasible-evidence-driven-theses",
+    "href": "index.html#a-portfolio-built-for-feasible-evidence-driven-theses",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "",
+    "text": "Sixteen public-data projects in four categories. Every project has a concrete task, a reproducible starting point, required baselines, an evaluation protocol and a scoped research contribution.\nBrowse the projects Download the PDF",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#how-the-projects-are-structured",
+    "href": "index.html#how-the-projects-are-structured",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "How the projects are structured",
+    "text": "How the projects are structured\nBachelor projects emphasise implementation, fair comparison and one focused ablation. Master projects require a research question, a controlled methodological or protocol contribution, multi-seed evidence and a useful conclusion even when the proposed change does not improve average accuracy.\n\nIntegration assessment: approved with targeted corrections. The four-category structure is academically coherent and feasible. Categories 1 and 2 preserve the Graph ML core, Category 3 adds a representation-learning strand, and Category 4 is intentionally narrow to keep foundation-model work within student compute budgets.",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#portfolio-index",
+    "href": "index.html#portfolio-index",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Portfolio index",
+    "text": "Portfolio index\n\n\n\nID\nProject\nBest fit\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nModerate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc preferred\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n2.1\nInductive sensor embeddings for STAEformer\nMSc preferred\nModerate\n\n\n2.2\nInductive evaluation of GRACE\nBSc or MSc\nVery light\n\n\n2.3\nStructure-aware augmentations for graph contrastive learning\nBSc or MSc\nLight to moderate\n\n\n2.4\nCompute-aware routing between GraphGPS branches\nMSc preferred\nLight to moderate\n\n\n2.5\nQuestion-adaptive retrieval budgets for G-Retriever\nMSc optional\nModerate\n\n\n3.1\nContrastive learning for wearable activity recognition\nBSc or MSc\nLight\n\n\n3.2\nLead-aware masked learning for 12-lead ECG\nMSc preferred\nModerate\n\n\n3.3\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n3.4\nSelf-supervised learning on heat-pump smart-meter data\nConditional\nLight to moderate after preprocessing\n\n\n3.5\nGraph self-supervised learning from vibration signals\nMSc preferred\nModerate preprocessing\n\n\n4.1\nAdapting DINO backbones for land cover or industrial anomalies\nBSc or MSc\nModerate",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#what-counts-as-a-bachelor-or-master-contribution",
+    "href": "index.html#what-counts-as-a-bachelor-or-master-contribution",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "What counts as a Bachelor or Master contribution",
+    "text": "What counts as a Bachelor or Master contribution\n\n\n\n\n\n\n\n\nDimension\nBachelor project\nMaster project\n\n\n\n\nStarting point\nOne dataset and one established method\nVerified anchor-paper reproduction plus meaningful baselines\n\n\nContribution\nReliable pipeline, fair comparison and one focused ablation\nNew mechanism, protocol, graph/view construction or rigorous transfer/robustness study\n\n\nEvidence\nCorrect split, sensible baselines and error analysis\nMultiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant\n\n\nOutcome\nExplain whether and when the method helps\nAnswer a preregistered question; a controlled negative result is valid",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#shared-protocol-for-self-supervised-projects",
+    "href": "index.html#shared-protocol-for-self-supervised-projects",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Shared protocol for self-supervised projects",
+    "text": "Shared protocol for self-supervised projects\nEvery self-supervised or pretrained project should report these settings whenever they are meaningful:\n\nFrozen linear evaluation. Pretrain without labels, freeze the encoder and train only a lightweight head.\nFine-tuning. Initialise from the pretrained encoder and update it with labels.\nFully supervised baseline. Train the same encoder architecture from scratch using labels.\nRandom-initialisation control. Freeze a randomly initialised encoder and train the same head.\nLabel-efficiency curve. Report several label budgets, typically 1%, 5%, 10% and 100%.\n\n\nLeakage rule. Group splits by the real independent unit: subject, patient, household, engine or bearing—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#where-to-begin",
+    "href": "index.html#where-to-begin",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Where to begin",
+    "text": "Where to begin\n\nStart with Category 1 for practical GNN applications.\nStart with Category 2 to implement and extend a modern Graph ML paper.\nStart with Category 3 for representation learning on sensor, health or energy signals.\nStart with Category 4 for a carefully scoped DINO project.\nUse the selection guidance to match topics to experience and risk tolerance.",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html",
+    "href": "graph-applications.html",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "",
+    "text": "Practical graph prediction problems with public benchmarks\nThese projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#learn-first-and-find-ideas",
+    "href": "graph-applications.html#learn-first-and-find-ideas",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "Learn first and find ideas",
+    "text": "Learn first and find ideas\n\nStanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#projects-in-this-category",
+    "href": "graph-applications.html#projects-in-this-category",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "Projects in this category",
+    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-1-1",
+    "href": "graph-applications.html#project-1-1",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "1.1 Remaining useful life prediction for aircraft engines",
+    "text": "1.1 Remaining useful life prediction for aircraft engines\n\nTaskGraph-level temporal regression Recommended levelBSc or MSc ComputeVery light to light; CPU or 4 GB GPU Starting paperHuang, He and Sick, Spatio-Temporal Attention GNN for RUL, 2024\n\n\nWhat you will do. Predict how many operating cycles remain before a turbofan engine fails. Each sensor channel becomes a node; edges express statistical or learned relationships among sensors. A temporal encoder then follows how the sensor graph changes as an engine ages.\n\nProject goal. Given a recent window of readings from one engine, predict one remaining-life value. The scientific question is whether explicitly modelling sensor interactions improves over treating the measurements as an ordinary multivariate sequence.\nData. Use NASA C-MAPSS. Start with FD001: 100 training engines, 100 test engines, three operating-condition variables and 21 sensor channels. FD002–FD004 are optional transfer sets. Split by engine, never by windows from the same engine.\nMethods and starting code. Linear or MLP regression, GRU/LSTM/TCN, GCN–GRU, GAT–GRU and the anchor spatiotemporal attention model. Compare correlation, random and learned sensor graphs. PHMGNNBenchmark and the GNN RUL benchmarking repository are useful code references; students should still document their own preprocessing.\nRequired baselines. A naive constant or degradation-stage baseline, one graph-free sequence model and one compact spatiotemporal GNN. The graph experiment must include a no-edge or random-edge control.\nEvaluation. MAE or RMSE is primary; the asymmetric NASA score is optional. Report error by early, middle and late life. Fit normalization and graph construction on training engines only and report at least three seeds for MSc work.\n\nBachelor scope. Use FD001. Compare a GRU with one compact GNN, one graph construction and one random/no-edge ablation. The contribution is a trustworthy pipeline and a clear answer to whether the graph helps.\n\n\nMaster research question and contribution. Research question: Can a sparse, time-varying sensor graph improve RUL accuracy and robustness when sensors become noisy or unavailable? Develop one graph-learning mechanism, compare it with fixed correlation and random graphs, and include missing-sensor, uncertainty or cross-subset transfer analysis. Merely rerunning an available implementation is not the contribution.\n\nFeasibility and guardrails. FD001 is easy to run. The main risks are window leakage, inconsistent RUL capping and comparing results produced with different normalization or scoring rules. Freeze these choices before modelling.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-1-2",
+    "href": "graph-applications.html#project-1-2",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "1.2 Multi-horizon traffic forecasting with data-driven graph structure",
+    "text": "1.2 Multi-horizon traffic forecasting with data-driven graph structure\n\nTaskNode-level temporal regression Recommended levelBSc or MSc ComputeLight to moderate; 4–8 GB GPU Starting paperLi et al., DCRNN, and Wu et al., Graph WaveNet\n\n\nWhat you will do. Forecast traffic speed at every road sensor 15, 30 and 60 minutes ahead. The supplied road graph is a useful starting point, but congestion can couple sensors in ways that do not follow the shortest road distance.\n\nProject goal. Determine whether a road-distance graph, a training-only correlation graph or a learned graph gives the most reliable forecasts, especially at the 60-minute horizon.\nData. Use METR-LA from the official DCRNN repository: 207 sensors and 34,272 five-minute observations. PEMS-BAY with 325 sensors is the optional transfer target. Use the established chronological 70/10/20 split.\nMethods and starting code. Historical average, linear regression, GRU, DCRNN, STGCN, Graph WaveNet code, MTGNN and a compact Transformer. A dynamic graph should be sparse or low-rank so its cost is explicit.\nRequired baselines. Historical average, graph-free GRU/Transformer and one fixed-graph spatiotemporal GNN. Compare supplied distance adjacency, training-only correlation adjacency, a single learned static adjacency and the proposed variant.\nEvaluation. MAE is primary; report RMSE and MAPE at 15/30/60 minutes. Fit scalers and correlation graphs on the training period only. For dynamic adjacency, report memory, latency and edge stability as well as forecast error.\n\nBachelor scope. Compare historical average, GRU and one spatiotemporal GNN on the supplied graph. Add one no-edge or randomized-edge control.\n\n\nMaster research question and contribution. Research question: Does a time-of-day and traffic-regime-conditioned sparse adjacency improve long-horizon forecasting over both the road graph and a single learned static graph? Match depth and width, use at least three seeds, and examine whether rush-hour edges differ from free-flow edges and whether learned edges correspond to plausible topology. A robustness-and-transfer route using missing sensors and METR-LA to PEMS-BAY transfer is an alternative, but it must be narrowed to one preregistered question.\n\nFeasibility and guardrails. Per-timestep dense adjacency is unnecessarily expensive and unstable. Profile early and enforce top-k sparsity or low rank. This project and Project 2.1 both use traffic data, but this one studies the graph itself; 2.1 studies unseen-sensor representations.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-1-3",
+    "href": "graph-applications.html#project-1-3",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "1.3 Illicit Bitcoin transaction detection",
+    "text": "1.3 Illicit Bitcoin transaction detection\n\nTaskNode classification on a temporal graph Recommended levelBSc or MSc ComputeModerate; sparse mini-batches on 4–8 GB GPU Starting paperWeber et al., Anti-Money Laundering in Bitcoin\n\n\nWhat you will do. Each Bitcoin transaction is a node, and directed payment flows are edges. The model predicts whether a labelled transaction is licit or illicit while respecting the order in which transactions occurred.\n\nProject goal. Test whether neighbourhood information helps detect rare illicit transactions beyond the transaction’s own features, without allowing information from future time steps to leak into training.\nData. Use the PyG Elliptic Bitcoin Temporal loader: 203,769 transaction nodes, 234,355 edges, 165 features and 49 time steps. Unknown labels are unlabelled, not negatives.\nMethods and starting code. Logistic regression or gradient boosting on node features; GCN, GraphSAGE or GAT; EvolveGCN or TGN for an MSc extension. Use class weighting or focal loss only after establishing an unweighted baseline. PyG’s loader is the recommended data starting point.\nRequired baselines. Feature-only classifier, static GCN/GraphSAGE and a no-edge or random-edge control. A temporal model is required only for the MSc temporal route.\nEvaluation. Chronological splits only. Use AUPRC or illicit-class F1 as the primary metric and report illicit recall at a fixed false-positive rate. Exclude unknown nodes from supervised loss and labelled-node metrics; examine performance over time.\n\nBachelor scope. Compare a feature-only model with GCN or GraphSAGE and analyse how edge removal changes performance. Include class-imbalance and per-time-step error analysis.\n\n\nMaster research question and contribution. Research question: Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges? Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift, and connect threshold choices to investigator workload. A strong negative result may show that features dominate topology during particular regimes.\n\nFeasibility and guardrails. Random splitting makes this task unrealistically easy. Keep time ordering, labels and threshold selection fixed across methods. Mini-batching or snapshot processing keeps the graph manageable.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-1-4",
+    "href": "graph-applications.html#project-1-4",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "1.4 Graph-based movie recommendation with accuracy and coverage",
+    "text": "1.4 Graph-based movie recommendation with accuracy and coverage\n\nTaskLink prediction and ranking on a bipartite graph Recommended levelBSc recommended; weak MSc ceiling ComputeVery light; CPU or low-memory GPU Starting paperHe et al., LightGCN, SIGIR 2020\n\n\nWhat you will do. Represent users and movies as two node types. A rating or interaction is an edge. The model scores unseen user–movie pairs and recommends a ranked list, while also checking whether recommendations collapse onto popular titles.\n\nProject goal. Measure whether message passing improves top-k ranking over popularity and matrix factorization and whether any gain comes at the cost of catalogue coverage.\nData. Use MovieLens 100K: 100,000 timestamped ratings from about 1,000 users on 1,700 movies, roughly a 5 MB download.\nMethods and starting code. Popularity, item/user nearest neighbours, matrix factorization and LightGCN. The official LightGCN repository is a reference, but its data protocol must be adapted transparently to MovieLens 100K.\nRequired baselines. Popularity and matrix factorization are mandatory; LightGCN is the graph model. Use identical candidate sets and negative-sampling rules.\nEvaluation. Use a per-user chronological split and remove validation/test interactions from the training graph. NDCG@20 or Recall@20 is primary; also report catalogue coverage and average popularity of recommended items.\n\nBachelor scope. Compare popularity, matrix factorization and LightGCN. Study depth or negative sampling and report both accuracy and coverage.\n\n\nMaster research question and contribution. Only allocate as an MSc project if the question is strengthened, for example: Can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG? This requires user-activity and item-popularity subgroup analysis, multiple seeds and a well-defined Pareto trade-off. Otherwise choose a higher-ceiling topic.\n\nFeasibility and guardrails. This is the portfolio’s safest BSc project. The principal pitfalls are leakage from future interactions and evaluation on sampled negatives that differ across methods.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-1-5",
+    "href": "graph-applications.html#project-1-5",
+    "title": "Category 1 GNN applications for real-world data",
+    "section": "1.5 Molecular HIV activity prediction with calibrated GNNs",
+    "text": "1.5 Molecular HIV activity prediction with calibrated GNNs\n\nTaskGraph classification Recommended levelBSc or MSc ComputeLight to moderate; 4–8 GB GPU Starting paperHu et al., Open Graph Benchmark\n\n\nWhat you will do. A molecule is a graph: atoms are nodes and bonds are edges. Predict whether the complete molecule is active in the HIV benchmark assay and test whether confidence estimates remain useful on molecular scaffolds not seen during training.\n\nProject goal. Compare learned graph representations with established chemical fingerprints under the official out-of-scaffold split.\nData. Use OGB ogbg-molhiv: 41,127 molecular graphs, official scaffold split and official ROC-AUC evaluator. The OGB loader guide handles download and split indices.\nMethods and starting code. Morgan fingerprints with logistic regression or random forest; GCN; GIN/GINE; PNA; compact GraphGPS. OGB provides baseline code, and PyG provides the layers and loader.\nRequired baselines. Fingerprint classifier, GCN and GIN/GINE. Bond-feature and pooling ablations are required. If self-supervised pretraining is added, follow the shared SSL protocol.\nEvaluation. Use only the official scaffold split and evaluator. ROC-AUC is primary; AUPRC, Brier score or expected calibration error are supporting metrics. Report at least three seeds. Do not compare scaffold-split results with random-split figures.\n\nBachelor scope. Compare fingerprints, GCN and GIN/GINE and inspect errors on unfamiliar scaffolds. Include one bond-feature or pooling ablation.\n\n\nMaster research question and contribution. Research question: Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination? Compare temperature scaling, deep ensembles or a compact evidential/uncertainty variant on identical predictions and report both performance and calibration by scaffold novelty. A self-supervised route is possible, but it must be distinct from Project 2.3.\n\nFeasibility and guardrails. The dataset is well established and manageable. The main danger is silently changing the split or selecting a threshold on test data.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  GNN applications"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html",
+    "href": "selection-guidance.html",
+    "title": "Selection guidance",
+    "section": "",
+    "text": "Student profile\nRecommended projects\n\n\n\n\nSafest BSc\n1.1 C-MAPSS, 1.4 MovieLens, 2.2 GRACE reproduction, 3.1 UCI-HAR, 4.1 EuroSAT RGB\n\n\nStrong balanced MSc\n2.1 inductive STAEformer, 2.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 2.4 GraphGPS routing\n\n\nHigh methodological risk\n3.2 lead-aware latent prediction, 3.3 decomposition-aware forecasting, 3.5 physics-grounded vibration graphs\n\n\nConditional or specialist\n3.4 HEAPO after licence audit; 2.5 G-Retriever for a strong student who requests graph RAG",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html#recommended-starting-points",
+    "href": "selection-guidance.html#recommended-starting-points",
+    "title": "Selection guidance",
+    "section": "",
+    "text": "Student profile\nRecommended projects\n\n\n\n\nSafest BSc\n1.1 C-MAPSS, 1.4 MovieLens, 2.2 GRACE reproduction, 3.1 UCI-HAR, 4.1 EuroSAT RGB\n\n\nStrong balanced MSc\n2.1 inductive STAEformer, 2.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 2.4 GraphGPS routing\n\n\nHigh methodological risk\n3.2 lead-aware latent prediction, 3.3 decomposition-aware forecasting, 3.5 physics-grounded vibration graphs\n\n\nConditional or specialist\n3.4 HEAPO after licence audit; 2.5 G-Retriever for a strong student who requests graph RAG",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html#a-simple-decision-process",
+    "href": "selection-guidance.html#a-simple-decision-process",
+    "title": "Selection guidance",
+    "section": "A simple decision process",
+    "text": "A simple decision process\n\nChoose the task, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.\nDownload the data and run one complete baseline on a small subset before the formal project begins.\nWrite a one-sentence research question and identify the comparison that could falsify the proposed explanation.\nFreeze the split, primary metric and compute budget before extensive development.\nTreat the authors’ repository as an executable specification—not as the thesis contribution.",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html#week-one-feasibility-checklist",
+    "href": "selection-guidance.html#week-one-feasibility-checklist",
+    "title": "Selection guidance",
+    "section": "Week-one feasibility checklist",
+    "text": "Week-one feasibility checklist\n\nDownload the exact dataset and record its version, size, licence and release date.\nRun the simplest baseline from raw input to final metric on a small subset.\nIdentify the independent split unit and verify that it cannot cross train and test.\nRecord the anchor paper, repository version and preprocessing deviations.\nEstimate training time and peak memory before planning seeds or ablations.\nFor MSc work, write the question, proposed mechanism, strongest alternative explanation and minimum viable ablation table.",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html#licences-and-access-that-affect-allocation",
+    "href": "selection-guidance.html#licences-and-access-that-affect-allocation",
+    "title": "Selection guidance",
+    "section": "Licences and access that affect allocation",
+    "text": "Licences and access that affect allocation\n\n\n\n\n\n\n\n\nResource\nLicence or status\nPractical consequence\n\n\n\n\nUCI-HAR\nCC BY 4.0\nOpen with attribution\n\n\nPTB-XL\nCC BY 4.0\nNo credentialing required\n\n\nPaderborn KAt\nCC BY-NC 4.0\nNon-commercial academic use\n\n\nMVTec AD\nCC BY-NC-SA 4.0\nNon-commercial and share-alike\n\n\nDINOv2\nApache 2.0\nUngated\n\n\nDINOv3 weights\nCustom Meta licence\nGated; non-standard; review for industry use\n\n\nHEAPO data\nNo dataset licence displayed in Zenodo Rights metadata\nConfirm before allocation; code and paper have separate licences",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "selection-guidance.html#recurring-failure-modes",
+    "href": "selection-guidance.html#recurring-failure-modes",
+    "title": "Selection guidance",
+    "section": "Recurring failure modes",
+    "text": "Recurring failure modes\n\nComparing with a number produced by a different split, metric, horizon, shot count or evaluation level.\nUsing windows from the same physical unit in both training and test sets.\nCalling an authors’ repository run a research contribution.\nReporting only in-distribution performance when transfer or cold start is the motivation.\nOmitting the random frozen encoder in a self-supervised study.\nTreating a recent preprint figure as a settled benchmark.\nExpanding to a second dataset before the first pipeline and evaluation protocol are stable.\n\n\nFinal principle. A good thesis does not need the largest model or a state-of-the-art number. It needs a precise question, public evidence, a fair comparison and a conclusion that tells the next student what to try—or avoid.\n\nTwo industrial-partner projects with Tetra Pak and Siemens Gamesa are offered separately and remain outside this portfolio.",
+    "crumbs": [
+      "Home",
+      "Selection guidance"
     ]
   }
 ]
