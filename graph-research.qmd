@@ -1,0 +1,211 @@
+---
+title: "Category 2  Implementing modern Graph ML research"
+description: "Anchor-paper reproduction followed by a focused contribution"
+toc: true
+toc-depth: 2
+---
+
+<span id="top"></span>
+
+<p class="category-kicker">Anchor-paper reproduction followed by a focused contribution</p>
+
+These projects begin from an anchor paper with public code and a public benchmark. The first milestone is to reproduce the central mechanism. The thesis begins when the student introduces and tests a new mechanism or a stronger evaluation protocol.
+
+::: {.category-callout}
+**From repository to research question**
+
+Installing code, reproducing a table, tuning hyperparameters or applying an unchanged model to another convenient dataset is not, by itself, an MSc contribution. Here the contribution is an inductive sensor encoder, leakage-controlled protocol, structure-aware view, compute router or adaptive retrieval policy.
+:::
+
+## Learn first and find ideas
+
+- Spatiotemporal graphs: [survey](https://arxiv.org/abs/2301.10569), [DCRNN](https://arxiv.org/abs/1707.01926), [STAEformer](https://arxiv.org/abs/2308.10425). Dynamic graphs: [TGN](https://arxiv.org/abs/2006.10637) and [DyGFormer](https://arxiv.org/abs/2303.13047).
+- Graph Transformers: [Graphormer](https://arxiv.org/abs/2106.05234), [GraphGPS](https://arxiv.org/abs/2205.12454). Self-supervision: [DGI](https://arxiv.org/abs/1809.10341), [GRACE](https://arxiv.org/abs/2006.04131), [GraphCL](https://arxiv.org/abs/2010.13902), [GraphMAE](https://arxiv.org/abs/2205.10803). Graph RAG: [G-Retriever](https://arxiv.org/abs/2402.07630).
+- Stanford introductions: [Self-Supervised Learning for Graphs](https://medium.com/stanford-cs224w/self-supervised-learning-for-graphs-963e03b9f809), [contrastive molecular pretraining](https://medium.com/stanford-cs224w/whats-that-smell-gnnose-knows-1770d9123c05), [RingSAGE](https://medium.com/stanford-cs224w/gnns-for-molecule-regression-a704d61de396) and [Graph Transformers for TSP](https://medium.com/stanford-cs224w/tackling-the-traveling-salesman-problem-with-graph-neural-networks-b86ef4300c6e).
+
+## Projects in this category
+
+Use the contents panel or the project links in the left navigation to move directly to a project.
+
+## 2.1  Inductive sensor embeddings for STAEformer {#project-2-1}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Node-level multi-horizon regression</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">MSc strong fit; BSc reproduction variant</span>
+<span class="meta-label">Compute</span><span class="meta-value">Moderate; 4–8 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Liu et al., [STAEformer](https://arxiv.org/abs/2308.10425), CIKM 2023</span>
+:::
+
+::: {.project-intro}
+**What you will do.** STAEformer learns a separate adaptive representation for each sensor and input time position. That is powerful on a fixed network but cannot directly represent a sensor that was absent during training. This project develops an embedding generated from the new sensor's graph context and short calibration history.
+:::
+
+**Project goal.** Preserve ordinary forecasting accuracy while improving forecasts for sensors deliberately held out of training.
+
+**Data.** Use **PEMS04**, supplied by the [official STAEformer repository](https://github.com/xdzhelheim/staeformer): 307 sensors and 16,992 five-minute observations, with the official chronological split and 12-step input/output. PEMS08 is optional confirmation.
+
+**Methods and starting code.** Compact STAEformer, vanilla Transformer, GRU and STGCN/DCRNN. Replace or complement the free sensor-indexed embedding with a shared encoder using calibration summaries, graph statistics and positional encodings.
+
+**Required baselines.** Original STAEformer, mean/zero/random embeddings for unseen sensors, the proposed inductive encoder and a hybrid seen-sensor model. Reproduce the adaptive-embedding benefit before changing the method.
+
+**Evaluation.** Report standard forecasting and seeded 10/20/30% sensor cold-start settings. Remove held-out sensors and incident correlation edges during training, then expose only 1, 3 or 7 days of unlabelled calibration history. MAE is primary; report RMSE/MAPE by horizon and separately for seen/unseen sensors, plus at least three seeds.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Reproduce compact STAEformer on PEMS04 and its embedding ablation. Random sensor masking may be explored, but no new inductive encoder is required.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can a graph-conditioned shared sensor encoder recover useful representations for newly installed sensors without harming the fixed-network model?** The contribution is the encoder, a leakage-safe cold-start protocol and analysis by degree, correlation strength and calibration length. If it fails, quantify when sensor-specific parameters are indispensable.
+:::
+
+**Feasibility and guardrails.** This is one of the best-balanced MSc topics: public data, official code and a clear gap. Do not confuse it with Project 1.2; that project learns changing edges, while this project represents unseen nodes.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 2.2  Inductive evaluation of GRACE {#project-2-2}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Self-supervised node representation learning then node classification</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Very light; CPU or low-memory GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Zhu et al., [GRACE](https://arxiv.org/abs/2006.04131), 2020</span>
+:::
+
+::: {.project-intro}
+**What you will do.** GRACE makes two corrupted views of a citation graph agree. Standard evaluation is transductive: features and edges of test nodes can be visible during self-supervised pretraining. This project measures how much that access matters and develops a local variant for genuinely unseen nodes.
+:::
+
+**Project goal.** Separate representation quality from the advantage of seeing the evaluation graph during pretraining.
+
+**Data.** Use **Cora** and **CiteSeer**, with PubMed optional, through the [PyG Planetoid loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.Planetoid.html). The downstream task predicts a paper topic for each node.
+
+**Methods and starting code.** Implement GRACE edge removal, feature masking, shared GCN encoder, projection head and node contrastive loss. Start from the [official GRACE repository](https://github.com/CRIPAC-DIG/GRACE). Compare Deep Graph Infomax, a feature-only MLP, GraphSAGE and a supervised GCN.
+
+**Required baselines.** Random frozen encoder, GRACE frozen probe, GRACE fine-tuning and the same encoder fully supervised. Standard transductive and strict inductive pretraining must be separately labelled.
+
+**Evaluation.** Accuracy and macro-F1 at 1/5/10/100% label budgets. Use at least ten seeded splits with confidence intervals. In strict induction, remove validation/test nodes and incident edges until evaluation, then use the same inference-time neighbourhood policy for all methods.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Reproduce transductive GRACE on Cora plus a second dataset, compare frozen, fine-tuned and supervised GCN, and plot label efficiency.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **How much of GRACE's label efficiency survives strict induction, and can contrastive pretraining on sampled ego-graphs recover the loss?** Build a GraphSAGE-style local encoder and analyse performance by held-out node degree, homophily and neighbourhood size. The leakage-controlled benchmark is itself part of the contribution.
+:::
+
+**Feasibility and guardrails.** Small datasets make multi-seed evaluation realistic. Never place transductive and inductive figures in one undifferentiated leaderboard.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 2.3  Structure-aware augmentations for graph contrastive learning {#project-2-3}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Self-supervised graph representation learning then graph classification</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc reproduction; MSc method project</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; CPU or low-memory GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">You et al., [GraphCL](https://arxiv.org/abs/2010.13902), NeurIPS 2020</span>
+:::
+
+::: {.project-intro}
+**What you will do.** GraphCL learns by making two augmented versions of the same graph agree. Random deletion can destroy bridges, cycles or community structure and accidentally change the graph's meaning. This project controls that damage rather than merely tuning an augmentation rate.
+:::
+
+**Project goal.** Test whether structure-aware views are more label-efficient and less sensitive to augmentation strength than uniformly random views at the same number of edits.
+
+**Data.** Use **NCI1** (4,110 graphs) and **PROTEINS** (1,113) from [TU Dortmund](https://chrsmrrs.github.io/datasets/docs/datasets/) via the [PyG TUDataset loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.TUDataset.html). Cora/CiteSeer are optional only for a node-level spectral extension.
+
+**Methods and starting code.** Start with the [official GraphCL repository](https://github.com/Shen-Lab/GraphCL) and a GIN encoder. Compare GraphMAE, and optionally GRACE/BGRL for node experiments. **Core MSc mechanism:** preserve combinatorial structure using bridges, articulation points, cycles or connected components. **Stretch mechanism:** protect a low-frequency Laplacian band; compare with [GCL-SPAN](https://arxiv.org/abs/2210.00643).
+
+**Required baselines.** Original random GraphCL augmentations at matched edit counts, random frozen GIN, fully supervised GIN and GraphMAE. Pretrain inside each training fold for the strict protocol.
+
+**Evaluation.** Accuracy and macro-F1 with confidence intervals; frozen probe and fine-tuning at 10/25/100% labels. Also report component-count change, cycle-rank change, degree-distribution distance and, for the spectral route, protected-band distance. Test edit rates such as 5/10/20/30%.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Reproduce GraphCL on NCI1, compare its four augmentations and evaluate frozen, fine-tuned and supervised GIN on identical splits. Protecting articulation points only is an optional extension.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **At matched edit budgets, which measurable notion of structural damage best predicts downstream representation failure?** The minimum MSc contribution is one defensible structure-aware operator plus matched-budget analysis. A full combinatorial-versus-spectral comparison is a strong 30-ECTS stretch, not a requirement for every student. If accuracy does not improve, explain when preservation makes the two views too similar to provide contrastive signal.
+:::
+
+**Feasibility and guardrails.** Exact spectral work is feasible on these small graphs. Do not begin with ogbn-arxiv; scalable eigenspectrum approximation is a separate advanced problem. Label transductive test-graph exposure explicitly.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 2.4  Compute-aware routing between GraphGPS branches {#project-2-4}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Graph regression</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc reproduction; MSc strong fit</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 8 GB GPU preferred</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Rampášek et al., [GraphGPS](https://arxiv.org/abs/2205.12454), NeurIPS 2022</span>
+:::
+
+::: {.project-intro}
+**What you will do.** A GraphGPS layer computes both local message passing and global attention for every graph. This project asks whether a small gate can learn when global attention is worth its cost.
+:::
+
+**Project goal.** Find an accuracy–efficiency trade-off and determine whether graphs with stronger long-range structure use the global branch more often.
+
+**Data.** Use the 12,000-graph **ZINC subset** from the [PyG ZINC loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.ZINC.html). Confirm only the best settings on **Peptides-struct** through the [PyG LRGB loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.LRGBDataset.html).
+
+**Methods and starting code.** Start from the [official GraphGPS repository](https://github.com/rampasek/GraphGPS). Implement a positional/structural encoding, local GINE or GatedGCN, and global Transformer or Performer. Add a soft gate during training and an optional budgeted hard gate at inference.
+
+**Required baselines.** Local-only, global-only, standard GPS and a fixed scalar mixture, followed by learned soft and hard gates. Keep depth, width and parameters approximately matched.
+
+**Evaluation.** MAE with at least three seeds. Report trainable parameters, estimated FLOPs, peak memory and measured latency at a fixed batch size. Plot the accuracy–compute Pareto curve and stratify by graph size and a long-range proxy.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Implement a compact GPS layer on ZINC and reproduce local-only, global-only and combined branches with one positional encoding.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can graph- or layer-conditioned routing reduce global-attention computation while retaining GraphGPS accuracy, and are gate decisions structurally interpretable?** Compare multiple compute penalties and test whether simple size/diameter/positional statistics predict routing. The contribution is the router and controlled Pareto analysis, not another GraphGPS run.
+:::
+
+**Feasibility and guardrails.** ZINC is light. Restrict Peptides-struct to the strongest few settings. FLOPs and wall-clock latency answer different questions; report both.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 2.5  Question-adaptive retrieval budgets for G-Retriever {#project-2-5}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Query-conditioned evidence retrieval and answer ranking</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">Advanced MSc optional; BSc retrieval-only variant</span>
+<span class="meta-label">Compute</span><span class="meta-value">Moderate; no 7B model training required</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">He et al., [G-Retriever](https://arxiv.org/abs/2402.07630), NeurIPS 2024</span>
+:::
+
+::: {.project-intro}
+**What you will do.** G-Retriever scores graph elements, selects a compact connected evidence subgraph and then uses it for question answering. A single global retrieval size trades answer recall against irrelevant context. This project predicts the budget separately for each question.
+:::
+
+**Project goal.** Retrieve substantially smaller evidence subgraphs without reducing answer-entity recall and ranking quality.
+
+**Data.** Use **WebQSP**, 4,737 questions, through the [PyG WebQSP loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.WebQSPDataset.html) and preprocessing in the [official G-Retriever repository](https://github.com/XiaoxinHe/G-Retriever). A 1,000–2,000-question subset is acceptable for development; use the official split for final MSc reporting if feasible.
+
+**Methods and starting code.** Reproduce graph-element scoring and PCST or a documented connected approximation. Compare one-hop, text-similarity top-k, personalized PageRank and fixed PCST budgets. Predict k from non-leaking query, seed-entity and relevance-score features. A language generator is optional.
+
+**Required baselines.** Fixed k in {3,5,10,20}, a simple validation heuristic, non-connected top-k and an oracle budget used only for analysis. The required downstream task is answer-entity ranking, not full Llama 2–7B reproduction.
+
+**Evaluation.** Answer-entity recall, Hits@1 or answer F1, retrieved node/edge count and latency. Plot the full quality–size Pareto curve, stratify by path length and question complexity, and test 5/10/20% candidate-edge deletion.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Implement retrieval and answer ranking and compare one-hop, text-only, PageRank and fixed-budget PCST. No LLM fine-tuning.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can query- and retrieval-confidence features choose the smallest adequate connected subgraph per question?** Train a budget selector only on training/validation questions and analyse its calibration and failure modes. A negative result should identify which observable features predict retrieval difficulty.
+:::
+
+**Feasibility and guardrails.** This project is intellectually strong but engineering-heavy and outside the core graph/time-series line. Allocate only to a student who requests graph RAG and has strong implementation skills. Cache text embeddings and avoid paid APIs or 7B+ fine-tuning.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

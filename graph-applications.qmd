@@ -1,0 +1,211 @@
+---
+title: "Category 1  GNN applications for real-world data"
+description: "Practical graph prediction problems with public benchmarks"
+toc: true
+toc-depth: 2
+---
+
+<span id="top"></span>
+
+<p class="category-kicker">Practical graph prediction problems with public benchmarks</p>
+
+These projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.
+
+::: {.category-callout}
+**What a good application project contains**
+
+A defensible graph construction, a fixed split and primary metric, simple and non-graph baselines, at least one GNN, and an edge-removal, edge-randomisation or alternative-graph experiment. Impact comes from a clear formulation—not model size.
+:::
+
+## Learn first and find ideas
+
+- [Stanford CS224W course and project guidance](https://web.stanford.edu/class/cs224w/projects.html) and the [CS224W project archive](https://snap.stanford.edu/class/cs224w-2019/projects.html).
+- [PyTorch Geometric dataset catalogue](https://pytorch-geometric.readthedocs.io/en/latest/cheatsheet/data_cheatsheet.html), [Open Graph Benchmark](https://ogb.stanford.edu/docs/home/), [SNAP datasets](https://snap.stanford.edu/data/) and the [Temporal Graph Benchmark](https://tgb.complexdatalab.com/).
+- Stanford examples: [traffic as a dynamic graph](https://medium.com/stanford-cs224w/predicting-evolution-of-dynamic-graphs-7688eca1daf8), [water quality with RGCNs](https://medium.com/stanford-cs224w/predicting-water-quality-in-unmonitored-networks-with-rgcns-c72fdd177f0d), [fake-news detection](https://medium.com/stanford-cs224w/are-you-for-real-cb0442af43a3) and [NFT transaction prediction](https://medium.com/stanford-cs224w/applying-graph-ml-techniques-to-ethereum-nft-transactions-d4bde61b02f3).
+
+## Projects in this category
+
+Use the contents panel or the project links in the left navigation to move directly to a project.
+
+## 1.1  Remaining useful life prediction for aircraft engines {#project-1-1}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Graph-level temporal regression</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Very light to light; CPU or 4 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Huang, He and Sick, [Spatio-Temporal Attention GNN for RUL](https://arxiv.org/abs/2401.15964), 2024</span>
+:::
+
+::: {.project-intro}
+**What you will do.** Predict how many operating cycles remain before a turbofan engine fails. Each sensor channel becomes a node; edges express statistical or learned relationships among sensors. A temporal encoder then follows how the sensor graph changes as an engine ages.
+:::
+
+**Project goal.** Given a recent window of readings from one engine, predict one remaining-life value. The scientific question is whether explicitly modelling sensor interactions improves over treating the measurements as an ordinary multivariate sequence.
+
+**Data.** Use [NASA C-MAPSS](https://catalog.data.gov/dataset/cmapss-jet-engine-simulated-data). Start with FD001: 100 training engines, 100 test engines, three operating-condition variables and 21 sensor channels. FD002–FD004 are optional transfer sets. Split by **engine**, never by windows from the same engine.
+
+**Methods and starting code.** Linear or MLP regression, GRU/LSTM/TCN, GCN–GRU, GAT–GRU and the anchor spatiotemporal attention model. Compare correlation, random and learned sensor graphs. [PHMGNNBenchmark](https://github.com/HazeDT/PHMGNNBenchmark) and the [GNN RUL benchmarking repository](https://github.com/Frank-Wang-oss/GNN_RUL_Benchmarking) are useful code references; students should still document their own preprocessing.
+
+**Required baselines.** A naive constant or degradation-stage baseline, one graph-free sequence model and one compact spatiotemporal GNN. The graph experiment must include a no-edge or random-edge control.
+
+**Evaluation.** MAE or RMSE is primary; the asymmetric NASA score is optional. Report error by early, middle and late life. Fit normalization and graph construction on training engines only and report at least three seeds for MSc work.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Use FD001. Compare a GRU with one compact GNN, one graph construction and one random/no-edge ablation. The contribution is a trustworthy pipeline and a clear answer to whether the graph helps.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can a sparse, time-varying sensor graph improve RUL accuracy and robustness when sensors become noisy or unavailable?** Develop one graph-learning mechanism, compare it with fixed correlation and random graphs, and include missing-sensor, uncertainty or cross-subset transfer analysis. Merely rerunning an available implementation is not the contribution.
+:::
+
+**Feasibility and guardrails.** FD001 is easy to run. The main risks are window leakage, inconsistent RUL capping and comparing results produced with different normalization or scoring rules. Freeze these choices before modelling.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 1.2  Multi-horizon traffic forecasting with data-driven graph structure {#project-1-2}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Node-level temporal regression</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 4–8 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Li et al., [DCRNN](https://arxiv.org/abs/1707.01926), and Wu et al., [Graph WaveNet](https://arxiv.org/abs/1906.00121)</span>
+:::
+
+::: {.project-intro}
+**What you will do.** Forecast traffic speed at every road sensor 15, 30 and 60 minutes ahead. The supplied road graph is a useful starting point, but congestion can couple sensors in ways that do not follow the shortest road distance.
+:::
+
+**Project goal.** Determine whether a road-distance graph, a training-only correlation graph or a learned graph gives the most reliable forecasts, especially at the 60-minute horizon.
+
+**Data.** Use **METR-LA** from the [official DCRNN repository](https://github.com/liyaguang/DCRNN): 207 sensors and 34,272 five-minute observations. [PEMS-BAY](https://github.com/liyaguang/DCRNN) with 325 sensors is the optional transfer target. Use the established chronological 70/10/20 split.
+
+**Methods and starting code.** Historical average, linear regression, GRU, DCRNN, STGCN, [Graph WaveNet code](https://github.com/nnzhan/Graph-WaveNet), MTGNN and a compact Transformer. A dynamic graph should be sparse or low-rank so its cost is explicit.
+
+**Required baselines.** Historical average, graph-free GRU/Transformer and one fixed-graph spatiotemporal GNN. Compare supplied distance adjacency, training-only correlation adjacency, a single learned static adjacency and the proposed variant.
+
+**Evaluation.** MAE is primary; report RMSE and MAPE at 15/30/60 minutes. Fit scalers and correlation graphs on the training period only. For dynamic adjacency, report memory, latency and edge stability as well as forecast error.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Compare historical average, GRU and one spatiotemporal GNN on the supplied graph. Add one no-edge or randomized-edge control.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Does a time-of-day and traffic-regime-conditioned sparse adjacency improve long-horizon forecasting over both the road graph and a single learned static graph?** Match depth and width, use at least three seeds, and examine whether rush-hour edges differ from free-flow edges and whether learned edges correspond to plausible topology. A robustness-and-transfer route using missing sensors and METR-LA to PEMS-BAY transfer is an alternative, but it must be narrowed to one preregistered question.
+:::
+
+**Feasibility and guardrails.** Per-timestep dense adjacency is unnecessarily expensive and unstable. Profile early and enforce top-k sparsity or low rank. This project and Project 2.1 both use traffic data, but this one studies the graph itself; 2.1 studies unseen-sensor representations.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 1.3  Illicit Bitcoin transaction detection {#project-1-3}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Node classification on a temporal graph</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Moderate; sparse mini-batches on 4–8 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Weber et al., [Anti-Money Laundering in Bitcoin](https://arxiv.org/abs/1908.02591)</span>
+:::
+
+::: {.project-intro}
+**What you will do.** Each Bitcoin transaction is a node, and directed payment flows are edges. The model predicts whether a labelled transaction is licit or illicit while respecting the order in which transactions occurred.
+:::
+
+**Project goal.** Test whether neighbourhood information helps detect rare illicit transactions beyond the transaction's own features, without allowing information from future time steps to leak into training.
+
+**Data.** Use the [PyG Elliptic Bitcoin Temporal loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.EllipticBitcoinTemporalDataset.html): 203,769 transaction nodes, 234,355 edges, 165 features and 49 time steps. Unknown labels are **unlabelled**, not negatives.
+
+**Methods and starting code.** Logistic regression or gradient boosting on node features; GCN, GraphSAGE or GAT; EvolveGCN or TGN for an MSc extension. Use class weighting or focal loss only after establishing an unweighted baseline. PyG's loader is the recommended data starting point.
+
+**Required baselines.** Feature-only classifier, static GCN/GraphSAGE and a no-edge or random-edge control. A temporal model is required only for the MSc temporal route.
+
+**Evaluation.** Chronological splits only. Use AUPRC or illicit-class F1 as the primary metric and report illicit recall at a fixed false-positive rate. Exclude unknown nodes from supervised loss and labelled-node metrics; examine performance over time.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Compare a feature-only model with GCN or GraphSAGE and analyse how edge removal changes performance. Include class-imbalance and per-time-step error analysis.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges?** Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift, and connect threshold choices to investigator workload. A strong negative result may show that features dominate topology during particular regimes.
+:::
+
+**Feasibility and guardrails.** Random splitting makes this task unrealistically easy. Keep time ordering, labels and threshold selection fixed across methods. Mini-batching or snapshot processing keeps the graph manageable.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 1.4  Graph-based movie recommendation with accuracy and coverage {#project-1-4}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Link prediction and ranking on a bipartite graph</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc recommended; weak MSc ceiling</span>
+<span class="meta-label">Compute</span><span class="meta-value">Very light; CPU or low-memory GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">He et al., [LightGCN](https://arxiv.org/abs/2002.02126), SIGIR 2020</span>
+:::
+
+::: {.project-intro}
+**What you will do.** Represent users and movies as two node types. A rating or interaction is an edge. The model scores unseen user–movie pairs and recommends a ranked list, while also checking whether recommendations collapse onto popular titles.
+:::
+
+**Project goal.** Measure whether message passing improves top-k ranking over popularity and matrix factorization and whether any gain comes at the cost of catalogue coverage.
+
+**Data.** Use [MovieLens 100K](https://grouplens.org/datasets/movielens/100k/): 100,000 timestamped ratings from about 1,000 users on 1,700 movies, roughly a 5 MB download.
+
+**Methods and starting code.** Popularity, item/user nearest neighbours, matrix factorization and LightGCN. The [official LightGCN repository](https://github.com/kuandeng/LightGCN) is a reference, but its data protocol must be adapted transparently to MovieLens 100K.
+
+**Required baselines.** Popularity and matrix factorization are mandatory; LightGCN is the graph model. Use identical candidate sets and negative-sampling rules.
+
+**Evaluation.** Use a per-user chronological split and remove validation/test interactions from the training graph. NDCG@20 or Recall@20 is primary; also report catalogue coverage and average popularity of recommended items.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Compare popularity, matrix factorization and LightGCN. Study depth or negative sampling and report both accuracy and coverage.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Only allocate as an MSc project if the question is strengthened, for example: **Can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG?** This requires user-activity and item-popularity subgroup analysis, multiple seeds and a well-defined Pareto trade-off. Otherwise choose a higher-ceiling topic.
+:::
+
+**Feasibility and guardrails.** This is the portfolio's safest BSc project. The principal pitfalls are leakage from future interactions and evaluation on sampled negatives that differ across methods.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 1.5  Molecular HIV activity prediction with calibrated GNNs {#project-1-5}
+
+::: {.project-meta}
+<span class="meta-label">Task</span><span class="meta-value">Graph classification</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 4–8 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Hu et al., [Open Graph Benchmark](https://arxiv.org/abs/2005.00687)</span>
+:::
+
+::: {.project-intro}
+**What you will do.** A molecule is a graph: atoms are nodes and bonds are edges. Predict whether the complete molecule is active in the HIV benchmark assay and test whether confidence estimates remain useful on molecular scaffolds not seen during training.
+:::
+
+**Project goal.** Compare learned graph representations with established chemical fingerprints under the official out-of-scaffold split.
+
+**Data.** Use [OGB ogbg-molhiv](https://ogb.stanford.edu/docs/graphprop/#ogbg-mol): 41,127 molecular graphs, official scaffold split and official ROC-AUC evaluator. The [OGB loader guide](https://ogb.stanford.edu/docs/home/) handles download and split indices.
+
+**Methods and starting code.** Morgan fingerprints with logistic regression or random forest; GCN; GIN/GINE; PNA; compact GraphGPS. OGB provides baseline code, and [PyG](https://pytorch-geometric.readthedocs.io/) provides the layers and loader.
+
+**Required baselines.** Fingerprint classifier, GCN and GIN/GINE. Bond-feature and pooling ablations are required. If self-supervised pretraining is added, follow the shared SSL protocol.
+
+**Evaluation.** Use only the official scaffold split and evaluator. ROC-AUC is primary; AUPRC, Brier score or expected calibration error are supporting metrics. Report at least three seeds. **Do not compare scaffold-split results with random-split figures.**
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Compare fingerprints, GCN and GIN/GINE and inspect errors on unfamiliar scaffolds. Include one bond-feature or pooling ablation.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination?** Compare temperature scaling, deep ensembles or a compact evidential/uncertainty variant on identical predictions and report both performance and calibration by scaffold novelty. A self-supervised route is possible, but it must be distinct from Project 2.3.
+:::
+
+**Feasibility and guardrails.** The dataset is well established and manageable. The main danger is silently changing the split or selecting a threshold on test data.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

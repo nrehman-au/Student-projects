@@ -1,0 +1,74 @@
+---
+title: "BSc and MSc Student Project Portfolio"
+subtitle: "Graph applications, modern Graph ML, self-supervised time series, and vision foundation models"
+description: "Sixteen public-data projects with reproducible baselines and clearly separated Bachelor and Master scopes."
+toc: true
+---
+
+::: {.hero-panel}
+## A portfolio built for feasible, evidence-driven theses
+
+Sixteen public-data projects in four categories. Every project has a concrete task, a reproducible starting point, required baselines, an evaluation protocol and a scoped research contribution.
+
+[Browse the projects](#portfolio-index){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
+:::
+
+## How the projects are structured
+
+**Bachelor projects** emphasise implementation, fair comparison and one focused ablation. **Master projects** require a research question, a controlled methodological or protocol contribution, multi-seed evidence and a useful conclusion even when the proposed change does not improve average accuracy.
+
+::: {.approved-callout}
+**Integration assessment: approved with targeted corrections.** The four-category structure is academically coherent and feasible. Categories 1 and 2 preserve the Graph ML core, Category 3 adds a representation-learning strand, and Category 4 is intentionally narrow to keep foundation-model work within student compute budgets.
+:::
+
+## Portfolio index {#portfolio-index}
+
+| ID | Project | Best fit | Compute |
+|---|---|---|---|
+| [1.1](graph-applications.html#project-1-1) | Remaining useful life prediction for aircraft engines | BSc or MSc | Very light to light |
+| [1.2](graph-applications.html#project-1-2) | Multi-horizon traffic forecasting with data-driven graph structure | BSc or MSc | Light to moderate |
+| [1.3](graph-applications.html#project-1-3) | Illicit Bitcoin transaction detection | BSc or MSc | Moderate |
+| [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc preferred | Very light |
+| [1.5](graph-applications.html#project-1-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
+| [2.1](graph-research.html#project-2-1) | Inductive sensor embeddings for STAEformer | MSc preferred | Moderate |
+| [2.2](graph-research.html#project-2-2) | Inductive evaluation of GRACE | BSc or MSc | Very light |
+| [2.3](graph-research.html#project-2-3) | Structure-aware augmentations for graph contrastive learning | BSc or MSc | Light to moderate |
+| [2.4](graph-research.html#project-2-4) | Compute-aware routing between GraphGPS branches | MSc preferred | Light to moderate |
+| [2.5](graph-research.html#project-2-5) | Question-adaptive retrieval budgets for G-Retriever | MSc optional | Moderate |
+| [3.1](time-series-ssl.html#project-3-1) | Contrastive learning for wearable activity recognition | BSc or MSc | Light |
+| [3.2](time-series-ssl.html#project-3-2) | Lead-aware masked learning for 12-lead ECG | MSc preferred | Moderate |
+| [3.3](time-series-ssl.html#project-3-3) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
+| [3.4](time-series-ssl.html#project-3-4) | Self-supervised learning on heat-pump smart-meter data | Conditional | Light to moderate after preprocessing |
+| [3.5](time-series-ssl.html#project-3-5) | Graph self-supervised learning from vibration signals | MSc preferred | Moderate preprocessing |
+| [4.1](vision-foundation-models.html#project-4-1) | Adapting DINO backbones for land cover or industrial anomalies | BSc or MSc | Moderate |
+
+## What counts as a Bachelor or Master contribution
+
+| Dimension | Bachelor project | Master project |
+|---|---|---|
+| Starting point | One dataset and one established method | Verified anchor-paper reproduction plus meaningful baselines |
+| Contribution | Reliable pipeline, fair comparison and one focused ablation | New mechanism, protocol, graph/view construction or rigorous transfer/robustness study |
+| Evidence | Correct split, sensible baselines and error analysis | Multiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant |
+| Outcome | Explain whether and when the method helps | Answer a preregistered question; a controlled negative result is valid |
+
+## Shared protocol for self-supervised projects
+
+Every self-supervised or pretrained project should report these settings whenever they are meaningful:
+
+1. **Frozen linear evaluation.** Pretrain without labels, freeze the encoder and train only a lightweight head.
+2. **Fine-tuning.** Initialise from the pretrained encoder and update it with labels.
+3. **Fully supervised baseline.** Train the same encoder architecture from scratch using labels.
+4. **Random-initialisation control.** Freeze a randomly initialised encoder and train the same head.
+5. **Label-efficiency curve.** Report several label budgets, typically 1%, 5%, 10% and 100%.
+
+::: {.leakage-callout}
+**Leakage rule.** Group splits by the real independent unit: subject, patient, household, engine or bearing—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.
+:::
+
+## Where to begin
+
+- Start with [Category 1](graph-applications.qmd) for practical GNN applications.
+- Start with [Category 2](graph-research.qmd) to implement and extend a modern Graph ML paper.
+- Start with [Category 3](time-series-ssl.qmd) for representation learning on sensor, health or energy signals.
+- Start with [Category 4](vision-foundation-models.qmd) for a carefully scoped DINO project.
+- Use the [selection guidance](selection-guidance.qmd) to match topics to experience and risk tolerance.

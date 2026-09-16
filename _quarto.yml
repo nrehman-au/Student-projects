@@ -1,0 +1,119 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - downloads/
+
+website:
+  title: "Student Project Portfolio"
+  description: "BSc and MSc projects in Graph ML, self-supervised time-series learning, and vision foundation models"
+  site-url: "https://YOUR-USERNAME.github.io/student-project-portfolio/"
+  search:
+    location: navbar
+    type: overlay
+  reader-mode: true
+  back-to-top-navigation: true
+  page-navigation: true
+  navbar:
+    pinned: true
+    background: "#17365d"
+    foreground: "#ffffff"
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Categories"
+        menu:
+          - text: "1  GNN applications"
+            href: graph-applications.qmd
+          - text: "2  Modern Graph ML"
+            href: graph-research.qmd
+          - text: "3  Time-series SSL"
+            href: time-series-ssl.qmd
+          - text: "4  Vision foundation models"
+            href: vision-foundation-models.qmd
+      - text: "Selection guidance"
+        href: selection-guidance.qmd
+    right:
+      - text: "Download"
+        menu:
+          - text: "Word document"
+            href: downloads/student-project-portfolio.docx
+          - text: "PDF document"
+            href: downloads/student-project-portfolio.pdf
+  sidebar:
+    style: "docked"
+    collapse-level: 1
+    contents:
+      - text: "Portfolio overview"
+        href: index.qmd
+      - section: "1  GNN applications"
+        href: graph-applications.qmd
+        contents:
+          - text: "1.1  Remaining useful life prediction for aircraft engines"
+            href: graph-applications.qmd#project-1-1
+          - text: "1.2  Multi-horizon traffic forecasting with data-driven graph structure"
+            href: graph-applications.qmd#project-1-2
+          - text: "1.3  Illicit Bitcoin transaction detection"
+            href: graph-applications.qmd#project-1-3
+          - text: "1.4  Graph-based movie recommendation with accuracy and coverage"
+            href: graph-applications.qmd#project-1-4
+          - text: "1.5  Molecular HIV activity prediction with calibrated GNNs"
+            href: graph-applications.qmd#project-1-5
+      - section: "2  Modern Graph ML"
+        href: graph-research.qmd
+        contents:
+          - text: "2.1  Inductive sensor embeddings for STAEformer"
+            href: graph-research.qmd#project-2-1
+          - text: "2.2  Inductive evaluation of GRACE"
+            href: graph-research.qmd#project-2-2
+          - text: "2.3  Structure-aware augmentations for graph contrastive learning"
+            href: graph-research.qmd#project-2-3
+          - text: "2.4  Compute-aware routing between GraphGPS branches"
+            href: graph-research.qmd#project-2-4
+          - text: "2.5  Question-adaptive retrieval budgets for G-Retriever"
+            href: graph-research.qmd#project-2-5
+      - section: "3  Time-series SSL"
+        href: time-series-ssl.qmd
+        contents:
+          - text: "3.1  Contrastive learning for wearable activity recognition"
+            href: time-series-ssl.qmd#project-3-1
+          - text: "3.2  Lead-aware masked learning for 12-lead ECG"
+            href: time-series-ssl.qmd#project-3-2
+          - text: "3.3  Self-supervised forecasting representations for energy series"
+            href: time-series-ssl.qmd#project-3-3
+          - text: "3.4  Self-supervised learning on heat-pump smart-meter data"
+            href: time-series-ssl.qmd#project-3-4
+          - text: "3.5  Graph self-supervised learning from vibration signals"
+            href: time-series-ssl.qmd#project-3-5
+      - section: "4  Vision foundation models"
+        href: vision-foundation-models.qmd
+        contents:
+          - text: "4.1  Adapting DINO backbones for land cover or industrial anomalies"
+            href: vision-foundation-models.qmd#project-4-1
+      - text: "Selection guidance"
+        href: selection-guidance.qmd
+  page-footer:
+    left: "Department of Electrical and Computer Engineering, Aarhus University"
+    center: "BSc and MSc Student Project Portfolio"
+    right:
+      - text: "Download PDF"
+        href: downloads/student-project-portfolio.pdf
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-location: right
+    toc-depth: 2
+    smooth-scroll: true
+    link-external-newwindow: true
+    code-copy: false
+    grid:
+      sidebar-width: 275px
+      body-width: 860px
+      margin-width: 220px
+      gutter-width: 1.5rem
+
+execute:
+  freeze: auto
