@@ -13,10 +13,14 @@ Run `quarto render`. The complete site is written to `_site/`.
 
 ## Publish with GitHub Pages
 
-1. Create a public GitHub repository and push this folder to its `main` branch.
-2. Replace `YOUR-USERNAME` in `_quarto.yml` with your GitHub username and repository name if needed.
-3. In repository settings, give GitHub Actions read/write workflow permission.
-4. Run the **Quarto Publish** workflow once, or run `quarto publish gh-pages` locally.
-5. In **Settings → Pages**, select the `gh-pages` branch if GitHub has not selected it automatically.
+Repository: <https://github.com/naveed1983/Student-projects>
+
+Expected website: <https://naveed1983.github.io/Student-projects/>
+
+The included **Quarto Publish** workflow renders the source and publishes the
+result to the `gh-pages` branch whenever `main` changes. If Pages has not been
+enabled for this repository before, open **Settings → Pages** and select the
+`gh-pages` branch as the publishing source after the first successful workflow
+run.
 
 The included workflow republishes the website whenever `main` is updated.
