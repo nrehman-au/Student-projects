@@ -7,7 +7,11 @@ toc-depth: 2
 
 <span id="top"></span>
 
-Industrial and healthcare time series are abundant, but labels often require a technician, clinician or field inspection. Self-supervised learning creates a training signal from the recordings themselves, then tests whether a small downstream head can solve a labelled task with less supervision.
+A **time series** is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. These signals contain repeated patterns, trends and operating phases, but useful labels—such as a person's activity, a diagnosis or an abnormal production cycle—may require expert work and are often scarce.
+
+**Self-supervised learning (SSL)** learns from the unlabelled recordings by creating its own training task. A model might make two valid views of the same signal agree, hide part of a sequence and predict it, or predict the representation of a future segment. The resulting encoder converts a variable-length recording or window into a compact numerical representation. A small classification or regression head is then trained for a downstream task—for example, recognising an activity or predicting a filtration cycle's final energy use.
+
+The important question is not whether the pretraining loss decreases, but whether the learned representation reduces the amount of labelled data needed and transfers to new people, machines or operating conditions. Every project therefore compares SSL with a fully supervised model and a randomly initialised encoder on leakage-safe splits.
 
 ::: {.category-callout}
 **Three ideas to understand**

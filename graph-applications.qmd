@@ -7,7 +7,13 @@ toc-depth: 2
 
 <span id="top"></span>
 
-These projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.
+A **graph** is a way to represent entities and the relationships between them. The entities are called **nodes** and their relationships are called **edges**. Both may carry useful information: a customer node might contain age or location, a product node might contain category and price, and an edge might record that a customer bought or rated a product. Road sensors connected by roads, transactions linked by payments and atoms connected by chemical bonds are other examples.
+
+![A small customer-product graph. Solid edges are observed purchases; the dashed edge is a possible recommendation.](assets/customer-product-graph.svg){.graph-example fig-alt="Three customer nodes connected to three product nodes. Solid edges represent purchases and one dashed edge represents a possible recommendation."}
+
+A **graph neural network (GNN)** learns numerical representations, or embeddings, by combining a node's own features with information from its neighbours. In the example, the model can use a customer's previous purchases, the properties of products and patterns from nearby customers to score a new customer-product link. The same principle supports **node classification** (classify a transaction), **link prediction** (recommend a product), and **graph-level prediction** (predict a property of an entire molecule or sensor system).
+
+The projects below begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must define what the nodes and edges mean, choose the appropriate prediction level and test whether the graph adds value beyond a non-graph model.
 
 ::: {.category-callout}
 **Application project requirements**
@@ -17,7 +23,7 @@ Specify a defensible graph construction, a fixed split and primary metric, a non
 
 ## Learn first and find ideas
 
-- [Stanford CS224W course and project guidance](https://web.stanford.edu/class/cs224w/projects.html) and the [CS224W project archive](https://snap.stanford.edu/class/cs224w-2019/projects.html).
+- Begin with [A Gentle Introduction to Graph Neural Networks](https://distill.pub/2021/gnn-intro/), then use the [Stanford CS224W course and project guidance](https://web.stanford.edu/class/cs224w/projects.html) and the [CS224W project archive](https://snap.stanford.edu/class/cs224w-2019/projects.html).
 - [PyTorch Geometric dataset catalogue](https://pytorch-geometric.readthedocs.io/en/latest/cheatsheet/data_cheatsheet.html), [Open Graph Benchmark](https://ogb.stanford.edu/docs/home/), [SNAP datasets](https://snap.stanford.edu/data/) and the [Temporal Graph Benchmark](https://tgb.complexdatalab.com/).
 - Stanford examples: [traffic as a dynamic graph](https://medium.com/stanford-cs224w/predicting-evolution-of-dynamic-graphs-7688eca1daf8), [water quality with RGCNs](https://medium.com/stanford-cs224w/predicting-water-quality-in-unmonitored-networks-with-rgcns-c72fdd177f0d), [fake-news detection](https://medium.com/stanford-cs224w/are-you-for-real-cb0442af43a3) and [NFT transaction prediction](https://medium.com/stanford-cs224w/applying-graph-ml-techniques-to-ethereum-nft-transactions-d4bde61b02f3).
 

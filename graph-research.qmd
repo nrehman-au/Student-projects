@@ -7,7 +7,11 @@ toc-depth: 2
 
 <span id="top"></span>
 
-These projects begin from an anchor paper with public code and a public benchmark. The first milestone is to reproduce the central mechanism. A Master project then adds and tests a new mechanism or a stronger evaluation protocol.
+Modern Graph ML extends the basic GNN idea to settings where ordinary neighbourhood aggregation is not enough. In a **spatiotemporal graph**, both node measurements and their relationships may change over time; a **dynamic graph** can gain or lose nodes and edges; a **graph Transformer** uses attention to capture longer-range interactions; and **graph self-supervision** learns representations before task labels are introduced. Graph retrieval can also select a relevant subgraph before an LLM answers a question.
+
+These projects focus on the research method rather than only the application. Each begins from an **anchor paper** with public code and a public benchmark. The first milestone is to understand and reproduce its central mechanism under the stated protocol. For example, a student might reproduce a traffic Transformer and then ask how it should represent a sensor that was absent during training, or reproduce graph contrastive learning and then test which structural properties an augmentation should preserve.
+
+For a Bachelor project, a careful reproduction and focused comparison can be sufficient. A Master project must add a clear, testable question through a new mechanism, a stricter evaluation setting or a detailed robustness analysis. Moving unchanged code to another dataset or tuning hyperparameters alone is not the research contribution.
 
 ::: {.category-callout}
 **From repository to research question**
