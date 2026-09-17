@@ -379,7 +379,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span id="top"></span></p>
-<p>These projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.</p>
+<p>A <strong>graph</strong> is a way to represent entities and the relationships between them. The entities are called <strong>nodes</strong> and their relationships are called <strong>edges</strong>. Both may carry useful information: a customer node might contain age or location, a product node might contain category and price, and an edge might record that a customer bought or rated a product. Road sensors connected by roads, transactions linked by payments and atoms connected by chemical bonds are other examples.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/customer-product-graph.svg" class="graph-example img-fluid figure-img" alt="Three customer nodes connected to three product nodes. Solid edges represent purchases and one dashed edge represents a possible recommendation."></p>
+<figcaption>A small customer-product graph. Solid edges are observed purchases; the dashed edge is a possible recommendation.</figcaption>
+</figure>
+</div>
+<p>A <strong>graph neural network (GNN)</strong> learns numerical representations, or embeddings, by combining a node’s own features with information from its neighbours. In the example, the model can use a customer’s previous purchases, the properties of products and patterns from nearby customers to score a new customer-product link. The same principle supports <strong>node classification</strong> (classify a transaction), <strong>link prediction</strong> (recommend a product), and <strong>graph-level prediction</strong> (predict a property of an entire molecule or sensor system).</p>
+<p>The projects below begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must define what the nodes and edges mean, choose the appropriate prediction level and test whether the graph adds value beyond a non-graph model.</p>
 <div class="category-callout">
 <p><strong>Application project requirements</strong></p>
 <p>Specify a defensible graph construction, a fixed split and primary metric, a non-graph baseline and at least one GNN. Include an edge-removal, edge-randomisation or alternative-graph experiment to test whether the graph contributes.</p>
@@ -387,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="learn-first-and-find-ideas" class="level2">
 <h2 class="anchored" data-anchor-id="learn-first-and-find-ideas">Learn first and find ideas</h2>
 <ul>
-<li><a href="https://web.stanford.edu/class/cs224w/projects.html">Stanford CS224W course and project guidance</a> and the <a href="https://snap.stanford.edu/class/cs224w-2019/projects.html">CS224W project archive</a>.</li>
+<li>Begin with <a href="https://distill.pub/2021/gnn-intro/">A Gentle Introduction to Graph Neural Networks</a>, then use the <a href="https://web.stanford.edu/class/cs224w/projects.html">Stanford CS224W course and project guidance</a> and the <a href="https://snap.stanford.edu/class/cs224w-2019/projects.html">CS224W project archive</a>.</li>
 <li><a href="https://pytorch-geometric.readthedocs.io/en/latest/cheatsheet/data_cheatsheet.html">PyTorch Geometric dataset catalogue</a>, <a href="https://ogb.stanford.edu/docs/home/">Open Graph Benchmark</a>, <a href="https://snap.stanford.edu/data/">SNAP datasets</a> and the <a href="https://tgb.complexdatalab.com/">Temporal Graph Benchmark</a>.</li>
 <li>Stanford examples: <a href="https://medium.com/stanford-cs224w/predicting-evolution-of-dynamic-graphs-7688eca1daf8">traffic as a dynamic graph</a>, <a href="https://medium.com/stanford-cs224w/predicting-water-quality-in-unmonitored-networks-with-rgcns-c72fdd177f0d">water quality with RGCNs</a>, <a href="https://medium.com/stanford-cs224w/are-you-for-real-cb0442af43a3">fake-news detection</a> and <a href="https://medium.com/stanford-cs224w/applying-graph-ml-techniques-to-ethereum-nft-transactions-d4bde61b02f3">NFT transaction prediction</a>.</li>
 </ul>

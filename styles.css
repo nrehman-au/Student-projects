@@ -74,6 +74,61 @@ a {
   color: var(--portfolio-navy);
 }
 
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.1rem 0 2rem;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 225px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--portfolio-border);
+  border-top: 5px solid var(--portfolio-teal);
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(23, 54, 93, 0.07);
+}
+
+.category-card-2 { border-top-color: #4c78a8; }
+.category-card-3 { border-top-color: var(--portfolio-gold); }
+.category-card-4 { border-top-color: #765a9b; }
+
+.category-card h3 {
+  margin: 0.35rem 0 0.55rem;
+  color: var(--portfolio-navy);
+}
+
+.category-card p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  color: var(--portfolio-muted);
+}
+
+.category-card .btn {
+  align-self: flex-start;
+}
+
+.category-number {
+  color: var(--portfolio-teal);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.graph-example {
+  display: block;
+  width: min(100%, 760px);
+  margin: 1.25rem auto 0.35rem;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 0.55rem;
+  background: #f8fafc;
+}
+
 .category-callout,
 .leakage-callout {
   border-radius: 0.45rem;
@@ -190,6 +245,8 @@ tbody tr:nth-child(even) {
 @media (max-width: 768px) {
   body { font-size: 0.97rem; }
   .hero-panel { padding: 1.2rem; }
+  .category-grid { grid-template-columns: 1fr; }
+  .category-card { min-height: auto; }
   .project-meta { grid-template-columns: 1fr; }
   .project-meta > span { border-bottom: 1px solid var(--portfolio-border) !important; }
   .project-meta > span:last-child { border-bottom: 0 !important; }

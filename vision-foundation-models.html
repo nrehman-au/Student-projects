@@ -375,7 +375,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span id="top"></span></p>
-<p>Large self-supervised vision backbones provide general-purpose features without task-specific labels. A student project should not retrain such a backbone. It should measure what a frozen model already supplies, what a small adapter adds and whether that gain justifies its trainable parameters.</p>
+<p>A <strong>vision foundation model</strong> is a large image encoder pretrained on broad image collections so that its internal features can be reused for many later tasks. Vision Transformers divide an image into patches, treat those patches as tokens and learn relationships among them. Self-supervised models such as DINO learn useful visual structure without requiring a class label for every pretraining image.</p>
+<p>In these projects, students do not train a foundation model from the beginning. They use a pretrained backbone as a <strong>frozen feature extractor</strong> and train only a small prediction head or adapter. For land-cover classification, the representation may separate forests, rivers and residential areas. For industrial inspection, patch-level representations may show where a surface differs from normal examples.</p>
+<p>The central evaluation separates what the pretrained backbone already provides from what the student’s adaptation contributes. A frozen linear probe, a lightweight adapter and—where feasible—a full fine-tune are compared using the same labels, split and backbone. Performance is reported together with the number of trainable parameters and compute cost.</p>
 <div class="category-callout">
 <p><strong>Choosing a project track</strong></p>
 <p>The project has two separate tracks. EuroSAT RGB supports the Bachelor classification route. MVTec dense anomaly localisation or multispectral EuroSAT supports a more complex Master route.</p>

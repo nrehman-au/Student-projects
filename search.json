@@ -4,7 +4,7 @@
     "href": "vision-foundation-models.html",
     "title": "Category 4 Vision foundation models",
     "section": "",
-    "text": "Large self-supervised vision backbones provide general-purpose features without task-specific labels. A student project should not retrain such a backbone. It should measure what a frozen model already supplies, what a small adapter adds and whether that gain justifies its trainable parameters.",
+    "text": "A vision foundation model is a large image encoder pretrained on broad image collections so that its internal features can be reused for many later tasks. Vision Transformers divide an image into patches, treat those patches as tokens and learn relationships among them. Self-supervised models such as DINO learn useful visual structure without requiring a class label for every pretraining image.\nIn these projects, students do not train a foundation model from the beginning. They use a pretrained backbone as a frozen feature extractor and train only a small prediction head or adapter. For land-cover classification, the representation may separate forests, rivers and residential areas. For industrial inspection, patch-level representations may show where a surface differs from normal examples.\nThe central evaluation separates what the pretrained backbone already provides from what the student’s adaptation contributes. A frozen linear probe, a lightweight adapter and—where feasible—a full fine-tune are compared using the same labels, split and backbone. Performance is reported together with the number of trainable parameters and compute cost.",
     "crumbs": [
       "Home",
       "4  Vision foundation models"
@@ -48,7 +48,7 @@
     "href": "time-series-ssl.html",
     "title": "Category 2 Self-supervised representation learning for time series",
     "section": "",
-    "text": "Industrial and healthcare time series are abundant, but labels often require a technician, clinician or field inspection. Self-supervised learning creates a training signal from the recordings themselves, then tests whether a small downstream head can solve a labelled task with less supervision.",
+    "text": "A time series is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. These signals contain repeated patterns, trends and operating phases, but useful labels—such as a person’s activity, a diagnosis or an abnormal production cycle—may require expert work and are often scarce.\nSelf-supervised learning (SSL) learns from the unlabelled recordings by creating its own training task. A model might make two valid views of the same signal agree, hide part of a sequence and predict it, or predict the representation of a future segment. The resulting encoder converts a variable-length recording or window into a compact numerical representation. A small classification or regression head is then trained for a downstream task—for example, recognising an activity or predicting a filtration cycle’s final energy use.\nThe important question is not whether the pretraining loss decreases, but whether the learned representation reduces the amount of labelled data needed and transfers to new people, machines or operating conditions. Every project therefore compares SSL with a fully supervised model and a randomly initialised encoder on leakage-safe splits.",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
@@ -147,7 +147,7 @@
     "href": "graph-research.html",
     "title": "Category 3 Implementing modern Graph ML research",
     "section": "",
-    "text": "These projects begin from an anchor paper with public code and a public benchmark. The first milestone is to reproduce the central mechanism. A Master project then adds and tests a new mechanism or a stronger evaluation protocol.",
+    "text": "Modern Graph ML extends the basic GNN idea to settings where ordinary neighbourhood aggregation is not enough. In a spatiotemporal graph, both node measurements and their relationships may change over time; a dynamic graph can gain or lose nodes and edges; a graph Transformer uses attention to capture longer-range interactions; and graph self-supervision learns representations before task labels are introduced. Graph retrieval can also select a relevant subgraph before an LLM answers a question.\nThese projects focus on the research method rather than only the application. Each begins from an anchor paper with public code and a public benchmark. The first milestone is to understand and reproduce its central mechanism under the stated protocol. For example, a student might reproduce a traffic Transformer and then ask how it should represent a sensor that was absent during training, or reproduce graph contrastive learning and then test which structural properties an augmentation should preserve.\nFor a Bachelor project, a careful reproduction and focused comparison can be sufficient. A Master project must add a clear, testable question through a new mechanism, a stricter evaluation setting or a detailed robustness analysis. Moving unchanged code to another dataset or tuning hyperparameters alone is not the research contribution.",
     "crumbs": [
       "Home",
       "3  Modern Graph ML"
@@ -235,7 +235,7 @@
     "href": "index.html",
     "title": "BSc and MSc Student Project Portfolio",
     "section": "",
-    "text": "Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.\nBrowse the projects Download the PDF",
+    "text": "Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.\nExplore the four categories Download the PDF",
     "crumbs": [
       "Home",
       "Portfolio overview"
@@ -246,7 +246,18 @@
     "href": "index.html#seventeen-student-project-options",
     "title": "BSc and MSc Student Project Portfolio",
     "section": "",
-    "text": "Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.\nBrowse the projects Download the PDF",
+    "text": "Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.\nExplore the four categories Download the PDF",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#categories",
+    "href": "index.html#categories",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Choose a category",
+    "text": "Choose a category\n\n\n\nCategory 1 · 5 projects\n\n\nGNN applications\n\n\nUse graphs to study engineering systems, traffic, transactions, recommendations and molecules.\n\nView Category 1\n\n\n\nCategory 2 · 6 projects\n\n\nSSL for time series\n\n\nLearn representations from sensor, health and energy recordings when labelled examples are limited.\n\nView Category 2\n\n\n\nCategory 3 · 5 projects\n\n\nModern Graph ML research\n\n\nReproduce an established paper and investigate a focused method or evaluation question.\n\nView Category 3\n\n\n\nCategory 4 · 1 project\n\n\nVision foundation models\n\n\nAdapt a pretrained visual encoder to land-cover classification or industrial anomaly detection.\n\nView Category 4",
     "crumbs": [
       "Home",
       "Portfolio overview"
@@ -268,7 +279,7 @@
     "href": "index.html#portfolio-index",
     "title": "BSc and MSc Student Project Portfolio",
     "section": "Portfolio index",
-    "text": "Portfolio index\n\n\n\nID\nProject\nSuggested level\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nModerate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc preferred\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n2.1\nTetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles\nBSc or MSc\nLight to moderate\n\n\n2.2\nContrastive learning for wearable activity recognition\nBSc or MSc\nLight\n\n\n2.3\nLead-aware masked learning for 12-lead ECG\nMSc preferred\nModerate\n\n\n2.4\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n2.5\nSelf-supervised learning on heat-pump smart-meter data\nPreliminary check\nLight to moderate after preprocessing\n\n\n2.6\nGraph self-supervised learning from vibration signals\nMSc preferred\nModerate preprocessing\n\n\n3.1\nInductive sensor embeddings for STAEformer\nMSc preferred\nModerate\n\n\n3.2\nInductive evaluation of GRACE\nBSc or MSc\nVery light\n\n\n3.3\nStructure-aware augmentations for graph contrastive learning\nBSc or MSc\nLight to moderate\n\n\n3.4\nCompute-aware routing between GraphGPS branches\nMSc preferred\nLight to moderate\n\n\n3.5\nQuestion-adaptive retrieval budgets for G-Retriever\nMSc optional\nModerate\n\n\n4.1\nAdapting DINO backbones for land cover or industrial anomalies\nBSc or MSc\nModerate",
+    "text": "Portfolio index\nThe complete list remains below, grouped by category. Select a category title for its introduction and learning resources, or select a project number to open that project directly.\n\nCategory 1 — GNN applications for real-world data\nPractical graph prediction problems in engineering, science, finance and recommendation.\n\n\n\nID\nProject\nSuggested level\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nModerate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc preferred\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n\n\n\nCategory 2 — Self-supervised learning for time series\nRepresentation learning from sensor, health and energy recordings with limited labels.\n\n\n\nID\nProject\nSuggested level\nCompute\n\n\n\n\n2.1\nTetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles\nBSc or MSc\nLight to moderate\n\n\n2.2\nContrastive learning for wearable activity recognition\nBSc or MSc\nLight\n\n\n2.3\nLead-aware masked learning for 12-lead ECG\nMSc preferred\nModerate\n\n\n2.4\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n2.5\nSelf-supervised learning on heat-pump smart-meter data\nPreliminary check\nLight to moderate after preprocessing\n\n\n2.6\nGraph self-supervised learning from vibration signals\nMSc preferred\nModerate preprocessing\n\n\n\n\n\nCategory 3 — Implementing modern Graph ML research\nAnchor-paper reproduction followed by a focused method or evaluation extension.\n\n\n\nID\nProject\nSuggested level\nCompute\n\n\n\n\n3.1\nInductive sensor embeddings for STAEformer\nMSc preferred\nModerate\n\n\n3.2\nInductive evaluation of GRACE\nBSc or MSc\nVery light\n\n\n3.3\nStructure-aware augmentations for graph contrastive learning\nBSc or MSc\nLight to moderate\n\n\n3.4\nCompute-aware routing between GraphGPS branches\nMSc preferred\nLight to moderate\n\n\n3.5\nQuestion-adaptive retrieval budgets for G-Retriever\nMSc optional\nModerate\n\n\n\n\n\nCategory 4 — Vision foundation models\nAdapting pretrained visual representations to a specialised classification or anomaly task.\n\n\n\nID\nProject\nSuggested level\nCompute\n\n\n\n\n4.1\nAdapting DINO backbones for land cover or industrial anomalies\nBSc or MSc\nModerate",
     "crumbs": [
       "Home",
       "Portfolio overview"
@@ -312,7 +323,7 @@
     "href": "graph-applications.html",
     "title": "Category 1 GNN applications for real-world data",
     "section": "",
-    "text": "These projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.",
+    "text": "A graph is a way to represent entities and the relationships between them. The entities are called nodes and their relationships are called edges. Both may carry useful information: a customer node might contain age or location, a product node might contain category and price, and an edge might record that a customer bought or rated a product. Road sensors connected by roads, transactions linked by payments and atoms connected by chemical bonds are other examples.\nA graph neural network (GNN) learns numerical representations, or embeddings, by combining a node’s own features with information from its neighbours. In the example, the model can use a customer’s previous purchases, the properties of products and patterns from nearby customers to score a new customer-product link. The same principle supports node classification (classify a transaction), link prediction (recommend a product), and graph-level prediction (predict a property of an entire molecule or sensor system).\nThe projects below begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must define what the nodes and edges mean, choose the appropriate prediction level and test whether the graph adds value beyond a non-graph model.",
     "crumbs": [
       "Home",
       "1  GNN applications"
@@ -323,7 +334,7 @@
     "href": "graph-applications.html#learn-first-and-find-ideas",
     "title": "Category 1 GNN applications for real-world data",
     "section": "Learn first and find ideas",
-    "text": "Learn first and find ideas\n\nStanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
+    "text": "Learn first and find ideas\n\nBegin with A Gentle Introduction to Graph Neural Networks, then use the Stanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
     "crumbs": [
       "Home",
       "1  GNN applications"
