@@ -1,14 +1,14 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
 subtitle: "Graph applications, self-supervised time series, modern Graph ML, and vision foundation models"
-description: "Sixteen projects with public datasets, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+description: "Seventeen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Sixteen student project options
+## Seventeen student project options
 
-Each project entry states the task, public dataset, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.
+Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.
 
 [Browse the projects](#portfolio-index){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
 :::
@@ -26,11 +26,12 @@ Each project entry states the task, public dataset, starting papers and code, re
 | [1.3](graph-applications.html#project-1-3) | Illicit Bitcoin transaction detection | BSc or MSc | Moderate |
 | [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc preferred | Very light |
 | [1.5](graph-applications.html#project-1-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
-| [2.1](time-series-ssl.html#project-2-1) | Contrastive learning for wearable activity recognition | BSc or MSc | Light |
-| [2.2](time-series-ssl.html#project-2-2) | Lead-aware masked learning for 12-lead ECG | MSc preferred | Moderate |
-| [2.3](time-series-ssl.html#project-2-3) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
-| [2.4](time-series-ssl.html#project-2-4) | Self-supervised learning on heat-pump smart-meter data | Preliminary check | Light to moderate after preprocessing |
-| [2.5](time-series-ssl.html#project-2-5) | Graph self-supervised learning from vibration signals | MSc preferred | Moderate preprocessing |
+| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | BSc or MSc | Light to moderate |
+| [2.2](time-series-ssl.html#project-2-2) | Contrastive learning for wearable activity recognition | BSc or MSc | Light |
+| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc preferred | Moderate |
+| [2.4](time-series-ssl.html#project-2-4) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
+| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | Preliminary check | Light to moderate after preprocessing |
+| [2.6](time-series-ssl.html#project-2-6) | Graph self-supervised learning from vibration signals | MSc preferred | Moderate preprocessing |
 | [3.1](graph-research.html#project-3-1) | Inductive sensor embeddings for STAEformer | MSc preferred | Moderate |
 | [3.2](graph-research.html#project-3-2) | Inductive evaluation of GRACE | BSc or MSc | Very light |
 | [3.3](graph-research.html#project-3-3) | Structure-aware augmentations for graph contrastive learning | BSc or MSc | Light to moderate |
@@ -58,7 +59,7 @@ Every self-supervised or pretrained project should report these settings wheneve
 5. **Label-efficiency curve.** Report several label budgets, typically 1%, 5%, 10% and 100%.
 
 ::: {.leakage-callout}
-**Leakage rule.** Group splits by the real independent unit: subject, patient, household, engine or bearing—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.
+**Leakage rule.** Group splits by the real independent unit: subject, patient, household, engine, bearing or process cycle—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.
 :::
 
 ## Where to begin

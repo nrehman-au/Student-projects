@@ -62,16 +62,18 @@ website:
       - section: "2  Time-series SSL"
         href: time-series-ssl.qmd
         contents:
-          - text: "2.1  Contrastive learning for wearable activity recognition"
+          - text: "2.1  Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles"
             href: time-series-ssl.qmd#project-2-1
-          - text: "2.2  Lead-aware masked learning for 12-lead ECG"
+          - text: "2.2  Contrastive learning for wearable activity recognition"
             href: time-series-ssl.qmd#project-2-2
-          - text: "2.3  Self-supervised forecasting representations for energy series"
+          - text: "2.3  Lead-aware masked learning for 12-lead ECG"
             href: time-series-ssl.qmd#project-2-3
-          - text: "2.4  Self-supervised learning on heat-pump smart-meter data"
+          - text: "2.4  Self-supervised forecasting representations for energy series"
             href: time-series-ssl.qmd#project-2-4
-          - text: "2.5  Graph self-supervised learning from vibration signals"
+          - text: "2.5  Self-supervised learning on heat-pump smart-meter data"
             href: time-series-ssl.qmd#project-2-5
+          - text: "2.6  Graph self-supervised learning from vibration signals"
+            href: time-series-ssl.qmd#project-2-6
       - section: "3  Modern Graph ML"
         href: graph-research.qmd
         contents:

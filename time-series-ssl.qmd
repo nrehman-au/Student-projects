@@ -25,7 +25,45 @@ Contrastive learning aligns valid views of the same recording. Masked modelling 
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 2.1  Contrastive learning for wearable activity recognition {#project-2-1}
+## 2.1  Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles {#project-2-1}
+
+::: {.project-meta}
+<span class="meta-label">Project setting</span><span class="meta-value">Industrial collaboration with Tetra Pak; partner-supplied data under an approved agreement</span>
+<span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning followed by cycle-level regression or anomaly detection</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc; scope confirmed after an initial data profile</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; compact models on a 4-8 GB GPU</span>
+<span class="meta-label">Starting paper</span><span class="meta-value">Yue et al., [TS2Vec](https://arxiv.org/abs/2106.10466), AAAI 2022</span>
+:::
+
+::: {.project-intro}
+**What you will do.** Membrane-filtration plants generate repeated production and cleaning cycles containing flow, pressure, temperature and energy measurements. Earlier work found substantial cycle-to-cycle differences. The student will identify whether these reflect operating settings, process phases, fouling, sensor drift or abnormal operation, then learn representations that account for the resulting regimes.
+:::
+
+**Project goal.** Test whether regime-aware self-supervised pretraining improves low-label prediction and transfer. The preferred task is early prediction of final specific energy consumption, such as electrical energy per unit of permeate or product. If that target cannot be constructed, use regime-conditioned anomaly detection.
+
+**Data.** Tetra Pak will provide anonymised process data or an approved secure environment; the data are not public. Sources may include customer production for one product, pilot-plant trials or a new installation. Requested signals include flow, pressure, temperature, power or energy, setpoints, product/line/phase identifiers, cycle boundaries and available alarms or cleaning records. The current estimate is a few months of approximately minute-level data; the exact installation, channels and usable-cycle count must be confirmed.
+
+**Methods and starting code.** Start with [TS2Vec and code](https://github.com/zhihanyue/ts2vec), [TS-TCC and code](https://github.com/emadeldeen24/TS-TCC), or [SimMTM and code](https://github.com/thuml/SimMTM), using a compact 1-D CNN, TCN or GRU. The MSc method should make positive pairs or masks aware of cycle phase and regime, or condition the encoder on product, line and setpoints. Use change-point detection, clustering and PCA/UMAP for the initial regime analysis.
+
+**Required baselines.** Regime-specific mean or running energy extrapolation; XGBoost or linear regression on cycle-prefix features; supervised TCN/GRU; generic SSL across all cycles; and a per-regime or regime-conditioned model. Include random-frozen, frozen-probe, fine-tuned and fully supervised controls when labels support them.
+
+**Evaluation.** Split by complete cycle and preserve time order; never place windows from one cycle in both training and test sets. For energy regression, report MAE, RMSE and normalized MAE when predicting final specific energy from fixed prefixes such as 20%, 30% and 50%. Test a held-out period, line, product or regime where possible. For anomalies, use AUPRC plus precision and recall at an agreed alert budget. Include label-efficiency budgets and at least three seeds where sample size permits.
+
+::: {.scope .scope-bsc}
+**Bachelor scope.** Profile and segment cycles, identify operating regimes, implement one supervised baseline and one established SSL method, and evaluate one target. Compare a global model with a regime-specific or conditioned variant and include one process-aware view or masking ablation. No new architecture is required.
+:::
+
+::: {.scope .scope-msc}
+**Master research question and contribution.** Research question: **Can cycle-phase and operating-regime-aware self-supervised views separate legitimate cycle variation from energy inefficiency or abnormal behaviour better than generic augmentations?** Compare global, per-regime and conditioned encoders at matched capacity; define positives or masks using process context; and test label efficiency plus held-out-regime transfer. The contribution is the regime-aware representation and analysis, not an unchanged TS2Vec or TS-TCC run.
+:::
+
+**Practical notes.** First confirm cycle boundaries, units, synchronization, missingness, regime metadata, independent-cycle count and one defensible target. Overlapping windows do not replace independent cycles. Avoid trivial full-cycle energy calculation by forecasting early or using normalized efficiency. Data and trained artefacts remain subject to the AU-Tetra Pak agreement.
+
+<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
+
+---
+
+## 2.2  Contrastive learning for wearable activity recognition {#project-2-2}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning then classification</span>
@@ -62,7 +100,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ---
 
-## 2.2  Lead-aware masked learning for 12-lead ECG {#project-2-2}
+## 2.3  Lead-aware masked learning for 12-lead ECG {#project-2-3}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning then multi-label classification</span>
@@ -99,7 +137,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ---
 
-## 2.3  Self-supervised forecasting representations for energy series {#project-2-3}
+## 2.4  Self-supervised forecasting representations for energy series {#project-2-4}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series learning then temporal regression</span>
@@ -136,7 +174,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ---
 
-## 2.4  Self-supervised learning on heat-pump smart-meter data {#project-2-4}
+## 2.5  Self-supervised learning on heat-pump smart-meter data {#project-2-5}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Time-series representation learning then household-level classification</span>
@@ -173,7 +211,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ---
 
-## 2.5  Graph self-supervised learning from vibration signals {#project-2-5}
+## 2.6  Graph self-supervised learning from vibration signals {#project-2-6}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Graph-level classification with cross-condition transfer</span>

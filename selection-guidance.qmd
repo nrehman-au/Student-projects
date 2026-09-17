@@ -8,10 +8,10 @@ toc: true
 
 | Project scope | Suggested projects |
 |---|---|
-| BSc with lower setup risk | 1.1 C-MAPSS, 1.4 MovieLens, 2.1 UCI-HAR, 3.2 GRACE reproduction, 4.1 EuroSAT RGB |
+| BSc with lower setup risk | 1.1 C-MAPSS, 1.4 MovieLens, 2.2 UCI-HAR, 3.2 GRACE reproduction, 4.1 EuroSAT RGB |
 | MSc with a defined method extension | 3.1 inductive STAEformer, 3.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 3.4 GraphGPS routing |
-| MSc with higher methodological risk | 2.2 lead-aware latent prediction, 2.3 decomposition-aware forecasting, 2.5 physics-grounded vibration graphs |
-| Preliminary checks required | 2.4 HEAPO after a licence and data check; 3.5 G-Retriever for students prepared for substantial retrieval engineering |
+| MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.4 decomposition-aware forecasting, 2.6 physics-grounded vibration graphs |
+| Preliminary checks required | 2.1 Tetra Pak after the partner-data profile and agreement; 2.5 HEAPO after a licence and data check; 3.5 G-Retriever for students prepared for substantial retrieval engineering |
 
 ## A simple decision process
 
@@ -23,7 +23,7 @@ toc: true
 
 ## Week-one feasibility checklist
 
-- Download the exact dataset and record its version, size, licence and release date.
+- Obtain access to the exact dataset and record its version, size, licence or data agreement, and release date or extraction period.
 - Run the simplest baseline from raw input to final metric on a small subset.
 - Identify the independent split unit and verify that it cannot cross train and test.
 - Record the anchor paper, repository version and preprocessing deviations.
@@ -41,6 +41,7 @@ toc: true
 | DINOv2 | Apache 2.0 | Ungated |
 | DINOv3 weights | Custom Meta licence | Gated; non-standard; review for industry use |
 | HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before starting; code and paper have separate licences |
+| Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
 
 ## Recurring failure modes
 
@@ -54,4 +55,4 @@ toc: true
 
 Select one primary question, fix the evaluation protocol before extensive experimentation and report negative as well as positive results.
 
-Two industrial-partner projects with Tetra Pak and Siemens Gamesa are offered separately and remain outside this portfolio.
+The Tetra Pak project is included as Project 2.1. A Siemens Gamesa project may be offered separately when its scope and data access are confirmed.
