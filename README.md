@@ -13,8 +13,8 @@ Run `quarto render`. The complete site is written to `_site/`.
 
 ## Publish with GitHub Pages
 
-Repository: <https://github.com/naveed1983/Student-projects>
+Repository: <https://github.com/nrehman-au/Student-projects>
 
-Live website: <https://naveed1983.github.io/Student-projects/>
+Live website: <https://nrehman-au.github.io/Student-projects/>
 
 The included **Quarto Publish** workflow renders the source and republishes the website whenever `main` is updated. GitHub Pages serves the generated `gh-pages` branch.

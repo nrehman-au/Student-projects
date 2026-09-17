@@ -7,7 +7,7 @@ project:
 website:
   title: "Student Project Portfolio"
   description: "BSc and MSc projects in Graph ML, self-supervised time-series learning, and vision foundation models"
-  site-url: "https://naveed1983.github.io/Student-projects/"
+  site-url: "https://nrehman-au.github.io/Student-projects/"
   search:
     location: navbar
     type: overlay
