@@ -1,33 +1,31 @@
 ---
-title: "Category 3  Self-supervised representation learning for time series"
-description: "Learning useful structure from unlabelled sensor, health and energy data"
+title: "Category 2  Self-supervised representation learning for time series"
+description: "Learning representations from unlabelled sensor, health and energy data"
 toc: true
 toc-depth: 2
 ---
 
 <span id="top"></span>
 
-<p class="category-kicker">Learning useful structure from unlabelled sensor, health and energy data</p>
-
-Industrial and healthcare time series are abundant, but labels often require a technician, clinician or field inspection. Self-supervised learning creates a training signal from the recordings themselves, then asks whether a small downstream head can solve a labelled task with less supervision.
+Industrial and healthcare time series are abundant, but labels often require a technician, clinician or field inspection. Self-supervised learning creates a training signal from the recordings themselves, then tests whether a small downstream head can solve a labelled task with less supervision.
 
 ::: {.category-callout}
 **Three ideas to understand**
 
-Contrastive learning aligns valid views of the same recording. Masked modelling reconstructs hidden samples or patches. Latent prediction estimates hidden representations instead of raw values and therefore requires explicit collapse monitoring. The strongest thesis contribution is often a physically meaningful view or mask, not a larger encoder.
+Contrastive learning aligns valid views of the same recording. Masked modelling reconstructs hidden samples or patches. Latent prediction estimates hidden representations instead of raw values and requires explicit collapse monitoring. Possible MSc contributions include view or mask designs based on the physics or physiology of the signal.
 :::
 
 ## Learn first and find ideas
 
 - Methods with code: [TS-TCC](https://github.com/emadeldeen24/TS-TCC), [TS2Vec](https://github.com/zhihanyue/ts2vec), [TF-C](https://github.com/mims-harvard/TFC-pretraining) and [SimMTM](https://github.com/thuml/SimMTM).
 - Data sources: [UCI Machine Learning Repository](https://archive.ics.uci.edu/), [PhysioNet](https://physionet.org/), [UCR/UEA archive](https://www.timeseriesclassification.com/), [Monash forecasting archive](https://forecastingdata.org/) and [Zenodo](https://zenodo.org/).
-- Monitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss is not evidence that the representation is useful.
+- Monitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss does not establish that the representation is useful.
 
 ## Projects in this category
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 3.1  Contrastive learning for wearable activity recognition {#project-3-1}
+## 2.1  Contrastive learning for wearable activity recognition {#project-2-1}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning then classification</span>
@@ -58,13 +56,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Do physics-consistent SO(3) orientation views improve label efficiency and robustness more than signal-agnostic jitter, scaling and permutation?** Separate gravity from body acceleration, rotate coupled sensor triads consistently, and ablate each step. The insight comes from physically valid view construction, not tuning augmentation strength.
 :::
 
-**Feasibility and guardrails.** This is a safe entry to time-series SSL. Preserve subject grouping; never split windows from the same subject across train and test.
+**Practical notes.** The dataset is small and includes a standard subject-independent split. Preserve subject grouping; never split windows from the same subject across train and test.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.2  Lead-aware masked learning for 12-lead ECG {#project-3-2}
+## 2.2  Lead-aware masked learning for 12-lead ECG {#project-2-2}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning then multi-label classification</span>
@@ -95,13 +93,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Can a lead-identity-conditioned predictor reconstruct the latent representation of missing leads without collapse, and does that improve low-label diagnosis?** Develop lead/group masking, predictor conditioning and collapse diagnostics; ablate masking granularity, EMA schedule and predictor depth. Cross-dataset transfer is optional only after the core study works.
 :::
 
-**Feasibility and guardrails.** This is methodologically risky because structured masking can collapse. Start at 100 Hz and five superclasses. Keep patient grouping and class definitions identical across methods.
+**Practical notes.** This is methodologically risky because structured masking can collapse. Start at 100 Hz and five superclasses. Keep patient grouping and class definitions identical across methods.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.3  Self-supervised forecasting representations for energy series {#project-3-3}
+## 2.3  Self-supervised forecasting representations for energy series {#project-2-3}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series learning then temporal regression</span>
@@ -118,11 +116,11 @@ Use the contents panel or the project links in the left navigation to move direc
 
 **Data.** Primary benchmark: **ETT** from the [official ETDataset repository](https://github.com/zhouhaoyi/ETDataset), using ETTh1/ETTh2 or ETTm1/ETTm2 with chronological splits. Optional external-validity set: [UCI household power consumption](https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption), about 2.1 million minute readings from **one household**. It supports chronological forecasting, not household-level classification or cross-household claims.
 
-**Methods and starting code.** CoST, [TS2Vec](https://github.com/zhihanyue/ts2vec) and [SimMTM](https://github.com/thuml/SimMTM). Use DLinear and [PatchTST](https://arxiv.org/abs/2211.14730) as strong supervised references. A ridge or linear head on frozen representations is the key diagnostic.
+**Methods and starting code.** CoST, [TS2Vec](https://github.com/zhihanyue/ts2vec) and [SimMTM](https://github.com/thuml/SimMTM). Use DLinear and [PatchTST](https://arxiv.org/abs/2211.14730) as supervised reference models. A ridge or linear head on frozen representations is the key diagnostic.
 
 **Required baselines.** Seasonal-naive forecast, DLinear, PatchTST, random frozen encoder, frozen SSL head and SSL fine-tuning. Use identical input lengths and chronological splits.
 
-**Evaluation.** MSE and MAE at agreed horizons such as 24/48/168/336/720 where the dataset supports them. Report label/data-efficiency curves, three seeds and training cost. Do not present 'beating PatchTST' as a prerequisite for a successful thesis.
+**Evaluation.** MSE and MAE at agreed horizons such as 24/48/168/336/720 where the dataset supports them. Report label/data-efficiency curves, three seeds and training cost. Beating PatchTST is not a project requirement; analyse why the methods differ.
 
 ::: {.scope .scope-bsc}
 **Bachelor scope.** Reproduce CoST or TS2Vec on one ETT subset and compare a frozen linear head with DLinear/PatchTST. Add one second horizon or dataset only after the pipeline is stable.
@@ -132,28 +130,28 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts?** Use a stable period or seasonal decomposition to select positives, compare it with random cropping and frequency-domain contrast, and analyse failure on non-stationary intervals. A negative result is useful if it reveals when estimated seasonality is unreliable.
 :::
 
-**Feasibility and guardrails.** Period estimation can become the whole thesis. Validate on clean ETT seasonality before using irregular household behaviour. Fit decomposition and normalization on training time only.
+**Practical notes.** Period estimation can become the whole thesis. Validate on clean ETT seasonality before using irregular household behaviour. Fit decomposition and normalization on training time only.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.4  Self-supervised learning on heat-pump smart-meter data {#project-3-4}
+## 2.4  Self-supervised learning on heat-pump smart-meter data {#project-2-4}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Time-series representation learning then household-level classification</span>
-<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc, conditional on data audit</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc, subject to a licence and data check</span>
 <span class="meta-label">Compute</span><span class="meta-value">Light to moderate after preprocessing</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Brudermueller et al., [HEAPO dataset paper](https://arxiv.org/abs/2503.16993), 2025</span>
 :::
 
 ::: {.project-intro}
-**What you will do.** Pretrain on a large pool of unlabelled household electricity streams, then use a small labelled subset to classify heat-pump type or operational faults. The scientific opportunity is to build views that respect weather and thermostatic cycling.
+**What you will do.** Pretrain on a large pool of unlabelled household electricity streams, then use a small labelled subset to classify heat-pump type or operational faults. Candidate extensions can define views that account for weather and thermostatic cycling.
 :::
 
 **Project goal.** Determine whether pretraining on unlabelled control households improves label efficiency on the 214 treatment households with smart-meter data and inspection information.
 
-**Data.** Use [HEAPO on Zenodo](https://zenodo.org/records/15056919), with 1,408 households, and the [official MIT-licensed code/dataloader](https://github.com/tbrumue/heapo). The paper reports 214 treatment and 1,194 control households plus 410 inspection protocols. **Allocation condition:** the Zenodo Rights metadata does not display a dataset licence as of 16 September 2026; the paper's CC BY 4.0 licence does not automatically license the data. Confirm reuse terms with the depositor before allocation.
+**Data.** Use [HEAPO on Zenodo](https://zenodo.org/records/15056919), with 1,408 households, and the [official MIT-licensed code/dataloader](https://github.com/tbrumue/heapo). The paper reports 214 treatment and 1,194 control households plus 410 inspection protocols. The Zenodo Rights metadata does not display a dataset licence as of 16 September 2026; the paper's CC BY 4.0 licence does not automatically license the data. Confirm reuse terms with the depositor before starting the project.
 
 **Methods and starting code.** TS2Vec, TS-TCC and SimMTM or another masked model, optionally weather-conditioned. Use a 1-D CNN, InceptionTime or LSTM as the supervised model. Start with heat-pump type or a sufficiently prevalent protocol label.
 
@@ -169,13 +167,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Do outdoor-temperature-matched positives and whole-cycle masking learn heat-pump behaviour more effectively than generic jitter and random masking?** Implement one or both physics-aware views, ablate weather conditioning and compare across household groups. Disaggregation should not be the core question unless the submetered cohort is large enough.
 :::
 
-**Feasibility and guardrails.** This project is approved **conditionally**, not unreservedly. Verify licence, field definitions, label prevalence, missingness and the submetered count in week one. If the licence cannot be clarified, replace the dataset rather than proceeding informally.
+**Practical notes.** Before starting, verify the dataset licence, field definitions, label prevalence, missingness and the number of households with a dedicated heat-pump meter. If reuse terms cannot be clarified, select another dataset.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.5  Graph self-supervised learning from vibration signals {#project-3-5}
+## 2.5  Graph self-supervised learning from vibration signals {#project-2-5}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Graph-level classification with cross-condition transfer</span>
@@ -206,6 +204,6 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Does a graph built from order-tracked fault-frequency sub-bands and spectral coherence transfer better across operating conditions than an ad hoc similarity graph?** Compute BPFO/BPFI/BSF from bearing geometry and shaft speed, define a defensible thresholding rule, then evaluate supervised and SSL encoders. The signal-processing graph is the contribution; GraphMAE is a baseline.
 :::
 
-**Feasibility and guardrails.** This is a high-risk, high-value project. Confirm the 5 GB Paderborn download immediately. Split by bearing, not by windows; otherwise neighbouring samples from the same physical bearing will leak across sets.
+**Practical notes.** This project requires substantial signal preprocessing. Confirm the 5 GB Paderborn download before work begins. Split by bearing, not by windows; otherwise neighbouring samples from the same physical bearing will leak across sets.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

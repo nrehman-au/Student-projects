@@ -25,10 +25,10 @@ website:
         menu:
           - text: "1  GNN applications"
             href: graph-applications.qmd
-          - text: "2  Modern Graph ML"
-            href: graph-research.qmd
-          - text: "3  Time-series SSL"
+          - text: "2  Time-series SSL"
             href: time-series-ssl.qmd
+          - text: "3  Modern Graph ML"
+            href: graph-research.qmd
           - text: "4  Vision foundation models"
             href: vision-foundation-models.qmd
       - text: "Selection guidance"
@@ -59,32 +59,32 @@ website:
             href: graph-applications.qmd#project-1-4
           - text: "1.5  Molecular HIV activity prediction with calibrated GNNs"
             href: graph-applications.qmd#project-1-5
-      - section: "2  Modern Graph ML"
-        href: graph-research.qmd
-        contents:
-          - text: "2.1  Inductive sensor embeddings for STAEformer"
-            href: graph-research.qmd#project-2-1
-          - text: "2.2  Inductive evaluation of GRACE"
-            href: graph-research.qmd#project-2-2
-          - text: "2.3  Structure-aware augmentations for graph contrastive learning"
-            href: graph-research.qmd#project-2-3
-          - text: "2.4  Compute-aware routing between GraphGPS branches"
-            href: graph-research.qmd#project-2-4
-          - text: "2.5  Question-adaptive retrieval budgets for G-Retriever"
-            href: graph-research.qmd#project-2-5
-      - section: "3  Time-series SSL"
+      - section: "2  Time-series SSL"
         href: time-series-ssl.qmd
         contents:
-          - text: "3.1  Contrastive learning for wearable activity recognition"
-            href: time-series-ssl.qmd#project-3-1
-          - text: "3.2  Lead-aware masked learning for 12-lead ECG"
-            href: time-series-ssl.qmd#project-3-2
-          - text: "3.3  Self-supervised forecasting representations for energy series"
-            href: time-series-ssl.qmd#project-3-3
-          - text: "3.4  Self-supervised learning on heat-pump smart-meter data"
-            href: time-series-ssl.qmd#project-3-4
-          - text: "3.5  Graph self-supervised learning from vibration signals"
-            href: time-series-ssl.qmd#project-3-5
+          - text: "2.1  Contrastive learning for wearable activity recognition"
+            href: time-series-ssl.qmd#project-2-1
+          - text: "2.2  Lead-aware masked learning for 12-lead ECG"
+            href: time-series-ssl.qmd#project-2-2
+          - text: "2.3  Self-supervised forecasting representations for energy series"
+            href: time-series-ssl.qmd#project-2-3
+          - text: "2.4  Self-supervised learning on heat-pump smart-meter data"
+            href: time-series-ssl.qmd#project-2-4
+          - text: "2.5  Graph self-supervised learning from vibration signals"
+            href: time-series-ssl.qmd#project-2-5
+      - section: "3  Modern Graph ML"
+        href: graph-research.qmd
+        contents:
+          - text: "3.1  Inductive sensor embeddings for STAEformer"
+            href: graph-research.qmd#project-3-1
+          - text: "3.2  Inductive evaluation of GRACE"
+            href: graph-research.qmd#project-3-2
+          - text: "3.3  Structure-aware augmentations for graph contrastive learning"
+            href: graph-research.qmd#project-3-3
+          - text: "3.4  Compute-aware routing between GraphGPS branches"
+            href: graph-research.qmd#project-3-4
+          - text: "3.5  Question-adaptive retrieval budgets for G-Retriever"
+            href: graph-research.qmd#project-3-5
       - section: "4  Vision foundation models"
         href: vision-foundation-models.qmd
         contents:

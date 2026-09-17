@@ -1,20 +1,18 @@
 ---
-title: "Category 2  Implementing modern Graph ML research"
-description: "Anchor-paper reproduction followed by a focused contribution"
+title: "Category 3  Implementing modern Graph ML research"
+description: "Reproducing an anchor paper and testing a focused extension"
 toc: true
 toc-depth: 2
 ---
 
 <span id="top"></span>
 
-<p class="category-kicker">Anchor-paper reproduction followed by a focused contribution</p>
-
-These projects begin from an anchor paper with public code and a public benchmark. The first milestone is to reproduce the central mechanism. The thesis begins when the student introduces and tests a new mechanism or a stronger evaluation protocol.
+These projects begin from an anchor paper with public code and a public benchmark. The first milestone is to reproduce the central mechanism. A Master project then adds and tests a new mechanism or a stronger evaluation protocol.
 
 ::: {.category-callout}
 **From repository to research question**
 
-Installing code, reproducing a table, tuning hyperparameters or applying an unchanged model to another convenient dataset is not, by itself, an MSc contribution. Here the contribution is an inductive sensor encoder, leakage-controlled protocol, structure-aware view, compute router or adaptive retrieval policy.
+Installing code, reproducing a table, tuning hyperparameters or applying an unchanged model to another dataset is a starting point, not an MSc contribution. The proposed contributions here concern sensor representations, induction protocols, graph augmentations, compute routing and retrieval budgets.
 :::
 
 ## Learn first and find ideas
@@ -27,17 +25,17 @@ Installing code, reproducing a table, tuning hyperparameters or applying an unch
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 2.1  Inductive sensor embeddings for STAEformer {#project-2-1}
+## 3.1  Inductive sensor embeddings for STAEformer {#project-3-1}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Node-level multi-horizon regression</span>
-<span class="meta-label">Recommended level</span><span class="meta-value">MSc strong fit; BSc reproduction variant</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">MSc preferred; BSc reproduction variant</span>
 <span class="meta-label">Compute</span><span class="meta-value">Moderate; 4–8 GB GPU</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Liu et al., [STAEformer](https://arxiv.org/abs/2308.10425), CIKM 2023</span>
 :::
 
 ::: {.project-intro}
-**What you will do.** STAEformer learns a separate adaptive representation for each sensor and input time position. That is powerful on a fixed network but cannot directly represent a sensor that was absent during training. This project develops an embedding generated from the new sensor's graph context and short calibration history.
+**What you will do.** STAEformer learns a separate adaptive representation for each sensor and input time position. The sensor-specific representation cannot directly handle a sensor that was absent during training. This project develops an embedding generated from the new sensor's graph context and short calibration history.
 :::
 
 **Project goal.** Preserve ordinary forecasting accuracy while improving forecasts for sensors deliberately held out of training.
@@ -58,13 +56,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Can a graph-conditioned shared sensor encoder recover useful representations for newly installed sensors without harming the fixed-network model?** The contribution is the encoder, a leakage-safe cold-start protocol and analysis by degree, correlation strength and calibration length. If it fails, quantify when sensor-specific parameters are indispensable.
 :::
 
-**Feasibility and guardrails.** This is one of the best-balanced MSc topics: public data, official code and a clear gap. Do not confuse it with Project 1.2; that project learns changing edges, while this project represents unseen nodes.
+**Practical notes.** Public data and official code reduce setup work. Keep the unseen-sensor protocol separate from Project 1.2: that project learns changing edges, while this project represents nodes that were absent during training.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 2.2  Inductive evaluation of GRACE {#project-2-2}
+## 3.2  Inductive evaluation of GRACE {#project-3-2}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised node representation learning then node classification</span>
@@ -95,13 +93,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **How much of GRACE's label efficiency survives strict induction, and can contrastive pretraining on sampled ego-graphs recover the loss?** Build a GraphSAGE-style local encoder and analyse performance by held-out node degree, homophily and neighbourhood size. The leakage-controlled benchmark is itself part of the contribution.
 :::
 
-**Feasibility and guardrails.** Small datasets make multi-seed evaluation realistic. Never place transductive and inductive figures in one undifferentiated leaderboard.
+**Practical notes.** Small datasets make multi-seed evaluation realistic. Never place transductive and inductive figures in one undifferentiated leaderboard.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 2.3  Structure-aware augmentations for graph contrastive learning {#project-2-3}
+## 3.3  Structure-aware augmentations for graph contrastive learning {#project-3-3}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised graph representation learning then graph classification</span>
@@ -129,20 +127,20 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.scope .scope-msc}
-**Master research question and contribution.** Research question: **At matched edit budgets, which measurable notion of structural damage best predicts downstream representation failure?** The minimum MSc contribution is one defensible structure-aware operator plus matched-budget analysis. A full combinatorial-versus-spectral comparison is a strong 30-ECTS stretch, not a requirement for every student. If accuracy does not improve, explain when preservation makes the two views too similar to provide contrastive signal.
+**Master research question and contribution.** Research question: **At matched edit budgets, which measurable notion of structural damage best predicts downstream representation failure?** The minimum MSc contribution is one defensible structure-aware operator plus matched-budget analysis. A full combinatorial-versus-spectral comparison is an optional 30-ECTS extension. If accuracy does not improve, explain when preservation makes the two views too similar to provide contrastive signal.
 :::
 
-**Feasibility and guardrails.** Exact spectral work is feasible on these small graphs. Do not begin with ogbn-arxiv; scalable eigenspectrum approximation is a separate advanced problem. Label transductive test-graph exposure explicitly.
+**Practical notes.** Exact spectral work is feasible on these small graphs. Do not begin with ogbn-arxiv; scalable eigenspectrum approximation is a separate advanced problem. Label transductive test-graph exposure explicitly.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 2.4  Compute-aware routing between GraphGPS branches {#project-2-4}
+## 3.4  Compute-aware routing between GraphGPS branches {#project-3-4}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Graph regression</span>
-<span class="meta-label">Recommended level</span><span class="meta-value">BSc reproduction; MSc strong fit</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc reproduction; MSc preferred</span>
 <span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 8 GB GPU preferred</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Rampášek et al., [GraphGPS](https://arxiv.org/abs/2205.12454), NeurIPS 2022</span>
 :::
@@ -153,7 +151,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 **Project goal.** Find an accuracy–efficiency trade-off and determine whether graphs with stronger long-range structure use the global branch more often.
 
-**Data.** Use the 12,000-graph **ZINC subset** from the [PyG ZINC loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.ZINC.html). Confirm only the best settings on **Peptides-struct** through the [PyG LRGB loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.LRGBDataset.html).
+**Data.** Use the 12,000-graph **ZINC subset** from the [PyG ZINC loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.ZINC.html). Confirm only the selected final settings on **Peptides-struct** through the [PyG LRGB loader](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.LRGBDataset.html).
 
 **Methods and starting code.** Start from the [official GraphGPS repository](https://github.com/rampasek/GraphGPS). Implement a positional/structural encoding, local GINE or GatedGCN, and global Transformer or Performer. Add a soft gate during training and an optional budgeted hard gate at inference.
 
@@ -169,13 +167,13 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Can graph- or layer-conditioned routing reduce global-attention computation while retaining GraphGPS accuracy, and are gate decisions structurally interpretable?** Compare multiple compute penalties and test whether simple size/diameter/positional statistics predict routing. The contribution is the router and controlled Pareto analysis, not another GraphGPS run.
 :::
 
-**Feasibility and guardrails.** ZINC is light. Restrict Peptides-struct to the strongest few settings. FLOPs and wall-clock latency answer different questions; report both.
+**Practical notes.** ZINC is light. Restrict Peptides-struct to the selected final settings. FLOPs and wall-clock latency answer different questions; report both.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 2.5  Question-adaptive retrieval budgets for G-Retriever {#project-2-5}
+## 3.5  Question-adaptive retrieval budgets for G-Retriever {#project-3-5}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Query-conditioned evidence retrieval and answer ranking</span>
@@ -206,6 +204,6 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Can query- and retrieval-confidence features choose the smallest adequate connected subgraph per question?** Train a budget selector only on training/validation questions and analyse its calibration and failure modes. A negative result should identify which observable features predict retrieval difficulty.
 :::
 
-**Feasibility and guardrails.** This project is intellectually strong but engineering-heavy and outside the core graph/time-series line. Allocate only to a student who requests graph RAG and has strong implementation skills. Cache text embeddings and avoid paid APIs or 7B+ fine-tuning.
+**Practical notes.** This project has substantial preprocessing and retrieval-engineering work. It is suitable for a student who specifically wants graph RAG and is comfortable debugging data pipelines. Cache text embeddings and avoid paid APIs or 7B+ fine-tuning.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

@@ -7,14 +7,12 @@ toc-depth: 2
 
 <span id="top"></span>
 
-<p class="category-kicker">Frozen self-supervised backbones with lightweight task adaptation</p>
-
 Large self-supervised vision backbones provide general-purpose features without task-specific labels. A student project should not retrain such a backbone. It should measure what a frozen model already supplies, what a small adapter adds and whether that gain justifies its trainable parameters.
 
 ::: {.category-callout}
-**Why this category contains one project**
+**Choosing a project track**
 
-One well-controlled project with two separate tracks is more feasible than several proposals that differ only by backbone or dataset. EuroSAT RGB is the accessible Bachelor route; MVTec dense anomaly localisation or multispectral EuroSAT is the higher-risk Master route.
+The project has two separate tracks. EuroSAT RGB supports the Bachelor classification route. MVTec dense anomaly localisation or multispectral EuroSAT supports a more complex Master route.
 :::
 
 ## Learn first and find ideas
@@ -37,7 +35,7 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.project-intro}
-**What you will do.** Use a pretrained self-supervised vision transformer as a frozen feature extractor. A small head or adapter is trained for a specialised task. The research question is not whether the huge backbone can be retrained, but how far frozen features go and whether an adapter contributes beyond a newer backbone.
+**What you will do.** Use a pretrained self-supervised vision transformer as a frozen feature extractor. Train a small head or adapter for a specialised task. Measure the performance of frozen features and test whether an adapter still contributes when a newer backbone is used.
 :::
 
 **Project goal.** Quantify the trade-off among task performance, number of trainable parameters and supervision. Choose **one** track: EuroSAT RGB land-cover classification or MVTec industrial anomaly detection/localisation.
@@ -58,6 +56,6 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Choose one question. **Dense anomaly route:** can a supervised multi-scale adapter over frozen patch tokens improve few-shot localisation at a fixed label and parameter budget, and does the gain remain after switching DINOv2 to DINOv3? **Remote-sensing route:** can a small multispectral input adapter exploit 13 bands without full backbone fine-tuning? Report cross-version or cross-band ablations so the adapter's value is isolated.
 :::
 
-**Feasibility and guardrails.** Do not attempt DINOv3 ViT-7B. DINOv2 is ungated and Apache 2.0; build the pipeline on it first. DINOv3's licence is non-standard and gated but not stated as categorically non-commercial; an industry use requires institutional/legal review. MVTec itself is non-commercial, so it cannot serve as an industry dataset without separate permission.
+**Practical notes.** Do not attempt DINOv3 ViT-7B. DINOv2 is ungated and Apache 2.0; build the pipeline on it first. DINOv3's licence is non-standard and gated but not stated as categorically non-commercial; an industry use requires institutional/legal review. MVTec itself is non-commercial, so it cannot serve as an industry dataset without separate permission.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

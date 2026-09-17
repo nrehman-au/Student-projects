@@ -7,14 +7,12 @@ toc-depth: 2
 
 <span id="top"></span>
 
-<p class="category-kicker">Practical graph prediction problems with public benchmarks</p>
-
 These projects begin with a practical decision: estimate remaining life, forecast traffic, detect illicit activity, recommend an item or screen a molecule. Students must explain what the nodes and edges mean and test whether the graph adds value beyond a non-graph model.
 
 ::: {.category-callout}
-**What a good application project contains**
+**Application project requirements**
 
-A defensible graph construction, a fixed split and primary metric, simple and non-graph baselines, at least one GNN, and an edge-removal, edge-randomisation or alternative-graph experiment. Impact comes from a clear formulation—not model size.
+Specify a defensible graph construction, a fixed split and primary metric, a non-graph baseline and at least one GNN. Include an edge-removal, edge-randomisation or alternative-graph experiment to test whether the graph contributes.
 :::
 
 ## Learn first and find ideas
@@ -51,14 +49,14 @@ Use the contents panel or the project links in the left navigation to move direc
 **Evaluation.** MAE or RMSE is primary; the asymmetric NASA score is optional. Report error by early, middle and late life. Fit normalization and graph construction on training engines only and report at least three seeds for MSc work.
 
 ::: {.scope .scope-bsc}
-**Bachelor scope.** Use FD001. Compare a GRU with one compact GNN, one graph construction and one random/no-edge ablation. The contribution is a trustworthy pipeline and a clear answer to whether the graph helps.
+**Bachelor scope.** Use FD001. Compare a GRU with one compact GNN, one graph construction and one random/no-edge ablation. Submit a documented pipeline and state whether the graph changes performance.
 :::
 
 ::: {.scope .scope-msc}
 **Master research question and contribution.** Research question: **Can a sparse, time-varying sensor graph improve RUL accuracy and robustness when sensors become noisy or unavailable?** Develop one graph-learning mechanism, compare it with fixed correlation and random graphs, and include missing-sensor, uncertainty or cross-subset transfer analysis. Merely rerunning an available implementation is not the contribution.
 :::
 
-**Feasibility and guardrails.** FD001 is easy to run. The main risks are window leakage, inconsistent RUL capping and comparing results produced with different normalization or scoring rules. Freeze these choices before modelling.
+**Practical notes.** FD001 is easy to run. The main risks are window leakage, inconsistent RUL capping and comparing results produced with different normalization or scoring rules. Freeze these choices before modelling.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
@@ -95,7 +93,7 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question and contribution.** Research question: **Does a time-of-day and traffic-regime-conditioned sparse adjacency improve long-horizon forecasting over both the road graph and a single learned static graph?** Match depth and width, use at least three seeds, and examine whether rush-hour edges differ from free-flow edges and whether learned edges correspond to plausible topology. A robustness-and-transfer route using missing sensors and METR-LA to PEMS-BAY transfer is an alternative, but it must be narrowed to one preregistered question.
 :::
 
-**Feasibility and guardrails.** Per-timestep dense adjacency is unnecessarily expensive and unstable. Profile early and enforce top-k sparsity or low rank. This project and Project 2.1 both use traffic data, but this one studies the graph itself; 2.1 studies unseen-sensor representations.
+**Practical notes.** Per-timestep dense adjacency is unnecessarily expensive and unstable. Profile early and enforce top-k sparsity or low rank. This project and Project 3.1 both use traffic data, but this one studies the graph itself; Project 3.1 studies unseen-sensor representations.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
@@ -129,10 +127,10 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.scope .scope-msc}
-**Master research question and contribution.** Research question: **Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges?** Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift, and connect threshold choices to investigator workload. A strong negative result may show that features dominate topology during particular regimes.
+**Master research question and contribution.** Research question: **Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges?** Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift, and connect threshold choices to investigator workload. A negative result may show that features dominate topology during particular regimes.
 :::
 
-**Feasibility and guardrails.** Random splitting makes this task unrealistically easy. Keep time ordering, labels and threshold selection fixed across methods. Mini-batching or snapshot processing keeps the graph manageable.
+**Practical notes.** Random splitting makes this task unrealistically easy. Keep time ordering, labels and threshold selection fixed across methods. Mini-batching or snapshot processing keeps the graph manageable.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
@@ -142,7 +140,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Link prediction and ranking on a bipartite graph</span>
-<span class="meta-label">Recommended level</span><span class="meta-value">BSc recommended; weak MSc ceiling</span>
+<span class="meta-label">Recommended level</span><span class="meta-value">BSc recommended; limited MSc scope</span>
 <span class="meta-label">Compute</span><span class="meta-value">Very light; CPU or low-memory GPU</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">He et al., [LightGCN](https://arxiv.org/abs/2002.02126), SIGIR 2020</span>
 :::
@@ -166,10 +164,10 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.scope .scope-msc}
-**Master research question and contribution.** Only allocate as an MSc project if the question is strengthened, for example: **Can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG?** This requires user-activity and item-popularity subgroup analysis, multiple seeds and a well-defined Pareto trade-off. Otherwise choose a higher-ceiling topic.
+**Master research question and contribution.** For an MSc project, use a narrower research question such as: **Can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG?** This requires user-activity and item-popularity subgroup analysis, multiple seeds and a defined Pareto trade-off. Without this extension, the project is suitable for Bachelor scope.
 :::
 
-**Feasibility and guardrails.** This is the portfolio's safest BSc project. The principal pitfalls are leakage from future interactions and evaluation on sampled negatives that differ across methods.
+**Practical notes.** The dataset and baseline setup are small. The principal pitfalls are leakage from future interactions and evaluation on sampled negatives that differ across methods.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
@@ -203,9 +201,9 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.scope .scope-msc}
-**Master research question and contribution.** Research question: **Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination?** Compare temperature scaling, deep ensembles or a compact evidential/uncertainty variant on identical predictions and report both performance and calibration by scaffold novelty. A self-supervised route is possible, but it must be distinct from Project 2.3.
+**Master research question and contribution.** Research question: **Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination?** Compare temperature scaling, deep ensembles or a compact evidential/uncertainty variant on identical predictions and report both performance and calibration by scaffold novelty. A self-supervised route is possible, but it must be distinct from Project 3.3.
 :::
 
-**Feasibility and guardrails.** The dataset is well established and manageable. The main danger is silently changing the split or selecting a threshold on test data.
+**Practical notes.** The dataset is well established and manageable. The main danger is silently changing the split or selecting a threshold on test data.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

@@ -15,12 +15,6 @@ Run `quarto render`. The complete site is written to `_site/`.
 
 Repository: <https://github.com/naveed1983/Student-projects>
 
-Expected website: <https://naveed1983.github.io/Student-projects/>
+Live website: <https://naveed1983.github.io/Student-projects/>
 
-The included **Quarto Publish** workflow renders the source and publishes the
-result to the `gh-pages` branch whenever `main` changes. If Pages has not been
-enabled for this repository before, open **Settings → Pages** and select the
-`gh-pages` branch as the publishing source after the first successful workflow
-run.
-
-The included workflow republishes the website whenever `main` is updated.
+The included **Quarto Publish** workflow renders the source and republishes the website whenever `main` is updated. GitHub Pages serves the generated `gh-pages` branch.

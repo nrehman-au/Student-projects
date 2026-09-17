@@ -1,17 +1,17 @@
 ---
 title: "Selection guidance"
-description: "Choosing a feasible project and avoiding common evaluation failures"
+description: "Choosing a project and avoiding common evaluation errors"
 toc: true
 ---
 
-## Recommended starting points
+## Suggested starting points
 
-| Student profile | Recommended projects |
+| Project scope | Suggested projects |
 |---|---|
-| Safest BSc | 1.1 C-MAPSS, 1.4 MovieLens, 2.2 GRACE reproduction, 3.1 UCI-HAR, 4.1 EuroSAT RGB |
-| Strong balanced MSc | 2.1 inductive STAEformer, 2.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 2.4 GraphGPS routing |
-| High methodological risk | 3.2 lead-aware latent prediction, 3.3 decomposition-aware forecasting, 3.5 physics-grounded vibration graphs |
-| Conditional or specialist | 3.4 HEAPO after licence audit; 2.5 G-Retriever for a strong student who requests graph RAG |
+| BSc with lower setup risk | 1.1 C-MAPSS, 1.4 MovieLens, 2.1 UCI-HAR, 3.2 GRACE reproduction, 4.1 EuroSAT RGB |
+| MSc with a defined method extension | 3.1 inductive STAEformer, 3.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 3.4 GraphGPS routing |
+| MSc with higher methodological risk | 2.2 lead-aware latent prediction, 2.3 decomposition-aware forecasting, 2.5 physics-grounded vibration graphs |
+| Preliminary checks required | 2.4 HEAPO after a licence and data check; 3.5 G-Retriever for students prepared for substantial retrieval engineering |
 
 ## A simple decision process
 
@@ -28,9 +28,9 @@ toc: true
 - Identify the independent split unit and verify that it cannot cross train and test.
 - Record the anchor paper, repository version and preprocessing deviations.
 - Estimate training time and peak memory before planning seeds or ablations.
-- For MSc work, write the question, proposed mechanism, strongest alternative explanation and minimum viable ablation table.
+- For MSc work, write the question, proposed mechanism, main alternative explanation and minimum viable ablation table.
 
-## Licences and access that affect allocation
+## Licences and access
 
 | Resource | Licence or status | Practical consequence |
 |---|---|---|
@@ -40,7 +40,7 @@ toc: true
 | MVTec AD | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
 | DINOv2 | Apache 2.0 | Ungated |
 | DINOv3 weights | Custom Meta licence | Gated; non-standard; review for industry use |
-| HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before allocation; code and paper have separate licences |
+| HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before starting; code and paper have separate licences |
 
 ## Recurring failure modes
 
@@ -52,8 +52,6 @@ toc: true
 - Treating a recent preprint figure as a settled benchmark.
 - Expanding to a second dataset before the first pipeline and evaluation protocol are stable.
 
-::: {.approved-callout}
-**Final principle.** A good thesis does not need the largest model or a state-of-the-art number. It needs a precise question, public evidence, a fair comparison and a conclusion that tells the next student what to try—or avoid.
-:::
+Select one primary question, fix the evaluation protocol before extensive experimentation and report negative as well as positive results.
 
 Two industrial-partner projects with Tetra Pak and Siemens Gamesa are offered separately and remain outside this portfolio.
