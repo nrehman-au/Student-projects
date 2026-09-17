@@ -74,17 +74,11 @@ a {
   color: var(--portfolio-navy);
 }
 
-.approved-callout,
 .category-callout,
 .leakage-callout {
   border-radius: 0.45rem;
   padding: 1rem 1.15rem;
   margin: 1.25rem 0;
-}
-
-.approved-callout {
-  border: 1px solid #b9ddc7;
-  background: var(--portfolio-green-soft);
 }
 
 .category-callout {
@@ -97,14 +91,6 @@ a {
   border: 1px solid #efc1c1;
   border-left: 5px solid #b44c4c;
   background: var(--portfolio-red-soft);
-}
-
-.category-kicker {
-  color: var(--portfolio-muted);
-  font-size: 1.12rem;
-  font-weight: 500;
-  margin-top: -0.45rem;
-  margin-bottom: 1.25rem;
 }
 
 .project-meta {
