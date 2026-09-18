@@ -1,5 +1,6 @@
 ---
 title: "Category 3  Implementing modern Graph ML research"
+draft: true
 description: "Reproducing an anchor paper and testing a focused extension"
 toc: true
 toc-depth: 2

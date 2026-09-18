@@ -6,7 +6,7 @@ project:
 
 website:
   title: "Student Project Portfolio"
-  description: "BSc and MSc projects in Graph ML, self-supervised time-series learning, vision foundation models, and signal processing"
+  description: "BSc and MSc projects in GNN applications, self-supervised time-series learning, deep-learning vision, and signal processing"
   site-url: "https://nrehman-au.github.io/Student-projects/"
   search:
     location: navbar
@@ -27,11 +27,9 @@ website:
             href: graph-applications.qmd
           - text: "2  Time-series SSL"
             href: time-series-ssl.qmd
-          - text: "3  Modern Graph ML"
-            href: graph-research.qmd
-          - text: "4  Vision foundation models"
+          - text: "3  Deep-learning vision models"
             href: vision-foundation-models.qmd
-          - text: "5  Signal processing"
+          - text: "4  Signal processing"
             href: signal-processing.qmd
       - text: "Selection guidance"
         href: selection-guidance.qmd
@@ -76,29 +74,16 @@ website:
             href: time-series-ssl.qmd#project-2-5
           - text: "2.6  Graph self-supervised learning from vibration signals"
             href: time-series-ssl.qmd#project-2-6
-      - section: "3  Modern Graph ML"
-        href: graph-research.qmd
-        contents:
-          - text: "3.1  Inductive sensor embeddings for STAEformer"
-            href: graph-research.qmd#project-3-1
-          - text: "3.2  Inductive evaluation of GRACE"
-            href: graph-research.qmd#project-3-2
-          - text: "3.3  Structure-aware augmentations for graph contrastive learning"
-            href: graph-research.qmd#project-3-3
-          - text: "3.4  Compute-aware routing between GraphGPS branches"
-            href: graph-research.qmd#project-3-4
-          - text: "3.5  Question-adaptive retrieval budgets for G-Retriever"
-            href: graph-research.qmd#project-3-5
-      - section: "4  Vision foundation models"
+      - section: "3  Deep-learning vision models"
         href: vision-foundation-models.qmd
         contents:
-          - text: "4.1  Adapting DINO backbones for land cover or industrial anomalies"
-            href: vision-foundation-models.qmd#project-4-1
-      - section: "5  Signal processing"
+          - text: "3.1  Adapting DINO backbones for land cover or industrial anomalies"
+            href: vision-foundation-models.qmd#project-3-1
+      - section: "4  Signal processing"
         href: signal-processing.qmd
         contents:
-          - text: "5.1  Deep-unfolded multivariate VMD for correlated multichannel signals"
-            href: signal-processing.qmd#project-5-1
+          - text: "4.1  Deep-unfolded multivariate VMD for correlated multichannel signals"
+            href: signal-processing.qmd#project-4-1
       - text: "Selection guidance"
         href: selection-guidance.qmd
   page-footer:

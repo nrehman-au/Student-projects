@@ -1,6 +1,6 @@
 # Student Project Portfolio
 
-This is the Quarto source for the BSc and MSc Student Project Portfolio in Graph ML, self-supervised time-series learning, and vision foundation models.
+This is the Quarto source for the BSc and MSc Student Project Portfolio in GNN applications, self-supervised time-series learning, deep-learning vision, and signal processing.
 
 ## Preview locally
 

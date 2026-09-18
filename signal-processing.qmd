@@ -1,5 +1,5 @@
 ---
-title: "Category 5  Model-based deep learning for signal processing"
+title: "Category 4  Signal processing and deep-unfolded models"
 description: "Turning classical iterative signal-processing algorithms into trainable network layers"
 toc: true
 toc-depth: 2
@@ -21,13 +21,13 @@ Every project here starts from a published iterative algorithm and its update eq
 
 - General unrolling: Gregor & LeCun, [Learning Fast Approximations of Sparse Coding (LISTA)](https://icml.cc/Conferences/2010/papers/449.pdf), ICML 2010 — the founding example, unrolling ISTA. Monga, Li & Eldar, [Algorithm Unrolling: Interpretable, Efficient Deep Learning for Signal and Image Processing](https://arxiv.org/abs/1912.10557), IEEE SPM 2021 — the field's main survey. Yang, Sun, Li & Xu, [Deep ADMM-Net for Compressive Sensing MRI](http://papers.neurips.cc/paper/6406-deep-admm-net-for-compressive-sensing-mri.pdf), NeurIPS 2016 — unrolling a coupled, multi-variable ADMM iteration.
 - Signal decomposition: Dragomiretskiy & Zosso, [Variational Mode Decomposition](https://doi.org/10.1109/TSP.2013.2288675), IEEE TSP 2014, and [reference Python code](https://github.com/vrcarva/vmdpy). Rehman & Aftab, [Multivariate Variational Mode Decomposition](https://doi.org/10.1109/TSP.2019.2951223), IEEE TSP 2019.
-- Ahmad, Wesemann, Waschkowski & Khalid, [Robust Spatiotemporal Forecasting Using Adaptive Deep-Unfolded VMD](https://arxiv.org/abs/2509.00703), 2025, and [official code](https://github.com/OsamaAhmad369/MAGN) — the anchor paper for project 5.1, unrolling single-channel VMD.
+- Ahmad, Wesemann, Waschkowski & Khalid, [Robust Spatiotemporal Forecasting Using Adaptive Deep-Unfolded VMD](https://arxiv.org/abs/2509.00703), 2025, and [official code](https://github.com/OsamaAhmad369/MAGN) — the anchor paper for Project 4.1, unrolling single-channel VMD.
 
 ## Projects in this category
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 5.1  Deep-unfolded multivariate VMD for correlated multichannel signals {#project-5-1}
+## 4.1  Deep-unfolded multivariate VMD for correlated multichannel signals {#project-4-1}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Algorithm unrolling: a coupled multivariate optimisation algorithm rewritten as learnable layers, evaluated as decomposition and as a forecasting preprocessing module</span>
