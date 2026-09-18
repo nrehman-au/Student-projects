@@ -96,6 +96,7 @@ a {
 .category-card-2 { border-top-color: #4c78a8; }
 .category-card-3 { border-top-color: var(--portfolio-gold); }
 .category-card-4 { border-top-color: #765a9b; }
+.category-card-5 { border-top-color: #3f8f5f; }
 
 .category-card h3 {
   margin: 0.35rem 0 0.55rem;

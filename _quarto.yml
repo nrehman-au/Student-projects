@@ -6,7 +6,7 @@ project:
 
 website:
   title: "Student Project Portfolio"
-  description: "BSc and MSc projects in Graph ML, self-supervised time-series learning, and vision foundation models"
+  description: "BSc and MSc projects in Graph ML, self-supervised time-series learning, vision foundation models, and signal processing"
   site-url: "https://nrehman-au.github.io/Student-projects/"
   search:
     location: navbar
@@ -31,6 +31,8 @@ website:
             href: graph-research.qmd
           - text: "4  Vision foundation models"
             href: vision-foundation-models.qmd
+          - text: "5  Signal processing"
+            href: signal-processing.qmd
       - text: "Selection guidance"
         href: selection-guidance.qmd
     right:
@@ -92,6 +94,11 @@ website:
         contents:
           - text: "4.1  Adapting DINO backbones for land cover or industrial anomalies"
             href: vision-foundation-models.qmd#project-4-1
+      - section: "5  Signal processing"
+        href: signal-processing.qmd
+        contents:
+          - text: "5.1  Deep-unfolded multivariate VMD for correlated multichannel signals"
+            href: signal-processing.qmd#project-5-1
       - text: "Selection guidance"
         href: selection-guidance.qmd
   page-footer:

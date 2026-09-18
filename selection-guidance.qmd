@@ -10,7 +10,7 @@ toc: true
 |---|---|
 | BSc with lower setup risk | 1.1 C-MAPSS, 1.4 MovieLens, 2.2 UCI-HAR, 3.2 GRACE reproduction, 4.1 EuroSAT RGB |
 | MSc with a defined method extension | 3.1 inductive STAEformer, 3.3 structure-aware GraphCL, 1.2 dynamic traffic graph, 3.4 GraphGPS routing |
-| MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.4 decomposition-aware forecasting, 2.6 physics-grounded vibration graphs |
+| MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.4 decomposition-aware forecasting, 2.6 physics-grounded vibration graphs, 5.1 deep-unfolded multivariate VMD |
 | Preliminary checks required | 2.1 Tetra Pak after the partner-data profile and agreement; 2.5 HEAPO after a licence and data check; 3.5 G-Retriever for students prepared for substantial retrieval engineering |
 
 ## A simple decision process
@@ -42,6 +42,8 @@ toc: true
 | DINOv3 weights | Custom Meta licence | Gated; non-standard; review for industry use |
 | HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before starting; code and paper have separate licences |
 | Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
+| CTU-UHB CTG database | Open access, non-commercial use | Free with attribution; no credentialing needed |
+| LargeST | Not confirmed | Check the licence before allocating 5.1 as the primary applied task |
 
 ## Recurring failure modes
 

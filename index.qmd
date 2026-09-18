@@ -1,16 +1,16 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
-subtitle: "Graph applications, self-supervised time series, modern Graph ML, and vision foundation models"
-description: "Seventeen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+subtitle: "Graph applications, self-supervised time series, modern Graph ML, vision foundation models, and signal processing"
+description: "Eighteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Seventeen student project options
+## Eighteen student project options
 
 Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.
 
-[Explore the four categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
+[Explore the five categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
 :::
 
 ## Choose a category {#categories}
@@ -39,6 +39,12 @@ Each project entry states the task, data source and access conditions, starting 
     <h3>Vision foundation models</h3>
     <p>Adapt a pretrained visual encoder to land-cover classification or industrial anomaly detection.</p>
     <a class="btn btn-outline-primary" href="vision-foundation-models.html">View Category 4</a>
+  </section>
+  <section class="category-card category-card-5">
+    <div class="category-number">Category 5 · 1 project</div>
+    <h3>Signal processing</h3>
+    <p>Unroll a classical iterative signal-decomposition algorithm into a trainable, learnable network.</p>
+    <a class="btn btn-outline-primary" href="signal-processing.html">View Category 5</a>
   </section>
 </div>
 
@@ -95,6 +101,14 @@ Adapting pretrained visual representations to a specialised classification or an
 |---|---|---|---|
 | [4.1](vision-foundation-models.html#project-4-1) | Adapting DINO backbones for land cover or industrial anomalies | BSc or MSc | Moderate |
 
+### [Category 5 — Model-based deep learning for signal processing](signal-processing.html)
+
+Unrolling a classical iterative signal-processing algorithm into a trainable network.
+
+| ID | Project | Suggested level | Compute |
+|---|---|---|---|
+| [5.1](signal-processing.html#project-5-1) | Deep-unfolded multivariate VMD for correlated multichannel signals | MSc | Light to moderate |
+
 ## What counts as a Bachelor or Master contribution
 
 | Dimension | Bachelor project | Master project |
@@ -124,4 +138,5 @@ Every self-supervised or pretrained project should report these settings wheneve
 - Start with [Category 2](time-series-ssl.qmd) for representation learning on sensor, health or energy signals.
 - Start with [Category 3](graph-research.qmd) to implement and extend a modern Graph ML paper.
 - Start with [Category 4](vision-foundation-models.qmd) for a carefully scoped DINO project.
+- Start with [Category 5](signal-processing.qmd) to design a deep-unfolded signal-decomposition algorithm.
 - Use the [selection guidance](selection-guidance.qmd) to match topics to experience and risk tolerance.
