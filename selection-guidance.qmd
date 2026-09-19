@@ -4,13 +4,11 @@ description: "Choosing a project and avoiding common evaluation errors"
 toc: true
 ---
 
-## Projects offered at Bachelor level
+## Levels
 
-Eight projects are available as Bachelor projects: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.2** (UCI-HAR), **2.4** (ETT) and **3.1** (MVTec AD).
+Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.2** (UCI-HAR), **2.4** (ETT) and **3.1** (MVTec AD). Of these, **1.4** and **2.2** are Bachelor-only; the rest also support a Master scope.
 
-Three further projects can open a Bachelor route once a stated precondition is met: **2.1** if the partner data arrives pre-segmented and regime-labelled, **2.3** if a PTB-XL dataloader and shared encoder are supplied, and **2.5** once the HEAPO licence and label counts are confirmed.
-
-**2.6** and **4.1** are Master-only, and each project page explains why.
+**2.1**, **2.3**, **2.5**, **2.6** and **4.1** are Master-only. **2.3** and **2.5** list a reduced Bachelor version.
 
 ## Suggested starting points
 
@@ -20,7 +18,7 @@ Three further projects can open a Bachelor route once a stated precondition is m
 | BSc with a clear expected finding | 1.3 feature dominance under edge deletion, 1.5 fingerprints versus GNNs out of scaffold |
 | MSc with a defined method extension | 1.2 regime-conditioned traffic graph, 2.4 decomposition-aware forecasting, 3.1 adaptation ladder on an unsaturated benchmark |
 | MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.6 physics-grounded vibration graphs, 4.1 coupled deep-unfolded VMD |
-| Preliminary checks required before allocation | 2.1 after the partner-data profile and agreement; 2.5 after a licence and label check; 4.1 after the LargeST licence check |
+| Preliminary checks required before allocation | 2.1 after the partner-data profile and agreement; 2.5 after a label-prevalence check; 4.1 after the LargeST licence check |
 
 ## A simple decision process
 
@@ -53,7 +51,7 @@ Three further projects can open a Bachelor route once a stated precondition is m
 | Paderborn KAt | CC BY-NC 4.0 | Non-commercial academic use |
 | MVTec AD and MVTec AD 2 | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
 | DINOv2 | Apache 2.0 | Ungated |
-| HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before starting; code and paper have separate licences |
+| HEAPO data | CC BY 4.0, open access | Open with attribution; the dataloader is MIT-licensed |
 | LargeST | To be confirmed | Check before committing to the applied task in 4.1 |
 | Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
 

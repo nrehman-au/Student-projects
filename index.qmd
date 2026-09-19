@@ -52,9 +52,9 @@ Each project is labelled with one of three levels:
 
 | Level | Meaning |
 |---|---|
-| **BSc or MSc** | Both routes are viable; each scope box describes a real project |
-| **BSc recommended** | The Master route is narrow; normally offered at Bachelor level |
-| **MSc only** | No Bachelor variant is offered, and the project page explains why. Some say a Bachelor route can open if a stated precondition is met |
+| **BSc or MSc** | Both routes are viable; each scope box describes a separate project |
+| **BSc only** | Offered at Bachelor level |
+| **MSc only** | Offered at Master level. A few list a reduced Bachelor version |
 
 ## Portfolio index {#portfolio-index}
 
@@ -69,7 +69,7 @@ Practical graph prediction problems in engineering, science, finance and recomme
 | [1.1](graph-applications.html#project-1-1) | Remaining useful life prediction for aircraft engines | BSc or MSc | Very light to light |
 | [1.2](graph-applications.html#project-1-2) | Multi-horizon traffic forecasting with data-driven graph structure | BSc or MSc | Light to moderate |
 | [1.3](graph-applications.html#project-1-3) | Illicit Bitcoin transaction detection | BSc or MSc | Light to moderate |
-| [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc recommended | Very light |
+| [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc only | Very light |
 | [1.5](graph-applications.html#project-1-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
 
 ### [Category 2 — Self-supervised learning for time series](time-series-ssl.html)
@@ -78,11 +78,11 @@ Representation learning from sensor, health and energy recordings with limited l
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc only — BSc possible if the data is pre-segmented and regime-labelled | Light to moderate |
-| [2.2](time-series-ssl.html#project-2-2) | Contrastive learning for wearable activity recognition | BSc or MSc | Light |
-| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc only — BSc possible with a supplied dataloader | Moderate |
+| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc only | Light to moderate |
+| [2.2](time-series-ssl.html#project-2-2) | Contrastive learning for wearable activity recognition | BSc only | Light |
+| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc only — reduced BSc version possible | Moderate |
 | [2.4](time-series-ssl.html#project-2-4) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
-| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | MSc only — BSc possible once the licence and labels are confirmed | Light to moderate after preprocessing |
+| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | MSc only — reduced BSc version possible | Light to moderate after preprocessing |
 | [2.6](time-series-ssl.html#project-2-6) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
 
 ### [Category 3 — Deep-learning vision models and applications](vision-foundation-models.html)

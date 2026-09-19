@@ -55,13 +55,13 @@ Use the contents panel or the project links in the left navigation to move direc
 
 *Core experiment.* Compare three conditions on MVTec AD with ViT-S/14: frozen features with patch nearest-neighbour scoring (no training at all), a frozen linear probe, and one LoRA configuration. Report accuracy against trainable-parameter count for each.
 
-This is a good first project because the strongest baseline requires no training whatsoever — you can have a working anomaly detector on day one and spend the project understanding it rather than fighting it.
+The frozen baseline requires no training, so a working anomaly detector is available from the start and the project time goes into analysis.
 :::
 
 ::: {.scope .scope-msc}
 **Master research question.** **How much can parameter-efficient adaptation recover of the gap between frozen features and full fine-tuning, at a fraction of the trainable parameters — and does that trade-off change on a benchmark that has not yet saturated?** Run the full ladder — frozen, linear probe, LoRA/adapter, full fine-tune — on **both** MVTec AD and MVTec AD 2, with parameter counts and compute cost reported throughout.
 
-**Why the second benchmark is essential.** MVTec AD is saturated: published methods cluster above 99% image AUROC, so all four adaptation strategies may look identical there. MVTec AD 2 was built because of that saturation and current methods score below 60% AU-PRO on it, which leaves room for the comparison to show a real difference. An optional stretch condition is continued self-supervised pretraining on the target domain before adaptation, following [ExPLoRA](https://arxiv.org/abs/2406.05493).
+**Why the second benchmark.** MVTec AD is saturated: published methods cluster above 99% image AUROC, so all four adaptation strategies may look identical on it. MVTec AD 2 was built in response to that saturation and current methods score below 60% AU-PRO, leaving room for the comparison to resolve a difference. An optional extension is continued self-supervised pretraining on the target domain before adaptation, following [ExPLoRA](https://arxiv.org/abs/2406.05493).
 :::
 
 **Practical notes.** DINOv2 is ungated and Apache 2.0 — build the pipeline on it first. MVTec's licence is non-commercial, so results cannot be repurposed for industrial use without separate permission.

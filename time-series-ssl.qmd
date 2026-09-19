@@ -33,7 +33,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning, then cycle-level regression or anomaly detection</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc only — a BSc route opens only if pre-segmented, regime-labelled data is available before allocation</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc only</span>
 <span class="meta-label">Compute</span><span class="meta-value">Light to moderate; compact models on a 4–8 GB GPU</span>
 <span class="meta-label">Data</span><span class="meta-value">Partner-supplied by Tetra Pak under an approved agreement; not public</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Yue et al., [TS2Vec](https://arxiv.org/abs/2106.10466), AAAI 2022</span>
@@ -53,10 +53,6 @@ Use the contents panel or the project links in the left navigation to move direc
 **Master research question.** **Can cycle-phase- and operating-regime-aware self-supervised views separate legitimate process variation from energy inefficiency or abnormal behaviour better than generic augmentations?** The contribution is the process-aware view or masking design plus a matched-budget comparison against generic augmentation, including transfer to a held-out regime, line or product. Rerunning an unchanged TS2Vec or TS-TCC is a reproduction, not the contribution.
 :::
 
-::: {.scope .scope-bsc}
-**Why this is not normally a Bachelor project.** Two reasons. Data access is gated by the partner agreement, so the start date cannot be guaranteed. More importantly, identifying the operating regimes is itself an unsupervised problem with no ground truth — a Bachelor student would have to both discover the regimes and use them as the main experimental factor, which makes the result impossible to interpret if the regimes are wrong. A Bachelor route opens only when the regimes can be defined from setpoint, product or line metadata and the cycles are already segmented.
-:::
-
 **Practical notes.** Confirm cycle boundaries, units, synchronisation, missingness, regime metadata, independent-cycle count and one defensible target before modelling. Data and trained artefacts remain subject to the AU–Tetra Pak agreement.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
@@ -67,7 +63,7 @@ Use the contents panel or the project links in the left navigation to move direc
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning, then classification</span>
-<span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Level</span><span class="meta-value">BSc only</span>
 <span class="meta-label">Compute</span><span class="meta-value">Light; CPU or 4 GB GPU</span>
 <span class="meta-label">Data</span><span class="meta-value">[UCI Human Activity Recognition](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones) — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Eldele et al., [TS-TCC](https://arxiv.org/abs/2106.14112), IJCAI 2021</span>
@@ -88,11 +84,9 @@ Use the contents panel or the project links in the left navigation to move direc
 
 *Core experiment.* Produce a full label-efficiency curve at 1%, 5%, 10%, 25% and 100% of the labels, for all four conditions above. At the 1% and 5% budgets, resample **which** labels are used across at least five subject-stratified draws and report confidence intervals — a single 1% sample can come from only one or two subjects, which would make that end of the curve meaningless.
 
-A strong result quantifies a statement such as: *with 10% of the labels, self-supervised pretraining reaches X% of the performance achieved with all labels.*
-:::
+The deliverable is a statement such as: *with 10% of the labels, self-supervised pretraining reaches X% of the performance achieved with all labels.*
 
-::: {.scope .scope-msc}
-**Master research question.** **Do physics-consistent SO(3) orientation views improve label efficiency and orientation robustness more than signal-agnostic jitter, scaling and permutation?** Separate gravity from body acceleration, rotate the accelerometer and gyroscope triads together as a rigid body would actually move, and ablate each step. This needs no new data collection — the rotations are applied to the existing recordings. The insight comes from physically valid view construction, not from tuning augmentation strength.
+As an extension, test robustness to sensor orientation by jointly rotating the accelerometer and gyroscope triads at test time and measuring the degradation.
 :::
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
@@ -103,7 +97,7 @@ A strong result quantifies a statement such as: *with 10% of the labels, self-su
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning, then multi-label classification</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc only — a BSc route is possible with a supplied PTB-XL dataloader and shared encoder</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc only — a reduced Bachelor version is possible</span>
 <span class="meta-label">Compute</span><span class="meta-value">Moderate; 8 GB GPU recommended</span>
 <span class="meta-label">Data</span><span class="meta-value">[PTB-XL](https://physionet.org/content/ptb-xl/1.0.3/) — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Dong et al., [SimMTM](https://arxiv.org/abs/2302.00861), NeurIPS 2023</span>
@@ -124,9 +118,9 @@ A strong result quantifies a statement such as: *with 10% of the labels, self-su
 :::
 
 ::: {.scope .scope-bsc}
-**Bachelor route (only if a PTB-XL dataloader and shared encoder are supplied).** Choose **one** of two questions.
+**Reduced Bachelor version.** Requires a supplied PTB-XL dataloader and a shared encoder. Choose **one** of two questions.
 
-**(a) Contrastive learning or masked modelling: which objective produces better ECG representations?** Implement both objectives on **one identical encoder**. This is essential: comparing two published repositories against each other would confound the objective with the encoder architecture, the augmentation settings and how much each implementation was already tuned, and no conclusion about contrastive versus masked learning could be drawn. Only the pretext task may differ.
+**(a) Contrastive learning or masked modelling: which objective produces better ECG representations?** Implement both objectives on **one identical encoder**. Comparing two published repositories instead would confound the objective with the encoder architecture, the augmentation settings and how much each implementation was already tuned, so no conclusion about contrastive versus masked learning would follow. Only the pretext task may differ.
 
 **(b) How many ECG leads do you actually need?** Train and evaluate using 12 leads, 6 leads, 3 leads and lead II alone, and measure how diagnostic performance falls as leads are removed. This is directly relevant to single-lead wearable devices, needs one codebase, and establishes which leads carry the diagnostic signal that the Master route then exploits.
 :::
@@ -175,9 +169,9 @@ A strong result quantifies a statement such as: *with 10% of the labels, self-su
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Time-series representation learning, then household-level classification</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc only — a BSc route opens once the data licence and label counts are confirmed</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc only — a reduced Bachelor version is possible</span>
 <span class="meta-label">Compute</span><span class="meta-value">Light to moderate after preprocessing</span>
-<span class="meta-label">Data</span><span class="meta-value">[HEAPO on Zenodo](https://zenodo.org/records/15056919) — 1,408 households; licence must be confirmed before use</span>
+<span class="meta-label">Data</span><span class="meta-value">[HEAPO on Zenodo](https://zenodo.org/records/15056919) — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024, CC BY 4.0</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Brudermueller et al., [HEAPO](https://arxiv.org/abs/2503.16993), 2025</span>
 :::
 
@@ -185,9 +179,7 @@ A strong result quantifies a statement such as: *with 10% of the labels, self-su
 **What you will do.** HEAPO contains a large pool of households with smart-meter data but no inspection labels, and a much smaller pool with both. You will pretrain on the unlabelled households and test whether that improves classification on the small labelled group.
 :::
 
-**Data.** The paper reports 214 treatment households with smart-meter data and inspection information, 1,194 control households without labels, and 410 inspection protocols. Use the [official MIT-licensed dataloader](https://github.com/tbrumue/heapo) rather than writing a new pipeline. Group all splits by household.
-
-⚠️ **Licence check required.** The paper is CC BY 4.0, but that does not license the data, and Zenodo's rights metadata does not display a dataset licence. Confirm reuse terms with the depositor before the project starts. Also verify label prevalence and class balance at the same time — see the note below.
+**Data.** 214 treatment households have smart-meter data and inspection information, 1,194 control households have no labels, and there are 410 inspection protocols, plus household metadata and weather data from 8 stations. Use the [official MIT-licensed dataloader](https://github.com/tbrumue/heapo) rather than writing a new pipeline. Group all splits by household, and verify label prevalence and class balance before fixing the task.
 
 **Methods and code.** [TS2Vec](https://github.com/zhihanyue/ts2vec), [TS-TCC](https://github.com/emadeldeen24/TS-TCC) or a masked model such as [SimMTM](https://github.com/thuml/SimMTM), with a 1-D CNN, InceptionTime or LSTM as the supervised comparison. Start from heat-pump type or another sufficiently prevalent label.
 
@@ -200,7 +192,7 @@ A strong result quantifies a statement such as: *with 10% of the labels, self-su
 :::
 
 ::: {.scope .scope-bsc}
-**Bachelor route (only after the licence is cleared and label counts verified).** Use the official dataloader, pick the single most prevalent and balanced label, and compare just two pretraining sources — none versus unlabelled control households — on household-grouped splits, with a label-efficiency curve. The power note above applies equally.
+**Reduced Bachelor version.** Use the official dataloader, pick the most prevalent and balanced label, and compare two pretraining sources — none versus unlabelled control households — on household-grouped splits, with a label-efficiency curve. The power note above applies equally.
 :::
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
@@ -241,13 +233,9 @@ So the node set is fixed across the dataset while **features and edge weights ar
 
 Existing graph-based bearing diagnosis defines nodes from generic decompositions — wavelet-packet bands or spectrogram bins — which are not comparable across shaft speeds. Defining the node vocabulary from bearing kinematics in the order domain makes the graph structurally invariant to speed, which is what should allow representations to transfer. Testing that is the contribution; GraphCL and GraphMAE are baselines.
 
-**The hypothesis stated sharply.** With a fixed node set you could concatenate every node's features into one vector and run gradient boosting, using all the marginal band information. The graph earns its place only if *which bands co-modulate* carries information the individual band features do not. The four factorial arms test exactly that — and the fixed-weight arm matters most, because if the adjacency were identical for every window the GNN would collapse into a fixed linear operator over node features, which is a structured MLP rather than graph learning.
+**What the comparison tests.** With a fixed node set, every node's features could be concatenated into one vector and passed to gradient boosting, using all the marginal band information. The graph adds value only if *which bands co-modulate* carries information the individual band features do not. The four arms test this. The fixed-weight arm is the most informative: if the adjacency were identical for every window, the GNN would reduce to a fixed linear operator over node features — a structured MLP rather than graph learning.
 
-**Why in-distribution accuracy will not answer this.** CWRU saturates near 99–100% for almost any method, including simple hand-crafted features. If all four arms score within a point of each other, the comparison has resolved nothing. Cross-condition transfer moves performance into a range where the arms can actually be separated.
-:::
-
-::: {.scope .scope-bsc}
-**Why this is not a Bachelor project.** Before any network is trained, the project requires order tracking, computing fault orders from bearing geometry, slip-tolerant band definition and a defensible edge measure — a substantial block of signal-processing work, and one where the student must justify modelling choices rather than implement a given recipe.
+**Why in-distribution accuracy will not answer this.** CWRU saturates near 99–100% for almost any method, including simple hand-crafted features. If all four arms score within a point of each other, the comparison has resolved nothing. Cross-condition transfer moves performance into a range where the arms can be separated.
 :::
 
 **Related work to start from.** [A 2025 review of GNNs for rolling bearing fault diagnosis](https://consensus.app/papers/details/45287a32d5b25d729adaddd260d62e6b/) maps the field into temporal, feature and spatiotemporal graphs. For the closest existing constructions, see [wavelet-packet bands as nodes with correlation-based edges and graph contrastive pretraining](https://consensus.app/papers/details/44b08e614a825835b47c754b572c692a/), [a GCN over constant-Q spectrogram bins with fundamental-to-harmonic edges](https://consensus.app/papers/details/32c09569a1d85ad9b615a0257fe03331/), and [a physics-informed GCN deriving edge weights from bearing dynamics](https://consensus.app/papers/details/c448358b3db75834bd8e79bf358887b2/). [A graph-level representation-learning paper](https://consensus.app/papers/details/297569cdecb653d98a3c1339eadc85b2/) argues against the more common sample-as-node paradigm. For the signal processing, see [a review of diagnosis under time-varying speeds](https://consensus.app/papers/details/003e7751a57d5dc79488ef5afba983dd/) and [Abboud et al. on envelope analysis in variable-speed conditions](https://consensus.app/papers/details/e434edd6bd8055fea8233cc9b94879fc/).
