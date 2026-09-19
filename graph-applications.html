@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="scope scope-bsc">
 <p><strong>Bachelor research question.</strong> <strong>Does graph information become more valuable as the forecasting horizon increases?</strong></p>
 <p><em>Core experiment.</em> Compare the graph-free model against the spatiotemporal GNN and measure how the gap between them changes from 15 to 30 to 60 minutes, with the randomised-edge control at each horizon.</p>
-<p><strong>One practical point that saves weeks.</strong> A multi-horizon model predicts all three horizons from a <strong>single trained model</strong> — the 12-step output is simply evaluated at different horizon slices. Do not train three separate models.</p>
+<p><strong>Note.</strong> A multi-horizon model predicts all three horizons from a single trained model — the 12-step output is evaluated at different horizon slices. Do not train three separate models.</p>
 </div>
 <div class="scope scope-msc">
 <p><strong>Master research question.</strong> <strong>Does a time-of-day and traffic-regime-conditioned sparse adjacency improve long-horizon forecasting over both the road graph and a single learned static graph?</strong> Match depth and width, use at least three seeds, and examine whether rush-hour edges differ from free-flow edges and whether learned edges correspond to plausible topology. Keep any dynamic adjacency sparse or low-rank so its cost is explicit; per-timestep dense adjacency is expensive and unstable.</p>
@@ -444,7 +444,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="scope scope-bsc">
 <p><strong>Bachelor research question.</strong> <strong>How robust are GNN-based illicit-transaction detectors when graph information is incomplete?</strong></p>
 <p><em>Core experiment.</em> Train normally, then progressively delete edges at test time — 0%, 10%, 25% and 50% — and identify the point at which neighbourhood information stops contributing. Compare the feature-only model, which is unaffected by edge deletion, against both GNNs.</p>
-<p><strong>Expected outcome.</strong> On this dataset the 165 node features are highly informative, and a gradient-boosting or random-forest model on features alone is a strong competitor to the GNNs. A result showing that features dominate — and that the GNN therefore degrades gracefully because it was never relying much on topology — is expected and is a perfectly good finding. Report it rather than tuning until the GNN wins.</p>
+<p><strong>Expected outcome.</strong> On this dataset the 165 node features are highly informative, and a gradient-boosting or random-forest model on features alone is a strong competitor to the GNNs. A result showing that features dominate — and that the GNN degrades gracefully because it was not relying much on topology — is expected and is a valid finding. Report it rather than tuning until the GNN wins.</p>
 </div>
 <div class="scope scope-msc">
 <p><strong>Master research question.</strong> <strong>Can a temporally calibrated GNN remain useful under concept drift and missing transaction edges?</strong> Add one temporal mechanism or uncertainty method, test edge deletion and temporal shift together, and connect threshold choices to realistic investigator workload at a fixed alert budget.</p>
@@ -458,7 +458,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="project-1-4" class="level2">
 <h2 class="anchored" data-anchor-id="project-1-4">1.4 Graph-based movie recommendation with accuracy and coverage</h2>
 <div class="project-meta">
-<p><span class="meta-label">Task</span><span class="meta-value">Link prediction and ranking on a bipartite graph</span> <span class="meta-label">Level</span><span class="meta-value">BSc recommended — the MSc route is narrow, see below</span> <span class="meta-label">Compute</span><span class="meta-value">Very light; CPU or low-memory GPU</span> <span class="meta-label">Data</span><span class="meta-value"><a href="https://grouplens.org/datasets/movielens/100k/">MovieLens 100K</a> — 100,000 timestamped ratings, ~1,000 users, ~1,700 movies, 5 MB</span> <span class="meta-label">Starting paper</span><span class="meta-value">He et al., <a href="https://arxiv.org/abs/2002.02126">LightGCN</a>, SIGIR 2020</span></p>
+<p><span class="meta-label">Task</span><span class="meta-value">Link prediction and ranking on a bipartite graph</span> <span class="meta-label">Level</span><span class="meta-value">BSc only</span> <span class="meta-label">Compute</span><span class="meta-value">Very light; CPU or low-memory GPU</span> <span class="meta-label">Data</span><span class="meta-value"><a href="https://grouplens.org/datasets/movielens/100k/">MovieLens 100K</a> — 100,000 timestamped ratings, ~1,000 users, ~1,700 movies, 5 MB</span> <span class="meta-label">Starting paper</span><span class="meta-value">He et al., <a href="https://arxiv.org/abs/2002.02126">LightGCN</a>, SIGIR 2020</span></p>
 </div>
 <div class="project-intro">
 <p><strong>What you will do.</strong> Represent users and movies as two node types with interactions as edges, then recommend a ranked list of films. The interesting part is not only whether the recommendations are accurate, but whether they quietly collapse onto a handful of popular titles.</p>
@@ -469,9 +469,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="scope scope-bsc">
 <p><strong>Bachelor research question.</strong> <strong>Does graph-based recommendation improve ranking accuracy at the expense of catalogue coverage and long-tail exposure?</strong></p>
 <p><em>Core experiment.</em> Compare popularity, matrix factorisation and LightGCN on both metric families at once, then study one factor — propagation depth or negative sampling — and show how it moves the accuracy/coverage balance.</p>
-</div>
-<div class="scope scope-msc">
-<p><strong>Master extension (narrow).</strong> A Master project needs a sharper question, such as: <strong>can a calibrated diversity objective improve long-tail exposure without materially reducing NDCG?</strong> This requires user-activity and item-popularity subgroup analysis, multiple seeds and an explicit Pareto trade-off. Without that extension the project belongs at Bachelor level.</p>
 </div>
 <p><strong>Practical notes.</strong> The principal pitfalls are leakage from future interactions and evaluating on sampled negatives that differ between methods.</p>
 <div class="project-back">
@@ -493,7 +490,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="scope scope-bsc">
 <p><strong>Bachelor research question.</strong> <strong>Do GNNs generalise better than traditional molecular fingerprints to scaffolds not seen during training?</strong></p>
 <p><em>Core experiment.</em> Compare fingerprint and GNN representations on the official scaffold split, and inspect where each fails. If time allows, analyse error as a function of how novel a test scaffold is relative to the training set.</p>
-<p><strong>Expected outcome — read this before you start.</strong> On this benchmark, fingerprints combined with a tree ensemble are known to match or beat plain GCN and GIN. The likely answer to the question is therefore <strong>no</strong>, and that is a genuinely valuable finding: architectural sophistication does not automatically buy generalisation. Do not respond by tuning the GNN until it wins — tuning against a scaffold split is exactly how this evaluation gets silently invalidated.</p>
+<p><strong>Expected outcome.</strong> On this benchmark, fingerprints with a tree ensemble are known to match or beat plain GCN and GIN, so the likely answer is no. That is a useful finding: architectural sophistication does not automatically improve generalisation. Do not respond by tuning the GNN until it wins — tuning against a scaffold split invalidates the evaluation.</p>
 </div>
 <div class="scope scope-msc">
 <p><strong>Master research question.</strong> <strong>Can uncertainty-aware training improve calibration on held-out scaffolds without sacrificing discrimination?</strong> Compare temperature scaling, deep ensembles or a compact evidential variant on identical predictions, and report both performance and calibration as a function of scaffold novelty.</p>
