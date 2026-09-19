@@ -9,21 +9,21 @@ toc-depth: 2
 
 A **vision foundation model** is an image encoder pretrained on a large image collection and reused for later tasks. Vision Transformers divide an image into patches and learn a feature vector for each patch. Self-supervised models such as DINO learn these features without class labels.
 
-Students do not train a foundation model from scratch. In industrial anomaly detection, a frozen encoder can compare a test image with known normal images and identify unusual patches. An adapter can instead modify the encoder using the available normal images and deliberately generated synthetic defects.
+Students do not train a foundation model from scratch. In industrial anomaly detection, a frozen encoder can compare a test image with known normal images and identify unusual patches. An adapter can instead tune the encoder to the appearance of the normal training images without using defect examples.
 
 The evaluation must keep the anomaly-detection protocol fixed. MVTec training sets contain normal images only; real test defects cannot be used to train or tune the model. Frozen features, parameter-efficient adaptation and full fine-tuning are comparable only when they use the same training information and objective.
 
 ::: {.category-callout}
 **Three ways to adapt a pretrained backbone**
 
-**Freeze it** and score distances from normal reference patches. **Adapt it efficiently** by training small LoRA or adapter modules. **Fine-tune it** by updating the complete encoder. Adaptation requires a stated objective; in this project it uses normal images and synthetic corruptions, not real test defects.
+**Freeze it** and score distances from normal reference patches. **Adapt it efficiently** by training small LoRA or adapter modules. **Fine-tune it** by updating the complete encoder. In this project, adaptation uses a self-supervised consistency objective on normal images only.
 :::
 
 ## Learn first and find ideas
 
 - Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), and [AnomalyDINO](https://arxiv.org/abs/2405.14529) with its [official code](https://github.com/dammsi/AnomalyDINO).
 - Parameter-efficient adaptation: [LoRA](https://arxiv.org/abs/2106.09685) and the [Hugging Face PEFT library](https://github.com/huggingface/peft).
-- Synthetic-defect training: [CutPaste](https://arxiv.org/abs/2104.04015) and [DRAEM](https://arxiv.org/abs/2108.07610) with its [official code](https://github.com/VitjanZ/DRAEM).
+- Normal-only objectives: [DINO self-distillation](https://arxiv.org/abs/2104.14294) and [masked autoencoding](https://arxiv.org/abs/2111.06377). The proposed project uses patch-level teacher–student consistency as the simpler starting point.
 - Data and model hubs: [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), [Hugging Face models](https://huggingface.co/models) and [timm](https://github.com/huggingface/pytorch-image-models).
 - Keep zero-shot, one-shot, few-shot and full-shot anomaly results separate, and never compare an image-level metric directly with a pixel-level metric.
 
@@ -42,14 +42,14 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.project-intro}
-**What you will do.** Use DINOv2 patch features to detect and locate defects from normal reference images. The BSc project studies the frozen detector. The MSc project tests adaptation using normal images and synthetic defects.
+**What you will do.** Use DINOv2 patch features to detect and locate defects from normal reference images. The BSc project studies the frozen detector. The MSc project adapts the encoder using only defect-free training images.
 :::
 
 **Data.** [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) contains 5,354 images in 15 categories, with defect-free training images and labelled normal and defective test images. [MVTec AD 2](https://www.mvtec.com/research-teaching/datasets/mvtec-ad-2) contains 8,000+ images in eight harder scenarios and includes unseen lighting conditions. Both use CC BY-NC-SA 4.0; MVTec AD 2 also has a private-test evaluation server.
 
-**Methods and code.** Use DINOv2 **ViT-S/14** from the [Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://github.com/dammsi/AnomalyDINO): store normal patch features and score each test patch by its distance to the memory bank. The MSc route trains LoRA or adapters with [PEFT](https://github.com/huggingface/peft), using only normal training images and synthetic corruptions. Larger backbones are optional, not required.
+**Methods and code.** Use DINOv2 **ViT-S/14** from the [Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://github.com/dammsi/AnomalyDINO): store normal patch features and score each test patch by its distance to the memory bank. For the MSc route, keep a frozen DINOv2 teacher and train LoRA or adapters in a student model with [PEFT](https://github.com/huggingface/peft). Make patch features agree between an original normal image and a photometrically altered view of the same image. No defect image or mask is used during adaptation.
 
-**Baselines and evaluation.** Compare frozen AnomalyDINO with [PatchCore](https://arxiv.org/abs/2106.08265). For the MSc route, compare frozen DINOv2, LoRA/adapter adaptation and full fine-tuning under the same synthetic-defect objective. Report image AUROC, pixel AUROC and the official AU-PRO measure per category, plus trainable parameters, memory and runtime. Keep shot count and public/private test protocols separate.
+**Baselines and evaluation.** Compare frozen AnomalyDINO with [PatchCore](https://arxiv.org/abs/2106.08265). For the MSc route, compare frozen DINOv2, normal-only LoRA/adapter adaptation and normal-only full fine-tuning under the same consistency loss. Report image AUROC, pixel AUROC and the official AU-PRO measure per category, plus trainable parameters, memory and runtime. Keep shot count and public/private test protocols separate.
 
 ::: {.scope .scope-bsc}
 **Bachelor research question.** **How do the number of normal reference images and the selected DINOv2 feature layer affect defect detection and localisation?**
@@ -58,9 +58,9 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **Can parameter-efficient adaptation using only normal images and synthetic defects improve detection of real, unseen defects without reducing robustness to lighting changes?** Define one synthetic-defect generator and one feature-consistency or segmentation objective. Compare frozen DINOv2, LoRA/adapter adaptation and full fine-tuning with identical data and losses on MVTec AD and MVTec AD 2. Ablate the adapter depth and synthetic-defect generator.
+**Master research question.** **Can normal-only parameter-efficient adaptation make DINOv2 patch features robust to industrial lighting variation without removing the local differences needed to detect unseen defects?** Use a frozen teacher and a LoRA/adapter student. Train only on normal images with patch-aligned brightness, contrast and noise transformations. Compare patch-level consistency with global-image consistency, and compare frozen, LoRA/adapter and full fine-tuning under the same loss on MVTec AD and MVTec AD 2. Ablate adapter depth and transformation strength.
 
-The contribution is the adaptation and its controlled evaluation. Training on real test defects, or tuning choices repeatedly on the public test labels, would invalidate the unsupervised setting.
+The contribution is the normal-only patch-consistency method and its controlled evaluation. Monitor feature variance and distance from the original DINOv2 representation to detect collapse or over-adaptation. Training on real test defects, or repeatedly tuning choices on public test labels, would invalidate the unsupervised setting. Synthetic defects may be included only as a clearly separated optional comparison.
 :::
 
 **Practical notes.** DINOv2 code and standard weights are ungated and Apache 2.0. MVTec data is restricted to non-commercial use. Complete the BSc frozen baseline before beginning any adaptation.
