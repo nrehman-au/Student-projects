@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vision-foundation-models.html#project-3-1" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3.1 Adapting DINO backbones for land cover or industrial anomalies</span></a>
+ <span class="menu-text">3.1 Adapting DINO backbones for industrial anomaly detection</span></a>
   </div>
 </li>
       </ul>
@@ -316,7 +316,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#suggested-starting-points" id="toc-suggested-starting-points" class="nav-link active" data-scroll-target="#suggested-starting-points">Suggested starting points</a></li>
+  <li><a href="#projects-offered-at-bachelor-level" id="toc-projects-offered-at-bachelor-level" class="nav-link active" data-scroll-target="#projects-offered-at-bachelor-level">Projects offered at Bachelor level</a></li>
+  <li><a href="#suggested-starting-points" id="toc-suggested-starting-points" class="nav-link" data-scroll-target="#suggested-starting-points">Suggested starting points</a></li>
   <li><a href="#a-simple-decision-process" id="toc-a-simple-decision-process" class="nav-link" data-scroll-target="#a-simple-decision-process">A simple decision process</a></li>
   <li><a href="#week-one-feasibility-checklist" id="toc-week-one-feasibility-checklist" class="nav-link" data-scroll-target="#week-one-feasibility-checklist">Week-one feasibility checklist</a></li>
   <li><a href="#licences-and-access" id="toc-licences-and-access" class="nav-link" data-scroll-target="#licences-and-access">Licences and access</a></li>
@@ -351,6 +352,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="projects-offered-at-bachelor-level" class="level2">
+<h2 class="anchored" data-anchor-id="projects-offered-at-bachelor-level">Projects offered at Bachelor level</h2>
+<p>Eight projects are available as Bachelor projects: <strong>1.1</strong> (C-MAPSS), <strong>1.2</strong> (METR-LA), <strong>1.3</strong> (Elliptic), <strong>1.4</strong> (MovieLens), <strong>1.5</strong> (ogbg-molhiv), <strong>2.2</strong> (UCI-HAR), <strong>2.4</strong> (ETT) and <strong>3.1</strong> (MVTec AD).</p>
+<p>Three further projects can open a Bachelor route once a stated precondition is met: <strong>2.1</strong> if the partner data arrives pre-segmented and regime-labelled, <strong>2.3</strong> if a PTB-XL dataloader and shared encoder are supplied, and <strong>2.5</strong> once the HEAPO licence and label counts are confirmed.</p>
+<p><strong>2.6</strong> and <strong>4.1</strong> are Master-only, and each project page explains why.</p>
+</section>
 <section id="suggested-starting-points" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-starting-points">Suggested starting points</h2>
 <table class="caption-top table">
@@ -367,19 +374,23 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>BSc with lower setup risk</td>
-<td>1.1 C-MAPSS, 1.4 MovieLens, 2.2 UCI-HAR, 3.1 EuroSAT RGB</td>
+<td>1.4 MovieLens, 2.2 UCI-HAR, 3.1 frozen DINOv2 with patch nearest neighbours, 1.1 C-MAPSS</td>
 </tr>
 <tr class="even">
-<td>MSc with a defined method extension</td>
-<td>1.2 dynamic traffic graph, 2.4 decomposition-aware forecasting, 3.1 vision adapter, 4.1 deep-unfolded multivariate VMD</td>
+<td>BSc with a clear expected finding</td>
+<td>1.3 feature dominance under edge deletion, 1.5 fingerprints versus GNNs out of scaffold</td>
 </tr>
 <tr class="odd">
+<td>MSc with a defined method extension</td>
+<td>1.2 regime-conditioned traffic graph, 2.4 decomposition-aware forecasting, 3.1 adaptation ladder on an unsaturated benchmark</td>
+</tr>
+<tr class="even">
 <td>MSc with higher methodological risk</td>
 <td>2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.6 physics-grounded vibration graphs, 4.1 coupled deep-unfolded VMD</td>
 </tr>
-<tr class="even">
-<td>Preliminary checks required</td>
-<td>2.1 Tetra Pak after the partner-data profile and agreement; 2.5 HEAPO after a licence and data check; 4.1 LargeST licence and applied-data check</td>
+<tr class="odd">
+<td>Preliminary checks required before allocation</td>
+<td>2.1 after the partner-data profile and agreement; 2.5 after a licence and label check; 4.1 after the LargeST licence check</td>
 </tr>
 </tbody>
 </table>
@@ -389,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Choose the <strong>task</strong>, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.</li>
 <li>Download the data and run one complete baseline on a small subset before the formal project begins.</li>
-<li>Write a one-sentence research question and identify the comparison that could falsify the proposed explanation.</li>
+<li>Write the research question as one sentence and identify the comparison that could falsify it.</li>
 <li>Freeze the split, primary metric and compute budget before extensive development.</li>
 <li>Treat the authors’ repository as an executable specification—not as the thesis contribution.</li>
 </ol>
@@ -400,7 +411,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Obtain access to the exact dataset and record its version, size, licence or data agreement, and release date or extraction period.</li>
 <li>Run the simplest baseline from raw input to final metric on a small subset.</li>
 <li>Identify the independent split unit and verify that it cannot cross train and test.</li>
-<li>Record the anchor paper, repository version and preprocessing deviations.</li>
+<li><strong>Count how many research repositories you must adapt.</strong> Adapting one is a Bachelor project. Adapting two is a Master project, and it is the most common reason a project runs out of time with no results.</li>
+<li><strong>Check that the test set is large enough to separate the conditions you plan to compare.</strong> If a grouped test fold holds only a few dozen units, confidence intervals may be wider than the effect you are looking for.</li>
 <li>Estimate training time and peak memory before planning seeds or ablations.</li>
 <li>For MSc work, write the question, proposed mechanism, main alternative explanation and minimum viable ablation table.</li>
 </ul>
@@ -432,12 +444,32 @@ ul.task-list li input[type="checkbox"] {
 <td>No credentialing required</td>
 </tr>
 <tr class="odd">
+<td>ETT</td>
+<td>Open research dataset</td>
+<td>Check the repository terms before redistribution</td>
+</tr>
+<tr class="even">
+<td>MovieLens 100K</td>
+<td>GroupLens research terms</td>
+<td>Academic use; cite the dataset</td>
+</tr>
+<tr class="odd">
+<td>OGB ogbg-molhiv</td>
+<td>Open, MIT-licensed tooling</td>
+<td>Use the official split and evaluator</td>
+</tr>
+<tr class="even">
+<td>Elliptic Bitcoin</td>
+<td>Distributor’s research terms</td>
+<td>Confirm terms before publishing results</td>
+</tr>
+<tr class="odd">
 <td>Paderborn KAt</td>
 <td>CC BY-NC 4.0</td>
 <td>Non-commercial academic use</td>
 </tr>
 <tr class="even">
-<td>MVTec AD</td>
+<td>MVTec AD and MVTec AD 2</td>
 <td>CC BY-NC-SA 4.0</td>
 <td>Non-commercial and share-alike</td>
 </tr>
@@ -447,14 +479,14 @@ ul.task-list li input[type="checkbox"] {
 <td>Ungated</td>
 </tr>
 <tr class="even">
-<td>DINOv3 weights</td>
-<td>Custom Meta licence</td>
-<td>Gated; non-standard; review for industry use</td>
-</tr>
-<tr class="odd">
 <td>HEAPO data</td>
 <td>No dataset licence displayed in Zenodo Rights metadata</td>
 <td>Confirm before starting; code and paper have separate licences</td>
+</tr>
+<tr class="odd">
+<td>LargeST</td>
+<td>To be confirmed</td>
+<td>Check before committing to the applied task in 4.1</td>
 </tr>
 <tr class="even">
 <td>Tetra Pak process data</td>
@@ -469,13 +501,14 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Comparing with a number produced by a different split, metric, horizon, shot count or evaluation level.</li>
 <li>Using windows from the same physical unit in both training and test sets.</li>
+<li>Comparing two published implementations and concluding something about the <em>method</em> — differences in encoder, augmentation and prior tuning are confounded with the mechanism you meant to test.</li>
+<li>Reporting a difference that the test set is too small to resolve.</li>
 <li>Calling an authors’ repository run a research contribution.</li>
-<li>Reporting only in-distribution performance when transfer or cold start is the motivation.</li>
+<li>Reporting only in-distribution performance when transfer or cold start is the motivation, or when the benchmark is already saturated.</li>
 <li>Omitting the random frozen encoder in a self-supervised study.</li>
-<li>Treating a recent preprint figure as a settled benchmark.</li>
 <li>Expanding to a second dataset before the first pipeline and evaluation protocol are stable.</li>
 </ul>
-<p>Select one primary question, fix the evaluation protocol before extensive experimentation and report negative as well as positive results.</p>
+<p>Select one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.</p>
 <p>The Tetra Pak project is included as Project 2.1. A Siemens Gamesa project may be offered separately when its scope and data access are confirmed.</p>
 
 

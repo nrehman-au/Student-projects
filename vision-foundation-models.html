@@ -279,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vision-foundation-models.html#project-3-1" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3.1 Adapting DINO backbones for land cover or industrial anomalies</span></a>
+ <span class="menu-text">3.1 Adapting DINO backbones for industrial anomaly detection</span></a>
   </div>
 </li>
       </ul>
@@ -319,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#learn-first-and-find-ideas" id="toc-learn-first-and-find-ideas" class="nav-link active" data-scroll-target="#learn-first-and-find-ideas">Learn first and find ideas</a></li>
   <li><a href="#projects-in-this-category" id="toc-projects-in-this-category" class="nav-link" data-scroll-target="#projects-in-this-category">Projects in this category</a></li>
-  <li><a href="#project-3-1" id="toc-project-3-1" class="nav-link" data-scroll-target="#project-3-1">3.1 Adapting DINO backbones for land cover or industrial anomalies</a></li>
+  <li><a href="#project-3-1" id="toc-project-3-1" class="nav-link" data-scroll-target="#project-3-1">3.1 Adapting DINO backbones for industrial anomaly detection</a></li>
   </ul>
 </nav>
     </div>
@@ -352,17 +352,18 @@ ul.task-list li input[type="checkbox"] {
 
 <p><span id="top"></span></p>
 <p>A <strong>vision foundation model</strong> is a large image encoder pretrained on broad image collections so that its internal features can be reused for many later tasks. Vision Transformers divide an image into patches, treat those patches as tokens and learn relationships among them. Self-supervised models such as DINO learn useful visual structure without requiring a class label for every pretraining image.</p>
-<p>In these projects, students do not train a foundation model from the beginning. They use a pretrained backbone as a <strong>frozen feature extractor</strong> and train only a small prediction head or adapter. For land-cover classification, the representation may separate forests, rivers and residential areas. For industrial inspection, patch-level representations may show where a surface differs from normal examples.</p>
-<p>The central evaluation separates what the pretrained backbone already provides from what the student’s adaptation contributes. A frozen linear probe, a lightweight adapter and—where feasible—a full fine-tune are compared using the same labels, split and backbone. Performance is reported together with the number of trainable parameters and compute cost.</p>
+<p>In these projects, students do not train a foundation model from the beginning. They start from a pretrained backbone and add only what is needed for the task — often nothing at all, because DINO’s patch features are already strong enough to compare images directly. For industrial inspection, patch-level representations may show where a surface differs from normal examples.</p>
+<p>The central evaluation separates what the pretrained backbone already provides from what the student’s adaptation contributes. A frozen backbone, a parameter-efficient adapter and — where hardware permits — a full fine-tune are compared using the same data, split and backbone, with performance reported alongside the number of trainable parameters and the compute cost.</p>
 <div class="category-callout">
-<p><strong>Choosing a project track</strong></p>
-<p>The project has two separate tracks. EuroSAT RGB supports the Bachelor classification route. MVTec dense anomaly localisation or multispectral EuroSAT supports a more complex Master route.</p>
+<p><strong>Three ways to adapt a pretrained backbone</strong></p>
+<p><strong>Freeze it</strong> and compare features directly, or train only a small head. <strong>Adapt it efficiently</strong> by inserting small trainable modules (LoRA or adapters) into an otherwise frozen network, typically training under 10% of the parameters. <strong>Fine-tune everything</strong>, which is the most expressive and the most expensive. Knowing how much each step actually buys is the point of these projects.</p>
 </div>
 <section id="learn-first-and-find-ideas" class="level2">
 <h2 class="anchored" data-anchor-id="learn-first-and-find-ideas">Learn first and find ideas</h2>
 <ul>
-<li>Core reading: <a href="https://arxiv.org/abs/2104.14294">DINO</a>, <a href="https://arxiv.org/abs/2304.07193">DINOv2</a>, the <a href="https://github.com/facebookresearch/dinov2">DINOv2 model card and code</a>, <a href="https://arxiv.org/abs/2508.10104">DINOv3</a> and <a href="https://arxiv.org/abs/2405.14529">AnomalyDINO</a>.</li>
-<li>Data and model hubs: <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a>, <a href="https://github.com/phelber/EuroSAT">EuroSAT</a>, <a href="https://huggingface.co/models">Hugging Face models</a> and <a href="https://github.com/huggingface/pytorch-image-models">timm</a>.</li>
+<li>Core reading: <a href="https://arxiv.org/abs/2104.14294">DINO</a>, <a href="https://arxiv.org/abs/2304.07193">DINOv2</a>, the <a href="https://github.com/facebookresearch/dinov2">DINOv2 model card and code</a>, and <a href="https://arxiv.org/abs/2405.14529">AnomalyDINO</a>.</li>
+<li>Parameter-efficient adaptation: <a href="https://arxiv.org/abs/2106.09685">LoRA</a> and the <a href="https://github.com/huggingface/peft">Hugging Face PEFT library</a>.</li>
+<li>Data and model hubs: <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a>, <a href="https://huggingface.co/models">Hugging Face models</a> and <a href="https://github.com/huggingface/pytorch-image-models">timm</a>.</li>
 <li>Keep zero-shot, one-shot, few-shot and full-shot anomaly results separate, and never compare an image-level metric directly with a pixel-level metric.</li>
 </ul>
 </section>
@@ -371,25 +372,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Use the contents panel or the project links in the left navigation to move directly to a project.</p>
 </section>
 <section id="project-3-1" class="level2">
-<h2 class="anchored" data-anchor-id="project-3-1">3.1 Adapting DINO backbones for land cover or industrial anomalies</h2>
+<h2 class="anchored" data-anchor-id="project-3-1">3.1 Adapting DINO backbones for industrial anomaly detection</h2>
 <div class="project-meta">
-<p><span class="meta-label">Task</span><span class="meta-value">Image classification or image/pixel anomaly detection</span> <span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc with separate tracks</span> <span class="meta-label">Compute</span><span class="meta-value">Moderate; frozen ViT-S practical on 8 GB, dense MSc work may need more</span> <span class="meta-label">Starting paper</span><span class="meta-value">Oquab et al., <a href="https://arxiv.org/abs/2304.07193">DINOv2</a>, 2023</span></p>
+<p><span class="meta-label">Task</span><span class="meta-value">Image-level anomaly detection and pixel-level anomaly localisation</span> <span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span> <span class="meta-label">Compute</span><span class="meta-value">Light for the frozen route (no training); moderate for adapters — a single 8–16 GB consumer GPU covers the whole project</span> <span class="meta-label">Data</span><span class="meta-value"><a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a> — 5,354 images, 15 categories, pixel-precise masks, CC BY-NC-SA 4.0</span> <span class="meta-label">Starting paper</span><span class="meta-value">Oquab et al., <a href="https://arxiv.org/abs/2304.07193">DINOv2</a>, 2023</span></p>
 </div>
 <div class="project-intro">
-<p><strong>What you will do.</strong> Use a pretrained self-supervised vision transformer as a frozen feature extractor. Train a small head or adapter for a specialised task. Measure the performance of frozen features and test whether an adapter still contributes when a newer backbone is used.</p>
+<p><strong>What you will do.</strong> A DINOv2 backbone produces strong general-purpose image features without ever having seen an industrial defect. Find out how much of the work is already done by those frozen features, and how much is added by actually adapting the backbone to the inspection task.</p>
 </div>
-<p><strong>Project goal.</strong> Quantify the trade-off among task performance, number of trainable parameters and supervision. Choose <strong>one</strong> track: EuroSAT RGB land-cover classification or MVTec industrial anomaly detection/localisation.</p>
-<p><strong>Data.</strong> <strong>BSc/default classification track:</strong> <a href="https://github.com/phelber/EuroSAT">EuroSAT</a>, 27,000 Sentinel-2 patches in 10 classes. Use the <strong>RGB</strong> version for ordinary DINO backbones; the 13-band version requires an explicit multispectral adapter and is a separate MSc question. <strong>MSc anomaly track:</strong> <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a>, more than 5,000 images in 15 categories with pixel masks, CC BY-NC-SA 4.0 for non-commercial research.</p>
-<p><strong>Methods and starting code.</strong> Default to DINOv2 ViT-S/14 from the <a href="https://github.com/facebookresearch/dinov2">official Apache-2.0 repository and model card</a>. Compare frozen linear/MLP probes, k-NN or <a href="https://arxiv.org/abs/2405.14529">AnomalyDINO</a> patch similarity, and a lightweight multi-scale adapter. DINOv3 is optional through the <a href="https://github.com/facebookresearch/dinov3">official repository</a>; its weights are gated under a custom Meta licence.</p>
-<p><strong>Required baselines.</strong> From-scratch CNN, ImageNet-pretrained ResNet or ViT, frozen DINOv2 with no adapter, lightweight adapter and full fine-tuning only if hardware permits. On MVTec, include a simple nearest-neighbour patch baseline and keep zero-shot, one-shot, few-shot and full-shot protocols separate.</p>
-<p><strong>Evaluation.</strong> EuroSAT: top-1 accuracy, macro-F1, label-efficiency curve and trainable parameters. MVTec: image AUROC plus pixel AUROC/PRO or pixel F1-max, reported by category and protocol. Measure inference memory/latency. Never compare a one-shot image metric directly with a zero-shot pixel metric.</p>
+<p><strong>Data.</strong> MVTec AD is the standard benchmark that comparable published work reports on, which makes results directly comparable. Most categories contain only 60–390 defect-free training images, so this is a one-class problem. <a href="https://www.mvtec.com/company/research/datasets/mvtec-ad-2">MVTec AD 2</a> (8,000+ images, 8 harder scenarios) is the MSc secondary benchmark — see the Master scope for why it matters. Both are non-commercial research licences.</p>
+<p><strong>Methods and code.</strong> DINOv2 <strong>ViT-S/14</strong> by default, or ViT-B/14 with ≥16 GB, from the <a href="https://github.com/facebookresearch/dinov2">official Apache-2.0 repository</a>. The frozen route follows <a href="https://arxiv.org/abs/2405.14529">AnomalyDINO</a>’s patch-similarity approach, which is <strong>training-free</strong> — only a forward pass. Parameter-efficient adaptation uses LoRA or adapter modules via <a href="https://github.com/huggingface/peft">PEFT</a>. Do not use ViT-L/g or DINOv3 ViT-7B; they are unnecessary here and outside the compute budget.</p>
+<p><strong>Baselines and evaluation.</strong> Frozen DINOv2 with patch nearest-neighbour scoring; a frozen linear or MLP probe; LoRA or adapter adaptation; full fine-tuning only if hardware permits; and a non-DINO reference such as PatchCore-style nearest neighbours over an ImageNet-pretrained CNN. Report image-level AUROC, pixel-level AUROC and PRO per category, <strong>and</strong> the number of trainable parameters plus GPU memory and training time for each condition — the cost side is part of the result, not an afterthought.</p>
 <div class="scope scope-bsc">
-<p><strong>Bachelor scope.</strong> Use EuroSAT RGB. Compare a frozen DINOv2 ViT-S linear probe with an ImageNet-pretrained CNN and, if feasible, a small adapter at several label budgets.</p>
+<p><strong>Bachelor research question.</strong> <strong>How much of DINOv2’s anomaly-detection performance is already present in its frozen features, before any training?</strong></p>
+<p><em>Core experiment.</em> Compare three conditions on MVTec AD with ViT-S/14: frozen features with patch nearest-neighbour scoring (no training at all), a frozen linear probe, and one LoRA configuration. Report accuracy against trainable-parameter count for each.</p>
+<p>This is a good first project because the strongest baseline requires no training whatsoever — you can have a working anomaly detector on day one and spend the project understanding it rather than fighting it.</p>
 </div>
 <div class="scope scope-msc">
-<p><strong>Master research question and contribution.</strong> Choose one question. <strong>Dense anomaly route:</strong> can a supervised multi-scale adapter over frozen patch tokens improve few-shot localisation at a fixed label and parameter budget, and does the gain remain after switching DINOv2 to DINOv3? <strong>Remote-sensing route:</strong> can a small multispectral input adapter exploit 13 bands without full backbone fine-tuning? Report cross-version or cross-band ablations so the adapter’s value is isolated.</p>
+<p><strong>Master research question.</strong> <strong>How much can parameter-efficient adaptation recover of the gap between frozen features and full fine-tuning, at a fraction of the trainable parameters — and does that trade-off change on a benchmark that has not yet saturated?</strong> Run the full ladder — frozen, linear probe, LoRA/adapter, full fine-tune — on <strong>both</strong> MVTec AD and MVTec AD 2, with parameter counts and compute cost reported throughout.</p>
+<p><strong>Why the second benchmark is essential.</strong> MVTec AD is saturated: published methods cluster above 99% image AUROC, so all four adaptation strategies may look identical there. MVTec AD 2 was built because of that saturation and current methods score below 60% AU-PRO on it, which leaves room for the comparison to show a real difference. An optional stretch condition is continued self-supervised pretraining on the target domain before adaptation, following <a href="https://arxiv.org/abs/2406.05493">ExPLoRA</a>.</p>
 </div>
-<p><strong>Practical notes.</strong> Do not attempt DINOv3 ViT-7B. DINOv2 is ungated and Apache 2.0; build the pipeline on it first. DINOv3’s licence is non-standard and gated but not stated as categorically non-commercial; an industry use requires institutional/legal review. MVTec itself is non-commercial, so it cannot serve as an industry dataset without separate permission.</p>
+<p><strong>Practical notes.</strong> DINOv2 is ungated and Apache 2.0 — build the pipeline on it first. MVTec’s licence is non-commercial, so results cannot be repurposed for industrial use without separate permission.</p>
 <div class="project-back">
 <a href="#top">Back to category introduction ↑</a>
 </div>
@@ -748,8 +750,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vision-foundation-models.html#project-3-1" class="pagination-link" aria-label="3.1  Adapting DINO backbones for land cover or industrial anomalies">
-        <span class="nav-page-text">3.1 Adapting DINO backbones for land cover or industrial anomalies</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vision-foundation-models.html#project-3-1" class="pagination-link" aria-label="3.1  Adapting DINO backbones for industrial anomaly detection">
+        <span class="nav-page-text">3.1 Adapting DINO backbones for industrial anomaly detection</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

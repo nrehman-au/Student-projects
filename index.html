@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vision-foundation-models.html#project-3-1" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3.1 Adapting DINO backbones for land cover or industrial anomalies</span></a>
+ <span class="menu-text">3.1 Adapting DINO backbones for industrial anomaly detection</span></a>
   </div>
 </li>
       </ul>
@@ -356,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="thirteen-student-project-options" class="level2 hero-panel">
 <h2 class="anchored" data-anchor-id="thirteen-student-project-options">Thirteen student project options</h2>
-<p>Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.</p>
+<p>Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.</p>
 <p><a href="#categories" class="btn btn-primary">Explore the four categories</a> <a href="downloads/student-project-portfolio.pdf" class="btn btn-outline-primary">Download the PDF</a></p>
 </section>
 <section id="categories" class="level2">
@@ -394,7 +394,7 @@ Category 3 · 1 project
 Deep-learning vision models and applications
 </h3>
 <p>
-Adapt a pretrained visual encoder to land-cover classification or industrial anomaly detection.
+Adapt a pretrained visual encoder to industrial anomaly detection, and measure what the adaptation actually buys.
 </p>
 <a class="btn btn-outline-primary" href="vision-foundation-models.html">View Category 3</a>
 </section>
@@ -414,7 +414,35 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 </section>
 <section id="how-the-projects-are-structured" class="level2">
 <h2 class="anchored" data-anchor-id="how-the-projects-are-structured">How the projects are structured</h2>
-<p><strong>Bachelor projects</strong> emphasise implementation, fair comparison and one focused ablation. <strong>Master projects</strong> add a stated research question, a method or evaluation change, multiple runs and a detailed analysis. A controlled negative result is acceptable when the evaluation answers the stated question.</p>
+<p>Every project states <strong>one research question</strong> and the core experiment that answers it. <strong>Bachelor projects</strong> answer an empirical question about an established method using a fixed dataset, fair baselines and a careful analysis — no new architecture is required. <strong>Master projects</strong> add a new mechanism, view or protocol, multiple runs and a deeper analysis.</p>
+<p>A controlled negative result is a valid outcome. Several projects state in advance that the expected answer to their question may be “no”; finding and explaining that is the contribution, not a failure.</p>
+<p>Each project is labelled with one of three levels:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>BSc or MSc</strong></td>
+<td>Both routes are viable; each scope box describes a real project</td>
+</tr>
+<tr class="even">
+<td><strong>BSc recommended</strong></td>
+<td>The Master route is narrow; normally offered at Bachelor level</td>
+</tr>
+<tr class="odd">
+<td><strong>MSc only</strong></td>
+<td>No Bachelor variant is offered, and the project page explains why. Some say a Bachelor route can open if a stated precondition is met</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="portfolio-index" class="level2">
 <h2 class="anchored" data-anchor-id="portfolio-index">Portfolio index</h2>
@@ -427,7 +455,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="header">
 <th>ID</th>
 <th>Project</th>
-<th>Suggested level</th>
+<th>Level</th>
 <th>Compute</th>
 </tr>
 </thead>
@@ -448,12 +476,12 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <td><a href="graph-applications.html#project-1-3">1.3</a></td>
 <td>Illicit Bitcoin transaction detection</td>
 <td>BSc or MSc</td>
-<td>Moderate</td>
+<td>Light to moderate</td>
 </tr>
 <tr class="even">
 <td><a href="graph-applications.html#project-1-4">1.4</a></td>
 <td>Graph-based movie recommendation with accuracy and coverage</td>
-<td>BSc preferred</td>
+<td>BSc recommended</td>
 <td>Very light</td>
 </tr>
 <tr class="odd">
@@ -473,7 +501,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="header">
 <th>ID</th>
 <th>Project</th>
-<th>Suggested level</th>
+<th>Level</th>
 <th>Compute</th>
 </tr>
 </thead>
@@ -481,7 +509,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="odd">
 <td><a href="time-series-ssl.html#project-2-1">2.1</a></td>
 <td>Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles</td>
-<td>BSc or MSc</td>
+<td>MSc only — BSc possible if the data is pre-segmented and regime-labelled</td>
 <td>Light to moderate</td>
 </tr>
 <tr class="even">
@@ -493,7 +521,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="odd">
 <td><a href="time-series-ssl.html#project-2-3">2.3</a></td>
 <td>Lead-aware masked learning for 12-lead ECG</td>
-<td>MSc preferred</td>
+<td>MSc only — BSc possible with a supplied dataloader</td>
 <td>Moderate</td>
 </tr>
 <tr class="even">
@@ -505,13 +533,13 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="odd">
 <td><a href="time-series-ssl.html#project-2-5">2.5</a></td>
 <td>Self-supervised learning on heat-pump smart-meter data</td>
-<td>Preliminary check</td>
+<td>MSc only — BSc possible once the licence and labels are confirmed</td>
 <td>Light to moderate after preprocessing</td>
 </tr>
 <tr class="even">
 <td><a href="time-series-ssl.html#project-2-6">2.6</a></td>
 <td>Graph self-supervised learning from vibration signals</td>
-<td>MSc preferred</td>
+<td>MSc only</td>
 <td>Moderate preprocessing</td>
 </tr>
 </tbody>
@@ -519,22 +547,22 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 </section>
 <section id="category-3-deep-learning-vision-models-and-applications" class="level3">
 <h3 class="anchored" data-anchor-id="category-3-deep-learning-vision-models-and-applications"><a href="vision-foundation-models.html">Category 3 — Deep-learning vision models and applications</a></h3>
-<p>Adapting pretrained visual representations to a specialised classification or anomaly task.</p>
+<p>Adapting pretrained visual representations to a specialised anomaly-detection task.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>ID</th>
 <th>Project</th>
-<th>Suggested level</th>
+<th>Level</th>
 <th>Compute</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><a href="vision-foundation-models.html#project-3-1">3.1</a></td>
-<td>Adapting DINO backbones for land cover or industrial anomalies</td>
+<td>Adapting DINO backbones for industrial anomaly detection</td>
 <td>BSc or MSc</td>
-<td>Moderate</td>
+<td>Light to moderate</td>
 </tr>
 </tbody>
 </table>
@@ -547,7 +575,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="header">
 <th>ID</th>
 <th>Project</th>
-<th>Suggested level</th>
+<th>Level</th>
 <th>Compute</th>
 </tr>
 </thead>
@@ -555,7 +583,7 @@ Unroll a classical iterative signal-decomposition algorithm into a trainable, le
 <tr class="odd">
 <td><a href="signal-processing.html#project-4-1">4.1</a></td>
 <td>Deep-unfolded multivariate VMD for correlated multichannel signals</td>
-<td>MSc preferred</td>
+<td><strong>MSc only</strong></td>
 <td>Light to moderate</td>
 </tr>
 </tbody>
