@@ -7,22 +7,23 @@ toc-depth: 2
 
 <span id="top"></span>
 
-A **vision foundation model** is a large image encoder pretrained on broad image collections so that its internal features can be reused for many later tasks. Vision Transformers divide an image into patches, treat those patches as tokens and learn relationships among them. Self-supervised models such as DINO learn useful visual structure without requiring a class label for every pretraining image.
+A **vision foundation model** is an image encoder pretrained on a large image collection and reused for later tasks. Vision Transformers divide an image into patches and learn a feature vector for each patch. Self-supervised models such as DINO learn these features without class labels.
 
-In these projects, students do not train a foundation model from the beginning. They start from a pretrained backbone and add only what is needed for the task — often nothing at all, because DINO's patch features are already strong enough to compare images directly. For industrial inspection, patch-level representations may show where a surface differs from normal examples.
+Students do not train a foundation model from scratch. In industrial anomaly detection, a frozen encoder can compare a test image with known normal images and identify unusual patches. An adapter can instead modify the encoder using the available normal images and deliberately generated synthetic defects.
 
-The central evaluation separates what the pretrained backbone already provides from what the student's adaptation contributes. A frozen backbone, a parameter-efficient adapter and — where hardware permits — a full fine-tune are compared using the same data, split and backbone, with performance reported alongside the number of trainable parameters and the compute cost.
+The evaluation must keep the anomaly-detection protocol fixed. MVTec training sets contain normal images only; real test defects cannot be used to train or tune the model. Frozen features, parameter-efficient adaptation and full fine-tuning are comparable only when they use the same training information and objective.
 
 ::: {.category-callout}
 **Three ways to adapt a pretrained backbone**
 
-**Freeze it** and compare features directly, or train only a small head. **Adapt it efficiently** by inserting small trainable modules (LoRA or adapters) into an otherwise frozen network, typically training under 10% of the parameters. **Fine-tune everything**, which is the most expressive and the most expensive. Knowing how much each step actually buys is the point of these projects.
+**Freeze it** and score distances from normal reference patches. **Adapt it efficiently** by training small LoRA or adapter modules. **Fine-tune it** by updating the complete encoder. Adaptation requires a stated objective; in this project it uses normal images and synthetic corruptions, not real test defects.
 :::
 
 ## Learn first and find ideas
 
-- Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), and [AnomalyDINO](https://arxiv.org/abs/2405.14529).
+- Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), and [AnomalyDINO](https://arxiv.org/abs/2405.14529) with its [official code](https://github.com/dammsi/AnomalyDINO).
 - Parameter-efficient adaptation: [LoRA](https://arxiv.org/abs/2106.09685) and the [Hugging Face PEFT library](https://github.com/huggingface/peft).
+- Synthetic-defect training: [CutPaste](https://arxiv.org/abs/2104.04015) and [DRAEM](https://arxiv.org/abs/2108.07610) with its [official code](https://github.com/VitjanZ/DRAEM).
 - Data and model hubs: [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), [Hugging Face models](https://huggingface.co/models) and [timm](https://github.com/huggingface/pytorch-image-models).
 - Keep zero-shot, one-shot, few-shot and full-shot anomaly results separate, and never compare an image-level metric directly with a pixel-level metric.
 
@@ -35,35 +36,33 @@ Use the contents panel or the project links in the left navigation to move direc
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Image-level anomaly detection and pixel-level anomaly localisation</span>
 <span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light for the frozen route (no training); moderate for adapters — a single 8–16 GB consumer GPU covers the whole project</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light for frozen features; moderate for adaptation (12–24 GB GPU recommended)</span>
 <span class="meta-label">Data</span><span class="meta-value">[MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) — 5,354 images, 15 categories, pixel-precise masks, CC BY-NC-SA 4.0</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Oquab et al., [DINOv2](https://arxiv.org/abs/2304.07193), 2023</span>
 :::
 
 ::: {.project-intro}
-**What you will do.** A DINOv2 backbone produces strong general-purpose image features without ever having seen an industrial defect. Find out how much of the work is already done by those frozen features, and how much is added by actually adapting the backbone to the inspection task.
+**What you will do.** Use DINOv2 patch features to detect and locate defects from normal reference images. The BSc project studies the frozen detector. The MSc project tests adaptation using normal images and synthetic defects.
 :::
 
-**Data.** MVTec AD is the standard benchmark that comparable published work reports on, which makes results directly comparable. Most categories contain only 60–390 defect-free training images, so this is a one-class problem. [MVTec AD 2](https://www.mvtec.com/company/research/datasets/mvtec-ad-2) (8,000+ images, 8 harder scenarios) is the MSc secondary benchmark — see the Master scope for why it matters. Both are non-commercial research licences.
+**Data.** [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) contains 5,354 images in 15 categories, with defect-free training images and labelled normal and defective test images. [MVTec AD 2](https://www.mvtec.com/research-teaching/datasets/mvtec-ad-2) contains 8,000+ images in eight harder scenarios and includes unseen lighting conditions. Both use CC BY-NC-SA 4.0; MVTec AD 2 also has a private-test evaluation server.
 
-**Methods and code.** DINOv2 **ViT-S/14** by default, or ViT-B/14 with ≥16 GB, from the [official Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://arxiv.org/abs/2405.14529)'s patch-similarity approach, which is **training-free** — only a forward pass. Parameter-efficient adaptation uses LoRA or adapter modules via [PEFT](https://github.com/huggingface/peft). Do not use ViT-L/g or DINOv3 ViT-7B; they are unnecessary here and outside the compute budget.
+**Methods and code.** Use DINOv2 **ViT-S/14** from the [Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://github.com/dammsi/AnomalyDINO): store normal patch features and score each test patch by its distance to the memory bank. The MSc route trains LoRA or adapters with [PEFT](https://github.com/huggingface/peft), using only normal training images and synthetic corruptions. Larger backbones are optional, not required.
 
-**Baselines and evaluation.** Frozen DINOv2 with patch nearest-neighbour scoring; a frozen linear or MLP probe; LoRA or adapter adaptation; full fine-tuning only if hardware permits; and a non-DINO reference such as PatchCore-style nearest neighbours over an ImageNet-pretrained CNN. Report image-level AUROC, pixel-level AUROC and PRO per category, **and** the number of trainable parameters plus GPU memory and training time for each condition — the cost side is part of the result, not an afterthought.
+**Baselines and evaluation.** Compare frozen AnomalyDINO with [PatchCore](https://arxiv.org/abs/2106.08265). For the MSc route, compare frozen DINOv2, LoRA/adapter adaptation and full fine-tuning under the same synthetic-defect objective. Report image AUROC, pixel AUROC and the official AU-PRO measure per category, plus trainable parameters, memory and runtime. Keep shot count and public/private test protocols separate.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **How much of DINOv2's anomaly-detection performance is already present in its frozen features, before any training?**
+**Bachelor research question.** **How do the number of normal reference images and the selected DINOv2 feature layer affect defect detection and localisation?**
 
-*Core experiment.* Compare three conditions on MVTec AD with ViT-S/14: frozen features with patch nearest-neighbour scoring (no training at all), a frozen linear probe, and one LoRA configuration. Report accuracy against trainable-parameter count for each.
-
-The frozen baseline requires no training, so a working anomaly detector is available from the start and the project time goes into analysis.
+*Core experiment.* Reproduce AnomalyDINO on MVTec AD with ViT-S/14. Compare 1, 4 and 16 normal reference images, two feature layers selected in advance, and PatchCore. Repeat the reference-image sampling and analyse false positives and localisation errors. No model training is required.
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **How much can parameter-efficient adaptation recover of the gap between frozen features and full fine-tuning, at a fraction of the trainable parameters — and does that trade-off change on a benchmark that has not yet saturated?** Run the full ladder — frozen, linear probe, LoRA/adapter, full fine-tune — on **both** MVTec AD and MVTec AD 2, with parameter counts and compute cost reported throughout.
+**Master research question.** **Can parameter-efficient adaptation using only normal images and synthetic defects improve detection of real, unseen defects without reducing robustness to lighting changes?** Define one synthetic-defect generator and one feature-consistency or segmentation objective. Compare frozen DINOv2, LoRA/adapter adaptation and full fine-tuning with identical data and losses on MVTec AD and MVTec AD 2. Ablate the adapter depth and synthetic-defect generator.
 
-**Why the second benchmark.** MVTec AD is saturated: published methods cluster above 99% image AUROC, so all four adaptation strategies may look identical on it. MVTec AD 2 was built in response to that saturation and current methods score below 60% AU-PRO, leaving room for the comparison to resolve a difference. An optional extension is continued self-supervised pretraining on the target domain before adaptation, following [ExPLoRA](https://arxiv.org/abs/2406.05493).
+The contribution is the adaptation and its controlled evaluation. Training on real test defects, or tuning choices repeatedly on the public test labels, would invalidate the unsupervised setting.
 :::
 
-**Practical notes.** DINOv2 is ungated and Apache 2.0 — build the pipeline on it first. MVTec's licence is non-commercial, so results cannot be repurposed for industrial use without separate permission.
+**Practical notes.** DINOv2 code and standard weights are ungated and Apache 2.0. MVTec data is restricted to non-commercial use. Complete the BSc frozen baseline before beginning any adaptation.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

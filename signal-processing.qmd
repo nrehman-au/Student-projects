@@ -7,21 +7,21 @@ toc-depth: 2
 
 <span id="top"></span>
 
-Many classical signal-processing methods are **iterative optimisation algorithms**: a decomposition, reconstruction or filtering result is obtained by repeating a fixed update rule until convergence, using hyperparameters that are set once and applied to every signal. **Algorithm unrolling**, also called **deep unfolding**, rewrites a fixed number of iterations of such an algorithm as the layers of a neural network. The algorithm's update equations fix the network's architecture, so the model stays interpretable, while its hyperparameters become trainable weights, learned end to end from data instead of tuned once by hand.
+Many signal-processing methods repeat a fixed optimisation step until convergence. **Algorithm unrolling**, also called **deep unfolding**, turns a fixed number of those iterations into neural-network layers. The update equations determine the network structure, while selected algorithm parameters are learned from data.
 
-This differs from the representation-learning projects in Category 2: there, a generic encoder learns a representation through a self-supervised pretext task. Here, the network architecture itself *is* a classical algorithm, truncated to a handful of layers and made learnable. The typical finding across the field is that a handful of unrolled, learned iterations matches or beats an algorithm run to full convergence with a fixed hyperparameter, at a fraction of the compute.
+This differs from Category 2: the network is a truncated version of a known algorithm, not a general-purpose encoder. Evaluation must therefore test both numerical correctness and the downstream task. Faster execution alone is insufficient if the learned layers no longer perform the intended decomposition.
 
 ::: {.category-callout}
 **A Master-level category**
 
-Projects here require deriving and validating an unrolled version of a published iterative algorithm — graduate-level optimisation and signal processing. The Master bar is a new, justified design decision about what the unrolling makes learnable, not reproducing an existing unrolled method on a new dataset.
+This category requires graduate-level optimisation and signal processing. The contribution is a justified change to the unrolled algorithm and a controlled comparison with the converged classical method.
 :::
 
 ## Learn first and find ideas
 
 - General unrolling: Gregor & LeCun, [Learning Fast Approximations of Sparse Coding (LISTA)](https://icml.cc/Conferences/2010/papers/449.pdf), ICML 2010 — the founding example, unrolling ISTA. Monga, Li & Eldar, [Algorithm Unrolling](https://arxiv.org/abs/1912.10557), IEEE SPM 2021 — the field's main survey. Yang, Sun, Li & Xu, [Deep ADMM-Net for Compressive Sensing MRI](http://papers.neurips.cc/paper/6406-deep-admm-net-for-compressive-sensing-mri.pdf), NeurIPS 2016 — unrolling a coupled, multi-variable ADMM iteration.
 - Signal decomposition: Dragomiretskiy & Zosso, [Variational Mode Decomposition](https://doi.org/10.1109/TSP.2013.2288675), IEEE TSP 2014, with [reference Python code](https://github.com/vrcarva/vmdpy). Rehman & Aftab, [Multivariate Variational Mode Decomposition](https://doi.org/10.1109/TSP.2019.2951223), IEEE TSP 2019.
-- Ahmad, Wesemann, Waschkowski & Khalid, [Robust Spatiotemporal Forecasting Using Adaptive Deep-Unfolded VMD](https://arxiv.org/abs/2509.00703), 2025, with [official code](https://github.com/OsamaAhmad369/MAGN) — the anchor paper, unrolling single-channel VMD.
+- Ahmad, Wesemann, Waschkowski & Khalid, [Robust Spatiotemporal Forecasting Using Adaptive Deep-Unfolded VMD](https://arxiv.org/abs/2509.00703), 2025 preprint, with [authors' repository](https://github.com/OsamaAhmad369/MAGN) — the anchor method for unrolling single-channel VMD. The repository currently has no licence file.
 
 ## Projects in this category
 
@@ -30,31 +30,31 @@ Use the contents panel or the project links in the left navigation to move direc
 ## 4.1  Deep-unfolded multivariate VMD for correlated multichannel signals {#project-4-1}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Algorithm unrolling: a coupled multivariate optimisation algorithm rewritten as learnable layers, evaluated as decomposition and as a forecasting preprocessing module</span>
+<span class="meta-label">Task</span><span class="meta-value">Unroll multivariate VMD and evaluate decomposition, robustness and forecasting</span>
 <span class="meta-label">Level</span><span class="meta-value">MSc only</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light for the synthetic benchmark; moderate for the applied task (single 8+ GB consumer GPU)</span>
-<span class="meta-label">Data</span><span class="meta-value">Synthetic multichannel benchmark (required) plus [LargeST](https://github.com/liuxu77/LargeST) traffic forecasting; licence to be confirmed</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light for synthetic tests; moderate for LargeST-SD (12–24 GB GPU recommended)</span>
+<span class="meta-label">Data</span><span class="meta-value">Synthetic multichannel signals plus [LargeST-SD](https://github.com/liuxu77/LargeST) — 716 sensors, CC BY-NC 4.0</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Ahmad, Wesemann, Waschkowski & Khalid, [Adaptive Deep-Unfolded VMD](https://arxiv.org/abs/2509.00703), 2025</span>
 :::
 
 ::: {.project-intro}
-**What you will do.** Variational Mode Decomposition splits a signal into band-limited modes by solving a constrained optimisation problem with ADMM. A 2025 paper unrolls that iteration into a small stack of learnable layers ("UVMD"), cutting decomposition time roughly 250-fold — but for a single channel at a time. Multivariate VMD already extends classical VMD to couple channels through one *shared* centre frequency per mode. No deep-unfolded version of that coupled algorithm exists. You will design one.
+**What you will do.** Variational Mode Decomposition separates a signal into band-limited modes. MVMD extends it to several channels by estimating a shared centre frequency for each mode. You will turn a fixed number of MVMD iterations into trainable layers and test whether robust cross-channel weighting helps when some channels are noisy.
 :::
 
-**Project goal.** Unroll MVMD's cross-channel frequency-coupling step into a learnable module that keeps the coupling genuine — rather than collapsing back into independent per-channel UVMD — and test whether coupling correlated channels, with the coupling weights themselves learnable, improves decomposition accuracy, noise robustness and downstream task performance.
+**Project goal.** Build a coupled unrolled MVMD whose output for one channel depends on the other channels. Replace equal averaging in the shared-frequency update with permutation-invariant weights derived from each channel's residual. Test whether the weights reduce the influence of corrupted channels without collapsing onto one channel.
 
-**Data.** **Required:** a synthetic multichannel benchmark with known ground-truth modes, centre frequencies and channel counts (2–32) at varied SNR, following the validation protocol of the VMD and MVMD papers — the algorithm-design claims rest on this. **Required applied task:** [LargeST](https://github.com/liuxu77/LargeST) traffic forecasting (up to 8,600 California sensors; also on [Kaggle](https://www.kaggle.com/datasets/liuxu77/largest)), the anchor paper's own benchmark — confirm its licence before allocation. **Optional generalisation check:** the [CTU-UHB Intrapartum Cardiotocography Database](https://physionet.org/content/ctu-uhb-ctgdb/1.0.0/) (PhysioNet, open, non-commercial, 552 recordings), the bivariate application MVMD's own paper used.
+**Data.** First use synthetic signals with known modes and centre frequencies, 2–32 channels, varied SNR and controlled channel corruption. Then use the **San Diego 2019 subset** of [LargeST](https://github.com/liuxu77/LargeST): 716 traffic sensors aggregated to 15-minute intervals. The full California and Greater Los Angeles datasets are outside the project compute budget. LargeST data is CC BY-NC 4.0 and its benchmark code is MIT-licensed.
 
-**Methods and code.** Start from the anchor paper's [official UVMD implementation](https://github.com/OsamaAhmad369/MAGN) — both the baseline to beat and the single-channel building block to extend. Use [vmdpy](https://github.com/vrcarva/vmdpy) as a numerically clean classical reference for validating each unrolled layer. No Python port of classical MVMD exists; porting the official [MATLAB implementation](https://www.mathworks.com/matlabcentral/fileexchange/72814-multivariate-variational-mode-decomposition) is a well-scoped first task and doubles as the classical baseline.
+**Methods and code.** Validate classical MVMD using the [original MATLAB implementation](https://www.mathworks.com/matlabcentral/fileexchange/72814-multivariate-variational-mode-decomposition) and an [MIT-licensed Python implementation](https://github.com/Dmocrito/mvmd). Reimplement the UVMD equations from the [anchor paper](https://arxiv.org/abs/2509.00703), then extend them to the coupled update. The authors' MAGN repository may be inspected, but its code should not be copied or modified without licence clarification.
 
-**Baselines and evaluation.** Classical MVMD run to convergence; classical single-channel VMD applied per channel; UVMD applied per channel (the direct competitor); the proposed jointly unrolled MVMD; and an ablation with coupling present but channel weights fixed equal, to isolate whether coupling alone explains any gain. On synthetic data report per-mode reconstruction error, centre-frequency error against channel count and SNR, layers needed to match converged MVMD, and wall-clock time. On LargeST report MAE/RMSE/MAPE across horizons on at least two regions. At least three seeds for every learned method.
+**Baselines and evaluation.** Compare per-channel VMD, converged MVMD, per-channel UVMD, equal-weight unrolled MVMD and the proposed robust-weighted version. On synthetic data report reconstruction error, centre-frequency error, runtime and performance across SNR, channel count and corrupted-channel fraction. On LargeST-SD use one fixed compact forecaster for raw data and every decomposition method; report MAE and RMSE at 15, 30 and 60 minutes. Use chronological splits and at least three seeds for learned methods.
 
 ::: {.scope .scope-msc}
-**Master research question.** **Does a jointly unrolled, learnably-weighted multivariate VMD recover shared oscillatory structure across correlated channels more accurately and more robustly to per-channel noise than either classical MVMD or independently-applied single-channel UVMD — and does that advantage survive into a downstream forecasting task?**
+**Master research question.** **Can a fixed-depth unrolled MVMD match converged MVMD, and can residual-based channel weighting improve shared-frequency recovery when some channels are corrupted?**
 
-The minimum contribution is (1) a correctly implemented coupled unrolled update, verified not to silently collapse into independent per-channel UVMD, (2) a learnable channel-weighting mechanism in the coupling step, ablated against equal-weight pooling, and (3) the full baseline comparison on both the synthetic benchmark and LargeST. Reproducing the anchor paper's per-channel UVMD alone is a reproduction study, not the contribution.
+The minimum contribution is a correct coupled update, residual-based channel weighting, and an equal-weight ablation. Test unseen SNR levels and channel counts. LargeST-SD is a secondary test of whether decomposition improvements affect forecasting; it is not necessary to reproduce the full MAGN benchmark.
 :::
 
-**Practical notes.** Validate every unrolled layer against `vmdpy`'s classical update before adding any learning. Write an early test that would fail if the implementation reduced to independent per-channel UVMDs — for example, verify that one channel's output has a non-zero gradient with respect to another channel's input. The cross-channel coupling is the entire point of the project. Confirm LargeST's licence before committing to it; the synthetic benchmark plus CTU-UHB is a sufficient fallback. The anchor repository has no licence file — check with its authors before reusing its code beyond research and study.
+**Practical notes.** This is a high-risk MSc topic. In the first two weeks, recover known synthetic modes with classical MVMD, reproduce one UVMD result, and verify that one channel's output has a non-zero gradient with respect to another channel's input. Do not start LargeST until these tests pass. Regularise or constrain the channel weights and report their effective number so that apparent robustness is not produced by selecting one channel.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
