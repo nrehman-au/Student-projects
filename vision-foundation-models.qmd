@@ -9,57 +9,61 @@ toc-depth: 2
 
 A **vision foundation model** is a large image encoder pretrained on broad image collections so that its internal features can be reused for many later tasks. Vision Transformers divide an image into patches, treat those patches as tokens and learn relationships among them. Self-supervised models such as DINO learn useful visual structure without requiring a class label for every pretraining image.
 
-In these projects, students do not train a foundation model from the beginning. They use a pretrained backbone as a **frozen feature extractor** and train only a small prediction head or adapter. For land-cover classification, the representation may separate forests, rivers and residential areas. For industrial inspection, patch-level representations may show where a surface differs from normal examples.
+In these projects, students do not train a foundation model from the beginning. They start from a pretrained backbone and add only what is needed for the task — often nothing at all, because DINO's patch features are already strong enough to compare images directly. For industrial inspection, patch-level representations may show where a surface differs from normal examples.
 
-The central evaluation separates what the pretrained backbone already provides from what the student's adaptation contributes. A frozen linear probe, a lightweight adapter and—where feasible—a full fine-tune are compared using the same labels, split and backbone. Performance is reported together with the number of trainable parameters and compute cost.
+The central evaluation separates what the pretrained backbone already provides from what the student's adaptation contributes. A frozen backbone, a parameter-efficient adapter and — where hardware permits — a full fine-tune are compared using the same data, split and backbone, with performance reported alongside the number of trainable parameters and the compute cost.
 
 ::: {.category-callout}
-**Choosing a project track**
+**Three ways to adapt a pretrained backbone**
 
-The project has two separate tracks. EuroSAT RGB supports the Bachelor classification route. MVTec dense anomaly localisation or multispectral EuroSAT supports a more complex Master route.
+**Freeze it** and compare features directly, or train only a small head. **Adapt it efficiently** by inserting small trainable modules (LoRA or adapters) into an otherwise frozen network, typically training under 10% of the parameters. **Fine-tune everything**, which is the most expressive and the most expensive. Knowing how much each step actually buys is the point of these projects.
 :::
 
 ## Learn first and find ideas
 
-- Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), [DINOv3](https://arxiv.org/abs/2508.10104) and [AnomalyDINO](https://arxiv.org/abs/2405.14529).
-- Data and model hubs: [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), [EuroSAT](https://github.com/phelber/EuroSAT), [Hugging Face models](https://huggingface.co/models) and [timm](https://github.com/huggingface/pytorch-image-models).
+- Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), and [AnomalyDINO](https://arxiv.org/abs/2405.14529).
+- Parameter-efficient adaptation: [LoRA](https://arxiv.org/abs/2106.09685) and the [Hugging Face PEFT library](https://github.com/huggingface/peft).
+- Data and model hubs: [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), [Hugging Face models](https://huggingface.co/models) and [timm](https://github.com/huggingface/pytorch-image-models).
 - Keep zero-shot, one-shot, few-shot and full-shot anomaly results separate, and never compare an image-level metric directly with a pixel-level metric.
 
 ## Projects in this category
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 3.1  Adapting DINO backbones for land cover or industrial anomalies {#project-3-1}
+## 3.1  Adapting DINO backbones for industrial anomaly detection {#project-3-1}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Image classification or image/pixel anomaly detection</span>
-<span class="meta-label">Recommended level</span><span class="meta-value">BSc or MSc with separate tracks</span>
-<span class="meta-label">Compute</span><span class="meta-value">Moderate; frozen ViT-S practical on 8 GB, dense MSc work may need more</span>
+<span class="meta-label">Task</span><span class="meta-value">Image-level anomaly detection and pixel-level anomaly localisation</span>
+<span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
+<span class="meta-label">Compute</span><span class="meta-value">Light for the frozen route (no training); moderate for adapters — a single 8–16 GB consumer GPU covers the whole project</span>
+<span class="meta-label">Data</span><span class="meta-value">[MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) — 5,354 images, 15 categories, pixel-precise masks, CC BY-NC-SA 4.0</span>
 <span class="meta-label">Starting paper</span><span class="meta-value">Oquab et al., [DINOv2](https://arxiv.org/abs/2304.07193), 2023</span>
 :::
 
 ::: {.project-intro}
-**What you will do.** Use a pretrained self-supervised vision transformer as a frozen feature extractor. Train a small head or adapter for a specialised task. Measure the performance of frozen features and test whether an adapter still contributes when a newer backbone is used.
+**What you will do.** A DINOv2 backbone produces strong general-purpose image features without ever having seen an industrial defect. Find out how much of the work is already done by those frozen features, and how much is added by actually adapting the backbone to the inspection task.
 :::
 
-**Project goal.** Quantify the trade-off among task performance, number of trainable parameters and supervision. Choose **one** track: EuroSAT RGB land-cover classification or MVTec industrial anomaly detection/localisation.
+**Data.** MVTec AD is the standard benchmark that comparable published work reports on, which makes results directly comparable. Most categories contain only 60–390 defect-free training images, so this is a one-class problem. [MVTec AD 2](https://www.mvtec.com/company/research/datasets/mvtec-ad-2) (8,000+ images, 8 harder scenarios) is the MSc secondary benchmark — see the Master scope for why it matters. Both are non-commercial research licences.
 
-**Data.** **BSc/default classification track:** [EuroSAT](https://github.com/phelber/EuroSAT), 27,000 Sentinel-2 patches in 10 classes. Use the **RGB** version for ordinary DINO backbones; the 13-band version requires an explicit multispectral adapter and is a separate MSc question. **MSc anomaly track:** [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), more than 5,000 images in 15 categories with pixel masks, CC BY-NC-SA 4.0 for non-commercial research.
+**Methods and code.** DINOv2 **ViT-S/14** by default, or ViT-B/14 with ≥16 GB, from the [official Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://arxiv.org/abs/2405.14529)'s patch-similarity approach, which is **training-free** — only a forward pass. Parameter-efficient adaptation uses LoRA or adapter modules via [PEFT](https://github.com/huggingface/peft). Do not use ViT-L/g or DINOv3 ViT-7B; they are unnecessary here and outside the compute budget.
 
-**Methods and starting code.** Default to DINOv2 ViT-S/14 from the [official Apache-2.0 repository and model card](https://github.com/facebookresearch/dinov2). Compare frozen linear/MLP probes, k-NN or [AnomalyDINO](https://arxiv.org/abs/2405.14529) patch similarity, and a lightweight multi-scale adapter. DINOv3 is optional through the [official repository](https://github.com/facebookresearch/dinov3); its weights are gated under a custom Meta licence.
-
-**Required baselines.** From-scratch CNN, ImageNet-pretrained ResNet or ViT, frozen DINOv2 with no adapter, lightweight adapter and full fine-tuning only if hardware permits. On MVTec, include a simple nearest-neighbour patch baseline and keep zero-shot, one-shot, few-shot and full-shot protocols separate.
-
-**Evaluation.** EuroSAT: top-1 accuracy, macro-F1, label-efficiency curve and trainable parameters. MVTec: image AUROC plus pixel AUROC/PRO or pixel F1-max, reported by category and protocol. Measure inference memory/latency. Never compare a one-shot image metric directly with a zero-shot pixel metric.
+**Baselines and evaluation.** Frozen DINOv2 with patch nearest-neighbour scoring; a frozen linear or MLP probe; LoRA or adapter adaptation; full fine-tuning only if hardware permits; and a non-DINO reference such as PatchCore-style nearest neighbours over an ImageNet-pretrained CNN. Report image-level AUROC, pixel-level AUROC and PRO per category, **and** the number of trainable parameters plus GPU memory and training time for each condition — the cost side is part of the result, not an afterthought.
 
 ::: {.scope .scope-bsc}
-**Bachelor scope.** Use EuroSAT RGB. Compare a frozen DINOv2 ViT-S linear probe with an ImageNet-pretrained CNN and, if feasible, a small adapter at several label budgets.
+**Bachelor research question.** **How much of DINOv2's anomaly-detection performance is already present in its frozen features, before any training?**
+
+*Core experiment.* Compare three conditions on MVTec AD with ViT-S/14: frozen features with patch nearest-neighbour scoring (no training at all), a frozen linear probe, and one LoRA configuration. Report accuracy against trainable-parameter count for each.
+
+This is a good first project because the strongest baseline requires no training whatsoever — you can have a working anomaly detector on day one and spend the project understanding it rather than fighting it.
 :::
 
 ::: {.scope .scope-msc}
-**Master research question and contribution.** Choose one question. **Dense anomaly route:** can a supervised multi-scale adapter over frozen patch tokens improve few-shot localisation at a fixed label and parameter budget, and does the gain remain after switching DINOv2 to DINOv3? **Remote-sensing route:** can a small multispectral input adapter exploit 13 bands without full backbone fine-tuning? Report cross-version or cross-band ablations so the adapter's value is isolated.
+**Master research question.** **How much can parameter-efficient adaptation recover of the gap between frozen features and full fine-tuning, at a fraction of the trainable parameters — and does that trade-off change on a benchmark that has not yet saturated?** Run the full ladder — frozen, linear probe, LoRA/adapter, full fine-tune — on **both** MVTec AD and MVTec AD 2, with parameter counts and compute cost reported throughout.
+
+**Why the second benchmark is essential.** MVTec AD is saturated: published methods cluster above 99% image AUROC, so all four adaptation strategies may look identical there. MVTec AD 2 was built because of that saturation and current methods score below 60% AU-PRO on it, which leaves room for the comparison to show a real difference. An optional stretch condition is continued self-supervised pretraining on the target domain before adaptation, following [ExPLoRA](https://arxiv.org/abs/2406.05493).
 :::
 
-**Practical notes.** Do not attempt DINOv3 ViT-7B. DINOv2 is ungated and Apache 2.0; build the pipeline on it first. DINOv3's licence is non-standard and gated but not stated as categorically non-commercial; an industry use requires institutional/legal review. MVTec itself is non-commercial, so it cannot serve as an industry dataset without separate permission.
+**Practical notes.** DINOv2 is ungated and Apache 2.0 — build the pipeline on it first. MVTec's licence is non-commercial, so results cannot be repurposed for industrial use without separate permission.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

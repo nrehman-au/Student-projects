@@ -8,7 +8,7 @@ toc: true
 ::: {.hero-panel}
 ## Thirteen student project options
 
-Each project entry states the task, data source and access conditions, starting papers and code, required baselines, evaluation protocol, Bachelor scope and a possible Master contribution.
+Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.
 
 [Explore the four categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
 :::
@@ -31,7 +31,7 @@ Each project entry states the task, data source and access conditions, starting 
   <section class="category-card category-card-3">
     <div class="category-number">Category 3 · 1 project</div>
     <h3>Deep-learning vision models and applications</h3>
-    <p>Adapt a pretrained visual encoder to land-cover classification or industrial anomaly detection.</p>
+    <p>Adapt a pretrained visual encoder to industrial anomaly detection, and measure what the adaptation actually buys.</p>
     <a class="btn btn-outline-primary" href="vision-foundation-models.html">View Category 3</a>
   </section>
   <section class="category-card category-card-4">
@@ -44,7 +44,17 @@ Each project entry states the task, data source and access conditions, starting 
 
 ## How the projects are structured
 
-**Bachelor projects** emphasise implementation, fair comparison and one focused ablation. **Master projects** add a stated research question, a method or evaluation change, multiple runs and a detailed analysis. A controlled negative result is acceptable when the evaluation answers the stated question.
+Every project states **one research question** and the core experiment that answers it. **Bachelor projects** answer an empirical question about an established method using a fixed dataset, fair baselines and a careful analysis — no new architecture is required. **Master projects** add a new mechanism, view or protocol, multiple runs and a deeper analysis.
+
+A controlled negative result is a valid outcome. Several projects state in advance that the expected answer to their question may be "no"; finding and explaining that is the contribution, not a failure.
+
+Each project is labelled with one of three levels:
+
+| Level | Meaning |
+|---|---|
+| **BSc or MSc** | Both routes are viable; each scope box describes a real project |
+| **BSc recommended** | The Master route is narrow; normally offered at Bachelor level |
+| **MSc only** | No Bachelor variant is offered, and the project page explains why. Some say a Bachelor route can open if a stated precondition is met |
 
 ## Portfolio index {#portfolio-index}
 
@@ -54,42 +64,42 @@ The complete list remains below, grouped by category. Select a category title fo
 
 Practical graph prediction problems in engineering, science, finance and recommendation.
 
-| ID | Project | Suggested level | Compute |
+| ID | Project | Level | Compute |
 |---|---|---|---|
 | [1.1](graph-applications.html#project-1-1) | Remaining useful life prediction for aircraft engines | BSc or MSc | Very light to light |
 | [1.2](graph-applications.html#project-1-2) | Multi-horizon traffic forecasting with data-driven graph structure | BSc or MSc | Light to moderate |
-| [1.3](graph-applications.html#project-1-3) | Illicit Bitcoin transaction detection | BSc or MSc | Moderate |
-| [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc preferred | Very light |
+| [1.3](graph-applications.html#project-1-3) | Illicit Bitcoin transaction detection | BSc or MSc | Light to moderate |
+| [1.4](graph-applications.html#project-1-4) | Graph-based movie recommendation with accuracy and coverage | BSc recommended | Very light |
 | [1.5](graph-applications.html#project-1-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
 
 ### [Category 2 — Self-supervised learning for time series](time-series-ssl.html)
 
 Representation learning from sensor, health and energy recordings with limited labels.
 
-| ID | Project | Suggested level | Compute |
+| ID | Project | Level | Compute |
 |---|---|---|---|
-| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | BSc or MSc | Light to moderate |
+| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc only — BSc possible if the data is pre-segmented and regime-labelled | Light to moderate |
 | [2.2](time-series-ssl.html#project-2-2) | Contrastive learning for wearable activity recognition | BSc or MSc | Light |
-| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc preferred | Moderate |
+| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc only — BSc possible with a supplied dataloader | Moderate |
 | [2.4](time-series-ssl.html#project-2-4) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
-| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | Preliminary check | Light to moderate after preprocessing |
-| [2.6](time-series-ssl.html#project-2-6) | Graph self-supervised learning from vibration signals | MSc preferred | Moderate preprocessing |
+| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | MSc only — BSc possible once the licence and labels are confirmed | Light to moderate after preprocessing |
+| [2.6](time-series-ssl.html#project-2-6) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
 
 ### [Category 3 — Deep-learning vision models and applications](vision-foundation-models.html)
 
-Adapting pretrained visual representations to a specialised classification or anomaly task.
+Adapting pretrained visual representations to a specialised anomaly-detection task.
 
-| ID | Project | Suggested level | Compute |
+| ID | Project | Level | Compute |
 |---|---|---|---|
-| [3.1](vision-foundation-models.html#project-3-1) | Adapting DINO backbones for land cover or industrial anomalies | BSc or MSc | Moderate |
+| [3.1](vision-foundation-models.html#project-3-1) | Adapting DINO backbones for industrial anomaly detection | BSc or MSc | Light to moderate |
 
 ### [Category 4 — Signal processing and deep-unfolded models](signal-processing.html)
 
 Turning classical iterative signal-processing algorithms into trainable, interpretable layers.
 
-| ID | Project | Suggested level | Compute |
+| ID | Project | Level | Compute |
 |---|---|---|---|
-| [4.1](signal-processing.html#project-4-1) | Deep-unfolded multivariate VMD for correlated multichannel signals | MSc preferred | Light to moderate |
+| [4.1](signal-processing.html#project-4-1) | Deep-unfolded multivariate VMD for correlated multichannel signals | **MSc only** | Light to moderate |
 
 ## What counts as a Bachelor or Master contribution
 

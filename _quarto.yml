@@ -77,7 +77,7 @@ website:
       - section: "3  Deep-learning vision models"
         href: vision-foundation-models.qmd
         contents:
-          - text: "3.1  Adapting DINO backbones for land cover or industrial anomalies"
+          - text: "3.1  Adapting DINO backbones for industrial anomaly detection"
             href: vision-foundation-models.qmd#project-3-1
       - section: "4  Signal processing"
         href: signal-processing.qmd

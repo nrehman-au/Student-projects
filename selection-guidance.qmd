@@ -4,20 +4,29 @@ description: "Choosing a project and avoiding common evaluation errors"
 toc: true
 ---
 
+## Projects offered at Bachelor level
+
+Eight projects are available as Bachelor projects: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.2** (UCI-HAR), **2.4** (ETT) and **3.1** (MVTec AD).
+
+Three further projects can open a Bachelor route once a stated precondition is met: **2.1** if the partner data arrives pre-segmented and regime-labelled, **2.3** if a PTB-XL dataloader and shared encoder are supplied, and **2.5** once the HEAPO licence and label counts are confirmed.
+
+**2.6** and **4.1** are Master-only, and each project page explains why.
+
 ## Suggested starting points
 
 | Project scope | Suggested projects |
 |---|---|
-| BSc with lower setup risk | 1.1 C-MAPSS, 1.4 MovieLens, 2.2 UCI-HAR, 3.1 EuroSAT RGB |
-| MSc with a defined method extension | 1.2 dynamic traffic graph, 2.4 decomposition-aware forecasting, 3.1 vision adapter, 4.1 deep-unfolded multivariate VMD |
+| BSc with lower setup risk | 1.4 MovieLens, 2.2 UCI-HAR, 3.1 frozen DINOv2 with patch nearest neighbours, 1.1 C-MAPSS |
+| BSc with a clear expected finding | 1.3 feature dominance under edge deletion, 1.5 fingerprints versus GNNs out of scaffold |
+| MSc with a defined method extension | 1.2 regime-conditioned traffic graph, 2.4 decomposition-aware forecasting, 3.1 adaptation ladder on an unsaturated benchmark |
 | MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.6 physics-grounded vibration graphs, 4.1 coupled deep-unfolded VMD |
-| Preliminary checks required | 2.1 Tetra Pak after the partner-data profile and agreement; 2.5 HEAPO after a licence and data check; 4.1 LargeST licence and applied-data check |
+| Preliminary checks required before allocation | 2.1 after the partner-data profile and agreement; 2.5 after a licence and label check; 4.1 after the LargeST licence check |
 
 ## A simple decision process
 
 1. Choose the **task**, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.
 2. Download the data and run one complete baseline on a small subset before the formal project begins.
-3. Write a one-sentence research question and identify the comparison that could falsify the proposed explanation.
+3. Write the research question as one sentence and identify the comparison that could falsify it.
 4. Freeze the split, primary metric and compute budget before extensive development.
 5. Treat the authors' repository as an executable specification—not as the thesis contribution.
 
@@ -26,7 +35,8 @@ toc: true
 - Obtain access to the exact dataset and record its version, size, licence or data agreement, and release date or extraction period.
 - Run the simplest baseline from raw input to final metric on a small subset.
 - Identify the independent split unit and verify that it cannot cross train and test.
-- Record the anchor paper, repository version and preprocessing deviations.
+- **Count how many research repositories you must adapt.** Adapting one is a Bachelor project. Adapting two is a Master project, and it is the most common reason a project runs out of time with no results.
+- **Check that the test set is large enough to separate the conditions you plan to compare.** If a grouped test fold holds only a few dozen units, confidence intervals may be wider than the effect you are looking for.
 - Estimate training time and peak memory before planning seeds or ablations.
 - For MSc work, write the question, proposed mechanism, main alternative explanation and minimum viable ablation table.
 
@@ -36,23 +46,28 @@ toc: true
 |---|---|---|
 | UCI-HAR | CC BY 4.0 | Open with attribution |
 | PTB-XL | CC BY 4.0 | No credentialing required |
+| ETT | Open research dataset | Check the repository terms before redistribution |
+| MovieLens 100K | GroupLens research terms | Academic use; cite the dataset |
+| OGB ogbg-molhiv | Open, MIT-licensed tooling | Use the official split and evaluator |
+| Elliptic Bitcoin | Distributor's research terms | Confirm terms before publishing results |
 | Paderborn KAt | CC BY-NC 4.0 | Non-commercial academic use |
-| MVTec AD | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
+| MVTec AD and MVTec AD 2 | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
 | DINOv2 | Apache 2.0 | Ungated |
-| DINOv3 weights | Custom Meta licence | Gated; non-standard; review for industry use |
 | HEAPO data | No dataset licence displayed in Zenodo Rights metadata | Confirm before starting; code and paper have separate licences |
+| LargeST | To be confirmed | Check before committing to the applied task in 4.1 |
 | Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
 
 ## Recurring failure modes
 
 - Comparing with a number produced by a different split, metric, horizon, shot count or evaluation level.
 - Using windows from the same physical unit in both training and test sets.
+- Comparing two published implementations and concluding something about the *method* — differences in encoder, augmentation and prior tuning are confounded with the mechanism you meant to test.
+- Reporting a difference that the test set is too small to resolve.
 - Calling an authors' repository run a research contribution.
-- Reporting only in-distribution performance when transfer or cold start is the motivation.
+- Reporting only in-distribution performance when transfer or cold start is the motivation, or when the benchmark is already saturated.
 - Omitting the random frozen encoder in a self-supervised study.
-- Treating a recent preprint figure as a settled benchmark.
 - Expanding to a second dataset before the first pipeline and evaluation protocol are stable.
 
-Select one primary question, fix the evaluation protocol before extensive experimentation and report negative as well as positive results.
+Select one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.
 
 The Tetra Pak project is included as Project 2.1. A Siemens Gamesa project may be offered separately when its scope and data access are confirmed.
