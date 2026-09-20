@@ -385,17 +385,6 @@
     ]
   },
   {
-    "objectID": "selection-guidance.html#suggested-starting-points",
-    "href": "selection-guidance.html#suggested-starting-points",
-    "title": "Selection guidance",
-    "section": "Suggested starting points",
-    "text": "Suggested starting points\n\n\n\n\n\n\n\nProject scope\nSuggested projects\n\n\n\n\nBSc with lower setup risk\n1.4 MovieLens, 2.2 UCI-HAR, 3.1 frozen DINOv2 with patch nearest neighbours, 1.1 C-MAPSS\n\n\nBSc with a clear expected finding\n1.3 feature dominance under edge deletion, 1.5 fingerprints versus GNNs out of scaffold\n\n\nMSc with a defined method extension\n1.2 regime-conditioned traffic graph, 2.4 decomposition-aware forecasting, 3.1 normal-only adaptation for anomaly detection\n\n\nMSc with higher methodological risk\n2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.6 physics-grounded vibration graphs, 4.1 coupled deep-unfolded VMD\n\n\nPreliminary checks required before allocation\n2.1 after the partner-data profile and agreement; 2.5 after permission and a label-prevalence check; 4.1 after a two-week synthetic proof of concept",
-    "crumbs": [
-      "Home",
-      "Selection guidance"
-    ]
-  },
-  {
     "objectID": "selection-guidance.html#a-simple-decision-process",
     "href": "selection-guidance.html#a-simple-decision-process",
     "title": "Selection guidance",
