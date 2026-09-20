@@ -10,16 +10,6 @@ Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR
 
 **2.1**, **2.3**, **2.5**, **2.6** and **4.1** are Master-only. **2.3** and **2.5** list a reduced Bachelor version.
 
-## Suggested starting points
-
-| Project scope | Suggested projects |
-|---|---|
-| BSc with lower setup risk | 1.4 MovieLens, 2.2 UCI-HAR, 3.1 frozen DINOv2 with patch nearest neighbours, 1.1 C-MAPSS |
-| BSc with a clear expected finding | 1.3 feature dominance under edge deletion, 1.5 fingerprints versus GNNs out of scaffold |
-| MSc with a defined method extension | 1.2 regime-conditioned traffic graph, 2.4 decomposition-aware forecasting, 3.1 normal-only adaptation for anomaly detection |
-| MSc with higher methodological risk | 2.1 Tetra Pak regime-aware SSL, 2.3 lead-aware latent prediction, 2.6 physics-grounded vibration graphs, 4.1 coupled deep-unfolded VMD |
-| Preliminary checks required before allocation | 2.1 after the partner-data profile and agreement; 2.5 after permission and a label-prevalence check; 4.1 after a two-week synthetic proof of concept |
-
 ## A simple decision process
 
 1. Choose the **task**, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.
