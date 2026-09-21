@@ -1,16 +1,16 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
-subtitle: "Graph applications, self-supervised time series, deep-learning vision, and signal processing"
-description: "Thirteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+subtitle: "Graph applications, self-supervised time series, deep-learning vision, signal processing, and industry-partner collaborations"
+description: "Fifteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Thirteen student project options
+## Fifteen student project options
 
 Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.
 
-[Explore the four categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
+[Explore the five categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
 :::
 
 ## Choose a category {#categories}
@@ -23,7 +23,7 @@ Each project entry states one research question, the task, the data source and i
     <a class="btn btn-outline-primary" href="graph-applications.html">View Category 1</a>
   </section>
   <section class="category-card category-card-2">
-    <div class="category-number">Category 2 · 6 projects</div>
+    <div class="category-number">Category 2 · 5 projects</div>
     <h3>SSL for time series</h3>
     <p>Learn representations from sensor, health and energy recordings when labelled examples are limited.</p>
     <a class="btn btn-outline-primary" href="time-series-ssl.html">View Category 2</a>
@@ -39,6 +39,12 @@ Each project entry states one research question, the task, the data source and i
     <h3>Signal processing</h3>
     <p>Unroll a classical iterative signal-decomposition algorithm into a trainable, learnable network.</p>
     <a class="btn btn-outline-primary" href="signal-processing.html">View Category 4</a>
+  </section>
+  <section class="category-card category-card-5">
+    <div class="category-number">Category 5 · 3 projects</div>
+    <h3>Industrial collaborations</h3>
+    <p>Work on a live engineering problem with Siemens Gamesa or Tetra Pak, using operational data supplied under agreement.</p>
+    <a class="btn btn-outline-primary" href="industry-partner-projects.html">View Category 5</a>
   </section>
 </div>
 
@@ -78,12 +84,11 @@ Representation learning from sensor, health and energy recordings with limited l
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [2.1](time-series-ssl.html#project-2-1) | Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc only | Light to moderate |
-| [2.2](time-series-ssl.html#project-2-2) | Contrastive learning for wearable activity recognition | BSc only | Light |
-| [2.3](time-series-ssl.html#project-2-3) | Lead-aware masked learning for 12-lead ECG | MSc only — reduced BSc version possible | Moderate |
-| [2.4](time-series-ssl.html#project-2-4) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
-| [2.5](time-series-ssl.html#project-2-5) | Self-supervised learning on heat-pump smart-meter data | MSc only — reduced BSc version possible | Light to moderate after preprocessing |
-| [2.6](time-series-ssl.html#project-2-6) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
+| [2.1](time-series-ssl.html#project-2-1) | Contrastive learning for wearable activity recognition | BSc only | Light |
+| [2.2](time-series-ssl.html#project-2-2) | Lead-aware masked learning for 12-lead ECG | MSc only — reduced BSc version possible | Moderate |
+| [2.3](time-series-ssl.html#project-2-3) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
+| [2.4](time-series-ssl.html#project-2-4) | Self-supervised learning on heat-pump smart-meter data | MSc only — reduced BSc version possible | Light to moderate after preprocessing |
+| [2.5](time-series-ssl.html#project-2-5) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
 
 ### [Category 3 — Deep-learning vision models and applications](vision-foundation-models.html)
 
@@ -101,6 +106,16 @@ Turning classical iterative signal-processing algorithms into trainable, interpr
 |---|---|---|---|
 | [4.1](signal-processing.html#project-4-1) | Deep-unfolded multivariate VMD for correlated multichannel signals | **MSc only** | Light to moderate |
 
+### [Category 5 — Industrial collaboration projects](industry-partner-projects.html)
+
+Engineering problems defined with Siemens Gamesa and Tetra Pak, using operational data supplied under agreement. Master level is preferred throughout.
+
+| ID | Project | Level | Compute |
+|---|---|---|---|
+| [5.1](industry-partner-projects.html#project-5-1) | Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring | MSc preferred — reduced BSc version possible | Light to moderate |
+| [5.2](industry-partner-projects.html#project-5-2) | Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals | MSc preferred — reduced BSc version possible | Light to moderate |
+| [5.3](industry-partner-projects.html#project-5-3) | Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc only | Light to moderate |
+
 ## What counts as a Bachelor or Master contribution
 
 | Dimension | Bachelor project | Master project |
@@ -110,7 +125,7 @@ Turning classical iterative signal-processing algorithms into trainable, interpr
 | Evidence | Correct split, sensible baselines and error analysis | Multiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant |
 | Outcome | Explain whether and when the method helps | Answer the stated question; a controlled negative result is valid |
 
-## Shared protocol for self-supervised projects
+## Shared protocol for self-supervised projects {#shared-protocol-for-self-supervised-projects}
 
 Every self-supervised or pretrained project should report these settings whenever they are meaningful:
 
@@ -130,4 +145,5 @@ Every self-supervised or pretrained project should report these settings wheneve
 - Start with [Category 2](time-series-ssl.qmd) for representation learning on sensor, health or energy signals.
 - Start with [Category 3](vision-foundation-models.qmd) for deep-learning vision models and applications.
 - Start with [Category 4](signal-processing.qmd) to design a deep-unfolded signal-decomposition algorithm.
+- Start with [Category 5](industry-partner-projects.qmd) to work on a live industrial problem with Siemens Gamesa or Tetra Pak.
 - Use the [selection guidance](selection-guidance.qmd) to match topics to experience and risk tolerance.

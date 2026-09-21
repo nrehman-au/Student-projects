@@ -6,7 +6,7 @@ project:
 
 website:
   title: "Student Project Portfolio"
-  description: "BSc and MSc projects in GNN applications, self-supervised time-series learning, deep-learning vision, and signal processing"
+  description: "BSc and MSc projects in GNN applications, self-supervised time-series learning, deep-learning vision, signal processing, and industry-partner collaborations"
   site-url: "https://nrehman-au.github.io/Student-projects/"
   search:
     location: navbar
@@ -31,6 +31,8 @@ website:
             href: vision-foundation-models.qmd
           - text: "4  Signal processing"
             href: signal-processing.qmd
+          - text: "5  Industrial collaborations"
+            href: industry-partner-projects.qmd
       - text: "Selection guidance"
         href: selection-guidance.qmd
     right:
@@ -62,18 +64,16 @@ website:
       - section: "2  Time-series SSL"
         href: time-series-ssl.qmd
         contents:
-          - text: "2.1  Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles"
+          - text: "2.1  Contrastive learning for wearable activity recognition"
             href: time-series-ssl.qmd#project-2-1
-          - text: "2.2  Contrastive learning for wearable activity recognition"
+          - text: "2.2  Lead-aware masked learning for 12-lead ECG"
             href: time-series-ssl.qmd#project-2-2
-          - text: "2.3  Lead-aware masked learning for 12-lead ECG"
+          - text: "2.3  Self-supervised forecasting representations for energy series"
             href: time-series-ssl.qmd#project-2-3
-          - text: "2.4  Self-supervised forecasting representations for energy series"
+          - text: "2.4  Self-supervised learning on heat-pump smart-meter data"
             href: time-series-ssl.qmd#project-2-4
-          - text: "2.5  Self-supervised learning on heat-pump smart-meter data"
+          - text: "2.5  Graph self-supervised learning from vibration signals"
             href: time-series-ssl.qmd#project-2-5
-          - text: "2.6  Graph self-supervised learning from vibration signals"
-            href: time-series-ssl.qmd#project-2-6
       - section: "3  Deep-learning vision models"
         href: vision-foundation-models.qmd
         contents:
@@ -84,6 +84,15 @@ website:
         contents:
           - text: "4.1  Deep-unfolded multivariate VMD for correlated multichannel signals"
             href: signal-processing.qmd#project-4-1
+      - section: "5  Industrial collaborations"
+        href: industry-partner-projects.qmd
+        contents:
+          - text: "5.1  Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring"
+            href: industry-partner-projects.qmd#project-5-1
+          - text: "5.2  Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals"
+            href: industry-partner-projects.qmd#project-5-2
+          - text: "5.3  Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles"
+            href: industry-partner-projects.qmd#project-5-3
       - text: "Selection guidance"
         href: selection-guidance.qmd
   page-footer:

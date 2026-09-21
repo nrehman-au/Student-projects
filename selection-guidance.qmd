@@ -6,9 +6,11 @@ toc: true
 
 ## Levels
 
-Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.2** (UCI-HAR), **2.4** (ETT) and **3.1** (MVTec AD). Of these, **1.4** and **2.2** are Bachelor-only; the rest also support a Master scope.
+Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.1** (UCI-HAR), **2.3** (ETT) and **3.1** (MVTec AD). Of these, **1.4** and **2.1** are Bachelor-only; the rest also support a Master scope.
 
-**2.1**, **2.3**, **2.5**, **2.6** and **4.1** are Master-only. **2.3** and **2.5** list a reduced Bachelor version.
+**2.2**, **2.4**, **2.5**, **4.1** and **5.3** are primarily Master-level projects. **2.2** and **2.4** list a reduced Bachelor version.
+
+The industry-partner projects in **Category 5** are all offered with Master level preferred. **5.1** and **5.2** list a reduced Bachelor version that can start once the partner has supplied a prepared feature table; **5.3** is Master only.
 
 ## A simple decision process
 
@@ -44,6 +46,7 @@ Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR
 | HEAPO data | Public download; no dataset licence stated on Zenodo | Obtain written permission for thesis use; the dataloader is MIT-licensed |
 | LargeST | CC BY-NC 4.0; benchmark code MIT | Non-commercial academic use with attribution |
 | Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
+| Siemens Gamesa fleet vibration and operational data | Partner-supplied; subject to the project data agreement | Restricted access; confirm turbine counts, measurement positions and secure environment before allocation |
 
 ## Recurring failure modes
 
@@ -58,4 +61,4 @@ Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR
 
 Select one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.
 
-The Tetra Pak project is included as Project 2.1. A Siemens Gamesa project may be offered separately when its scope and data access are confirmed.
+The partner-supplied projects are grouped in [Category 5](industry-partner-projects.qmd): Siemens Gamesa as Projects 5.1 and 5.2, and Tetra Pak as Project 5.3. Allocation follows confirmation of data access, independent sample count and the downstream target.
