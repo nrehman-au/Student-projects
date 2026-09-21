@@ -1,29 +1,17 @@
 ---
 title: "Category 1  Industrial projects: machine learning + signal processing"
-description: "Projects using operational data supplied by Siemens Gamesa or Tetra Pak"
+description: "Three partner-defined projects in wind-energy and filtration systems"
 toc: true
 toc-depth: 2
 ---
 
 <span id="top"></span>
 
-These projects address engineering questions proposed with an industrial partner. Siemens Gamesa or Tetra Pak will supply the operational data; the datasets are not public and must be handled under the applicable agreement.
+These projects are developed with Siemens Gamesa and Tetra Pak using non-public operational data. At the start of each project, the student, supervisor and partner will confirm the available data, downstream task and permitted outputs.
 
-The descriptions therefore define the research question and minimum evaluation, while leaving some details open. Before a project is allocated, the supervisor and partner must confirm the available signals, number of independent machines or cycles, sampling format, usable labels and permitted outputs. The first project phase is a data profile that fixes the final task and evaluation protocol.
+All three are primarily Master projects. A reduced Bachelor version can be offered when a prepared dataset and fixed task are available. The Bachelor project implements and compares established methods; the Master project adds a new representation, feature design or evaluation question.
 
-::: {.category-callout}
-**Master level preferred**
-
-All three projects are intended primarily for Master students. Each can be reduced to Bachelor level when the partner supplies a prepared dataset and a fixed task. The Bachelor version focuses on implementing and comparing established methods; the Master version adds a new representation, feature design or evaluation question.
-:::
-
-::: {.leakage-callout}
-**Split by the physical unit.** Measurements from the same turbine or filtration cycle must not appear in both training and test data. If several sites or production lines are available, transfer across a held-out site or line can be studied as an additional Master-level experiment.
-:::
-
-## Before allocation
-
-Confirm the data agreement, available variables, independent sample count and one measurable downstream target. If these conditions are not met, narrow or postpone the project rather than defining the task from individual measurement windows.
+**Evaluation split.** Keep all measurements from one turbine or filtration cycle in the same split. A held-out site or production line can be used as an additional Master-level transfer test when enough data are available.
 
 ## Learn first and find ideas
 
