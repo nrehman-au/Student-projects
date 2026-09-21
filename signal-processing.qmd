@@ -1,5 +1,5 @@
 ---
-title: "Category 4  Signal processing and deep-unfolded models"
+title: "Category 5  Signal processing and deep-unfolded models"
 description: "Turning classical iterative signal-processing algorithms into trainable network layers"
 toc: true
 toc-depth: 2
@@ -9,7 +9,7 @@ toc-depth: 2
 
 Many signal-processing methods repeat a fixed optimisation step until convergence. **Algorithm unrolling**, also called **deep unfolding**, turns a fixed number of those iterations into neural-network layers. The update equations determine the network structure, while selected algorithm parameters are learned from data.
 
-This differs from Category 2: the network is a truncated version of a known algorithm, not a general-purpose encoder. Evaluation must therefore test both numerical correctness and the downstream task. Faster execution alone is insufficient if the learned layers no longer perform the intended decomposition.
+This differs from Category 3: the network is a truncated version of a known algorithm, not a general-purpose encoder. Evaluation must therefore test both numerical correctness and the downstream task. Faster execution alone is insufficient if the learned layers no longer perform the intended decomposition.
 
 ::: {.category-callout}
 **A Master-level category**
@@ -27,7 +27,7 @@ This category requires graduate-level optimisation and signal processing. The co
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 4.1  Deep-unfolded multivariate VMD for correlated multichannel signals {#project-4-1}
+## 5.1  Deep-unfolded multivariate VMD for correlated multichannel signals {#project-5-1}
 
 ::: {.project-meta}
 <span class="meta-label">Task</span><span class="meta-value">Unroll multivariate VMD and evaluate decomposition, robustness and forecasting</span>

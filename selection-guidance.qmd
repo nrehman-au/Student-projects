@@ -6,11 +6,11 @@ toc: true
 
 ## Levels
 
-Eight projects are available at Bachelor level: **1.1** (C-MAPSS), **1.2** (METR-LA), **1.3** (Elliptic), **1.4** (MovieLens), **1.5** (ogbg-molhiv), **2.1** (UCI-HAR), **2.3** (ETT) and **3.1** (MVTec AD). Of these, **1.4** and **2.1** are Bachelor-only; the rest also support a Master scope.
+Eight standard projects are available at Bachelor level: **2.1** (C-MAPSS), **2.2** (METR-LA), **2.3** (Elliptic), **2.4** (MovieLens), **2.5** (ogbg-molhiv), **3.1** (UCI-HAR), **3.3** (ETT) and **4.1** (MVTec AD). Of these, **2.4** and **3.1** are Bachelor-only; the rest also support a Master scope.
 
-**2.2**, **2.4**, **2.5**, **4.1** and **5.3** are primarily Master-level projects. **2.2** and **2.4** list a reduced Bachelor version.
+**3.2**, **3.4**, **3.5** and **5.1** are primarily Master-level projects. **3.2** and **3.4** list reduced Bachelor versions.
 
-The industry-partner projects in **Category 5** are all offered with Master level preferred. **5.1** and **5.2** list a reduced Bachelor version that can start once the partner has supplied a prepared feature table; **5.3** is Master only.
+The industry projects in **Category 1** are all offered with Master level preferred. **1.1**, **1.2** and **1.3** can be reduced to Bachelor level once the partner has supplied a prepared dataset and fixed task.
 
 ## A simple decision process
 
@@ -61,4 +61,4 @@ The industry-partner projects in **Category 5** are all offered with Master leve
 
 Select one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.
 
-The partner-supplied projects are grouped in [Category 5](industry-partner-projects.qmd): Siemens Gamesa as Projects 5.1 and 5.2, and Tetra Pak as Project 5.3. Allocation follows confirmation of data access, independent sample count and the downstream target.
+The partner-supplied projects are grouped in [Category 1](industry-partner-projects.qmd): Siemens Gamesa as Projects 1.1 and 1.2, and Tetra Pak as Project 1.3. Allocation follows confirmation of data access, independent sample count and the downstream target.
