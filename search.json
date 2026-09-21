@@ -80,8 +80,8 @@
     "objectID": "time-series-ssl.html#project-2-1",
     "href": "time-series-ssl.html#project-2-1",
     "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.1 Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles",
-    "text": "2.1 Tetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles\n\nTaskSelf-supervised multivariate time-series learning, then cycle-level regression or anomaly detection LevelMSc only ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied by Tetra Pak under an approved agreement; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Membrane-filtration plants generate repeated production and cleaning cycles containing flow, pressure, temperature and energy measurements. Cycle-to-cycle differences are large. You will learn representations that account for the plant’s operating regimes, then test whether they predict an operational target better than representations that ignore regime.\n\nData. Tetra Pak will provide anonymised process data or a secure environment; the data are not public. Required fields include cycle boundaries, flow, pressure, temperature, power or energy, setpoints and operating-regime information. Data volume, sampling rate and the downstream target must be confirmed before allocation. Split by complete cycle and preserve time order.\nMethods and code. Use TS2Vec, TS-TCC or SimMTM with a compact 1-D CNN, TCN or GRU. Use change-point detection and clustering to identify regimes before pretraining.\nBaselines and evaluation. Compare a statistical baseline, supervised TCN/GRU, generic SSL and a regime-aware encoder. Include random-frozen and frozen-probe controls. Use MAE for early prediction of final specific energy, or AUPRC for an agreed anomaly label. Report label-efficiency results and three seeds when the number of independent cycles permits.\n\nMaster research question. Can cycle-phase- and operating-regime-aware self-supervised views separate legitimate process variation from energy inefficiency or abnormal behaviour better than generic augmentations? The contribution is the process-aware view or masking design plus a matched-budget comparison against generic augmentation, including transfer to a held-out regime, line or product. Rerunning an unchanged TS2Vec or TS-TCC is a reproduction, not the contribution.\n\nPractical notes. Confirm the independent-cycle count and one measurable target before allocation. Data and trained artefacts remain subject to the AU–Tetra Pak agreement.\n\nBack to category introduction ↑",
+    "section": "2.1 Contrastive learning for wearable activity recognition",
+    "text": "2.1 Contrastive learning for wearable activity recognition\n\nTaskSelf-supervised time-series representation learning, then classification LevelBSc only ComputeLight; CPU or 4 GB GPU DataUCI Human Activity Recognition — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0 Starting paperEldele et al., TS-TCC, IJCAI 2021\n\n\nWhat you will do. A phone records acceleration and angular velocity while a person walks, sits or climbs stairs. Learn an encoder from the unlabelled sensor windows, freeze it, and measure how few labels a small classifier needs to recognise activities.\n\nData. UCI HAR is a 58 MB public download under CC BY 4.0. It contains pre-windowed 2.56-second recordings with 50% overlap and a standard subject-independent split. Keep that split.\nMethods and code. TS-TCC or TS2Vec — choose one. Use the same 1-D CNN or small Transformer encoder for the self-supervised and supervised comparisons.\nBaselines and evaluation. Random frozen encoder, SSL frozen linear probe, SSL fine-tuning and a fully supervised model trained from scratch. Report accuracy and macro-F1 on the subject-independent split.\n\nBachelor research question. How much labelled activity data can self-supervised pretraining replace?\nCore experiment. Compare all four conditions at 1%, 5%, 10%, 25% and 100% label budgets. Resample the labelled windows within the training subjects and report confidence intervals. Optionally test robustness by jointly rotating the accelerometer and gyroscope axes.\n\n\nBack to category introduction ↑",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
@@ -91,8 +91,8 @@
     "objectID": "time-series-ssl.html#project-2-2",
     "href": "time-series-ssl.html#project-2-2",
     "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.2 Contrastive learning for wearable activity recognition",
-    "text": "2.2 Contrastive learning for wearable activity recognition\n\nTaskSelf-supervised time-series representation learning, then classification LevelBSc only ComputeLight; CPU or 4 GB GPU DataUCI Human Activity Recognition — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0 Starting paperEldele et al., TS-TCC, IJCAI 2021\n\n\nWhat you will do. A phone records acceleration and angular velocity while a person walks, sits or climbs stairs. Learn an encoder from the unlabelled sensor windows, freeze it, and measure how few labels a small classifier needs to recognise activities.\n\nData. UCI HAR is a 58 MB public download under CC BY 4.0. It contains pre-windowed 2.56-second recordings with 50% overlap and a standard subject-independent split. Keep that split.\nMethods and code. TS-TCC or TS2Vec — choose one. Use the same 1-D CNN or small Transformer encoder for the self-supervised and supervised comparisons.\nBaselines and evaluation. Random frozen encoder, SSL frozen linear probe, SSL fine-tuning and a fully supervised model trained from scratch. Report accuracy and macro-F1 on the subject-independent split.\n\nBachelor research question. How much labelled activity data can self-supervised pretraining replace?\nCore experiment. Compare all four conditions at 1%, 5%, 10%, 25% and 100% label budgets. Resample the labelled windows within the training subjects and report confidence intervals. Optionally test robustness by jointly rotating the accelerometer and gyroscope axes.\n\n\nBack to category introduction ↑",
+    "section": "2.2 Lead-aware masked learning for 12-lead ECG",
+    "text": "2.2 Lead-aware masked learning for 12-lead ECG\n\nTaskSelf-supervised multivariate time-series learning, then multi-label classification LevelMSc preferred; BSc with a supplied data pipeline ComputeModerate; 8 GB GPU recommended DataPTB-XL — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing Starting paperDong et al., SimMTM, NeurIPS 2023\n\n\nWhat you will do. A 12-lead ECG observes the same cardiac event from different electrical viewpoints. Instead of masking arbitrary time patches, the model hides complete leads or anatomical lead groups and predicts their latent representations from the visible leads.\n\nData. PTB-XL at 100 Hz, using the official patient-aware folds: 1–8 for training, 9 for validation, 10 for testing. The dataset is fully labelled, so label budgets simulate scarcity rather than reflecting missing annotations.\nMethods and code. Start with SimMTM or TS2Vec and a 1-D ResNet or compact Transformer. The PTB-XL benchmark code provides preprocessing and supervised references.\nBaselines and evaluation. Random frozen encoder, frozen probe, fine-tuning and the same encoder fully supervised. Macro-AUROC on fold 10 across the five diagnostic superclasses is the primary endpoint; add macro-AUPRC for class imbalance. Report patient-level splits and several label budgets.\n\nMaster research question. Does lead-aware masking improve low-label diagnosis over random temporal masking? Develop complete-lead or anatomical-group masking, condition the predictor on lead identity, and monitor embedding variance for collapse. Ablate masking granularity and predictor depth.\n\n\nBachelor question. How does diagnostic performance change when fewer ECG leads are available? With the supplied pipeline and one encoder, compare 12, 6 and 3 leads and lead II alone under supervised training and one established SSL method.\n\n\nBack to category introduction ↑",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
@@ -102,8 +102,8 @@
     "objectID": "time-series-ssl.html#project-2-3",
     "href": "time-series-ssl.html#project-2-3",
     "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.3 Lead-aware masked learning for 12-lead ECG",
-    "text": "2.3 Lead-aware masked learning for 12-lead ECG\n\nTaskSelf-supervised multivariate time-series learning, then multi-label classification LevelMSc preferred; BSc with a supplied data pipeline ComputeModerate; 8 GB GPU recommended DataPTB-XL — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing Starting paperDong et al., SimMTM, NeurIPS 2023\n\n\nWhat you will do. A 12-lead ECG observes the same cardiac event from different electrical viewpoints. Instead of masking arbitrary time patches, the model hides complete leads or anatomical lead groups and predicts their latent representations from the visible leads.\n\nData. PTB-XL at 100 Hz, using the official patient-aware folds: 1–8 for training, 9 for validation, 10 for testing. The dataset is fully labelled, so label budgets simulate scarcity rather than reflecting missing annotations.\nMethods and code. Start with SimMTM or TS2Vec and a 1-D ResNet or compact Transformer. The PTB-XL benchmark code provides preprocessing and supervised references.\nBaselines and evaluation. Random frozen encoder, frozen probe, fine-tuning and the same encoder fully supervised. Macro-AUROC on fold 10 across the five diagnostic superclasses is the primary endpoint; add macro-AUPRC for class imbalance. Report patient-level splits and several label budgets.\n\nMaster research question. Does lead-aware masking improve low-label diagnosis over random temporal masking? Develop complete-lead or anatomical-group masking, condition the predictor on lead identity, and monitor embedding variance for collapse. Ablate masking granularity and predictor depth.\n\n\nBachelor question. How does diagnostic performance change when fewer ECG leads are available? With the supplied pipeline and one encoder, compare 12, 6 and 3 leads and lead II alone under supervised training and one established SSL method.\n\n\nBack to category introduction ↑",
+    "section": "2.3 Self-supervised forecasting representations for energy series",
+    "text": "2.3 Self-supervised forecasting representations for energy series\n\nTaskSelf-supervised time-series learning, then temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataETT — electricity transformer temperature, hourly (ETTh1/ETTh2) and 15-minute (ETTm1/ETTm2) subsets Starting paperWoo et al., CoST, ICLR 2022\n\n\nWhat you will do. Pretrain an encoder on one unlabelled energy series, freeze it, and fit a small forecasting head. Test whether the representation transfers to a different series better than training a supervised forecaster on that series.\n\nData. Use ETT with chronological splits and training-only scaling. ETTh1 and ETTh2 come from different transformers. The public repository uses CC BY-ND 4.0; cite it and do not redistribute modified copies.\nMethods and code. CoST, TS2Vec or SimMTM for pretraining. DLinear is the required supervised reference; PatchTST is optional. A ridge or linear head on frozen representations is the key diagnostic.\nBaselines and evaluation. Seasonal-naive, DLinear, frozen SSL representation with a ridge head, and SSL fine-tuning. Report MSE and MAE at agreed horizons with identical input lengths and chronological splits, plus three seeds.\n\nBachelor research question. Do self-supervised representations pretrained on one energy series transfer to a different one?\nCore experiment. Pretrain on ETTh1, then probe and fine-tune on ETTh2. Compare with direct ETTh2 pretraining and DLinear trained on ETTh2.\nInterpretation. DLinear may outperform the SSL pipeline. Analyse whether the gap changes with forecast horizon and target-data volume.\n\n\nMaster research question. Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts? Use a stable seasonal decomposition to select positives, compare with random cropping and frequency-domain contrast, and analyse non-stationary intervals. Validate the period estimate on ETT before adding irregular data.\n\n\nBack to category introduction ↑",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
@@ -113,8 +113,8 @@
     "objectID": "time-series-ssl.html#project-2-4",
     "href": "time-series-ssl.html#project-2-4",
     "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.4 Self-supervised forecasting representations for energy series",
-    "text": "2.4 Self-supervised forecasting representations for energy series\n\nTaskSelf-supervised time-series learning, then temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataETT — electricity transformer temperature, hourly (ETTh1/ETTh2) and 15-minute (ETTm1/ETTm2) subsets Starting paperWoo et al., CoST, ICLR 2022\n\n\nWhat you will do. Pretrain an encoder on one unlabelled energy series, freeze it, and fit a small forecasting head. Test whether the representation transfers to a different series better than training a supervised forecaster on that series.\n\nData. Use ETT with chronological splits and training-only scaling. ETTh1 and ETTh2 come from different transformers. The public repository uses CC BY-ND 4.0; cite it and do not redistribute modified copies.\nMethods and code. CoST, TS2Vec or SimMTM for pretraining. DLinear is the required supervised reference; PatchTST is optional. A ridge or linear head on frozen representations is the key diagnostic.\nBaselines and evaluation. Seasonal-naive, DLinear, frozen SSL representation with a ridge head, and SSL fine-tuning. Report MSE and MAE at agreed horizons with identical input lengths and chronological splits, plus three seeds.\n\nBachelor research question. Do self-supervised representations pretrained on one energy series transfer to a different one?\nCore experiment. Pretrain on ETTh1, then probe and fine-tune on ETTh2. Compare with direct ETTh2 pretraining and DLinear trained on ETTh2.\nInterpretation. DLinear may outperform the SSL pipeline. Analyse whether the gap changes with forecast horizon and target-data volume.\n\n\nMaster research question. Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts? Use a stable seasonal decomposition to select positives, compare with random cropping and frequency-domain contrast, and analyse non-stationary intervals. Validate the period estimate on ETT before adding irregular data.\n\n\nBack to category introduction ↑",
+    "section": "2.4 Self-supervised learning on heat-pump smart-meter data",
+    "text": "2.4 Self-supervised learning on heat-pump smart-meter data\n\nTaskTime-series representation learning, then household-level classification LevelMSc preferred; BSc metadata-label version ComputeLight to moderate after preprocessing DataHEAPO on Zenodo — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024; dataset licence must be confirmed Starting paperBrudermueller et al., HEAPO, 2025\n\n\nWhat you will do. Pretrain on household electricity series, then test whether the representations improve prediction of a household attribute or an inspection-derived issue.\n\nData. The 458 MB public download contains 1,408 households; 214 have both smart-meter data and inspection information. Use the official MIT-licensed dataloader. The Zenodo Rights field does not state a dataset licence, so confirm reuse terms before allocation. Group all splits by household.\nMethods and code. Use TS2Vec or SimMTM, with a 1-D CNN or InceptionTime supervised baseline. Use heat-pump type for the lower-risk task, or one inspection-derived issue only after counting usable positives among the 214 matched households.\nBaselines and evaluation. Compare random-frozen, frozen SSL, fine-tuned SSL and supervised encoders on identical household splits. Include weather-only and metadata-only baselines. Report balanced accuracy, macro-F1 and confidence intervals using repeated grouped cross-validation.\n\nMaster research question. Can unlabelled data from a large related household population improve prediction on a much smaller labelled population, and do weather- and cycle-aware views improve it further? Compare pretraining sources — none, labelled households only, unlabelled control households, and all households — then add outdoor-temperature-matched positives or whole-cycle masking and ablate the weather conditioning.\nFeasibility condition. An inspection-label study has only 214 matched households. Select one primary label and verify its prevalence before committing to it; otherwise use the better-covered heat-pump-type task.\n\n\nBachelor version. Use heat-pump type or another well-covered metadata label. Compare supervised training with one SSL encoder on household-grouped splits and report a label-efficiency curve.\n\n\nBack to category introduction ↑",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
@@ -124,110 +124,11 @@
     "objectID": "time-series-ssl.html#project-2-5",
     "href": "time-series-ssl.html#project-2-5",
     "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.5 Self-supervised learning on heat-pump smart-meter data",
-    "text": "2.5 Self-supervised learning on heat-pump smart-meter data\n\nTaskTime-series representation learning, then household-level classification LevelMSc preferred; BSc metadata-label version ComputeLight to moderate after preprocessing DataHEAPO on Zenodo — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024; dataset licence must be confirmed Starting paperBrudermueller et al., HEAPO, 2025\n\n\nWhat you will do. Pretrain on household electricity series, then test whether the representations improve prediction of a household attribute or an inspection-derived issue.\n\nData. The 458 MB public download contains 1,408 households; 214 have both smart-meter data and inspection information. Use the official MIT-licensed dataloader. The Zenodo Rights field does not state a dataset licence, so confirm reuse terms before allocation. Group all splits by household.\nMethods and code. Use TS2Vec or SimMTM, with a 1-D CNN or InceptionTime supervised baseline. Use heat-pump type for the lower-risk task, or one inspection-derived issue only after counting usable positives among the 214 matched households.\nBaselines and evaluation. Compare random-frozen, frozen SSL, fine-tuned SSL and supervised encoders on identical household splits. Include weather-only and metadata-only baselines. Report balanced accuracy, macro-F1 and confidence intervals using repeated grouped cross-validation.\n\nMaster research question. Can unlabelled data from a large related household population improve prediction on a much smaller labelled population, and do weather- and cycle-aware views improve it further? Compare pretraining sources — none, labelled households only, unlabelled control households, and all households — then add outdoor-temperature-matched positives or whole-cycle masking and ablate the weather conditioning.\nFeasibility condition. An inspection-label study has only 214 matched households. Select one primary label and verify its prevalence before committing to it; otherwise use the better-covered heat-pump-type task.\n\n\nBachelor version. Use heat-pump type or another well-covered metadata label. Compare supervised training with one SSL encoder on household-grouped splits and report a label-efficiency curve.\n\n\nBack to category introduction ↑",
+    "section": "2.5 Graph self-supervised learning from vibration signals",
+    "text": "2.5 Graph self-supervised learning from vibration signals\n\nTaskGraph-level classification (one graph per signal window) with cross-operating-condition transfer LevelMSc only ComputeModerate preprocessing; small models on a 4–8 GB GPU DataPaderborn KAt — ~5 GB, 32 bearings, four operating conditions, CC BY-NC 4.0 Starting paperHou et al., GraphMAE, KDD 2022 — official code\n\n\nWhat you will do. Convert each vibration window into a graph of fault-related frequency bands, pretrain a graph encoder without labels, and test transfer to a different load or speed condition.\n\nGraph construction. Resample each window into the shaft-order domain. Use fixed nodes for BPFO, BPFI, BSF and FTF bands and their harmonics. Node features can include band energy, envelope amplitude, spectral kurtosis and RMS; edges can represent envelope correlation or spectral coherence. Fit thresholds on training data only.\nData. Paderborn provides 64 kHz vibration, speed, torque and radial load for 32 physical bearings under four operating conditions. Download it from the official archive. Split by bearing, not by window. CWRU may be used only to develop the preprocessing pipeline; its official site does not state a clear data licence.\nMethods and code. Use a GIN encoder with GraphMAE. Compare with supervised GIN and a 1-D CNN. Do not remove fault-frequency nodes as a generic graph augmentation.\nBaselines and evaluation. Compare a 1-D CNN, envelope-spectrum features with gradient boosting, supervised GIN, random-frozen GIN, and GraphMAE with frozen and fine-tuned heads. Test physics-based, similarity, random and no-edge graphs. Report accuracy and macro-F1; cross-condition transfer is primary.\n\nMaster research question. Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed? The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.\n\nPractical notes. The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.\n\nBack to category introduction ↑",
     "crumbs": [
       "Home",
       "2  Time-series SSL"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-2-6",
-    "href": "time-series-ssl.html#project-2-6",
-    "title": "Category 2 Self-supervised representation learning for time series",
-    "section": "2.6 Graph self-supervised learning from vibration signals",
-    "text": "2.6 Graph self-supervised learning from vibration signals\n\nTaskGraph-level classification (one graph per signal window) with cross-operating-condition transfer LevelMSc only ComputeModerate preprocessing; small models on a 4–8 GB GPU DataPaderborn KAt — ~5 GB, 32 bearings, four operating conditions, CC BY-NC 4.0 Starting paperHou et al., GraphMAE, KDD 2022 — official code\n\n\nWhat you will do. Convert each vibration window into a graph of fault-related frequency bands, pretrain a graph encoder without labels, and test transfer to a different load or speed condition.\n\nGraph construction. Resample each window into the shaft-order domain. Use fixed nodes for BPFO, BPFI, BSF and FTF bands and their harmonics. Node features can include band energy, envelope amplitude, spectral kurtosis and RMS; edges can represent envelope correlation or spectral coherence. Fit thresholds on training data only.\nData. Paderborn provides 64 kHz vibration, speed, torque and radial load for 32 physical bearings under four operating conditions. Download it from the official archive. Split by bearing, not by window. CWRU may be used only to develop the preprocessing pipeline; its official site does not state a clear data licence.\nMethods and code. Use a GIN encoder with GraphMAE. Compare with supervised GIN and a 1-D CNN. Do not remove fault-frequency nodes as a generic graph augmentation.\nBaselines and evaluation. Compare a 1-D CNN, envelope-spectrum features with gradient boosting, supervised GIN, random-frozen GIN, and GraphMAE with frozen and fine-tuned heads. Test physics-based, similarity, random and no-edge graphs. Report accuracy and macro-F1; cross-condition transfer is primary.\n\nMaster research question. Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed? The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.\n\nPractical notes. The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  Time-series SSL"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "",
-    "text": "Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.\nExplore the four categories Download the PDF",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#thirteen-student-project-options",
-    "href": "index.html#thirteen-student-project-options",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "",
-    "text": "Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.\nExplore the four categories Download the PDF",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#categories",
-    "href": "index.html#categories",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Choose a category",
-    "text": "Choose a category\n\n\n\nCategory 1 · 5 projects\n\n\nGNN applications\n\n\nUse graphs to study engineering systems, traffic, transactions, recommendations and molecules.\n\nView Category 1\n\n\n\nCategory 2 · 6 projects\n\n\nSSL for time series\n\n\nLearn representations from sensor, health and energy recordings when labelled examples are limited.\n\nView Category 2\n\n\n\nCategory 3 · 1 project\n\n\nDeep-learning vision models and applications\n\n\nAdapt a pretrained visual encoder to industrial anomaly detection, and measure what the adaptation actually buys.\n\nView Category 3\n\n\n\nCategory 4 · 1 project\n\n\nSignal processing\n\n\nUnroll a classical iterative signal-decomposition algorithm into a trainable, learnable network.\n\nView Category 4",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#how-the-projects-are-structured",
-    "href": "index.html#how-the-projects-are-structured",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "How the projects are structured",
-    "text": "How the projects are structured\nEvery project states one research question and the core experiment that answers it. Bachelor projects answer an empirical question about an established method using a fixed dataset, fair baselines and a careful analysis — no new architecture is required. Master projects add a new mechanism, view or protocol, multiple runs and a deeper analysis.\nA controlled negative result is a valid outcome. Several projects state in advance that the expected answer to their question may be “no”; finding and explaining that is the contribution, not a failure.\nEach project is labelled with one of three levels:\n\n\n\n\n\n\n\nLevel\nMeaning\n\n\n\n\nBSc or MSc\nBoth routes are viable; each scope box describes a separate project\n\n\nBSc only\nOffered at Bachelor level\n\n\nMSc only\nOffered at Master level. A few list a reduced Bachelor version",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#portfolio-index",
-    "href": "index.html#portfolio-index",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Portfolio index",
-    "text": "Portfolio index\nThe complete list remains below, grouped by category. Select a category title for its introduction and learning resources, or select a project number to open that project directly.\n\nCategory 1 — GNN applications for real-world data\nPractical graph prediction problems in engineering, science, finance and recommendation.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nLight to moderate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc only\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n\n\n\nCategory 2 — Self-supervised learning for time series\nRepresentation learning from sensor, health and energy recordings with limited labels.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n2.1\nTetra Pak industrial collaboration: Regime-aware self-supervised learning for non-stationary filtration cycles\nMSc only\nLight to moderate\n\n\n2.2\nContrastive learning for wearable activity recognition\nBSc only\nLight\n\n\n2.3\nLead-aware masked learning for 12-lead ECG\nMSc only — reduced BSc version possible\nModerate\n\n\n2.4\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n2.5\nSelf-supervised learning on heat-pump smart-meter data\nMSc only — reduced BSc version possible\nLight to moderate after preprocessing\n\n\n2.6\nGraph self-supervised learning from vibration signals\nMSc only\nModerate preprocessing\n\n\n\n\n\nCategory 3 — Deep-learning vision models and applications\nAdapting pretrained visual representations to a specialised anomaly-detection task.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n3.1\nAdapting DINO backbones for industrial anomaly detection\nBSc or MSc\nLight to moderate\n\n\n\n\n\nCategory 4 — Signal processing and deep-unfolded models\nTurning classical iterative signal-processing algorithms into trainable, interpretable layers.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n4.1\nDeep-unfolded multivariate VMD for correlated multichannel signals\nMSc only\nLight to moderate",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#what-counts-as-a-bachelor-or-master-contribution",
-    "href": "index.html#what-counts-as-a-bachelor-or-master-contribution",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "What counts as a Bachelor or Master contribution",
-    "text": "What counts as a Bachelor or Master contribution\n\n\n\n\n\n\n\n\nDimension\nBachelor project\nMaster project\n\n\n\n\nStarting point\nOne dataset and one established method\nVerified anchor-paper reproduction plus required baselines\n\n\nContribution\nDocumented pipeline, fair comparison and one focused ablation\nNew mechanism, protocol, graph/view construction or transfer/robustness study\n\n\nEvidence\nCorrect split, sensible baselines and error analysis\nMultiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant\n\n\nOutcome\nExplain whether and when the method helps\nAnswer the stated question; a controlled negative result is valid",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#shared-protocol-for-self-supervised-projects",
-    "href": "index.html#shared-protocol-for-self-supervised-projects",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Shared protocol for self-supervised projects",
-    "text": "Shared protocol for self-supervised projects\nEvery self-supervised or pretrained project should report these settings whenever they are meaningful:\n\nFrozen linear evaluation. Pretrain without labels, freeze the encoder and train only a lightweight head.\nFine-tuning. Initialise from the pretrained encoder and update it with labels.\nFully supervised baseline. Train the same encoder architecture from scratch using labels.\nRandom-initialisation control. Freeze a randomly initialised encoder and train the same head.\nLabel-efficiency curve. Report several label budgets, typically 1%, 5%, 10% and 100%.\n\n\nLeakage rule. Group splits by the real independent unit: subject, patient, household, engine, bearing or process cycle—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
-    ]
-  },
-  {
-    "objectID": "index.html#where-to-begin",
-    "href": "index.html#where-to-begin",
-    "title": "BSc and MSc Student Project Portfolio",
-    "section": "Where to begin",
-    "text": "Where to begin\n\nStart with Category 1 for practical GNN applications.\nStart with Category 2 for representation learning on sensor, health or energy signals.\nStart with Category 3 for deep-learning vision models and applications.\nStart with Category 4 to design a deep-unfolded signal-decomposition algorithm.\nUse the selection guidance to match topics to experience and risk tolerance.",
-    "crumbs": [
-      "Home",
-      "Portfolio overview"
     ]
   },
   {
@@ -272,6 +173,171 @@
     "crumbs": [
       "Home",
       "4  Signal processing"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "",
+    "text": "Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.\nExplore the five categories Download the PDF",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#fifteen-student-project-options",
+    "href": "index.html#fifteen-student-project-options",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "",
+    "text": "Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.\nExplore the five categories Download the PDF",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#categories",
+    "href": "index.html#categories",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Choose a category",
+    "text": "Choose a category\n\n\n\nCategory 1 · 5 projects\n\n\nGNN applications\n\n\nUse graphs to study engineering systems, traffic, transactions, recommendations and molecules.\n\nView Category 1\n\n\n\nCategory 2 · 5 projects\n\n\nSSL for time series\n\n\nLearn representations from sensor, health and energy recordings when labelled examples are limited.\n\nView Category 2\n\n\n\nCategory 3 · 1 project\n\n\nDeep-learning vision models and applications\n\n\nAdapt a pretrained visual encoder to industrial anomaly detection, and measure what the adaptation actually buys.\n\nView Category 3\n\n\n\nCategory 4 · 1 project\n\n\nSignal processing\n\n\nUnroll a classical iterative signal-decomposition algorithm into a trainable, learnable network.\n\nView Category 4\n\n\n\nCategory 5 · 3 projects\n\n\nIndustrial collaborations\n\n\nWork on a live engineering problem with Siemens Gamesa or Tetra Pak, using operational data supplied under agreement.\n\nView Category 5",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#how-the-projects-are-structured",
+    "href": "index.html#how-the-projects-are-structured",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "How the projects are structured",
+    "text": "How the projects are structured\nEvery project states one research question and the core experiment that answers it. Bachelor projects answer an empirical question about an established method using a fixed dataset, fair baselines and a careful analysis — no new architecture is required. Master projects add a new mechanism, view or protocol, multiple runs and a deeper analysis.\nA controlled negative result is a valid outcome. Several projects state in advance that the expected answer to their question may be “no”; finding and explaining that is the contribution, not a failure.\nEach project is labelled with one of three levels:\n\n\n\n\n\n\n\nLevel\nMeaning\n\n\n\n\nBSc or MSc\nBoth routes are viable; each scope box describes a separate project\n\n\nBSc only\nOffered at Bachelor level\n\n\nMSc only\nOffered at Master level. A few list a reduced Bachelor version",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#portfolio-index",
+    "href": "index.html#portfolio-index",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Portfolio index",
+    "text": "Portfolio index\nThe complete list remains below, grouped by category. Select a category title for its introduction and learning resources, or select a project number to open that project directly.\n\nCategory 1 — GNN applications for real-world data\nPractical graph prediction problems in engineering, science, finance and recommendation.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n1.1\nRemaining useful life prediction for aircraft engines\nBSc or MSc\nVery light to light\n\n\n1.2\nMulti-horizon traffic forecasting with data-driven graph structure\nBSc or MSc\nLight to moderate\n\n\n1.3\nIllicit Bitcoin transaction detection\nBSc or MSc\nLight to moderate\n\n\n1.4\nGraph-based movie recommendation with accuracy and coverage\nBSc only\nVery light\n\n\n1.5\nMolecular HIV activity prediction with calibrated GNNs\nBSc or MSc\nLight to moderate\n\n\n\n\n\nCategory 2 — Self-supervised learning for time series\nRepresentation learning from sensor, health and energy recordings with limited labels.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n2.1\nContrastive learning for wearable activity recognition\nBSc only\nLight\n\n\n2.2\nLead-aware masked learning for 12-lead ECG\nMSc only — reduced BSc version possible\nModerate\n\n\n2.3\nSelf-supervised forecasting representations for energy series\nBSc or MSc\nLight to moderate\n\n\n2.4\nSelf-supervised learning on heat-pump smart-meter data\nMSc only — reduced BSc version possible\nLight to moderate after preprocessing\n\n\n2.5\nGraph self-supervised learning from vibration signals\nMSc only\nModerate preprocessing\n\n\n\n\n\nCategory 3 — Deep-learning vision models and applications\nAdapting pretrained visual representations to a specialised anomaly-detection task.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n3.1\nAdapting DINO backbones for industrial anomaly detection\nBSc or MSc\nLight to moderate\n\n\n\n\n\nCategory 4 — Signal processing and deep-unfolded models\nTurning classical iterative signal-processing algorithms into trainable, interpretable layers.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n4.1\nDeep-unfolded multivariate VMD for correlated multichannel signals\nMSc only\nLight to moderate\n\n\n\n\n\nCategory 5 — Industrial collaboration projects\nEngineering problems defined with Siemens Gamesa and Tetra Pak, using operational data supplied under agreement. Master level is preferred throughout.\n\n\n\nID\nProject\nLevel\nCompute\n\n\n\n\n5.1\nSiemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring\nMSc preferred — reduced BSc version possible\nLight to moderate\n\n\n5.2\nSiemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals\nMSc preferred — reduced BSc version possible\nLight to moderate\n\n\n5.3\nTetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles\nMSc only\nLight to moderate",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#what-counts-as-a-bachelor-or-master-contribution",
+    "href": "index.html#what-counts-as-a-bachelor-or-master-contribution",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "What counts as a Bachelor or Master contribution",
+    "text": "What counts as a Bachelor or Master contribution\n\n\n\n\n\n\n\n\nDimension\nBachelor project\nMaster project\n\n\n\n\nStarting point\nOne dataset and one established method\nVerified anchor-paper reproduction plus required baselines\n\n\nContribution\nDocumented pipeline, fair comparison and one focused ablation\nNew mechanism, protocol, graph/view construction or transfer/robustness study\n\n\nEvidence\nCorrect split, sensible baselines and error analysis\nMultiple seeds, uncertainty, matched budgets, ablations and resource reporting where relevant\n\n\nOutcome\nExplain whether and when the method helps\nAnswer the stated question; a controlled negative result is valid",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#shared-protocol-for-self-supervised-projects",
+    "href": "index.html#shared-protocol-for-self-supervised-projects",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Shared protocol for self-supervised projects",
+    "text": "Shared protocol for self-supervised projects\nEvery self-supervised or pretrained project should report these settings whenever they are meaningful:\n\nFrozen linear evaluation. Pretrain without labels, freeze the encoder and train only a lightweight head.\nFine-tuning. Initialise from the pretrained encoder and update it with labels.\nFully supervised baseline. Train the same encoder architecture from scratch using labels.\nRandom-initialisation control. Freeze a randomly initialised encoder and train the same head.\nLabel-efficiency curve. Report several label budgets, typically 1%, 5%, 10% and 100%.\n\n\nLeakage rule. Group splits by the real independent unit: subject, patient, household, engine, bearing or process cycle—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "index.html#where-to-begin",
+    "href": "index.html#where-to-begin",
+    "title": "BSc and MSc Student Project Portfolio",
+    "section": "Where to begin",
+    "text": "Where to begin\n\nStart with Category 1 for practical GNN applications.\nStart with Category 2 for representation learning on sensor, health or energy signals.\nStart with Category 3 for deep-learning vision models and applications.\nStart with Category 4 to design a deep-unfolded signal-decomposition algorithm.\nStart with Category 5 to work on a live industrial problem with Siemens Gamesa or Tetra Pak.\nUse the selection guidance to match topics to experience and risk tolerance.",
+    "crumbs": [
+      "Home",
+      "Portfolio overview"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html",
+    "href": "industry-partner-projects.html",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "",
+    "text": "These projects address engineering questions proposed with an industrial partner. Siemens Gamesa or Tetra Pak will supply the operational data; the datasets are not public and must be handled under the applicable agreement.\nThe descriptions therefore define the research question and minimum evaluation, while leaving some details open. Before a project is allocated, the supervisor and partner must confirm the available signals, number of independent machines or cycles, sampling format, usable labels and permitted outputs. The first project phase is a data profile that fixes the final task and evaluation protocol.",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#before-allocation",
+    "href": "industry-partner-projects.html#before-allocation",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "Before allocation",
+    "text": "Before allocation\nConfirm the data agreement, available variables, independent sample count and one measurable downstream target. If these conditions are not met, narrow or postpone the project rather than defining the task from individual measurement windows.",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#learn-first-and-find-ideas",
+    "href": "industry-partner-projects.html#learn-first-and-find-ideas",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "Learn first and find ideas",
+    "text": "Learn first and find ideas\n\nWind-turbine vibration analysis: Randall and Antoni, Rolling element bearing diagnostics — a tutorial, Mechanical Systems and Signal Processing, 2011.\nTime-series representation learning: TS2Vec, TS-TCC and SimMTM.\nTime-series baselines: ROCKET and MiniRocket and InceptionTime.\nFor every project, state how the result would be used: for example, choosing an operating-state model, selecting a drivetrain configuration, or flagging a filtration cycle for review.",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#projects-in-this-category",
+    "href": "industry-partner-projects.html#projects-in-this-category",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "Projects in this category",
+    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-5-1",
+    "href": "industry-partner-projects.html#project-5-1",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "5.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring",
+    "text": "5.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring\n\nTaskUnsupervised operating-state discovery followed by condition-monitoring evaluation LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa vibration and operational data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Wind-turbine monitoring systems often group vibration measurements by power output. However, turbines producing the same power can show different vibration behaviour. You will test whether operating states learned from vibration and operational measurements describe the turbine more consistently than power bins.\n\nProject goal. Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power.\nData. Siemens Gamesa will provide anonymised turbine data under an agreed access arrangement. The data may include vibration features or spectra together with variables such as power, rotor or generator speed, pitch angle, torque, wind conditions and controller information. The exact channels, number of turbines, time period and sampling format must be confirmed before allocation.\nMethods and code. Start with power binning, PCA and one clustering method such as k-means or a Gaussian mixture. Then test one representation-learning approach, such as TS2Vec, followed by clustering. Use UMAP only for visualisation, not as evidence that the states are valid.\nBaselines and evaluation. Compare power bins, clustering on standardised operational variables, and clustering on the learned representation. Evaluate whether states are stable across held-out turbines or time periods and whether they have a clear operational interpretation. The main downstream comparison uses the same condition-monitoring or anomaly model with power-bin conditioning and learned-state conditioning. Report residual variation and, if suitable event or alarm labels are available, detection performance and false-alarm rate.\n\nMaster research question. Do data-driven operating states describe wind-turbine vibration more consistently than power bins, and do they improve downstream condition monitoring? The contribution is the state representation and a controlled comparison showing when it improves—or does not improve—the downstream model. Include stability analysis and one ablation of the input variables or representation method.\n\n\nBachelor version. Using a prepared feature table, compare power binning with one clustering method. Describe the resulting states using the available operational variables and measure how much within-state vibration variation each grouping removes. Representation learning is not required.\n\nPractical notes. Unsupervised clusters are not automatically physical operating states. Do not judge the result only by silhouette score or a two-dimensional plot. A useful state should be repeatable and should improve an agreed downstream measure.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-5-2",
+    "href": "industry-partner-projects.html#project-5-2",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "5.2 Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals",
+    "text": "5.2 Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals\n\nTaskTurbine-level classification of drivetrain configurations from vibration and operational measurements LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa data with configuration information for a subset of turbines; not public Starting paperDempster, Petitjean and Webb, ROCKET, DMKD 2020\n\n\nWhat you will do. A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether the configuration can be inferred from measured vibration and operational data.\n\nProject goal. Predict the drivetrain configuration for a turbine and estimate confidence over the possible configurations. The study should also identify which signal characteristics carry useful configuration information.\nData. Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The classification study requires enough independent turbines in each class.\nMethods and code. Begin with a simple classifier such as logistic regression, random forest or gradient boosting on the supplied spectral and operational features. If sequences or spectra are available, compare MiniRocket, InceptionTime or a compact 1-D CNN. If speed and component geometry are available, add order-domain or characteristic-frequency features as a physics-informed extension.\nBaselines and evaluation. Compare majority-class and operational-metadata baselines with feature-based and learned vibration models. Split by turbine; use a site-grouped test only if the data contain enough sites and classes. Report balanced accuracy and macro-F1. For probabilistic predictions, also report calibration and coverage: how often can the system make an automatic decision above a chosen confidence threshold, and how often is that decision correct?\n\nMaster research question. Can drivetrain configuration be inferred from vibration signals beyond what operational metadata already reveals, and can the model provide reliable confidence estimates? The contribution may be a physics-informed feature set, a hybrid model or a calibrated decision rule. Include a metadata-only control and analyse performance across operating conditions.\n\n\nBachelor version. Using a prepared feature table and fixed configuration labels, compare one conventional classifier with the metadata-only baseline on turbine-grouped splits. Identify the most informative spectral or operational features.\n\nPractical notes. This project is feasible only if enough turbines have reliable configuration labels. Configuration may also correlate with site, turbine age or rating, so these variables must be examined before attributing performance to vibration signatures.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-5-3",
+    "href": "industry-partner-projects.html#project-5-3",
+    "title": "Category 5 Industrial collaboration projects",
+    "section": "5.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles",
+    "text": "5.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles\n\nTaskSelf-supervised multivariate time-series learning followed by cycle-level regression or anomaly detection LevelMSc only ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Tetra Pak filtration-process data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Membrane-filtration plants generate repeated production and cleaning cycles containing flow, pressure, temperature and energy measurements. Because operating conditions differ between cycles, you will learn representations that account for this variation and test them on one agreed prediction or anomaly-detection task.\n\nProject goal. Determine whether cycle-phase- and operating-regime-aware self-supervised learning separates normal process variation from inefficient or abnormal behaviour better than a generic time-series representation.\nData. Tetra Pak will provide anonymised process data or access through a secure environment. Possible variables include cycle boundaries, flow, pressure, temperature, power or energy, setpoints and operating conditions. The number of independent cycles, sampling rate, available plants or lines, and downstream target must be confirmed before allocation. Split by complete cycle and preserve time order.\nMethods and code. Use one established method—TS2Vec, TS-TCC or SimMTM—with a compact 1-D CNN, TCN or GRU encoder. Compare generic augmentations with a cycle-phase- or regime-aware view or masking design. Change-point detection or clustering may be used to describe operating regimes.\nBaselines and evaluation. Compare a statistical baseline, a supervised TCN or GRU, generic self-supervised learning and the proposed regime-aware version. Include random-frozen and frozen-probe controls. Use MAE for early prediction of final specific energy, or AUPRC for an agreed anomaly label. Report a label-efficiency curve and use several seeds when the number of independent cycles permits.\n\nMaster research question. Can cycle-phase- and operating-regime-aware self-supervised views improve prediction or anomaly detection across non-stationary filtration cycles? The contribution is the process-aware view or masking design and its matched comparison with generic augmentations, including transfer to a held-out regime, line or product when the data support it.\n\nPractical notes. Confirm the independent-cycle count and one measurable downstream target before allocation. Rerunning an unchanged self-supervised method is a baseline, not the Master contribution. Follow the shared protocol for self-supervised projects.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "5  Industrial collaborations"
     ]
   },
   {
@@ -367,7 +433,7 @@
     "href": "selection-guidance.html",
     "title": "Selection guidance",
     "section": "",
-    "text": "Eight projects are available at Bachelor level: 1.1 (C-MAPSS), 1.2 (METR-LA), 1.3 (Elliptic), 1.4 (MovieLens), 1.5 (ogbg-molhiv), 2.2 (UCI-HAR), 2.4 (ETT) and 3.1 (MVTec AD). Of these, 1.4 and 2.2 are Bachelor-only; the rest also support a Master scope.\n2.1, 2.3, 2.5, 2.6 and 4.1 are Master-only. 2.3 and 2.5 list a reduced Bachelor version.",
+    "text": "Eight projects are available at Bachelor level: 1.1 (C-MAPSS), 1.2 (METR-LA), 1.3 (Elliptic), 1.4 (MovieLens), 1.5 (ogbg-molhiv), 2.1 (UCI-HAR), 2.3 (ETT) and 3.1 (MVTec AD). Of these, 1.4 and 2.1 are Bachelor-only; the rest also support a Master scope.\n2.2, 2.4, 2.5, 4.1 and 5.3 are primarily Master-level projects. 2.2 and 2.4 list a reduced Bachelor version.\nThe industry-partner projects in Category 5 are all offered with Master level preferred. 5.1 and 5.2 list a reduced Bachelor version that can start once the partner has supplied a prepared feature table; 5.3 is Master only.",
     "crumbs": [
       "Home",
       "Selection guidance"
@@ -378,7 +444,7 @@
     "href": "selection-guidance.html#levels",
     "title": "Selection guidance",
     "section": "",
-    "text": "Eight projects are available at Bachelor level: 1.1 (C-MAPSS), 1.2 (METR-LA), 1.3 (Elliptic), 1.4 (MovieLens), 1.5 (ogbg-molhiv), 2.2 (UCI-HAR), 2.4 (ETT) and 3.1 (MVTec AD). Of these, 1.4 and 2.2 are Bachelor-only; the rest also support a Master scope.\n2.1, 2.3, 2.5, 2.6 and 4.1 are Master-only. 2.3 and 2.5 list a reduced Bachelor version.",
+    "text": "Eight projects are available at Bachelor level: 1.1 (C-MAPSS), 1.2 (METR-LA), 1.3 (Elliptic), 1.4 (MovieLens), 1.5 (ogbg-molhiv), 2.1 (UCI-HAR), 2.3 (ETT) and 3.1 (MVTec AD). Of these, 1.4 and 2.1 are Bachelor-only; the rest also support a Master scope.\n2.2, 2.4, 2.5, 4.1 and 5.3 are primarily Master-level projects. 2.2 and 2.4 list a reduced Bachelor version.\nThe industry-partner projects in Category 5 are all offered with Master level preferred. 5.1 and 5.2 list a reduced Bachelor version that can start once the partner has supplied a prepared feature table; 5.3 is Master only.",
     "crumbs": [
       "Home",
       "Selection guidance"
@@ -411,7 +477,7 @@
     "href": "selection-guidance.html#licences-and-access",
     "title": "Selection guidance",
     "section": "Licences and access",
-    "text": "Licences and access\n\n\n\n\n\n\n\n\nResource\nLicence or status\nPractical consequence\n\n\n\n\nUCI-HAR\nCC BY 4.0\nOpen with attribution\n\n\nPTB-XL\nCC BY 4.0\nNo credentialing required\n\n\nETT\nOpen research dataset\nCheck the repository terms before redistribution\n\n\nMovieLens 100K\nGroupLens research terms\nAcademic use; cite the dataset\n\n\nOGB ogbg-molhiv\nOpen, MIT-licensed tooling\nUse the official split and evaluator\n\n\nElliptic Bitcoin\nDistributor’s research terms\nConfirm terms before publishing results\n\n\nPaderborn KAt\nCC BY-NC 4.0\nNon-commercial academic use\n\n\nMVTec AD and MVTec AD 2\nCC BY-NC-SA 4.0\nNon-commercial and share-alike\n\n\nDINOv2\nApache 2.0\nUngated\n\n\nHEAPO data\nPublic download; no dataset licence stated on Zenodo\nObtain written permission for thesis use; the dataloader is MIT-licensed\n\n\nLargeST\nCC BY-NC 4.0; benchmark code MIT\nNon-commercial academic use with attribution\n\n\nTetra Pak process data\nPartner-supplied under an approved agreement\nRestricted access; confirm scope and secure environment before allocation",
+    "text": "Licences and access\n\n\n\n\n\n\n\n\nResource\nLicence or status\nPractical consequence\n\n\n\n\nUCI-HAR\nCC BY 4.0\nOpen with attribution\n\n\nPTB-XL\nCC BY 4.0\nNo credentialing required\n\n\nETT\nOpen research dataset\nCheck the repository terms before redistribution\n\n\nMovieLens 100K\nGroupLens research terms\nAcademic use; cite the dataset\n\n\nOGB ogbg-molhiv\nOpen, MIT-licensed tooling\nUse the official split and evaluator\n\n\nElliptic Bitcoin\nDistributor’s research terms\nConfirm terms before publishing results\n\n\nPaderborn KAt\nCC BY-NC 4.0\nNon-commercial academic use\n\n\nMVTec AD and MVTec AD 2\nCC BY-NC-SA 4.0\nNon-commercial and share-alike\n\n\nDINOv2\nApache 2.0\nUngated\n\n\nHEAPO data\nPublic download; no dataset licence stated on Zenodo\nObtain written permission for thesis use; the dataloader is MIT-licensed\n\n\nLargeST\nCC BY-NC 4.0; benchmark code MIT\nNon-commercial academic use with attribution\n\n\nTetra Pak process data\nPartner-supplied under an approved agreement\nRestricted access; confirm scope and secure environment before allocation\n\n\nSiemens Gamesa fleet vibration and operational data\nPartner-supplied; subject to the project data agreement\nRestricted access; confirm turbine counts, measurement positions and secure environment before allocation",
     "crumbs": [
       "Home",
       "Selection guidance"
@@ -422,7 +488,7 @@
     "href": "selection-guidance.html#recurring-failure-modes",
     "title": "Selection guidance",
     "section": "Recurring failure modes",
-    "text": "Recurring failure modes\n\nComparing with a number produced by a different split, metric, horizon, shot count or evaluation level.\nUsing windows from the same physical unit in both training and test sets.\nComparing two published implementations and concluding something about the method — differences in encoder, augmentation and prior tuning are confounded with the mechanism you meant to test.\nReporting a difference that the test set is too small to resolve.\nCalling an authors’ repository run a research contribution.\nReporting only in-distribution performance when transfer or cold start is the motivation, or when the benchmark is already saturated.\nOmitting the random frozen encoder in a self-supervised study.\nExpanding to a second dataset before the first pipeline and evaluation protocol are stable.\n\nSelect one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.\nThe Tetra Pak project is included as Project 2.1. A Siemens Gamesa project may be offered separately when its scope and data access are confirmed.",
+    "text": "Recurring failure modes\n\nComparing with a number produced by a different split, metric, horizon, shot count or evaluation level.\nUsing windows from the same physical unit in both training and test sets.\nComparing two published implementations and concluding something about the method — differences in encoder, augmentation and prior tuning are confounded with the mechanism you meant to test.\nReporting a difference that the test set is too small to resolve.\nCalling an authors’ repository run a research contribution.\nReporting only in-distribution performance when transfer or cold start is the motivation, or when the benchmark is already saturated.\nOmitting the random frozen encoder in a self-supervised study.\nExpanding to a second dataset before the first pipeline and evaluation protocol are stable.\n\nSelect one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.\nThe partner-supplied projects are grouped in Category 5: Siemens Gamesa as Projects 5.1 and 5.2, and Tetra Pak as Project 5.3. Allocation follows confirmation of data access, independent sample count and the downstream target.",
     "crumbs": [
       "Home",
       "Selection guidance"
