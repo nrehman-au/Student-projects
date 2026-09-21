@@ -268,18 +268,7 @@
     "href": "industry-partner-projects.html",
     "title": "Category 1 Industrial projects: machine learning + signal processing",
     "section": "",
-    "text": "These projects address engineering questions proposed with an industrial partner. Siemens Gamesa or Tetra Pak will supply the operational data; the datasets are not public and must be handled under the applicable agreement.\nThe descriptions therefore define the research question and minimum evaluation, while leaving some details open. Before a project is allocated, the supervisor and partner must confirm the available signals, number of independent machines or cycles, sampling format, usable labels and permitted outputs. The first project phase is a data profile that fixes the final task and evaluation protocol.",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#before-allocation",
-    "href": "industry-partner-projects.html#before-allocation",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "Before allocation",
-    "text": "Before allocation\nConfirm the data agreement, available variables, independent sample count and one measurable downstream target. If these conditions are not met, narrow or postpone the project rather than defining the task from individual measurement windows.",
+    "text": "These projects are developed with Siemens Gamesa and Tetra Pak using non-public operational data. At the start of each project, the student, supervisor and partner will confirm the available data, downstream task and permitted outputs.\nAll three are primarily Master projects. A reduced Bachelor version can be offered when a prepared dataset and fixed task are available. The Bachelor project implements and compares established methods; the Master project adds a new representation, feature design or evaluation question.\nEvaluation split. Keep all measurements from one turbine or filtration cycle in the same split. A held-out site or production line can be used as an additional Master-level transfer test when enough data are available.",
     "crumbs": [
       "Home",
       "1  Industrial projects"
