@@ -92,6 +92,10 @@ website:
         contents:
           - text: "4.1  Adapting DINO backbones for industrial anomaly detection"
             href: vision-foundation-models.qmd#project-4-1
+          - text: "4.2  Adapting DINOv3 for robust abdominal CT segmentation"
+            href: vision-foundation-models.qmd#project-4-2
+          - text: "4.3  Federated knowledge distillation for medical image denoising"
+            href: vision-foundation-models.qmd#project-4-3
       - section: "5  Signal processing"
         href: signal-processing.qmd
         contents:

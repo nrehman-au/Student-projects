@@ -1,12 +1,12 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
 subtitle: "Industrial projects, graph applications, machine learning for time series, deep-learning vision, and signal processing"
-description: "Seventeen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+description: "Nineteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Seventeen student project options
+## Nineteen student project options
 
 Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.
 
@@ -35,9 +35,9 @@ Each project entry states one research question, the task, the data source and i
     <a class="btn btn-outline-primary" href="time-series-ssl.html">View Category 3</a>
   </section>
   <section class="category-card category-card-4">
-    <div class="category-number">Category 4 · 1 project</div>
+    <div class="category-number">Category 4 · 3 projects</div>
     <h3>Deep-learning vision models and applications</h3>
-    <p>Adapt a pretrained visual encoder to industrial anomaly detection, and measure what the adaptation contributes.</p>
+    <p>Study pretrained visual encoders, medical segmentation and federated image restoration.</p>
     <a class="btn btn-outline-primary" href="vision-foundation-models.html">View Category 4</a>
   </section>
   <section class="category-card category-card-5">
@@ -104,11 +104,13 @@ Representation learning, forecasting, classification and channel modelling for s
 
 ### [Category 4 — Deep-learning vision models and applications](vision-foundation-models.html)
 
-Adapting pretrained visual representations to a specialised anomaly-detection task.
+Pretrained visual representations for industrial anomaly detection and medical segmentation, plus federated medical-image denoising.
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
 | [4.1](vision-foundation-models.html#project-4-1) | Adapting DINO backbones for industrial anomaly detection | BSc or MSc | Light to moderate |
+| [4.2](vision-foundation-models.html#project-4-2) | Adapting DINOv3 for robust abdominal CT segmentation | BSc or MSc | Moderate to high |
+| [4.3](vision-foundation-models.html#project-4-3) | Federated knowledge distillation for medical image denoising | MSc only | Moderate |
 
 ### [Category 5 — Signal processing and deep-unfolded models](signal-processing.html)
 

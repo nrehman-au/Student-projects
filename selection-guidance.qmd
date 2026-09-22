@@ -6,9 +6,9 @@ toc: true
 
 ## Levels
 
-Eight standard projects are available at Bachelor level: **2.1** (C-MAPSS), **2.2** (METR-LA), **2.3** (Elliptic), **2.4** (MovieLens), **2.5** (ogbg-molhiv), **3.1** (UCI-HAR), **3.3** (ETT) and **4.1** (MVTec AD). Of these, **2.4** and **3.1** are Bachelor-only; the rest also support a Master scope.
+Nine standard projects are available at Bachelor level: **2.1** (C-MAPSS), **2.2** (METR-LA), **2.3** (Elliptic), **2.4** (MovieLens), **2.5** (ogbg-molhiv), **3.1** (UCI-HAR), **3.3** (ETT), **4.1** (MVTec AD) and **4.2** (AMOS22). Of these, **2.4** and **3.1** are Bachelor-only; the rest also support a Master scope.
 
-**3.2**, **3.4**, **3.5** and **5.1** are primarily Master-level projects. **3.2** and **3.4** list reduced Bachelor versions.
+**3.2**, **3.4**, **3.5**, **4.3** and **5.1** are primarily Master-level projects. **3.2** and **3.4** list reduced Bachelor versions; **4.3** and **5.1** are MSc-only.
 
 The industry projects in **Category 1** are all offered with Master level preferred. **1.1**, **1.2** and **1.3** can be reduced to Bachelor level once the partner has supplied a prepared dataset and fixed task.
 
@@ -43,6 +43,9 @@ The industry projects in **Category 1** are all offered with Master level prefer
 | Paderborn KAt | CC BY-NC 4.0 | Non-commercial academic use |
 | MVTec AD and MVTec AD 2 | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
 | DINOv2 | Apache 2.0 | Ungated |
+| DINOv3 | DINOv3 licence; gated model access | Accept the model terms and acknowledge DINOv3 in publications |
+| AMOS22 | Challenge dataset access terms | Register, keep patient-level splits and confirm redistribution terms |
+| M&Ms and ACDC | Public research datasets with registration or use conditions | Confirm access before allocation and do not redistribute source images |
 | HEAPO data | Public download; no dataset licence stated on Zenodo | Obtain written permission for thesis use; the dataloader is MIT-licensed |
 | LargeST | CC BY-NC 4.0; benchmark code MIT | Non-commercial academic use with attribution |
 | Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
