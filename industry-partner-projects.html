@@ -416,6 +416,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="project-intro">
 <p><strong>What you will do.</strong> Wind-turbine monitoring systems often group vibration measurements by power output. However, turbines producing the same power can show different vibration behaviour. You will test whether operating states learned from vibration and operational measurements describe the turbine more consistently than power bins.</p>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/industry/siemens-project-1.png" class="industry-project-figure img-fluid figure-img" loading="lazy"></p>
+<figcaption>Project overview: operational-state identification from turbine operational and vibration data</figcaption>
+</figure>
+</div>
 <p><strong>Project goal.</strong> Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power.</p>
 <p><strong>Data.</strong> Siemens Gamesa will provide anonymised turbine data under an agreed access arrangement. The data may include vibration features or spectra together with variables such as power, rotor or generator speed, pitch angle, torque, wind conditions and controller information. The exact channels, number of turbines, time period and sampling format must be confirmed before allocation.</p>
 <p><strong>Methods and code.</strong> Start with power binning, PCA and one clustering method such as k-means or a Gaussian mixture. Then test one representation-learning approach, such as <a href="https://github.com/zhihanyue/ts2vec">TS2Vec</a>, followed by clustering. Use UMAP only for visualisation, not as evidence that the states are valid.</p>
@@ -439,6 +445,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="project-intro">
 <p><strong>What you will do.</strong> A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether the configuration can be inferred from measured vibration and operational data.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/industry/siemens-project-2.png" class="industry-project-figure img-fluid figure-img" loading="lazy"></p>
+<figcaption>Project overview: turbine-configuration and kinematics identification from vibration data</figcaption>
+</figure>
 </div>
 <p><strong>Project goal.</strong> Predict the drivetrain configuration for a turbine and estimate confidence over the possible configurations. The study should also identify which signal characteristics carry useful configuration information.</p>
 <p><strong>Data.</strong> Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The classification study requires enough independent turbines in each class.</p>
