@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9dd9667f83883a06eff2f7aa27cd58d6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-39c717108b776a898f5d70376bb6b5a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./industry-partner-projects.html#project-1-2" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1.2 Siemens Gamesa: Inferring drivetrain configuration and kinematics</span></a>
+ <span class="menu-text">1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -371,7 +371,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#learn-first-and-find-ideas" id="toc-learn-first-and-find-ideas" class="nav-link active" data-scroll-target="#learn-first-and-find-ideas">Learn first and find ideas</a></li>
   <li><a href="#projects-in-this-category" id="toc-projects-in-this-category" class="nav-link" data-scroll-target="#projects-in-this-category">Projects in this category</a></li>
   <li><a href="#project-1-1" id="toc-project-1-1" class="nav-link" data-scroll-target="#project-1-1">1.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring</a></li>
-  <li><a href="#project-1-2" id="toc-project-1-2" class="nav-link" data-scroll-target="#project-1-2">1.2 Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals</a></li>
+  <li><a href="#project-1-2" id="toc-project-1-2" class="nav-link" data-scroll-target="#project-1-2">1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals</a></li>
   <li><a href="#project-1-3" id="toc-project-1-3" class="nav-link" data-scroll-target="#project-1-3">1.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles</a></li>
   </ul>
 </nav>
@@ -434,7 +434,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Project overview: operational-state identification from turbine operational and vibration data</figcaption>
 </figure>
 </div>
-<p><strong>Project goal.</strong> Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power.</p>
+<p><strong>Project goal.</strong> Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power. Where possible, the discovered operating states should be interpreted in relation to known turbine operating regimes, controller actions, or structural and aerodynamic phenomena.</p>
 <p><strong>Data.</strong> Siemens Gamesa will provide anonymised turbine data under an agreed access arrangement. The data may include vibration features or spectra together with variables such as power, rotor or generator speed, pitch angle, torque, wind conditions and controller information. The exact channels, number of turbines, time period and sampling format must be confirmed before allocation.</p>
 <p><strong>Methods and code.</strong> Start with power binning, PCA and one clustering method such as k-means or a Gaussian mixture. Then test one representation-learning approach, such as <a href="https://github.com/zhihanyue/ts2vec">TS2Vec</a>, followed by clustering. Use UMAP only for visualisation, not as evidence that the states are valid.</p>
 <p><strong>Baselines and evaluation.</strong> Compare power bins, clustering on standardised operational variables, and clustering on the learned representation. Evaluate whether states are stable across held-out turbines or time periods and whether they have a clear operational interpretation. The main downstream comparison uses the same condition-monitoring or anomaly model with power-bin conditioning and learned-state conditioning. Report residual variation and, if suitable event or alarm labels are available, detection performance and false-alarm rate.</p>
@@ -444,19 +444,19 @@ ul.task-list li input[type="checkbox"] {
 <div class="scope scope-bsc">
 <p><strong>Bachelor version.</strong> Using a prepared feature table, compare power binning with one clustering method. Describe the resulting states using the available operational variables and measure how much within-state vibration variation each grouping removes. Representation learning is not required.</p>
 </div>
-<p><strong>Practical notes.</strong> Unsupervised clusters are not automatically physical operating states. Do not judge the result only by silhouette score or a two-dimensional plot. A useful state should be repeatable and should improve an agreed downstream measure.</p>
+<p><strong>Practical notes.</strong> Unsupervised clusters are not automatically physical operating states. Do not judge the result only by silhouette score or a two-dimensional plot. A useful state should be repeatable, physically interpretable where possible, and should improve an agreed downstream measure.</p>
 <div class="project-back">
 <a href="#top">Back to category introduction ↑</a>
 </div>
 <hr>
 </section>
 <section id="project-1-2" class="level2">
-<h2 class="anchored" data-anchor-id="project-1-2">1.2 Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals</h2>
+<h2 class="anchored" data-anchor-id="project-1-2">1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals</h2>
 <div class="project-meta">
-<p><span class="meta-label">Task</span><span class="meta-value">Turbine-level classification of drivetrain configurations from vibration and operational measurements</span> <span class="meta-label">Level</span><span class="meta-value">MSc preferred; reduced BSc version possible</span> <span class="meta-label">Compute</span><span class="meta-value">Light to moderate; compact models on a 4–8 GB GPU</span> <span class="meta-label">Data</span><span class="meta-value">Partner-supplied Siemens Gamesa data with configuration information for a subset of turbines; not public</span> <span class="meta-label">Starting paper</span><span class="meta-value">Dempster, Petitjean and Webb, <a href="https://arxiv.org/abs/1910.13051">ROCKET</a>, DMKD 2020</span></p>
+<p><span class="meta-label">Task</span><span class="meta-value">Probabilistic ranking of candidate drivetrain configurations from vibration and operational measurements</span> <span class="meta-label">Level</span><span class="meta-value">MSc preferred; reduced BSc version possible</span> <span class="meta-label">Compute</span><span class="meta-value">Light to moderate; compact models on a 4–8 GB GPU</span> <span class="meta-label">Data</span><span class="meta-value">Partner-supplied Siemens Gamesa data with configuration information for a subset of turbines; not public</span> <span class="meta-label">Starting paper</span><span class="meta-value">Dempster, Petitjean and Webb, <a href="https://arxiv.org/abs/1910.13051">ROCKET</a>, DMKD 2020</span></p>
 </div>
 <div class="project-intro">
-<p><strong>What you will do.</strong> A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether the configuration can be inferred from measured vibration and operational data.</p>
+<p><strong>What you will do.</strong> A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether measured vibration and operational data can narrow the set of plausible configurations and provide probabilities or confidence estimates for the candidates, rather than requiring a single fixed assignment.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -464,17 +464,17 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Project overview: turbine-configuration and kinematics identification from vibration data</figcaption>
 </figure>
 </div>
-<p><strong>Project goal.</strong> Predict the drivetrain configuration for a turbine and estimate confidence over the possible configurations. The study should also identify which signal characteristics carry useful configuration information.</p>
-<p><strong>Data.</strong> Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The classification study requires enough independent turbines in each class.</p>
-<p><strong>Methods and code.</strong> Begin with a simple classifier such as logistic regression, random forest or gradient boosting on the supplied spectral and operational features. If sequences or spectra are available, compare <a href="https://github.com/angus924/rocket">MiniRocket</a>, <a href="https://github.com/hfawaz/InceptionTime">InceptionTime</a> or a compact 1-D CNN. If speed and component geometry are available, add order-domain or characteristic-frequency features as a physics-informed extension.</p>
-<p><strong>Baselines and evaluation.</strong> Compare majority-class and operational-metadata baselines with feature-based and learned vibration models. Split by turbine; use a site-grouped test only if the data contain enough sites and classes. Report balanced accuracy and macro-F1. For probabilistic predictions, also report calibration and coverage: how often can the system make an automatic decision above a chosen confidence threshold, and how often is that decision correct?</p>
+<p><strong>Project goal.</strong> A practically useful outcome may be narrowing the set of plausible configurations and providing calibrated confidence estimates, rather than always identifying a single configuration with certainty. From an industrial perspective, reducing uncertainty can already provide significant value, even if perfect identification is not possible. The study should also identify which signal characteristics carry useful configuration information.</p>
+<p><strong>Data.</strong> Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The probabilistic ranking study requires enough independent turbines for each candidate configuration.</p>
+<p><strong>Methods and code.</strong> Begin with a probabilistic baseline such as multinomial logistic regression, or a random-forest or gradient-boosting model that outputs candidate probabilities, using the supplied spectral and operational features. If sequences or spectra are available, compare <a href="https://github.com/angus924/rocket">MiniRocket</a>, <a href="https://github.com/hfawaz/InceptionTime">InceptionTime</a> or a compact 1-D CNN, followed by probability calibration when needed. If speed and component geometry are available, add order-domain or characteristic-frequency features as a physics-informed extension. An advanced extension can condition the model on known kinematic parameters so that it learns how vibration patterns relate to machine properties rather than merely memorising component identities.</p>
+<p><strong>Baselines and evaluation.</strong> Compare prior-probability and operational-metadata baselines with feature-based and learned vibration models. Treat the output as a ranked probability distribution over candidate configurations rather than only a fixed assignment. Split by turbine; use a site-grouped test only if the data contain enough sites and classes. Report balanced accuracy and macro-F1 for the highest-ranked candidate, top-k candidate recall, and a probabilistic score such as log loss or the Brier score. Also report calibration and coverage: how often can the system make an automatic decision above a chosen confidence threshold, and how often is that decision correct?</p>
 <div class="scope scope-msc">
-<p><strong>Master research question.</strong> <strong>Can drivetrain configuration be inferred from vibration signals beyond what operational metadata already reveals, and can the model provide reliable confidence estimates?</strong> The contribution may be a physics-informed feature set, a hybrid model or a calibrated decision rule. Include a metadata-only control and analyse performance across operating conditions.</p>
+<p><strong>Master research question.</strong> <strong>Can vibration and operational measurements narrow the set of plausible drivetrain configurations and provide calibrated confidence estimates beyond what operational metadata already reveals?</strong> The contribution may be a calibrated candidate-ranking method, a physics-informed feature set or a model conditioned on kinematic information. Include a metadata-only control and analyse performance across operating conditions.</p>
 </div>
 <div class="scope scope-bsc">
-<p><strong>Bachelor version.</strong> Using a prepared feature table and fixed configuration labels, compare one conventional classifier with the metadata-only baseline on turbine-grouped splits. Identify the most informative spectral or operational features.</p>
+<p><strong>Bachelor version.</strong> Using a prepared feature table and verified configuration labels, compare one probabilistic classifier with the metadata-only baseline on turbine-grouped splits. Report both the highest-ranked classification result and whether the true configuration appears among the top candidate configurations. Identify the most informative spectral or operational features.</p>
 </div>
-<p><strong>Practical notes.</strong> This project is feasible only if enough turbines have reliable configuration labels. Configuration may also correlate with site, turbine age or rating, so these variables must be examined before attributing performance to vibration signatures.</p>
+<p><strong>Practical notes.</strong> This project is feasible only if enough turbines have reliable configuration labels for training and validation. Configuration may also correlate with site, turbine age or rating, so these variables must be examined before attributing performance to vibration signatures. A physics-informed transfer study from well-labelled components to complex components with limited labels is a valuable MSc extension, but it depends on having both known kinematic parameters and a credible target-component test set.</p>
 <div class="project-back">
 <a href="#top">Back to category introduction ↑</a>
 </div>
