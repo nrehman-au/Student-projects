@@ -1,12 +1,12 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
-subtitle: "Industrial projects, graph applications, self-supervised time series, deep-learning vision, and signal processing"
-description: "Fifteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+subtitle: "Industrial projects, graph applications, machine learning for time series, deep-learning vision, and signal processing"
+description: "Seventeen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Fifteen student project options
+## Seventeen student project options
 
 Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.
 
@@ -29,9 +29,9 @@ Each project entry states one research question, the task, the data source and i
     <a class="btn btn-outline-primary" href="graph-applications.html">View Category 2</a>
   </section>
   <section class="category-card category-card-3">
-    <div class="category-number">Category 3 · 5 projects</div>
-    <h3>SSL for time series</h3>
-    <p>Learn representations from sensor, health and energy recordings when labelled examples are limited.</p>
+    <div class="category-number">Category 3 · 7 projects</div>
+    <h3>Machine learning for time-series data</h3>
+    <p>Study representation learning, forecasting, classification and channel modelling for sensor, health and energy signals.</p>
     <a class="btn btn-outline-primary" href="time-series-ssl.html">View Category 3</a>
   </section>
   <section class="category-card category-card-4">
@@ -88,9 +88,9 @@ Practical graph prediction problems in engineering, science, finance and recomme
 | [2.4](graph-applications.html#project-2-4) | Graph-based movie recommendation with accuracy and coverage | BSc only | Very light |
 | [2.5](graph-applications.html#project-2-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
 
-### [Category 3 — Self-supervised learning for time series](time-series-ssl.html)
+### [Category 3 — Machine learning for time-series data](time-series-ssl.html)
 
-Representation learning from sensor, health and energy recordings with limited labels.
+Representation learning, forecasting, classification and channel modelling for sensor, health, energy and industrial signals.
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
@@ -99,6 +99,8 @@ Representation learning from sensor, health and energy recordings with limited l
 | [3.3](time-series-ssl.html#project-3-3) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
 | [3.4](time-series-ssl.html#project-3-4) | Self-supervised learning on heat-pump smart-meter data | MSc preferred — reduced BSc version possible | Light to moderate after preprocessing |
 | [3.5](time-series-ssl.html#project-3-5) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
+| [3.6](time-series-ssl.html#project-3-6) | Time–frequency contrastive Mamba for cross-condition bearing diagnosis | MSc preferred — reduced BSc version possible | Light to moderate |
+| [3.7](time-series-ssl.html#project-3-7) | Correlation-graph Mamba for order-robust multivariate forecasting | MSc preferred — reduced BSc version possible | Light to moderate |
 
 ### [Category 4 — Deep-learning vision models and applications](vision-foundation-models.html)
 
@@ -143,7 +145,7 @@ Every self-supervised or pretrained project should report these settings wheneve
 
 - Start with [Category 1](industry-partner-projects.qmd) to work on an industrial problem with Siemens Gamesa or Tetra Pak.
 - Start with [Category 2](graph-applications.qmd) for practical GNN applications.
-- Start with [Category 3](time-series-ssl.qmd) for representation learning on sensor, health or energy signals.
+- Start with [Category 3](time-series-ssl.qmd) for machine learning on sensor, health, energy or industrial time series.
 - Start with [Category 4](vision-foundation-models.qmd) for deep-learning vision models and applications.
 - Start with [Category 5](signal-processing.qmd) to design a deep-unfolded signal-decomposition algorithm.
 - Use the [selection guidance](selection-guidance.qmd) to match topics to experience and risk tolerance.

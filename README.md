@@ -1,6 +1,6 @@
 # Student Project Portfolio
 
-This is the Quarto source for the BSc and MSc Student Project Portfolio in GNN applications, self-supervised time-series learning, deep-learning vision, and signal processing.
+This is the Quarto source for the BSc and MSc Student Project Portfolio in GNN applications, machine learning for time-series data, deep-learning vision, and signal processing.
 
 ## Preview locally
 

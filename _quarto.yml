@@ -6,7 +6,7 @@ project:
 
 website:
   title: "Student Project Portfolio"
-  description: "BSc and MSc projects in industrial machine learning and signal processing, GNN applications, self-supervised time-series learning, and deep-learning vision"
+  description: "BSc and MSc projects in industrial machine learning and signal processing, GNN applications, time-series learning, and deep-learning vision"
   site-url: "https://nrehman-au.github.io/Student-projects/"
   search:
     location: navbar
@@ -27,7 +27,7 @@ website:
             href: industry-partner-projects.qmd
           - text: "2  GNN applications"
             href: graph-applications.qmd
-          - text: "3  Time-series SSL"
+          - text: "3  Machine learning for time series"
             href: time-series-ssl.qmd
           - text: "4  Deep-learning vision models"
             href: vision-foundation-models.qmd
@@ -70,7 +70,7 @@ website:
             href: graph-applications.qmd#project-2-4
           - text: "2.5  Molecular HIV activity prediction with calibrated GNNs"
             href: graph-applications.qmd#project-2-5
-      - section: "3  Time-series SSL"
+      - section: "3  Machine learning for time series"
         href: time-series-ssl.qmd
         contents:
           - text: "3.1  Contrastive learning for wearable activity recognition"
@@ -83,6 +83,10 @@ website:
             href: time-series-ssl.qmd#project-3-4
           - text: "3.5  Graph self-supervised learning from vibration signals"
             href: time-series-ssl.qmd#project-3-5
+          - text: "3.6  Time–frequency contrastive Mamba for bearing diagnosis"
+            href: time-series-ssl.qmd#project-3-6
+          - text: "3.7  Correlation-graph Mamba for multivariate forecasting"
+            href: time-series-ssl.qmd#project-3-7
       - section: "4  Deep-learning vision models"
         href: vision-foundation-models.qmd
         contents:
