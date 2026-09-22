@@ -73,7 +73,7 @@ Engineering problems defined with Siemens Gamesa and Tetra Pak, using operationa
 | ID | Project | Level | Compute |
 |---|---|---|---|
 | [1.1](industry-partner-projects.html#project-1-1) | Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring | MSc preferred — reduced BSc version possible | Light to moderate |
-| [1.2](industry-partner-projects.html#project-1-2) | Siemens Gamesa: Inferring drivetrain configuration and kinematics from vibration signals | MSc preferred — reduced BSc version possible | Light to moderate |
+| [1.2](industry-partner-projects.html#project-1-2) | Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals | MSc preferred — reduced BSc version possible | Light to moderate |
 | [1.3](industry-partner-projects.html#project-1-3) | Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc preferred — reduced BSc version possible | Light to moderate |
 
 ### [Category 2 — GNN applications for real-world data](graph-applications.html)
