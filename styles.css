@@ -157,10 +157,7 @@ a {
 }
 
 .project-meta {
-  display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
   width: 100%;
-  align-items: stretch;
   border: 1px solid var(--portfolio-border);
   border-radius: 0.4rem;
   overflow: hidden;
@@ -168,13 +165,22 @@ a {
   line-height: 1.42;
 }
 
-.project-meta > span {
+.project-meta > p {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: stretch;
+}
+
+.project-meta > p > span {
   padding: 0.55rem 0.75rem;
   border-bottom: 1px solid var(--portfolio-border);
   min-width: 0;
 }
 
-.project-meta > span:nth-last-child(-n+2) {
+.project-meta > p > span:nth-last-child(-n+2) {
   border-bottom: 0;
 }
 
@@ -269,10 +275,10 @@ tbody tr:nth-child(even) {
   .hero-panel { padding: 1.2rem; }
   .category-grid { grid-template-columns: 1fr; }
   .category-card { min-height: auto; }
-  .project-meta { grid-template-columns: 1fr; }
-  .project-meta > span { border-bottom: 0 !important; }
-  .project-meta > .meta-value { border-bottom: 1px solid var(--portfolio-border) !important; }
-  .project-meta > span:last-child { border-bottom: 0 !important; }
+  .project-meta > p { grid-template-columns: 1fr; }
+  .project-meta > p > span { border-bottom: 0 !important; }
+  .project-meta > p > .meta-value { border-bottom: 1px solid var(--portfolio-border) !important; }
+  .project-meta > p > span:last-child { border-bottom: 0 !important; }
   .meta-label { padding-bottom: 0.25rem !important; }
   .meta-value { padding-top: 0.4rem !important; }
   .industry-project-figure { width: 100%; margin: 1rem auto 1.2rem; }
