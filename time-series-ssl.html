@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learning representations from unlabelled sensor, health and energy data">
+<meta name="description" content="Learning from sensor, health, energy and industrial signals">
 
-<title>Category 3 Self-supervised representation learning for time series – Student Project Portfolio</title>
+<title>Category 3 Machine learning for time-series data – Student Project Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./time-series-ssl.html">
- <span class="dropdown-text">3 Time-series SSL</span></a>
+ <span class="dropdown-text">3 Machine learning for time series</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./vision-foundation-models.html">
@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./time-series-ssl.html">3 Time-series SSL</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./time-series-ssl.html">3 Machine learning for time series</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./time-series-ssl.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">3  Time-series SSL</span></a>
+ <span class="menu-text">3  Machine learning for time series</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -290,6 +290,18 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./time-series-ssl.html#project-3-5" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.5 Graph self-supervised learning from vibration signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./time-series-ssl.html#project-3-6" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.6 Time–frequency contrastive Mamba for bearing diagnosis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./time-series-ssl.html#project-3-7" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.7 Correlation-graph Mamba for multivariate forecasting</span></a>
   </div>
 </li>
       </ul>
@@ -351,6 +363,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#project-3-3" id="toc-project-3-3" class="nav-link" data-scroll-target="#project-3-3">3.3 Self-supervised forecasting representations for energy series</a></li>
   <li><a href="#project-3-4" id="toc-project-3-4" class="nav-link" data-scroll-target="#project-3-4">3.4 Self-supervised learning on heat-pump smart-meter data</a></li>
   <li><a href="#project-3-5" id="toc-project-3-5" class="nav-link" data-scroll-target="#project-3-5">3.5 Graph self-supervised learning from vibration signals</a></li>
+  <li><a href="#project-3-6" id="toc-project-3-6" class="nav-link" data-scroll-target="#project-3-6">3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis</a></li>
+  <li><a href="#project-3-7" id="toc-project-3-7" class="nav-link" data-scroll-target="#project-3-7">3.7 Correlation-graph Mamba for order-robust multivariate forecasting</a></li>
   </ul>
 </nav>
     </div>
@@ -359,12 +373,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Category 3 Self-supervised representation learning for time series</h1>
+<h1 class="title">Category 3 Machine learning for time-series data</h1>
 </div>
 
 <div>
   <div class="description">
-    Learning representations from unlabelled sensor, health and energy data
+    Learning from sensor, health, energy and industrial signals
   </div>
 </div>
 
@@ -382,17 +396,18 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span id="top"></span></p>
-<p>A <strong>time series</strong> is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. These signals contain repeated patterns, trends and operating phases, but useful labels—such as a person’s activity, a diagnosis or an abnormal production cycle—may require expert work and are often scarce.</p>
-<p><strong>Self-supervised learning (SSL)</strong> learns from the unlabelled recordings by creating its own training task. A model might make two valid views of the same signal agree, hide part of a sequence and predict it, or predict the representation of a future segment. The resulting encoder converts a recording or window into a compact numerical representation. A small classification or regression head is then trained for a downstream task.</p>
-<p>Evaluation focuses on whether the representation reduces the amount of labelled data needed and transfers to new people, machines or operating conditions. Each project compares SSL with a fully supervised model and a randomly initialised encoder on leakage-safe splits.</p>
+<p>A <strong>time series</strong> is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. Machine-learning models can use these signals for classification, forecasting, anomaly detection and condition monitoring.</p>
+<p>Many projects in this category use <strong>self-supervised learning (SSL)</strong> because useful labels may require expert work and are often scarce. SSL creates a training task from the unlabelled recordings: a model might align two valid views of a signal, reconstruct a hidden segment or predict a future representation. Other projects train directly for forecasting and study how a model represents time, channels and relationships among variables.</p>
+<p>Evaluation depends on the task. Representation-learning projects measure label efficiency and transfer to new people, machines or operating conditions. Forecasting projects use chronological splits and test future prediction, robustness and computational cost. In every case, the split must respect the independent physical unit and the direction of time.</p>
 <div class="category-callout">
 <p><strong>Three ideas to understand</strong></p>
-<p>Contrastive learning aligns valid views of the same recording. Masked modelling reconstructs hidden samples or patches. Latent prediction estimates hidden representations instead of raw values and requires explicit collapse monitoring. Possible MSc contributions include view or mask designs based on the physics or physiology of the signal.</p>
+<p>Contrastive learning aligns valid views of the same recording. Masked modelling reconstructs hidden samples or patches. State-space models such as Mamba process long sequences efficiently. In multivariate data, a separate channel-mixing mechanism may be used to represent relationships among signals before temporal modelling.</p>
 </div>
 <section id="learn-first-and-find-ideas" class="level2">
 <h2 class="anchored" data-anchor-id="learn-first-and-find-ideas">Learn first and find ideas</h2>
 <ul>
-<li>Methods with code: <a href="https://github.com/emadeldeen24/TS-TCC">TS-TCC</a>, <a href="https://github.com/zhihanyue/ts2vec">TS2Vec</a>, <a href="https://github.com/mims-harvard/TFC-pretraining">TF-C</a> and <a href="https://github.com/thuml/SimMTM">SimMTM</a>.</li>
+<li>Representation-learning methods with code: <a href="https://github.com/emadeldeen24/TS-TCC">TS-TCC</a>, <a href="https://github.com/zhihanyue/ts2vec">TS2Vec</a>, <a href="https://github.com/mims-harvard/TFC-pretraining">TF-C</a> and <a href="https://github.com/thuml/SimMTM">SimMTM</a>.</li>
+<li>Forecasting and sequence models: <a href="https://github.com/cure-lab/LTSF-Linear">DLinear</a>, <a href="https://github.com/state-spaces/mamba">Mamba</a>, <a href="https://github.com/XiudingCai/MambaTS-pytorch">MambaTS</a> and <a href="https://github.com/wzhwzhwzh0921/S-D-Mamba">S-Mamba</a>.</li>
 <li>Data sources: <a href="https://archive.ics.uci.edu/">UCI Machine Learning Repository</a>, <a href="https://physionet.org/">PhysioNet</a>, <a href="https://www.timeseriesclassification.com/">UCR/UEA archive</a>, <a href="https://forecastingdata.org/">Monash forecasting archive</a> and <a href="https://zenodo.org/">Zenodo</a>.</li>
 <li>Monitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss does not establish that the representation is useful.</li>
 </ul>
@@ -506,6 +521,52 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Master research question.</strong> <strong>Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed?</strong> The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.</p>
 </div>
 <p><strong>Practical notes.</strong> The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.</p>
+<div class="project-back">
+<a href="#top">Back to category introduction ↑</a>
+</div>
+<hr>
+</section>
+<section id="project-3-6" class="level2">
+<h2 class="anchored" data-anchor-id="project-3-6">3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis</h2>
+<div class="project-meta">
+<p><span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning, then fault classification</span> <span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc with the processed dataset and a fixed comparison</span> <span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 4–8 GB GPU</span> <span class="meta-label">Data</span><span class="meta-value"><a href="https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download">Paderborn KAt</a> — 32 bearings, four operating conditions, 64 kHz vibration, CC BY-NC 4.0</span> <span class="meta-label">Starting paper</span><span class="meta-value">Zhang et al., <a href="https://arxiv.org/abs/2206.08496">TF-C</a>, NeurIPS 2022 — <a href="https://github.com/mims-harvard/TFC-pretraining">official code</a></span></p>
+</div>
+<div class="project-intro">
+<p><strong>What you will do.</strong> Use Mamba as the temporal encoder in TF-C, which learns jointly from time- and frequency-domain views. Test whether the resulting representation transfers between bearing operating conditions when only a small labelled set is available.</p>
+</div>
+<p><strong>Data.</strong> The official Paderborn archive contains vibration, motor current, speed, torque and radial load for six healthy, twelve artificially damaged and fourteen naturally damaged bearings. Begin with the processed FD-A and FD-B subsets provided through the TF-C repository. For the final evaluation, group the split by physical bearing or recording so overlapping windows cannot occur in both training and test sets.</p>
+<p><strong>Methods and code.</strong> Start from the <a href="https://github.com/mims-harvard/TFC-pretraining">TF-C implementation</a> and replace its time-domain CNN or Transformer with a compact <a href="https://github.com/state-spaces/mamba">Mamba</a> encoder. Retain the time–frequency contrastive objective and use a linear or small multilayer classification head.</p>
+<p><strong>Baselines and evaluation.</strong> Compare the original TF-C encoder, supervised 1-D CNN, supervised Mamba, random-frozen Mamba, frozen TF-C–Mamba and fine-tuned TF-C–Mamba. Report macro-F1, balanced accuracy, per-class recall and at least three seeds. The primary test is transfer to a different operating condition; report several labelled-example budgets and separate results for previously observed and unseen bearings where the data permit.</p>
+<div class="scope scope-bsc">
+<p><strong>Bachelor research question.</strong> <strong>Under the same TF-C objective, does a compact Mamba encoder improve cross-condition classification or computational efficiency over the existing encoder?</strong> Use the processed FD-A and FD-B data, fixed augmentations and identical splits. Compare accuracy, macro-F1, training time and memory without proposing a new pretraining objective.</p>
+</div>
+<div class="scope scope-msc">
+<p><strong>Master research question.</strong> <strong>Can bearing-specific time–frequency views improve the transfer of Mamba representations across operating conditions and unseen bearings?</strong> Develop one process-informed view, such as an envelope-spectrum view centred on bearing fault frequencies, an order-normalised view or a positive pair drawn from the same bearing under different conditions. Compare it with the original TF-C augmentations and ablate the view construction.</p>
+</div>
+<p><strong>Practical notes.</strong> The public code and processed data provide a complete starting pipeline, but the older TF-C dependencies may need updating. Test the Mamba environment during the first project week. The raw data are several gigabytes and are needed only for the MSc signal-processing extensions.</p>
+<div class="project-back">
+<a href="#top">Back to category introduction ↑</a>
+</div>
+<hr>
+</section>
+<section id="project-3-7" class="level2">
+<h2 class="anchored" data-anchor-id="project-3-7">3.7 Correlation-graph Mamba for order-robust multivariate forecasting</h2>
+<div class="project-meta">
+<p><span class="meta-label">Task</span><span class="meta-value">Multivariate time-series forecasting</span> <span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc evaluation version</span> <span class="meta-label">Compute</span><span class="meta-value">Light to moderate on Weather; moderate on Electricity</span> <span class="meta-label">Data</span><span class="meta-value"><a href="https://github.com/thuml/Autoformer">Weather and Electricity</a> — public forecasting benchmarks with 21 and 321 channels</span> <span class="meta-label">Starting paper</span><span class="meta-value">Cai et al., <a href="https://arxiv.org/abs/2405.16440">MambaTS</a> — <a href="https://github.com/XiudingCai/MambaTS-pytorch">MIT-licensed code</a></span></p>
+</div>
+<div class="project-intro">
+<p><strong>What you will do.</strong> Represent each signal channel as a graph node, exchange information between correlated channels, and then use a shared Mamba encoder to model each node through time. Test whether explicit channel structure improves forecasting and reduces sensitivity to arbitrary channel order.</p>
+</div>
+<p><strong>Data.</strong> Develop the method on Weather, which has 21 meteorological variables and 52,696 ten-minute observations. Confirm the result on Electricity, which contains 321 hourly electricity-demand series and 26,304 observations. Use chronological splits and fit scaling, correlations and graph thresholds on the training period only. The datasets and scripts are available through <a href="https://github.com/thuml/Autoformer">Autoformer</a>; <a href="https://decisionintelligence.github.io/OpenTS/OpenTS-Bench/datasets/">OpenTS</a> documents their dimensions and standard protocol.</p>
+<p><strong>Methods and code.</strong> Use <a href="https://github.com/XiudingCai/MambaTS-pytorch">MambaTS</a> as the main code base and <a href="https://arxiv.org/abs/2403.11144">S-Mamba</a> and <a href="https://arxiv.org/abs/2406.05316">C-Mamba</a> as channel-modelling references. Build a sparse top-<em>k</em> correlation graph from the training data. At each time step or patch, apply a shared GCN, GraphSAGE or GAT layer across channels; then apply the same temporal Mamba encoder to every node and a shared forecasting head.</p>
+<p><strong>Baselines and evaluation.</strong> Compare seasonal naive, <a href="https://github.com/cure-lab/LTSF-Linear">DLinear</a>, channel-independent Mamba, MambaTS and one existing channel-aware Mamba model. Graph controls must include identity, random and shuffled-correlation adjacency. Report MSE and MAE at standard horizons, three seeds, parameter count, training time and memory. Consistently permute the input channels, graph and outputs to measure order sensitivity, and mask channels at test time to measure robustness.</p>
+<div class="scope scope-bsc">
+<p><strong>Bachelor research question.</strong> <strong>How sensitive are existing Mamba forecasters to channel order, and do their channel-interaction mechanisms improve over channel-independent Mamba?</strong> Reproduce MambaTS or S-Mamba on Weather and compare channel-independent and channel-aware variants under channel permutations and missing-channel tests. A new graph architecture is not required.</p>
+</div>
+<div class="scope scope-msc">
+<p><strong>Master research question.</strong> <strong>Can a sparse correlation-graph channel mixer improve forecasting and reduce sensitivity to arbitrary variable ordering compared with existing Mamba channel-mixing methods?</strong> Implement the graph module, match model capacity, and ablate graph type, sign handling, sparsity and message-passing depth on Weather and Electricity. A window-dependent graph is an optional extension after the fixed-graph study.</p>
+</div>
+<p><strong>Practical notes.</strong> Use Weather for development and a sparse graph for Electricity. Correlation describes statistical association rather than a physical or causal link. A consistent relabelling of nodes, adjacency and outputs should not materially change a correctly implemented shared graph–Mamba model.</p>
 <div class="project-back">
 <a href="#top">Back to category introduction ↑</a>
 </div>
