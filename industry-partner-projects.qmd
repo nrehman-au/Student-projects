@@ -73,7 +73,7 @@ Use the contents panel or the project links in the left navigation to move direc
 :::
 
 ::: {.project-intro}
-**What you will do.** A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether measured vibration and operational data can narrow the set of plausible configurations and provide probabilities or confidence estimates for the candidates, rather than requiring a single fixed assignment.
+**What you will do.** A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether measured vibration and operational data can narrow the set of plausible configurations and provide probabilities or confidence estimates for the candidates.
 :::
 
 ![Project overview: turbine-configuration and kinematics identification from vibration data](assets/industry/siemens-project-2.png){.industry-project-figure loading="lazy"}
@@ -93,8 +93,6 @@ Use the contents panel or the project links in the left navigation to move direc
 ::: {.scope .scope-bsc}
 **Bachelor version.** Using a prepared feature table and verified configuration labels, compare one probabilistic classifier with the metadata-only baseline on turbine-grouped splits. Report both the highest-ranked classification result and whether the true configuration appears among the top candidate configurations. Identify the most informative spectral or operational features.
 :::
-
-**Practical notes.** This project is feasible only if enough turbines have reliable configuration labels for training and validation. Configuration may also correlate with site, turbine age or rating, so these variables must be examined before attributing performance to vibration signatures. A physics-informed transfer study from well-labelled components to complex components with limited labels is a valuable MSc extension, but it depends on having both known kinematic parameters and a credible target-component test set.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
