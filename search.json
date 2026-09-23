@@ -1,5 +1,93 @@
 [
   {
+    "objectID": "graph-applications.html",
+    "href": "graph-applications.html",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "",
+    "text": "A graph is a way to represent entities and the relationships between them. The entities are called nodes and their relationships are called edges. Both may carry useful information: a customer node might contain age or location, a product node might contain category and price, and an edge might record that a customer bought or rated a product. Road sensors connected by roads, transactions linked by payments and atoms connected by chemical bonds are other examples.\nA graph neural network (GNN) learns numerical representations, or embeddings, by combining a node’s own features with information from its neighbours. In the example, the model can use a customer’s previous purchases, the properties of products and patterns from nearby customers to score a new customer-product link. The same principle supports node classification (classify a transaction), link prediction (recommend a product), and graph-level prediction (predict a property of an entire molecule or sensor system).\nEach project below asks a specific question about when and why the graph helps — not simply whether a GNN can be trained. Students define what the nodes and edges mean, fix a split and a primary metric, and always include a control that tests whether the graph contributes at all.",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#learn-first-and-find-ideas",
+    "href": "graph-applications.html#learn-first-and-find-ideas",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "Learn first and find ideas",
+    "text": "Learn first and find ideas\n\nBegin with A Gentle Introduction to Graph Neural Networks, then use the Stanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#projects-in-this-category",
+    "href": "graph-applications.html#projects-in-this-category",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "Projects in this category",
+    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-2-1",
+    "href": "graph-applications.html#project-2-1",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "2.1 Remaining useful life prediction for aircraft engines",
+    "text": "2.1 Remaining useful life prediction for aircraft engines\n\nTaskGraph-level temporal regression LevelBSc or MSc ComputeVery light to light; CPU or 4 GB GPU DataNASA C-MAPSS — FD001: 100 training engines, 100 test engines, 21 sensor channels Starting paperHuang, He and Sick, Spatio-Temporal Attention GNN for RUL, 2024\n\n\nWhat you will do. Predict how many operating cycles remain before a turbofan engine fails. Each sensor channel becomes a node and edges express relationships among sensors. The project’s real subject is the graph itself: does it matter how you connect the sensors?\n\nData. Start with FD001; FD002–FD004 are optional transfer sets. Reserve complete training engines for validation and use the official test set for final scores. Split by engine, never by window. NASA provides final RUL labels for test engines, so early/middle/late-life analysis belongs on the held-out validation engines. The download is public; NASA does not specify a licence on the catalogue page.\nMethods and code. Use a GRU or TCN as the graph-free baseline and a compact GCN–GRU or GAT–GRU as the graph model. The GNN RUL benchmark is a useful reference; a small PyTorch Geometric implementation is sufficient.\nBaselines and evaluation. Compare a constant/degradation-stage baseline, one sequence model and one compact GNN. Use MAE or RMSE as primary, and report three seeds for MSc work.\n\nBachelor research question. How sensitive is GNN-based remaining-useful-life prediction to the way the sensor graph is constructed?\nCore experiment. Keep the model fixed and compare correlation, sensor-similarity, random and no-edge graphs, plus the graph-free sequence baseline.\nInterpretation. FD001 has only 21 sensor channels, so the graph may add little beyond temporal modelling. A correlation graph performing no better than a random graph is a valid result.\n\n\nMaster research question. Can a sparse, time-varying sensor graph improve accuracy when sensors are noisy or missing? Develop one graph-learning mechanism, compare it with fixed and random graphs at matched capacity, and add one robustness or cross-subset transfer study.\n\nPractical notes. Fix the RUL cap, normalisation and metric before modelling; changing them makes published results incomparable.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-2-2",
+    "href": "graph-applications.html#project-2-2",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "2.2 Multi-horizon traffic forecasting with data-driven graph structure",
+    "text": "2.2 Multi-horizon traffic forecasting with data-driven graph structure\n\nTaskNode-level temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataMETR-LA — 207 sensors, 34,272 five-minute observations; PEMS-BAY optional Starting paperWu et al., Graph WaveNet, IJCAI 2019\n\n\nWhat you will do. Forecast traffic speed at every road sensor 15, 30 and 60 minutes ahead, and determine when the road network’s structure actually helps. Short-horizon forecasts may depend mostly on a sensor’s own recent history, while longer horizons may require information propagating through the network.\n\nData. Use METR-LA with the standard chronological 70/10/20 split. Fit scalers and learned/correlation graphs on training data only. The files are publicly downloadable through DCRNN, but no separate dataset licence is stated there; do not redistribute them.\nMethods and code. Compare historical average and a graph-free GRU with Graph WaveNet or a compact STGCN. DCRNN is optional because its reference implementation is slower and uses an old TensorFlow stack.\nBaselines and evaluation. Use historical average, graph-free GRU, and the same GNN with distance, randomised and identity/no-message-passing graphs. Report masked MAE (primary), RMSE and MAPE at 15, 30 and 60 minutes.\n\nBachelor research question. Does graph information become more valuable as the forecasting horizon increases?\nCore experiment. With one trained 12-step model, compare the distance, randomised and identity/no-message-passing graphs at steps 3, 6 and 12 (15, 30 and 60 minutes). Include the graph-free GRU as a separate baseline.\nNote. Evaluate one 12-step model at different horizons; do not train three separate models.\n\n\nMaster research question. Does a sparse, traffic-regime-conditioned adjacency improve 60-minute forecasts over road and learned static graphs? Match model capacity, use three seeds, and analyse whether edges change plausibly between rush hour and free flow.\n\nPractical notes. Profile early and use top-k or low-rank adjacency; a dense graph at every time step is unnecessarily expensive.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-2-3",
+    "href": "graph-applications.html#project-2-3",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "2.3 Illicit Bitcoin transaction detection",
+    "text": "2.3 Illicit Bitcoin transaction detection\n\nTaskNode classification on a temporal graph LevelBSc or MSc ComputeLight to moderate; the full graph fits on a 4–8 GB GPU DataElliptic Bitcoin dataset via PyG — 203,769 nodes, 234,355 edges, 165 model features, 49 time steps Starting paperWeber et al., Anti-Money Laundering in Bitcoin, 2019\n\n\nWhat you will do. Classify labelled Bitcoin transactions as licit or illicit, then test how missing payment edges affect the result.\n\nData. The PyG loader downloads the data and defines time steps 1–34 as training and 35–49 as test; take validation steps only from 1–34. Unknown labels are unlabelled, not negatives. The dataset is CC BY-NC-ND 4.0: academic analysis is allowed, but commercial use and redistribution of modified data are restricted.\nMethods and code. Compare logistic regression or random forest with GCN and GraphSAGE in PyTorch Geometric. Use class weighting only after the unweighted baseline is established.\nBaselines and evaluation. Use the first 93 PyG features for the truly local, graph-free baseline. Report a second 165-feature baseline separately because the last 72 features already aggregate neighbours. Compare both with GCN/GraphSAGE and a no-edge control. Use AUPRC or illicit-class F1 as primary and report performance by time step.\n\nBachelor research question. How robust are GNN-based illicit-transaction detectors when graph information is incomplete?\nCore experiment. Delete 0%, 10%, 25% and 50% of test edges and compare both GNNs with the 93-feature local baseline. Repeat deletion with several random seeds.\nInterpretation. A 165-feature random forest is a strong baseline partly because 72 features already summarise neighbours. Keep it, but do not call it graph-free.\n\n\nMaster research question. Can a temporally calibrated GNN remain useful under concept drift and missing edges? Add one temporal or uncertainty mechanism and evaluate it by time step and at a fixed alert budget.\n\nPractical notes. The 49 time steps are disconnected snapshots. Preserve time order and keep label handling and threshold selection identical across methods.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-2-4",
+    "href": "graph-applications.html#project-2-4",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "2.4 Graph-based movie recommendation with accuracy and coverage",
+    "text": "2.4 Graph-based movie recommendation with accuracy and coverage\n\nTaskLink prediction and ranking on a bipartite graph LevelBSc only ComputeVery light; CPU or low-memory GPU DataMovieLens 100K — 100,000 ratings, 943 users, 1,682 movies, 5 MB Starting paperHe et al., LightGCN, SIGIR 2020\n\n\nWhat you will do. Rank unseen films for each user and test whether better ranking accuracy reduces catalogue coverage or long-tail exposure.\n\nData. Treat ratings of 4–5 as positive interactions. Split each user’s positives chronologically and remove validation/test edges from the training graph. Evaluate over the full unseen catalogue. The download is public for research, but its licence forbids redistribution and commercial use without permission.\nMethods and code. Compare popularity, BPR matrix factorisation and LightGCN. A direct PyTorch Geometric implementation is simpler than adapting the official LightGCN repository.\nBaselines and evaluation. Use identical training negatives for BPR-MF and LightGCN. Report NDCG@20 or Recall@20, catalogue coverage and average recommended-item popularity.\n\nBachelor research question. Does graph-based recommendation improve ranking accuracy at the expense of catalogue coverage and long-tail exposure?\nCore experiment. Compare the three methods, then vary LightGCN depth or its training negative sampler and plot the accuracy/coverage trade-off. Use at least three seeds and analyse results by user activity and item popularity.\n\nPractical notes. Avoid future-interaction leakage and sampled-negative evaluation. Submit a reproducible pipeline, controlled comparison and error analysis.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
+    "objectID": "graph-applications.html#project-2-5",
+    "href": "graph-applications.html#project-2-5",
+    "title": "Category 2 GNN applications for real-world data",
+    "section": "2.5 Molecular HIV activity prediction with calibrated GNNs",
+    "text": "2.5 Molecular HIV activity prediction with calibrated GNNs\n\nTaskGraph classification under distribution shift LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataOGB ogbg-molhiv — 41,127 molecular graphs, official scaffold split and evaluator Starting paperHu et al., Open Graph Benchmark, NeurIPS 2020\n\n\nWhat you will do. Predict HIV-assay activity and test whether a GNN generalises to unseen molecular scaffolds better than chemical fingerprints.\n\nData. The OGB loader automatically downloads the MIT-licensed data and supplies the scaffold split and evaluator. Do not compare scaffold-split results with random-split figures.\nMethods and code. Compare Morgan fingerprints with logistic regression or random forest via RDKit against GCN and edge-aware GINE models. OGB and PyTorch Geometric provide loaders and baseline components.\nBaselines and evaluation. Use a fingerprint classifier, GCN and GINE, with one bond-feature ablation. Report ROC-AUC (official primary metric), AUPRC and three seeds.\n\nBachelor research question. Do GNNs generalise better than traditional molecular fingerprints to scaffolds not seen during training?\nCore experiment. Compare fingerprints, GCN and GINE on the official split, then inspect errors on scaffolds most dissimilar to training data.\nInterpretation. A fingerprint/tree model may match or beat a plain GNN. Select all hyperparameters on validation data; never tune against the test split.\n\n\nMaster research question. Can calibration improve on held-out scaffolds without reducing ROC-AUC? Compare temperature scaling with one ensemble or uncertainty method and report calibration by scaffold novelty.\n\nPractical notes. Keep the official split and evaluator fixed; choose thresholds and calibration parameters on validation data only.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "2  GNN applications"
+    ]
+  },
+  {
     "objectID": "vision-foundation-models.html",
     "href": "vision-foundation-models.html",
     "title": "Category 4 Deep-learning vision models and applications",
@@ -63,116 +151,6 @@
     "crumbs": [
       "Home",
       "4  Deep-learning vision models"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html",
-    "href": "time-series-ssl.html",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "",
-    "text": "A time series is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. Machine-learning models can use these signals for classification, forecasting, anomaly detection and condition monitoring.\nMany projects in this category use self-supervised learning (SSL) because useful labels may require expert work and are often scarce. SSL creates a training task from the unlabelled recordings: a model might align two valid views of a signal, reconstruct a hidden segment or predict a future representation. Other projects train directly for forecasting and study how a model represents time, channels and relationships among variables.\nEvaluation depends on the task. Representation-learning projects measure label efficiency and transfer to new people, machines or operating conditions. Forecasting projects use chronological splits and test future prediction, robustness and computational cost. In every case, the split must respect the independent physical unit and the direction of time.",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#learn-first-and-find-ideas",
-    "href": "time-series-ssl.html#learn-first-and-find-ideas",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "Learn first and find ideas",
-    "text": "Learn first and find ideas\n\nRepresentation-learning methods with code: TS-TCC, TS2Vec, TF-C and SimMTM.\nForecasting and sequence models: DLinear, Mamba, MambaTS and S-Mamba.\nData sources: UCI Machine Learning Repository, PhysioNet, UCR/UEA archive, Monash forecasting archive and Zenodo.\nMonitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss does not establish that the representation is useful.",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#projects-in-this-category",
-    "href": "time-series-ssl.html#projects-in-this-category",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "Projects in this category",
-    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-1",
-    "href": "time-series-ssl.html#project-3-1",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.1 Contrastive learning for wearable activity recognition",
-    "text": "3.1 Contrastive learning for wearable activity recognition\n\nTaskSelf-supervised time-series representation learning, then classification LevelBSc only ComputeLight; CPU or 4 GB GPU DataUCI Human Activity Recognition — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0 Starting paperEldele et al., TS-TCC, IJCAI 2021\n\n\nWhat you will do. A phone records acceleration and angular velocity while a person walks, sits or climbs stairs. Learn an encoder from the unlabelled sensor windows, freeze it, and measure how few labels a small classifier needs to recognise activities.\n\nData. UCI HAR is a 58 MB public download under CC BY 4.0. It contains pre-windowed 2.56-second recordings with 50% overlap and a standard subject-independent split. Keep that split.\nMethods and code. TS-TCC or TS2Vec — choose one. Use the same 1-D CNN or small Transformer encoder for the self-supervised and supervised comparisons.\nBaselines and evaluation. Random frozen encoder, SSL frozen linear probe, SSL fine-tuning and a fully supervised model trained from scratch. Report accuracy and macro-F1 on the subject-independent split.\n\nBachelor research question. How much labelled activity data can self-supervised pretraining replace?\nCore experiment. Compare all four conditions at 1%, 5%, 10%, 25% and 100% label budgets. Resample the labelled windows within the training subjects and report confidence intervals. Optionally test robustness by jointly rotating the accelerometer and gyroscope axes.\n\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-2",
-    "href": "time-series-ssl.html#project-3-2",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.2 Lead-aware masked learning for 12-lead ECG",
-    "text": "3.2 Lead-aware masked learning for 12-lead ECG\n\nTaskSelf-supervised multivariate time-series learning, then multi-label classification LevelMSc preferred; BSc with a supplied data pipeline ComputeModerate; 8 GB GPU recommended DataPTB-XL — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing Starting paperDong et al., SimMTM, NeurIPS 2023\n\n\nWhat you will do. A 12-lead ECG observes the same cardiac event from different electrical viewpoints. Instead of masking arbitrary time patches, the model hides complete leads or anatomical lead groups and predicts their latent representations from the visible leads.\n\nData. PTB-XL at 100 Hz, using the official patient-aware folds: 1–8 for training, 9 for validation, 10 for testing. The dataset is fully labelled, so label budgets simulate scarcity rather than reflecting missing annotations.\nMethods and code. Start with SimMTM or TS2Vec and a 1-D ResNet or compact Transformer. The PTB-XL benchmark code provides preprocessing and supervised references.\nBaselines and evaluation. Random frozen encoder, frozen probe, fine-tuning and the same encoder fully supervised. Macro-AUROC on fold 10 across the five diagnostic superclasses is the primary endpoint; add macro-AUPRC for class imbalance. Report patient-level splits and several label budgets.\n\nMaster research question. Does lead-aware masking improve low-label diagnosis over random temporal masking? Develop complete-lead or anatomical-group masking, condition the predictor on lead identity, and monitor embedding variance for collapse. Ablate masking granularity and predictor depth.\n\n\nBachelor question. How does diagnostic performance change when fewer ECG leads are available? With the supplied pipeline and one encoder, compare 12, 6 and 3 leads and lead II alone under supervised training and one established SSL method.\n\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-3",
-    "href": "time-series-ssl.html#project-3-3",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.3 Self-supervised forecasting representations for energy series",
-    "text": "3.3 Self-supervised forecasting representations for energy series\n\nTaskSelf-supervised time-series learning, then temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataETT — electricity transformer temperature, hourly (ETTh1/ETTh2) and 15-minute (ETTm1/ETTm2) subsets Starting paperWoo et al., CoST, ICLR 2022\n\n\nWhat you will do. Pretrain an encoder on one unlabelled energy series, freeze it, and fit a small forecasting head. Test whether the representation transfers to a different series better than training a supervised forecaster on that series.\n\nData. Use ETT with chronological splits and training-only scaling. ETTh1 and ETTh2 come from different transformers. The public repository uses CC BY-ND 4.0; cite it and do not redistribute modified copies.\nMethods and code. CoST, TS2Vec or SimMTM for pretraining. DLinear is the required supervised reference; PatchTST is optional. A ridge or linear head on frozen representations is the key diagnostic.\nBaselines and evaluation. Seasonal-naive, DLinear, frozen SSL representation with a ridge head, and SSL fine-tuning. Report MSE and MAE at agreed horizons with identical input lengths and chronological splits, plus three seeds.\n\nBachelor research question. Do self-supervised representations pretrained on one energy series transfer to a different one?\nCore experiment. Pretrain on ETTh1, then probe and fine-tune on ETTh2. Compare with direct ETTh2 pretraining and DLinear trained on ETTh2.\nInterpretation. DLinear may outperform the SSL pipeline. Analyse whether the gap changes with forecast horizon and target-data volume.\n\n\nMaster research question. Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts? Use a stable seasonal decomposition to select positives, compare with random cropping and frequency-domain contrast, and analyse non-stationary intervals. Validate the period estimate on ETT before adding irregular data.\n\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-4",
-    "href": "time-series-ssl.html#project-3-4",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.4 Self-supervised learning on heat-pump smart-meter data",
-    "text": "3.4 Self-supervised learning on heat-pump smart-meter data\n\nTaskTime-series representation learning, then household-level classification LevelMSc preferred; BSc metadata-label version ComputeLight to moderate after preprocessing DataHEAPO on Zenodo — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024; dataset licence must be confirmed Starting paperBrudermueller et al., HEAPO, 2025\n\n\nWhat you will do. Pretrain on household electricity series, then test whether the representations improve prediction of a household attribute or an inspection-derived issue.\n\nData. The 458 MB public download contains 1,408 households; 214 have both smart-meter data and inspection information. Use the official MIT-licensed dataloader. The Zenodo Rights field does not state a dataset licence, so confirm reuse terms before allocation. Group all splits by household.\nMethods and code. Use TS2Vec or SimMTM, with a 1-D CNN or InceptionTime supervised baseline. Use heat-pump type for the lower-risk task, or one inspection-derived issue only after counting usable positives among the 214 matched households.\nBaselines and evaluation. Compare random-frozen, frozen SSL, fine-tuned SSL and supervised encoders on identical household splits. Include weather-only and metadata-only baselines. Report balanced accuracy, macro-F1 and confidence intervals using repeated grouped cross-validation.\n\nMaster research question. Can unlabelled data from a large related household population improve prediction on a much smaller labelled population, and do weather- and cycle-aware views improve it further? Compare pretraining sources — none, labelled households only, unlabelled control households, and all households — then add outdoor-temperature-matched positives or whole-cycle masking and ablate the weather conditioning.\nFeasibility condition. An inspection-label study has only 214 matched households. Select one primary label and verify its prevalence before committing to it; otherwise use the better-covered heat-pump-type task.\n\n\nBachelor version. Use heat-pump type or another well-covered metadata label. Compare supervised training with one SSL encoder on household-grouped splits and report a label-efficiency curve.\n\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-5",
-    "href": "time-series-ssl.html#project-3-5",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.5 Graph self-supervised learning from vibration signals",
-    "text": "3.5 Graph self-supervised learning from vibration signals\n\nTaskGraph-level classification (one graph per signal window) with cross-operating-condition transfer LevelMSc only ComputeModerate preprocessing; small models on a 4–8 GB GPU DataPaderborn KAt — ~5 GB, 32 bearings, four operating conditions, CC BY-NC 4.0 Starting paperHou et al., GraphMAE, KDD 2022 — official code\n\n\nWhat you will do. Convert each vibration window into a graph of fault-related frequency bands, pretrain a graph encoder without labels, and test transfer to a different load or speed condition.\n\nGraph construction. Resample each window into the shaft-order domain. Use fixed nodes for BPFO, BPFI, BSF and FTF bands and their harmonics. Node features can include band energy, envelope amplitude, spectral kurtosis and RMS; edges can represent envelope correlation or spectral coherence. Fit thresholds on training data only.\nData. Paderborn provides 64 kHz vibration, speed, torque and radial load for 32 physical bearings under four operating conditions. Download it from the official archive. Split by bearing, not by window. CWRU may be used only to develop the preprocessing pipeline; its official site does not state a clear data licence.\nMethods and code. Use a GIN encoder with GraphMAE. Compare with supervised GIN and a 1-D CNN. Do not remove fault-frequency nodes as a generic graph augmentation.\nBaselines and evaluation. Compare a 1-D CNN, envelope-spectrum features with gradient boosting, supervised GIN, random-frozen GIN, and GraphMAE with frozen and fine-tuned heads. Test physics-based, similarity, random and no-edge graphs. Report accuracy and macro-F1; cross-condition transfer is primary.\n\nMaster research question. Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed? The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.\n\nPractical notes. The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-6",
-    "href": "time-series-ssl.html#project-3-6",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis",
-    "text": "3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis\n\nTaskSelf-supervised time-series representation learning, then fault classification LevelMSc preferred; BSc with the processed dataset and a fixed comparison ComputeLight to moderate; 4–8 GB GPU DataPaderborn KAt — 32 bearings, four operating conditions, 64 kHz vibration, CC BY-NC 4.0 Starting paperZhang et al., TF-C, NeurIPS 2022 — official code\n\n\nWhat you will do. Use Mamba as the temporal encoder in TF-C, which learns jointly from time- and frequency-domain views. Test whether the resulting representation transfers between bearing operating conditions when only a small labelled set is available.\n\nData. The official Paderborn archive contains vibration, motor current, speed, torque and radial load for six healthy, twelve artificially damaged and fourteen naturally damaged bearings. Begin with the processed FD-A and FD-B subsets provided through the TF-C repository. For the final evaluation, group the split by physical bearing or recording so overlapping windows cannot occur in both training and test sets.\nMethods and code. Start from the TF-C implementation and replace its time-domain CNN or Transformer with a compact Mamba encoder. Retain the time–frequency contrastive objective and use a linear or small multilayer classification head.\nBaselines and evaluation. Compare the original TF-C encoder, supervised 1-D CNN, supervised Mamba, random-frozen Mamba, frozen TF-C–Mamba and fine-tuned TF-C–Mamba. Report macro-F1, balanced accuracy, per-class recall and at least three seeds. The primary test is transfer to a different operating condition; report several labelled-example budgets and separate results for previously observed and unseen bearings where the data permit.\n\nBachelor research question. Under the same TF-C objective, does a compact Mamba encoder improve cross-condition classification or computational efficiency over the existing encoder? Use the processed FD-A and FD-B data, fixed augmentations and identical splits. Compare accuracy, macro-F1, training time and memory without proposing a new pretraining objective.\n\n\nMaster research question. Can bearing-specific time–frequency views improve the transfer of Mamba representations across operating conditions and unseen bearings? Develop one process-informed view, such as an envelope-spectrum view centred on bearing fault frequencies, an order-normalised view or a positive pair drawn from the same bearing under different conditions. Compare it with the original TF-C augmentations and ablate the view construction.\n\nPractical notes. The public code and processed data provide a complete starting pipeline, but the older TF-C dependencies may need updating. Test the Mamba environment during the first project week. The raw data are several gigabytes and are needed only for the MSc signal-processing extensions.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
-    ]
-  },
-  {
-    "objectID": "time-series-ssl.html#project-3-7",
-    "href": "time-series-ssl.html#project-3-7",
-    "title": "Category 3 Machine learning for time-series data",
-    "section": "3.7 Correlation-graph Mamba for order-robust multivariate forecasting",
-    "text": "3.7 Correlation-graph Mamba for order-robust multivariate forecasting\n\nTaskMultivariate time-series forecasting LevelMSc preferred; BSc evaluation version ComputeLight to moderate on Weather; moderate on Electricity DataWeather and Electricity — public forecasting benchmarks with 21 and 321 channels Starting paperCai et al., MambaTS — MIT-licensed code\n\n\nWhat you will do. Represent each signal channel as a graph node, exchange information between correlated channels, and then use a shared Mamba encoder to model each node through time. Test whether explicit channel structure improves forecasting and reduces sensitivity to arbitrary channel order.\n\nData. Develop the method on Weather, which has 21 meteorological variables and 52,696 ten-minute observations. Confirm the result on Electricity, which contains 321 hourly electricity-demand series and 26,304 observations. Use chronological splits and fit scaling, correlations and graph thresholds on the training period only. The datasets and scripts are available through Autoformer; OpenTS documents their dimensions and standard protocol.\nMethods and code. Use MambaTS as the main code base and S-Mamba and C-Mamba as channel-modelling references. Build a sparse top-k correlation graph from the training data. At each time step or patch, apply a shared GCN, GraphSAGE or GAT layer across channels; then apply the same temporal Mamba encoder to every node and a shared forecasting head.\nBaselines and evaluation. Compare seasonal naive, DLinear, channel-independent Mamba, MambaTS and one existing channel-aware Mamba model. Graph controls must include identity, random and shuffled-correlation adjacency. Report MSE and MAE at standard horizons, three seeds, parameter count, training time and memory. Consistently permute the input channels, graph and outputs to measure order sensitivity, and mask channels at test time to measure robustness.\n\nBachelor research question. How sensitive are existing Mamba forecasters to channel order, and do their channel-interaction mechanisms improve over channel-independent Mamba? Reproduce MambaTS or S-Mamba on Weather and compare channel-independent and channel-aware variants under channel permutations and missing-channel tests. A new graph architecture is not required.\n\n\nMaster research question. Can a sparse correlation-graph channel mixer improve forecasting and reduce sensitivity to arbitrary variable ordering compared with existing Mamba channel-mixing methods? Implement the graph module, match model capacity, and ablate graph type, sign handling, sparsity and message-passing depth on Weather and Electricity. A window-dependent graph is an optional extension after the fixed-graph study.\n\nPractical notes. Use Weather for development and a sparse graph for Electricity. Correlation describes statistical association rather than a physical or causal link. A consistent relabelling of nodes, adjacency and outputs should not materially change a correctly implemented shared graph–Mamba model.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "3  Machine learning for time series"
     ]
   },
   {
@@ -308,160 +286,6 @@
     ]
   },
   {
-    "objectID": "industry-partner-projects.html",
-    "href": "industry-partner-projects.html",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "",
-    "text": "These projects are developed with Siemens Gamesa and Tetra Pak using non-public operational data. At the start of each project, the student, supervisor and partner will confirm the available data, downstream task and permitted outputs.\nAll three are primarily Master projects. A reduced Bachelor version can be offered when a prepared dataset and fixed task are available. The Bachelor project implements and compares established methods; the Master project adds a new representation, feature design or evaluation question.\nEvaluation split. Keep all measurements from one turbine or filtration cycle in the same split. A held-out site or production line can be used as an additional Master-level transfer test when enough data are available.",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#learn-first-and-find-ideas",
-    "href": "industry-partner-projects.html#learn-first-and-find-ideas",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "Learn first and find ideas",
-    "text": "Learn first and find ideas\n\nWind-turbine vibration analysis: Randall and Antoni, Rolling element bearing diagnostics — a tutorial, Mechanical Systems and Signal Processing, 2011.\nTime-series representation learning: TS2Vec, TS-TCC and SimMTM.\nTime-series baselines: ROCKET and MiniRocket and InceptionTime.\nFor every project, state how the result would be used: for example, choosing an operating-state model, selecting a drivetrain configuration, or flagging a filtration cycle for review.",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#projects-in-this-category",
-    "href": "industry-partner-projects.html#projects-in-this-category",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "Projects in this category",
-    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#project-1-1",
-    "href": "industry-partner-projects.html#project-1-1",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "1.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring",
-    "text": "1.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring\n\nTaskUnsupervised operating-state discovery followed by condition-monitoring evaluation LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa vibration and operational data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Wind-turbine monitoring systems often group vibration measurements by power output. However, turbines producing the same power can show different vibration behaviour. You will test whether operating states learned from vibration and operational measurements describe the turbine more consistently than power bins.\n\n\n\n\nProject overview: operational-state identification from turbine operational and vibration data\n\n\nProject goal. Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power. Where possible, the discovered operating states should be interpreted in relation to known turbine operating regimes, controller actions, or structural and aerodynamic phenomena.\nData. Siemens Gamesa will provide anonymised turbine data under an agreed access arrangement. The data may include vibration features or spectra together with variables such as power, rotor or generator speed, pitch angle, torque, wind conditions and controller information. The exact channels, number of turbines, time period and sampling format must be confirmed before allocation.\nMethods and code. Start with power binning, PCA and one clustering method such as k-means or a Gaussian mixture. Then test one representation-learning approach, such as TS2Vec, followed by clustering. Use UMAP only for visualisation, not as evidence that the states are valid.\nBaselines and evaluation. Compare power bins, clustering on standardised operational variables, and clustering on the learned representation. Evaluate whether states are stable across held-out turbines or time periods and whether they have a clear operational interpretation. The main downstream comparison uses the same condition-monitoring or anomaly model with power-bin conditioning and learned-state conditioning. Report residual variation and, if suitable event or alarm labels are available, detection performance and false-alarm rate.\n\nMaster research question. Do data-driven operating states describe wind-turbine vibration more consistently than power bins, and do they improve downstream condition monitoring? The contribution is the state representation and a controlled comparison showing when it improves—or does not improve—the downstream model. Include stability analysis and one ablation of the input variables or representation method.\n\n\nBachelor version. Using a prepared feature table, compare power binning with one clustering method. Describe the resulting states using the available operational variables and measure how much within-state vibration variation each grouping removes. Representation learning is not required.\n\nPractical notes. Unsupervised clusters are not automatically physical operating states. Do not judge the result only by silhouette score or a two-dimensional plot. A useful state should be repeatable, physically interpretable where possible, and should improve an agreed downstream measure.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#project-1-2",
-    "href": "industry-partner-projects.html#project-1-2",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals",
-    "text": "1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals\n\nTaskProbabilistic ranking of candidate drivetrain configurations from vibration and operational measurements LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa data with configuration information for a subset of turbines; not public Starting paperDempster, Petitjean and Webb, ROCKET, DMKD 2020\n\n\nWhat you will do. A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether measured vibration and operational data can narrow the set of plausible configurations and provide probabilities or confidence estimates for the candidates, rather than requiring a single fixed assignment.\n\n\n\n\nProject overview: turbine-configuration and kinematics identification from vibration data\n\n\nProject goal. Use vibration and operational measurements to determine whether fixed drivetrain hardware variants can be distinguished and, when candidate configurations are known, rank the most plausible configurations for each turbine. Verified configuration information for a subset of turbines or components will be used to validate and calibrate the rankings. As an optional physics-informed extension, condition the model on known bearing or drivetrain kinematics and test whether relationships learned from well-documented components can be transferred to more complex components with limited labels.\nData. Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The probabilistic ranking study requires enough independent turbines for each candidate configuration.\nMethods and code. Begin with a probabilistic baseline such as multinomial logistic regression, or a random-forest or gradient-boosting model that outputs candidate probabilities, using the supplied spectral and operational features. If sequences or spectra are available, compare MiniRocket, InceptionTime or a compact 1-D CNN, followed by probability calibration when needed. If speed and component geometry are available, add order-domain or characteristic-frequency features as a physics-informed extension. An advanced extension can condition the model on known kinematic parameters so that it learns how vibration patterns relate to machine properties rather than merely memorising component identities.\nBaselines and evaluation. Compare prior-probability and operational-metadata baselines with feature-based and learned vibration models. Treat the output as a ranked probability distribution over candidate configurations rather than only a fixed assignment. Split by turbine; use a site-grouped test only if the data contain enough sites and classes. Report balanced accuracy and macro-F1 for the highest-ranked candidate, top-k candidate recall, and a probabilistic score such as log loss or the Brier score. Also report calibration and coverage: how often can the system make an automatic decision above a chosen confidence threshold, and how often is that decision correct?\n\nMaster research question. Can vibration and operational measurements narrow the set of plausible drivetrain configurations and provide calibrated confidence estimates beyond what operational metadata already reveals? The contribution may be a calibrated candidate-ranking method, a physics-informed feature set or a model conditioned on kinematic information. Include a metadata-only control and analyse performance across operating conditions.\n\n\nBachelor version. Using a prepared feature table and verified configuration labels, compare one probabilistic classifier with the metadata-only baseline on turbine-grouped splits. Report both the highest-ranked classification result and whether the true configuration appears among the top candidate configurations. Identify the most informative spectral or operational features.\n\nPractical notes. This project is feasible only if enough turbines have reliable configuration labels for training and validation. Configuration may also correlate with site, turbine age or rating, so these variables must be examined before attributing performance to vibration signatures. A physics-informed transfer study from well-labelled components to complex components with limited labels is a valuable MSc extension, but it depends on having both known kinematic parameters and a credible target-component test set.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "industry-partner-projects.html#project-1-3",
-    "href": "industry-partner-projects.html#project-1-3",
-    "title": "Category 1 Industrial projects: machine learning + signal processing",
-    "section": "1.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles",
-    "text": "1.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles\n\nTaskSelf-supervised multivariate time-series learning followed by cycle-level regression or anomaly detection LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Tetra Pak filtration-process data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Membrane-filtration plants generate repeated production and cleaning cycles containing flow, pressure, temperature and energy measurements. Because operating conditions differ between cycles, you will learn representations that account for this variation and test them on one agreed prediction or anomaly-detection task.\n\nProject goal. Determine whether cycle-phase- and operating-regime-aware self-supervised learning separates normal process variation from inefficient or abnormal behaviour better than a generic time-series representation.\nData. Tetra Pak will provide anonymised process data or access through a secure environment. Possible variables include cycle boundaries, flow, pressure, temperature, power or energy, setpoints and operating conditions. The number of independent cycles, sampling rate, available plants or lines, and downstream target must be confirmed before allocation. Split by complete cycle and preserve time order.\nMethods and code. Use one established method—TS2Vec, TS-TCC or SimMTM—with a compact 1-D CNN, TCN or GRU encoder. Compare generic augmentations with a cycle-phase- or regime-aware view or masking design. Change-point detection or clustering may be used to describe operating regimes.\nBaselines and evaluation. Compare a statistical baseline, a supervised TCN or GRU, generic self-supervised learning and the proposed regime-aware version. Include random-frozen and frozen-probe controls. Use MAE for early prediction of final specific energy, or AUPRC for an agreed anomaly label. Report a label-efficiency curve and use several seeds when the number of independent cycles permits.\n\nMaster research question. Can cycle-phase- and operating-regime-aware self-supervised views improve prediction or anomaly detection across non-stationary filtration cycles? The contribution is the process-aware view or masking design and its matched comparison with generic augmentations, including transfer to a held-out regime, line or product when the data support it.\n\n\nBachelor version. Using pre-segmented filtration cycles and a fixed downstream target, compare one statistical or supervised baseline with one established self-supervised method. Use cycle-grouped splits and evaluate a frozen representation with a small prediction head. Designing a new augmentation or representation is not required.\n\nPractical notes. Confirm the independent-cycle count and one measurable downstream target before allocation. Rerunning an unchanged self-supervised method is a baseline, not the Master contribution. Follow the shared protocol for self-supervised projects.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "1  Industrial projects"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html",
-    "href": "graph-applications.html",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "",
-    "text": "A graph is a way to represent entities and the relationships between them. The entities are called nodes and their relationships are called edges. Both may carry useful information: a customer node might contain age or location, a product node might contain category and price, and an edge might record that a customer bought or rated a product. Road sensors connected by roads, transactions linked by payments and atoms connected by chemical bonds are other examples.\nA graph neural network (GNN) learns numerical representations, or embeddings, by combining a node’s own features with information from its neighbours. In the example, the model can use a customer’s previous purchases, the properties of products and patterns from nearby customers to score a new customer-product link. The same principle supports node classification (classify a transaction), link prediction (recommend a product), and graph-level prediction (predict a property of an entire molecule or sensor system).\nEach project below asks a specific question about when and why the graph helps — not simply whether a GNN can be trained. Students define what the nodes and edges mean, fix a split and a primary metric, and always include a control that tests whether the graph contributes at all.",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#learn-first-and-find-ideas",
-    "href": "graph-applications.html#learn-first-and-find-ideas",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "Learn first and find ideas",
-    "text": "Learn first and find ideas\n\nBegin with A Gentle Introduction to Graph Neural Networks, then use the Stanford CS224W course and project guidance and the CS224W project archive.\nPyTorch Geometric dataset catalogue, Open Graph Benchmark, SNAP datasets and the Temporal Graph Benchmark.\nStanford examples: traffic as a dynamic graph, water quality with RGCNs, fake-news detection and NFT transaction prediction.",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#projects-in-this-category",
-    "href": "graph-applications.html#projects-in-this-category",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "Projects in this category",
-    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-2-1",
-    "href": "graph-applications.html#project-2-1",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "2.1 Remaining useful life prediction for aircraft engines",
-    "text": "2.1 Remaining useful life prediction for aircraft engines\n\nTaskGraph-level temporal regression LevelBSc or MSc ComputeVery light to light; CPU or 4 GB GPU DataNASA C-MAPSS — FD001: 100 training engines, 100 test engines, 21 sensor channels Starting paperHuang, He and Sick, Spatio-Temporal Attention GNN for RUL, 2024\n\n\nWhat you will do. Predict how many operating cycles remain before a turbofan engine fails. Each sensor channel becomes a node and edges express relationships among sensors. The project’s real subject is the graph itself: does it matter how you connect the sensors?\n\nData. Start with FD001; FD002–FD004 are optional transfer sets. Reserve complete training engines for validation and use the official test set for final scores. Split by engine, never by window. NASA provides final RUL labels for test engines, so early/middle/late-life analysis belongs on the held-out validation engines. The download is public; NASA does not specify a licence on the catalogue page.\nMethods and code. Use a GRU or TCN as the graph-free baseline and a compact GCN–GRU or GAT–GRU as the graph model. The GNN RUL benchmark is a useful reference; a small PyTorch Geometric implementation is sufficient.\nBaselines and evaluation. Compare a constant/degradation-stage baseline, one sequence model and one compact GNN. Use MAE or RMSE as primary, and report three seeds for MSc work.\n\nBachelor research question. How sensitive is GNN-based remaining-useful-life prediction to the way the sensor graph is constructed?\nCore experiment. Keep the model fixed and compare correlation, sensor-similarity, random and no-edge graphs, plus the graph-free sequence baseline.\nInterpretation. FD001 has only 21 sensor channels, so the graph may add little beyond temporal modelling. A correlation graph performing no better than a random graph is a valid result.\n\n\nMaster research question. Can a sparse, time-varying sensor graph improve accuracy when sensors are noisy or missing? Develop one graph-learning mechanism, compare it with fixed and random graphs at matched capacity, and add one robustness or cross-subset transfer study.\n\nPractical notes. Fix the RUL cap, normalisation and metric before modelling; changing them makes published results incomparable.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-2-2",
-    "href": "graph-applications.html#project-2-2",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "2.2 Multi-horizon traffic forecasting with data-driven graph structure",
-    "text": "2.2 Multi-horizon traffic forecasting with data-driven graph structure\n\nTaskNode-level temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataMETR-LA — 207 sensors, 34,272 five-minute observations; PEMS-BAY optional Starting paperWu et al., Graph WaveNet, IJCAI 2019\n\n\nWhat you will do. Forecast traffic speed at every road sensor 15, 30 and 60 minutes ahead, and determine when the road network’s structure actually helps. Short-horizon forecasts may depend mostly on a sensor’s own recent history, while longer horizons may require information propagating through the network.\n\nData. Use METR-LA with the standard chronological 70/10/20 split. Fit scalers and learned/correlation graphs on training data only. The files are publicly downloadable through DCRNN, but no separate dataset licence is stated there; do not redistribute them.\nMethods and code. Compare historical average and a graph-free GRU with Graph WaveNet or a compact STGCN. DCRNN is optional because its reference implementation is slower and uses an old TensorFlow stack.\nBaselines and evaluation. Use historical average, graph-free GRU, and the same GNN with distance, randomised and identity/no-message-passing graphs. Report masked MAE (primary), RMSE and MAPE at 15, 30 and 60 minutes.\n\nBachelor research question. Does graph information become more valuable as the forecasting horizon increases?\nCore experiment. With one trained 12-step model, compare the distance, randomised and identity/no-message-passing graphs at steps 3, 6 and 12 (15, 30 and 60 minutes). Include the graph-free GRU as a separate baseline.\nNote. Evaluate one 12-step model at different horizons; do not train three separate models.\n\n\nMaster research question. Does a sparse, traffic-regime-conditioned adjacency improve 60-minute forecasts over road and learned static graphs? Match model capacity, use three seeds, and analyse whether edges change plausibly between rush hour and free flow.\n\nPractical notes. Profile early and use top-k or low-rank adjacency; a dense graph at every time step is unnecessarily expensive.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-2-3",
-    "href": "graph-applications.html#project-2-3",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "2.3 Illicit Bitcoin transaction detection",
-    "text": "2.3 Illicit Bitcoin transaction detection\n\nTaskNode classification on a temporal graph LevelBSc or MSc ComputeLight to moderate; the full graph fits on a 4–8 GB GPU DataElliptic Bitcoin dataset via PyG — 203,769 nodes, 234,355 edges, 165 model features, 49 time steps Starting paperWeber et al., Anti-Money Laundering in Bitcoin, 2019\n\n\nWhat you will do. Classify labelled Bitcoin transactions as licit or illicit, then test how missing payment edges affect the result.\n\nData. The PyG loader downloads the data and defines time steps 1–34 as training and 35–49 as test; take validation steps only from 1–34. Unknown labels are unlabelled, not negatives. The dataset is CC BY-NC-ND 4.0: academic analysis is allowed, but commercial use and redistribution of modified data are restricted.\nMethods and code. Compare logistic regression or random forest with GCN and GraphSAGE in PyTorch Geometric. Use class weighting only after the unweighted baseline is established.\nBaselines and evaluation. Use the first 93 PyG features for the truly local, graph-free baseline. Report a second 165-feature baseline separately because the last 72 features already aggregate neighbours. Compare both with GCN/GraphSAGE and a no-edge control. Use AUPRC or illicit-class F1 as primary and report performance by time step.\n\nBachelor research question. How robust are GNN-based illicit-transaction detectors when graph information is incomplete?\nCore experiment. Delete 0%, 10%, 25% and 50% of test edges and compare both GNNs with the 93-feature local baseline. Repeat deletion with several random seeds.\nInterpretation. A 165-feature random forest is a strong baseline partly because 72 features already summarise neighbours. Keep it, but do not call it graph-free.\n\n\nMaster research question. Can a temporally calibrated GNN remain useful under concept drift and missing edges? Add one temporal or uncertainty mechanism and evaluate it by time step and at a fixed alert budget.\n\nPractical notes. The 49 time steps are disconnected snapshots. Preserve time order and keep label handling and threshold selection identical across methods.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-2-4",
-    "href": "graph-applications.html#project-2-4",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "2.4 Graph-based movie recommendation with accuracy and coverage",
-    "text": "2.4 Graph-based movie recommendation with accuracy and coverage\n\nTaskLink prediction and ranking on a bipartite graph LevelBSc only ComputeVery light; CPU or low-memory GPU DataMovieLens 100K — 100,000 ratings, 943 users, 1,682 movies, 5 MB Starting paperHe et al., LightGCN, SIGIR 2020\n\n\nWhat you will do. Rank unseen films for each user and test whether better ranking accuracy reduces catalogue coverage or long-tail exposure.\n\nData. Treat ratings of 4–5 as positive interactions. Split each user’s positives chronologically and remove validation/test edges from the training graph. Evaluate over the full unseen catalogue. The download is public for research, but its licence forbids redistribution and commercial use without permission.\nMethods and code. Compare popularity, BPR matrix factorisation and LightGCN. A direct PyTorch Geometric implementation is simpler than adapting the official LightGCN repository.\nBaselines and evaluation. Use identical training negatives for BPR-MF and LightGCN. Report NDCG@20 or Recall@20, catalogue coverage and average recommended-item popularity.\n\nBachelor research question. Does graph-based recommendation improve ranking accuracy at the expense of catalogue coverage and long-tail exposure?\nCore experiment. Compare the three methods, then vary LightGCN depth or its training negative sampler and plot the accuracy/coverage trade-off. Use at least three seeds and analyse results by user activity and item popularity.\n\nPractical notes. Avoid future-interaction leakage and sampled-negative evaluation. Submit a reproducible pipeline, controlled comparison and error analysis.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
-    "objectID": "graph-applications.html#project-2-5",
-    "href": "graph-applications.html#project-2-5",
-    "title": "Category 2 GNN applications for real-world data",
-    "section": "2.5 Molecular HIV activity prediction with calibrated GNNs",
-    "text": "2.5 Molecular HIV activity prediction with calibrated GNNs\n\nTaskGraph classification under distribution shift LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataOGB ogbg-molhiv — 41,127 molecular graphs, official scaffold split and evaluator Starting paperHu et al., Open Graph Benchmark, NeurIPS 2020\n\n\nWhat you will do. Predict HIV-assay activity and test whether a GNN generalises to unseen molecular scaffolds better than chemical fingerprints.\n\nData. The OGB loader automatically downloads the MIT-licensed data and supplies the scaffold split and evaluator. Do not compare scaffold-split results with random-split figures.\nMethods and code. Compare Morgan fingerprints with logistic regression or random forest via RDKit against GCN and edge-aware GINE models. OGB and PyTorch Geometric provide loaders and baseline components.\nBaselines and evaluation. Use a fingerprint classifier, GCN and GINE, with one bond-feature ablation. Report ROC-AUC (official primary metric), AUPRC and three seeds.\n\nBachelor research question. Do GNNs generalise better than traditional molecular fingerprints to scaffolds not seen during training?\nCore experiment. Compare fingerprints, GCN and GINE on the official split, then inspect errors on scaffolds most dissimilar to training data.\nInterpretation. A fingerprint/tree model may match or beat a plain GNN. Select all hyperparameters on validation data; never tune against the test split.\n\n\nMaster research question. Can calibration improve on held-out scaffolds without reducing ROC-AUC? Compare temperature scaling with one ensemble or uncertainty method and report calibration by scaffold novelty.\n\nPractical notes. Keep the official split and evaluator fixed; choose thresholds and calibration parameters on validation data only.\n\nBack to category introduction ↑",
-    "crumbs": [
-      "Home",
-      "2  GNN applications"
-    ]
-  },
-  {
     "objectID": "selection-guidance.html",
     "href": "selection-guidance.html",
     "title": "Selection guidance",
@@ -525,6 +349,182 @@
     "crumbs": [
       "Home",
       "Selection guidance"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html",
+    "href": "industry-partner-projects.html",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "",
+    "text": "These projects are developed with Siemens Gamesa and Tetra Pak using non-public operational data. At the start of each project, the student, supervisor and partner will confirm the available data, downstream task and permitted outputs.\nAll three are primarily Master projects. A reduced Bachelor version can be offered when a prepared dataset and fixed task are available. The Bachelor project implements and compares established methods; the Master project adds a new representation, feature design or evaluation question.\nEvaluation split. Keep all measurements from one turbine or filtration cycle in the same split. A held-out site or production line can be used as an additional Master-level transfer test when enough data are available.",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#learn-first-and-find-ideas",
+    "href": "industry-partner-projects.html#learn-first-and-find-ideas",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "Learn first and find ideas",
+    "text": "Learn first and find ideas\n\nWind-turbine vibration analysis: Randall and Antoni, Rolling element bearing diagnostics — a tutorial, Mechanical Systems and Signal Processing, 2011.\nTime-series representation learning: TS2Vec, TS-TCC and SimMTM.\nTime-series baselines: ROCKET and MiniRocket and InceptionTime.\nFor every project, state how the result would be used: for example, choosing an operating-state model, selecting a drivetrain configuration, or flagging a filtration cycle for review.",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#projects-in-this-category",
+    "href": "industry-partner-projects.html#projects-in-this-category",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "Projects in this category",
+    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-1-1",
+    "href": "industry-partner-projects.html#project-1-1",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "1.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring",
+    "text": "1.1 Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring\n\nTaskUnsupervised operating-state discovery followed by condition-monitoring evaluation LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa vibration and operational data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Wind-turbine monitoring systems often group vibration measurements by power output. However, turbines producing the same power can show different vibration behaviour. You will test whether operating states learned from vibration and operational measurements describe the turbine more consistently than power bins.\n\n\n\n\nProject overview: operational-state identification from turbine operational and vibration data\n\n\nProject goal. Discover recurring operating states and determine whether using those states improves a downstream condition-monitoring model. The project should answer whether the learned states contain useful information beyond turbine power. Where possible, the discovered operating states should be interpreted in relation to known turbine operating regimes, controller actions, or structural and aerodynamic phenomena.\nData. Siemens Gamesa will provide anonymised turbine data under an agreed access arrangement. The data may include vibration features or spectra together with variables such as power, rotor or generator speed, pitch angle, torque, wind conditions and controller information. The exact channels, number of turbines, time period and sampling format must be confirmed before allocation.\nMethods and code. Start with power binning, PCA and one clustering method such as k-means or a Gaussian mixture. Then test one representation-learning approach, such as TS2Vec, followed by clustering. Use UMAP only for visualisation, not as evidence that the states are valid.\nBaselines and evaluation. Compare power bins, clustering on standardised operational variables, and clustering on the learned representation. Evaluate whether states are stable across held-out turbines or time periods and whether they have a clear operational interpretation. The main downstream comparison uses the same condition-monitoring or anomaly model with power-bin conditioning and learned-state conditioning. Report residual variation and, if suitable event or alarm labels are available, detection performance and false-alarm rate.\n\nMaster research question. Do data-driven operating states describe wind-turbine vibration more consistently than power bins, and do they improve downstream condition monitoring? The contribution is the state representation and a controlled comparison showing when it improves—or does not improve—the downstream model. Include stability analysis and one ablation of the input variables or representation method.\n\n\nBachelor version. Using a prepared feature table, compare power binning with one clustering method. Describe the resulting states using the available operational variables and measure how much within-state vibration variation each grouping removes. Representation learning is not required.\n\nPractical notes. Unsupervised clusters are not automatically physical operating states. Do not judge the result only by silhouette score or a two-dimensional plot. A useful state should be repeatable, physically interpretable where possible, and should improve an agreed downstream measure.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-1-2",
+    "href": "industry-partner-projects.html#project-1-2",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals",
+    "text": "1.2 Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals\n\nTaskProbabilistic ranking of candidate drivetrain configurations from vibration and operational measurements LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Siemens Gamesa data with configuration information for a subset of turbines; not public Starting paperDempster, Petitjean and Webb, ROCKET, DMKD 2020\n\n\nWhat you will do. A wind-turbine fleet can contain several bearing, gearbox or drivetrain variants, and the monitoring system may not always know which configuration is installed. Because component geometry affects the vibration spectrum, you will test whether measured vibration and operational data can narrow the set of plausible configurations and provide probabilities or confidence estimates for the candidates.\n\n\n\n\nProject overview: turbine-configuration and kinematics identification from vibration data\n\n\nProject goal. Use vibration and operational measurements to determine whether fixed drivetrain hardware variants can be distinguished and, when candidate configurations are known, rank the most plausible configurations for each turbine. Verified configuration information for a subset of turbines or components will be used to validate and calibrate the rankings. As an optional physics-informed extension, condition the model on known bearing or drivetrain kinematics and test whether relationships learned from well-documented components can be transferred to more complex components with limited labels.\nData. Siemens Gamesa will provide anonymised vibration and operational measurements, potentially with verified configuration information for a subset of turbines. Before allocation, confirm the number of turbines and configuration classes, how the configuration labels were obtained, the measurement positions, sampling format, and whether raw waveforms, spectra or extracted features are available. The probabilistic ranking study requires enough independent turbines for each candidate configuration.\nMethods and code. Begin with a probabilistic baseline such as multinomial logistic regression, or a random-forest or gradient-boosting model that outputs candidate probabilities, using the supplied spectral and operational features. If sequences or spectra are available, compare MiniRocket, InceptionTime or a compact 1-D CNN, followed by probability calibration when needed. If speed and component geometry are available, add order-domain or characteristic-frequency features as a physics-informed extension. An advanced extension can condition the model on known kinematic parameters so that it learns how vibration patterns relate to machine properties rather than merely memorising component identities.\nBaselines and evaluation. Compare prior-probability and operational-metadata baselines with feature-based and learned vibration models. Treat the output as a ranked probability distribution over candidate configurations rather than only a fixed assignment. Split by turbine; use a site-grouped test only if the data contain enough sites and classes. Report balanced accuracy and macro-F1 for the highest-ranked candidate, top-k candidate recall, and a probabilistic score such as log loss or the Brier score. Also report calibration and coverage: how often can the system make an automatic decision above a chosen confidence threshold, and how often is that decision correct?\n\nMaster research question. Can vibration and operational measurements narrow the set of plausible drivetrain configurations and provide calibrated confidence estimates beyond what operational metadata already reveals? The contribution may be a calibrated candidate-ranking method, a physics-informed feature set or a model conditioned on kinematic information. Include a metadata-only control and analyse performance across operating conditions.\n\n\nBachelor version. Using a prepared feature table and verified configuration labels, compare one probabilistic classifier with the metadata-only baseline on turbine-grouped splits. Report both the highest-ranked classification result and whether the true configuration appears among the top candidate configurations. Identify the most informative spectral or operational features.\n\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "industry-partner-projects.html#project-1-3",
+    "href": "industry-partner-projects.html#project-1-3",
+    "title": "Category 1 Industrial projects: machine learning + signal processing",
+    "section": "1.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles",
+    "text": "1.3 Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles\n\nTaskSelf-supervised multivariate time-series learning followed by cycle-level regression or anomaly detection LevelMSc preferred; reduced BSc version possible ComputeLight to moderate; compact models on a 4–8 GB GPU DataPartner-supplied Tetra Pak filtration-process data; not public Starting paperYue et al., TS2Vec, AAAI 2022\n\n\nWhat you will do. Membrane-filtration plants generate repeated production and cleaning cycles containing flow, pressure, temperature and energy measurements. Because operating conditions differ between cycles, you will learn representations that account for this variation and test them on one agreed prediction or anomaly-detection task.\n\nProject goal. Determine whether cycle-phase- and operating-regime-aware self-supervised learning separates normal process variation from inefficient or abnormal behaviour better than a generic time-series representation.\nData. Tetra Pak will provide anonymised process data or access through a secure environment. Possible variables include cycle boundaries, flow, pressure, temperature, power or energy, setpoints and operating conditions. The number of independent cycles, sampling rate, available plants or lines, and downstream target must be confirmed before allocation. Split by complete cycle and preserve time order.\nMethods and code. Use one established method—TS2Vec, TS-TCC or SimMTM—with a compact 1-D CNN, TCN or GRU encoder. Compare generic augmentations with a cycle-phase- or regime-aware view or masking design. Change-point detection or clustering may be used to describe operating regimes.\nBaselines and evaluation. Compare a statistical baseline, a supervised TCN or GRU, generic self-supervised learning and the proposed regime-aware version. Include random-frozen and frozen-probe controls. Use MAE for early prediction of final specific energy, or AUPRC for an agreed anomaly label. Report a label-efficiency curve and use several seeds when the number of independent cycles permits.\n\nMaster research question. Can cycle-phase- and operating-regime-aware self-supervised views improve prediction or anomaly detection across non-stationary filtration cycles? The contribution is the process-aware view or masking design and its matched comparison with generic augmentations, including transfer to a held-out regime, line or product when the data support it.\n\n\nBachelor version. Using pre-segmented filtration cycles and a fixed downstream target, compare one statistical or supervised baseline with one established self-supervised method. Use cycle-grouped splits and evaluate a frozen representation with a small prediction head. Designing a new augmentation or representation is not required.\n\nPractical notes. Confirm the independent-cycle count and one measurable downstream target before allocation. Rerunning an unchanged self-supervised method is a baseline, not the Master contribution. Follow the shared protocol for self-supervised projects.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "1  Industrial projects"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html",
+    "href": "time-series-ssl.html",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "",
+    "text": "A time series is an ordered sequence of measurements. A wearable device may record acceleration every fraction of a second, an ECG contains voltage measurements from several leads, and an industrial plant records pressure, flow, temperature and energy over time. Machine-learning models can use these signals for classification, forecasting, anomaly detection and condition monitoring.\nMany projects in this category use self-supervised learning (SSL) because useful labels may require expert work and are often scarce. SSL creates a training task from the unlabelled recordings: a model might align two valid views of a signal, reconstruct a hidden segment or predict a future representation. Other projects train directly for forecasting and study how a model represents time, channels and relationships among variables.\nEvaluation depends on the task. Representation-learning projects measure label efficiency and transfer to new people, machines or operating conditions. Forecasting projects use chronological splits and test future prediction, robustness and computational cost. In every case, the split must respect the independent physical unit and the direction of time.",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#learn-first-and-find-ideas",
+    "href": "time-series-ssl.html#learn-first-and-find-ideas",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "Learn first and find ideas",
+    "text": "Learn first and find ideas\n\nRepresentation-learning methods with code: TS-TCC, TS2Vec, TF-C and SimMTM.\nForecasting and sequence models: DLinear, Mamba, MambaTS and S-Mamba.\nData sources: UCI Machine Learning Repository, PhysioNet, UCR/UEA archive, Monash forecasting archive and Zenodo.\nMonitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss does not establish that the representation is useful.",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#projects-in-this-category",
+    "href": "time-series-ssl.html#projects-in-this-category",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "Projects in this category",
+    "text": "Projects in this category\nUse the contents panel or the project links in the left navigation to move directly to a project.",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-1",
+    "href": "time-series-ssl.html#project-3-1",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.1 Contrastive learning for wearable activity recognition",
+    "text": "3.1 Contrastive learning for wearable activity recognition\n\nTaskSelf-supervised time-series representation learning, then classification LevelBSc only ComputeLight; CPU or 4 GB GPU DataUCI Human Activity Recognition — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0 Starting paperEldele et al., TS-TCC, IJCAI 2021\n\n\nWhat you will do. A phone records acceleration and angular velocity while a person walks, sits or climbs stairs. Learn an encoder from the unlabelled sensor windows, freeze it, and measure how few labels a small classifier needs to recognise activities.\n\nData. UCI HAR is a 58 MB public download under CC BY 4.0. It contains pre-windowed 2.56-second recordings with 50% overlap and a standard subject-independent split. Keep that split.\nMethods and code. TS-TCC or TS2Vec — choose one. Use the same 1-D CNN or small Transformer encoder for the self-supervised and supervised comparisons.\nBaselines and evaluation. Random frozen encoder, SSL frozen linear probe, SSL fine-tuning and a fully supervised model trained from scratch. Report accuracy and macro-F1 on the subject-independent split.\n\nBachelor research question. How much labelled activity data can self-supervised pretraining replace?\nCore experiment. Compare all four conditions at 1%, 5%, 10%, 25% and 100% label budgets. Resample the labelled windows within the training subjects and report confidence intervals. Optionally test robustness by jointly rotating the accelerometer and gyroscope axes.\n\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-2",
+    "href": "time-series-ssl.html#project-3-2",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.2 Lead-aware masked learning for 12-lead ECG",
+    "text": "3.2 Lead-aware masked learning for 12-lead ECG\n\nTaskSelf-supervised multivariate time-series learning, then multi-label classification LevelMSc preferred; BSc with a supplied data pipeline ComputeModerate; 8 GB GPU recommended DataPTB-XL — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing Starting paperDong et al., SimMTM, NeurIPS 2023\n\n\nWhat you will do. A 12-lead ECG observes the same cardiac event from different electrical viewpoints. Instead of masking arbitrary time patches, the model hides complete leads or anatomical lead groups and predicts their latent representations from the visible leads.\n\nData. PTB-XL at 100 Hz, using the official patient-aware folds: 1–8 for training, 9 for validation, 10 for testing. The dataset is fully labelled, so label budgets simulate scarcity rather than reflecting missing annotations.\nMethods and code. Start with SimMTM or TS2Vec and a 1-D ResNet or compact Transformer. The PTB-XL benchmark code provides preprocessing and supervised references.\nBaselines and evaluation. Random frozen encoder, frozen probe, fine-tuning and the same encoder fully supervised. Macro-AUROC on fold 10 across the five diagnostic superclasses is the primary endpoint; add macro-AUPRC for class imbalance. Report patient-level splits and several label budgets.\n\nMaster research question. Does lead-aware masking improve low-label diagnosis over random temporal masking? Develop complete-lead or anatomical-group masking, condition the predictor on lead identity, and monitor embedding variance for collapse. Ablate masking granularity and predictor depth.\n\n\nBachelor question. How does diagnostic performance change when fewer ECG leads are available? With the supplied pipeline and one encoder, compare 12, 6 and 3 leads and lead II alone under supervised training and one established SSL method.\n\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-3",
+    "href": "time-series-ssl.html#project-3-3",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.3 Self-supervised forecasting representations for energy series",
+    "text": "3.3 Self-supervised forecasting representations for energy series\n\nTaskSelf-supervised time-series learning, then temporal regression LevelBSc or MSc ComputeLight to moderate; 4–8 GB GPU DataETT — electricity transformer temperature, hourly (ETTh1/ETTh2) and 15-minute (ETTm1/ETTm2) subsets Starting paperWoo et al., CoST, ICLR 2022\n\n\nWhat you will do. Pretrain an encoder on one unlabelled energy series, freeze it, and fit a small forecasting head. Test whether the representation transfers to a different series better than training a supervised forecaster on that series.\n\nData. Use ETT with chronological splits and training-only scaling. ETTh1 and ETTh2 come from different transformers. The public repository uses CC BY-ND 4.0; cite it and do not redistribute modified copies.\nMethods and code. CoST, TS2Vec or SimMTM for pretraining. DLinear is the required supervised reference; PatchTST is optional. A ridge or linear head on frozen representations is the key diagnostic.\nBaselines and evaluation. Seasonal-naive, DLinear, frozen SSL representation with a ridge head, and SSL fine-tuning. Report MSE and MAE at agreed horizons with identical input lengths and chronological splits, plus three seeds.\n\nBachelor research question. Do self-supervised representations pretrained on one energy series transfer to a different one?\nCore experiment. Pretrain on ETTh1, then probe and fine-tune on ETTh2. Compare with direct ETTh2 pretraining and DLinear trained on ETTh2.\nInterpretation. DLinear may outperform the SSL pipeline. Analyse whether the gap changes with forecast horizon and target-data volume.\n\n\nMaster research question. Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts? Use a stable seasonal decomposition to select positives, compare with random cropping and frequency-domain contrast, and analyse non-stationary intervals. Validate the period estimate on ETT before adding irregular data.\n\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-4",
+    "href": "time-series-ssl.html#project-3-4",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.4 Self-supervised learning on heat-pump smart-meter data",
+    "text": "3.4 Self-supervised learning on heat-pump smart-meter data\n\nTaskTime-series representation learning, then household-level classification LevelMSc preferred; BSc metadata-label version ComputeLight to moderate after preprocessing DataHEAPO on Zenodo — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024; dataset licence must be confirmed Starting paperBrudermueller et al., HEAPO, 2025\n\n\nWhat you will do. Pretrain on household electricity series, then test whether the representations improve prediction of a household attribute or an inspection-derived issue.\n\nData. The 458 MB public download contains 1,408 households; 214 have both smart-meter data and inspection information. Use the official MIT-licensed dataloader. The Zenodo Rights field does not state a dataset licence, so confirm reuse terms before allocation. Group all splits by household.\nMethods and code. Use TS2Vec or SimMTM, with a 1-D CNN or InceptionTime supervised baseline. Use heat-pump type for the lower-risk task, or one inspection-derived issue only after counting usable positives among the 214 matched households.\nBaselines and evaluation. Compare random-frozen, frozen SSL, fine-tuned SSL and supervised encoders on identical household splits. Include weather-only and metadata-only baselines. Report balanced accuracy, macro-F1 and confidence intervals using repeated grouped cross-validation.\n\nMaster research question. Can unlabelled data from a large related household population improve prediction on a much smaller labelled population, and do weather- and cycle-aware views improve it further? Compare pretraining sources — none, labelled households only, unlabelled control households, and all households — then add outdoor-temperature-matched positives or whole-cycle masking and ablate the weather conditioning.\nFeasibility condition. An inspection-label study has only 214 matched households. Select one primary label and verify its prevalence before committing to it; otherwise use the better-covered heat-pump-type task.\n\n\nBachelor version. Use heat-pump type or another well-covered metadata label. Compare supervised training with one SSL encoder on household-grouped splits and report a label-efficiency curve.\n\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-5",
+    "href": "time-series-ssl.html#project-3-5",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.5 Graph self-supervised learning from vibration signals",
+    "text": "3.5 Graph self-supervised learning from vibration signals\n\nTaskGraph-level classification (one graph per signal window) with cross-operating-condition transfer LevelMSc only ComputeModerate preprocessing; small models on a 4–8 GB GPU DataPaderborn KAt — ~5 GB, 32 bearings, four operating conditions, CC BY-NC 4.0 Starting paperHou et al., GraphMAE, KDD 2022 — official code\n\n\nWhat you will do. Convert each vibration window into a graph of fault-related frequency bands, pretrain a graph encoder without labels, and test transfer to a different load or speed condition.\n\nGraph construction. Resample each window into the shaft-order domain. Use fixed nodes for BPFO, BPFI, BSF and FTF bands and their harmonics. Node features can include band energy, envelope amplitude, spectral kurtosis and RMS; edges can represent envelope correlation or spectral coherence. Fit thresholds on training data only.\nData. Paderborn provides 64 kHz vibration, speed, torque and radial load for 32 physical bearings under four operating conditions. Download it from the official archive. Split by bearing, not by window. CWRU may be used only to develop the preprocessing pipeline; its official site does not state a clear data licence.\nMethods and code. Use a GIN encoder with GraphMAE. Compare with supervised GIN and a 1-D CNN. Do not remove fault-frequency nodes as a generic graph augmentation.\nBaselines and evaluation. Compare a 1-D CNN, envelope-spectrum features with gradient boosting, supervised GIN, random-frozen GIN, and GraphMAE with frozen and fine-tuned heads. Test physics-based, similarity, random and no-edge graphs. Report accuracy and macro-F1; cross-condition transfer is primary.\n\nMaster research question. Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed? The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.\n\nPractical notes. The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-6",
+    "href": "time-series-ssl.html#project-3-6",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis",
+    "text": "3.6 Time–frequency contrastive Mamba for cross-condition bearing diagnosis\n\nTaskSelf-supervised time-series representation learning, then fault classification LevelMSc preferred; BSc with the processed dataset and a fixed comparison ComputeLight to moderate; 4–8 GB GPU DataPaderborn KAt — 32 bearings, four operating conditions, 64 kHz vibration, CC BY-NC 4.0 Starting paperZhang et al., TF-C, NeurIPS 2022 — official code\n\n\nWhat you will do. Use Mamba as the temporal encoder in TF-C, which learns jointly from time- and frequency-domain views. Test whether the resulting representation transfers between bearing operating conditions when only a small labelled set is available.\n\nData. The official Paderborn archive contains vibration, motor current, speed, torque and radial load for six healthy, twelve artificially damaged and fourteen naturally damaged bearings. Begin with the processed FD-A and FD-B subsets provided through the TF-C repository. For the final evaluation, group the split by physical bearing or recording so overlapping windows cannot occur in both training and test sets.\nMethods and code. Start from the TF-C implementation and replace its time-domain CNN or Transformer with a compact Mamba encoder. Retain the time–frequency contrastive objective and use a linear or small multilayer classification head.\nBaselines and evaluation. Compare the original TF-C encoder, supervised 1-D CNN, supervised Mamba, random-frozen Mamba, frozen TF-C–Mamba and fine-tuned TF-C–Mamba. Report macro-F1, balanced accuracy, per-class recall and at least three seeds. The primary test is transfer to a different operating condition; report several labelled-example budgets and separate results for previously observed and unseen bearings where the data permit.\n\nBachelor research question. Under the same TF-C objective, does a compact Mamba encoder improve cross-condition classification or computational efficiency over the existing encoder? Use the processed FD-A and FD-B data, fixed augmentations and identical splits. Compare accuracy, macro-F1, training time and memory without proposing a new pretraining objective.\n\n\nMaster research question. Can bearing-specific time–frequency views improve the transfer of Mamba representations across operating conditions and unseen bearings? Develop one process-informed view, such as an envelope-spectrum view centred on bearing fault frequencies, an order-normalised view or a positive pair drawn from the same bearing under different conditions. Compare it with the original TF-C augmentations and ablate the view construction.\n\nPractical notes. The public code and processed data provide a complete starting pipeline, but the older TF-C dependencies may need updating. Test the Mamba environment during the first project week. The raw data are several gigabytes and are needed only for the MSc signal-processing extensions.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
+    ]
+  },
+  {
+    "objectID": "time-series-ssl.html#project-3-7",
+    "href": "time-series-ssl.html#project-3-7",
+    "title": "Category 3 Machine learning for time-series data",
+    "section": "3.7 Correlation-graph Mamba for order-robust multivariate forecasting",
+    "text": "3.7 Correlation-graph Mamba for order-robust multivariate forecasting\n\nTaskMultivariate time-series forecasting LevelMSc preferred; BSc evaluation version ComputeLight to moderate on Weather; moderate on Electricity DataWeather and Electricity — public forecasting benchmarks with 21 and 321 channels Starting paperCai et al., MambaTS — MIT-licensed code\n\n\nWhat you will do. Represent each signal channel as a graph node, exchange information between correlated channels, and then use a shared Mamba encoder to model each node through time. Test whether explicit channel structure improves forecasting and reduces sensitivity to arbitrary channel order.\n\nData. Develop the method on Weather, which has 21 meteorological variables and 52,696 ten-minute observations. Confirm the result on Electricity, which contains 321 hourly electricity-demand series and 26,304 observations. Use chronological splits and fit scaling, correlations and graph thresholds on the training period only. The datasets and scripts are available through Autoformer; OpenTS documents their dimensions and standard protocol.\nMethods and code. Use MambaTS as the main code base and S-Mamba and C-Mamba as channel-modelling references. Build a sparse top-k correlation graph from the training data. At each time step or patch, apply a shared GCN, GraphSAGE or GAT layer across channels; then apply the same temporal Mamba encoder to every node and a shared forecasting head.\nBaselines and evaluation. Compare seasonal naive, DLinear, channel-independent Mamba, MambaTS and one existing channel-aware Mamba model. Graph controls must include identity, random and shuffled-correlation adjacency. Report MSE and MAE at standard horizons, three seeds, parameter count, training time and memory. Consistently permute the input channels, graph and outputs to measure order sensitivity, and mask channels at test time to measure robustness.\n\nBachelor research question. How sensitive are existing Mamba forecasters to channel order, and do their channel-interaction mechanisms improve over channel-independent Mamba? Reproduce MambaTS or S-Mamba on Weather and compare channel-independent and channel-aware variants under channel permutations and missing-channel tests. A new graph architecture is not required.\n\n\nMaster research question. Can a sparse correlation-graph channel mixer improve forecasting and reduce sensitivity to arbitrary variable ordering compared with existing Mamba channel-mixing methods? Implement the graph module, match model capacity, and ablate graph type, sign handling, sparsity and message-passing depth on Weather and Electricity. A window-dependent graph is an optional extension after the fixed-graph study.\n\nPractical notes. Use Weather for development and a sparse graph for Electricity. Correlation describes statistical association rather than a physical or causal link. A consistent relabelling of nodes, adjacency and outputs should not materially change a correctly implemented shared graph–Mamba model.\n\nBack to category introduction ↑",
+    "crumbs": [
+      "Home",
+      "3  Machine learning for time series"
     ]
   }
 ]
