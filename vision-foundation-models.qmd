@@ -1,142 +1,98 @@
 ---
 title: "Category 4  Deep-learning vision models and applications"
-description: "Foundation-model adaptation, medical segmentation and federated image restoration"
+description: "DINO adaptation with application choices, and federated medical-image denoising"
 toc: true
 toc-depth: 2
 ---
 
 <span id="top"></span>
 
-A **vision foundation model** is an image encoder pretrained on a large image collection and reused for later tasks. Vision Transformers divide an image into patches and learn a feature vector for each patch. Self-supervised models such as DINO learn these features without class labels. U-Net and nnU-Net provide complementary convolutional baselines for medical segmentation and image restoration.
+A **vision foundation model** learns useful image features from a large image collection. These features can be reused for specialised tasks without training a foundation model from scratch.
 
-Students do not train a foundation model from scratch. The projects instead study frozen features, parameter-efficient adaptation or task-specific decoders. Applications include industrial anomaly detection, abdominal-organ segmentation and federated cardiac MRI denoising.
-
-The evaluation protocol must match the application. MVTec training sets contain normal images only; real test defects cannot be used to train or tune the model. Medical volumes must be split by patient rather than slice. Federated experiments must state exactly what clients transmit and must not describe prediction sharing as a formal privacy guarantee.
-
-::: {.category-callout}
-**Three ways to use a pretrained backbone**
-
-**Freeze it** and train only a task head or decoder. **Adapt it efficiently** by training small LoRA or adapter modules. **Fine-tune it** by updating part or all of the encoder. These settings are comparable only when they use the same data split, decoder and evaluation protocol.
-:::
+Choose between adapting DINO for industrial inspection or medical segmentation, and a separate Master project on federated image denoising. In the DINO project, choose one application. The denoising project uses image-restoration networks such as U-Net.
 
 ## Learn first and find ideas
 
-- Core reading: [DINO](https://arxiv.org/abs/2104.14294), [DINOv2](https://arxiv.org/abs/2304.07193), the [DINOv2 model card and code](https://github.com/facebookresearch/dinov2), and [AnomalyDINO](https://arxiv.org/abs/2405.14529) with its [official code](https://github.com/dammsi/AnomalyDINO).
-- Medical adaptation: [DINOv3](https://github.com/facebookresearch/dinov3), [MedDINOv3](https://github.com/ricklisz/MedDINOv3), [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) and [MONAI](https://monai.io/).
-- Federated learning: [FedAvg](https://arxiv.org/abs/1602.05629), [FedDF](https://github.com/epfml/federated-learning-public-code/tree/master/codes/FedDF-code) and the [Flower framework](https://flower.ai/).
-- Parameter-efficient adaptation: [LoRA](https://arxiv.org/abs/2106.09685) and the [Hugging Face PEFT library](https://github.com/huggingface/peft).
-- Normal-only objectives: [DINO self-distillation](https://arxiv.org/abs/2104.14294) and [masked autoencoding](https://arxiv.org/abs/2111.06377). The proposed project uses patch-level teacher–student consistency as the simpler starting point.
-- Data and model hubs: [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), [AMOS22](https://amos22.grand-challenge.org/), [M&Ms](https://www.ub.edu/mnms/), [Hugging Face models](https://huggingface.co/models) and [timm](https://github.com/huggingface/pytorch-image-models).
-- Keep zero-shot, one-shot, few-shot and full-shot anomaly results separate, and never compare an image-level metric directly with a pixel-level metric.
+- [DINOv2 introduction, model card and code](https://github.com/facebookresearch/dinov2).
+- [DINOv3 model access and code](https://github.com/facebookresearch/dinov3).
+- [MONAI tools for medical-image learning](https://github.com/Project-MONAI/MONAI).
 
 ## Projects in this category
 
-Use the contents panel or the project links in the left navigation to move directly to a project.
+Use the contents panel or project links in the left navigation to move directly to a project.
 
-## 4.1  Adapting DINO backbones for industrial anomaly detection {#project-4-1}
+<span id="project-4-2"></span>
+
+## 4.1  Adapting DINO vision models for specialised image analysis {#project-4-1}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Image-level anomaly detection and pixel-level anomaly localisation</span>
 <span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light for frozen features; moderate for adaptation (12–24 GB GPU recommended)</span>
-<span class="meta-label">Data</span><span class="meta-value">[MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) — 5,354 images, 15 categories, pixel-precise masks, CC BY-NC-SA 4.0</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Oquab et al., [DINOv2](https://arxiv.org/abs/2304.07193), 2023</span>
+<span class="meta-label">Computing</span><span class="meta-value">A GPU is recommended; medical-image preparation and adaptation need more resources.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Use DINOv2 patch features to detect and locate defects from normal reference images. The BSc project studies the frozen detector. The MSc project adapts the encoder using only defect-free training images.
-:::
+**Goal**
 
-**Data.** [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) contains 5,354 images in 15 categories, with defect-free training images and labelled normal and defective test images. [MVTec AD 2](https://www.mvtec.com/research-teaching/datasets/mvtec-ad-2) contains 8,000+ images in eight harder scenarios and includes unseen lighting conditions. Both use CC BY-NC-SA 4.0; MVTec AD 2 also has a private-test evaluation server.
+Investigate how well a pretrained DINO model works on a specialised image task, and whether adapting it improves accuracy and reliability. **Choose one application** below; students are not expected to complete both.
 
-**Methods and code.** Use DINOv2 **ViT-S/14** from the [Apache-2.0 repository](https://github.com/facebookresearch/dinov2). The frozen route follows [AnomalyDINO](https://github.com/dammsi/AnomalyDINO): store normal patch features and score each test patch by its distance to the memory bank. For the MSc route, keep a frozen DINOv2 teacher and train LoRA or adapters in a student model with [PEFT](https://github.com/huggingface/peft). Make patch features agree between an original normal image and a photometrically altered view of the same image. No defect image or mask is used during adaptation.
+**Data and starting material**
 
-**Baselines and evaluation.** Compare frozen AnomalyDINO with [PatchCore](https://arxiv.org/abs/2106.08265). For the MSc route, compare frozen DINOv2, normal-only LoRA/adapter adaptation and normal-only full fine-tuning under the same consistency loss. Report image AUROC, pixel AUROC and the official AU-PRO measure per category, plus trainable parameters, memory and runtime. Keep shot count and public/private test protocols separate.
+- **Industrial inspection:** Detect and locate defects in product images using [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad). Learn from defect-free training images and evaluate on unseen normal and defective images.
+- **Medical imaging:** Identify abdominal organs in CT scans using the CT portion of [AMOS22](https://amos22.grand-challenge.org/). Learn from scans with labelled organ boundaries and keep patients separate between training and evaluation.
+
+Starting resources for the selected application:
+
+- [AnomalyDINO paper and DINOv2 detection code](https://github.com/dammsi/AnomalyDINO).
+- [DINOv3 model access and code](https://github.com/facebookresearch/dinov3).
+- [MedDINOv3 medical-segmentation example](https://github.com/ricklisz/MedDINOv3).
+
+**Methods and evaluation**
+
+Start by using DINO’s pretrained features without changing the backbone. For the Master route, explore a suitable adaptation method, such as training small additional modules or fine-tuning selected layers. Choose the task-specific detector or segmentation decoder for the selected application.
+
+Compare performance on unseen images with a conventional reference method and, for the Master route, before and after adaptation. Investigate how changes in lighting or image quality affect detection or segmentation, using measures appropriate to the chosen task.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **How do the number of normal reference images and the selected DINOv2 feature layer affect defect detection and localisation?**
-
-*Core experiment.* Reproduce AnomalyDINO on MVTec AD with ViT-S/14. Compare 1, 4 and 16 normal reference images, two feature layers selected in advance, and PatchCore. Repeat the reference-image sampling and analyse false positives and localisation errors. No model training is required.
+**Bachelor focus.** Study the pretrained features on one application and identify where they work well or fail. Train only the task-specific decoder when segmentation requires it.
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **Can normal-only parameter-efficient adaptation make DINOv2 patch features robust to industrial lighting variation without removing the local differences needed to detect unseen defects?** Use a frozen teacher and a LoRA/adapter student. Train only on normal images with patch-aligned brightness, contrast and noise transformations. Compare patch-level consistency with global-image consistency, and compare frozen, LoRA/adapter and full fine-tuning under the same loss on MVTec AD and MVTec AD 2. Ablate adapter depth and transformation strength.
-
-The contribution is the normal-only patch-consistency method and its controlled evaluation. Monitor feature variance and distance from the original DINOv2 representation to detect collapse or over-adaptation. Training on real test defects, or repeatedly tuning choices on public test labels, would invalidate the unsupervised setting. Synthetic defects may be included only as a clearly separated optional comparison.
+**Master extension.** Investigate whether adaptation improves robustness on the chosen application, and assess the improvement relative to its computational cost.
 :::
 
-**Practical notes.** DINOv2 code and standard weights are ungated and Apache 2.0. MVTec data is restricted to non-commercial use. Complete the BSc frozen baseline before beginning any adaptation.
+**Practical note.** Begin with the backbone used by the selected reference implementation. Confirm dataset access and model-weight access before allocation; DINOv3 weights require access approval and acceptance of the model terms.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 4.2  Adapting DINOv3 for robust abdominal CT segmentation {#project-4-2}
+## 4.3  Federated learning for medical-image denoising {#project-4-3}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Abdominal-organ segmentation and robustness evaluation</span>
-<span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
-<span class="meta-label">Compute</span><span class="meta-value">Moderate for BSc and moderate to high for MSc; 16–40 GB GPU recommended</span>
-<span class="meta-label">Data</span><span class="meta-value">[AMOS22](https://amos22.grand-challenge.org/) — 500 abdominal CT volumes with voxel-level annotations of 15 organs</span>
-<span class="meta-label">Starting models</span><span class="meta-value">[DINOv3 ViT-S/16](https://github.com/facebookresearch/dinov3), U-Net and [nnU-Net](https://github.com/MIC-DKFZ/nnUNet)</span>
-:::
-
-::: {.project-intro}
-**What you will do.** Use a pretrained DINOv3 vision model as the encoder of a medical-image segmentation system. The model will process axial slices from abdominal CT volumes, while a U-Net-style decoder will generate organ masks. You will compare frozen and adapted DINOv3 representations and determine how reliably they perform when image quality deteriorates.
-:::
-
-**Project goal.** Determine whether features learned by DINOv3 from natural images can support abdominal-organ segmentation and whether parameter-efficient adaptation improves robustness to medical-image corruption without requiring full retraining of the foundation model.
-
-**Data.** Use the CT portion of the AMOS22 dataset, which provides 3D abdominal scans with annotations for 15 organs. Convert each volume into axial slices or neighbouring-slice 2.5D inputs. All slices from one patient must remain in the same training, validation or test partition. Controlled test corruptions may include noise, blur, reduced resolution, contrast changes and intensity shifts.
-
-**Methods and code.** Start with the pretrained DINOv3 ViT-S/16 backbone. Load the official weights through [Hugging Face](https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m) or the official DINOv3 repository. Use a compact U-Net-style decoder that combines patch features from several transformer layers. Compare this model with a conventional 2D U-Net or nnU-Net baseline. The [MedDINOv3 repository](https://github.com/ricklisz/MedDINOv3) provides an example of integrating DINOv3 with nnU-Net for medical segmentation.
-
-**Baselines and evaluation.** Compare a conventional U-Net, frozen DINOv3 with a trainable decoder, and the selected adaptation method. Use Dice as the primary metric and report HD95 as the boundary-error metric. Report performance separately for each organ and corruption type. Also report trainable parameters, GPU memory and training time. All models must use the same patient splits and corruption protocol.
-
-::: {.scope .scope-bsc}
-**Bachelor research question.** **How robust are frozen DINOv3 features for abdominal-organ segmentation when CT image quality deteriorates?**
-
-Keep the DINOv3 encoder frozen and train only the segmentation decoder. Compare frozen DINOv3 with a conventional 2D U-Net on clean images and predefined corruption levels. Analyse which organs and image conditions cause the largest performance loss. No adaptation or full backbone fine-tuning is required.
-:::
-
-::: {.scope .scope-msc}
-**Master research question.** **Can parameter-efficient adaptation improve the robustness of DINOv3 for abdominal-organ segmentation without losing performance on clean images?**
-
-Compare a frozen DINOv3 encoder, LoRA or adapter-based adaptation, and partial fine-tuning of the final transformer blocks. Use the same decoder, training data and corruption protocol for every variant. Study at least one adaptation factor, such as adapter depth, LoRA rank or the number of unfrozen transformer blocks. Report several random seeds and analyse the trade-off between segmentation performance, robustness, trainable parameters and computational cost.
-:::
-
-**Practical notes.** DINOv3 is a 2D vision model, so this project uses slice-wise or 2.5D segmentation rather than direct 3D DINOv3 processing. Training DINOv3 from scratch is outside the project scope. Begin with ViT-S/16 and a frozen encoder before attempting LoRA or partial fine-tuning. Full end-to-end fine-tuning should be treated as an optional reference experiment only if sufficient GPU resources are available.
-
-<div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
-
----
-
-## 4.3  Federated knowledge distillation for medical image denoising {#project-4-3}
-
-::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Federated medical-image denoising with output-level knowledge distillation</span>
 <span class="meta-label">Level</span><span class="meta-value">MSc only</span>
-<span class="meta-label">Compute</span><span class="meta-value">Moderate; one 12–24 GB GPU is sufficient for sequential client simulation</span>
-<span class="meta-label">Data</span><span class="meta-value">[M&Ms cardiac MRI](https://www.ub.edu/mnms/) partitioned by scanner vendor; [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/) as the shared proxy set</span>
-<span class="meta-label">Starting methods</span><span class="meta-value">[FedAvg](https://arxiv.org/abs/1602.05629) and [FedDF](https://github.com/epfml/federated-learning-public-code/tree/master/codes/FedDF-code)</span>
+<span class="meta-label">Computing</span><span class="meta-value">A GPU is recommended; simulated clients can be trained sequentially.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Simulate several hospitals that train medical-image denoising models without sharing their local scans. Each hospital trains a U-Net on its own cardiac MRI data. Instead of sending model weights to the central server, the hospitals apply their local models to the same public proxy images and send only the resulting denoised predictions. The server uses these predictions to train a global U-Net student through knowledge distillation.
-:::
+**Goal**
 
-**Project goal.** Determine whether prediction-based federated distillation can produce a denoising model that generalises across scanner vendors and noise conditions without transferring local images or local model weights to the central server.
+Simulate hospitals that improve MRI image quality while keeping their local scans separate. Investigate whether sharing model predictions on a common image set can train a useful global denoising model without sending local scans or model weights to a central server.
 
-**Data.** Treat scanner vendors in the M&Ms cardiac MRI dataset as simulated federated clients. Use the original images as reference targets and generate controlled noisy inputs using predefined MRI-relevant corruptions, such as Rician noise and intensity non-uniformity. Use ACDC cardiac MRI images only as a shared public proxy set for communication between clients and the server. Split by patient or volume, never by image slice, and keep the final test patients separate from local training and proxy distillation.
+**Data and starting material**
 
-**Methods and code.** Use the same compact 2D U-Net architecture for the local teachers and the global student in the core experiment. Each client trains its local U-Net to map a noisy slice to its reference image. The clients then denoise the same corrupted proxy images and transmit only their output images or predicted noise residuals. The server aggregates these predictions and trains the global student using a reconstruction loss to the aggregated teacher target. The clients' private images and model weights remain local. Use [Flower](https://flower.ai/) to organise the simulated clients and communication rounds; the denoising models can be implemented in PyTorch or [MONAI](https://monai.io/).
+Use [M&Ms cardiac MRI](https://www.ub.edu/mnms/) to form simulated clients based on scanner vendor, and [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/) as a shared reference-image set. Add controlled synthetic noise and use the original images as reconstruction targets.
 
-**Baselines and evaluation.** Compare local-only U-Nets, centralized training as an experimental upper bound, standard FedAvg with weight sharing, and output-level federated distillation without weight sharing. Use SSIM as the primary image-quality metric and report PSNR and NMSE as secondary metrics. Report results separately for each scanner vendor and noise condition, together with communication volume and training time. Include an unseen-noise or held-out-vendor test to measure generalization.
+- [Federated distillation reference code (FedDF)](https://github.com/epfml/federated-learning-public-code/tree/master/codes/FedDF-code).
+- [Flower federated-learning framework](https://flower.ai/).
+
+**Methods and evaluation**
+
+Explore image-restoration networks such as U-Net, federated learning and knowledge distillation, which trains a student model from other models’ predictions. Adapt prediction sharing to image denoising and compare it with local training and federated weight sharing.
+
+Evaluate image quality on patients kept separate from training, including different scanner vendors or noise conditions. Compare denoising performance and communication cost; conclusions concern removal of the added noise.
 
 ::: {.scope .scope-msc}
-**Master research question.** **Can output-level federated distillation produce a generalizable medical-image denoising model without sharing local model weights, and how robust is it when clients have different scanner domains, noise distributions or model capacities?** Compare local training, centralized training, FedAvg and federated distillation under matched data splits and noise conditions. Compare distillation of denoised images with distillation of predicted noise residuals, and study at least one additional factor such as proxy-set size, confidence-weighted teacher aggregation, heterogeneous U-Net widths or transfer to a held-out vendor. Use several seeds and report the performance–communication trade-off.
+**Master extension.** Can prediction sharing produce a denoising model that works across scanner domains? Study one factor, such as the shared-image set size or differences between client models.
 :::
 
-**Practical notes.** The original MRI images are reference images, not perfect noise-free ground truth. Therefore, conclusions should concern removal of the controlled synthetic corruptions rather than clinical scanner-noise correction. Prediction sharing reduces direct exposure compared with transmitting model weights, but it does not provide a formal privacy guarantee; differential privacy or secure aggregation may be discussed as optional extensions rather than assumed properties.
+**Practical note.** Confirm dataset access conditions before allocation. Prediction sharing alone does not provide a formal privacy guarantee.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

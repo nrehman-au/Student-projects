@@ -11,251 +11,256 @@ A **time series** is an ordered sequence of measurements. A wearable device may 
 
 Many projects in this category use **self-supervised learning (SSL)** because useful labels may require expert work and are often scarce. SSL creates a training task from the unlabelled recordings: a model might align two valid views of a signal, reconstruct a hidden segment or predict a future representation. Other projects train directly for forecasting and study how a model represents time, channels and relationships among variables.
 
-Evaluation depends on the task. Representation-learning projects measure label efficiency and transfer to new people, machines or operating conditions. Forecasting projects use chronological splits and test future prediction, robustness and computational cost. In every case, the split must respect the independent physical unit and the direction of time.
-
-::: {.category-callout}
-**Three ideas to understand**
-
-Contrastive learning aligns valid views of the same recording. Masked modelling reconstructs hidden samples or patches. State-space models such as Mamba process long sequences efficiently. In multivariate data, a separate channel-mixing mechanism may be used to represent relationships among signals before temporal modelling.
-:::
+Choose a task that interests you: recognising activities, understanding health or industrial signals, or forecasting future measurements. Each project offers a focused comparison rather than requiring several new models at once.
 
 ## Learn first and find ideas
 
-- Representation-learning methods with code: [TS-TCC](https://github.com/emadeldeen24/TS-TCC), [TS2Vec](https://github.com/zhihanyue/ts2vec), [TF-C](https://github.com/mims-harvard/TFC-pretraining) and [SimMTM](https://github.com/thuml/SimMTM).
-- Forecasting and sequence models: [DLinear](https://github.com/cure-lab/LTSF-Linear), [Mamba](https://github.com/state-spaces/mamba), [MambaTS](https://github.com/XiudingCai/MambaTS-pytorch) and [S-Mamba](https://github.com/wzhwzhwzh0921/S-D-Mamba).
-- Data sources: [UCI Machine Learning Repository](https://archive.ics.uci.edu/), [PhysioNet](https://physionet.org/), [UCR/UEA archive](https://www.timeseriesclassification.com/), [Monash forecasting archive](https://forecastingdata.org/) and [Zenodo](https://zenodo.org/).
-- Monitor embedding variance and covariance from the first epoch in latent-predictive work. A smooth pretraining loss does not establish that the representation is useful.
+- [TS2Vec paper and code](https://github.com/zhihanyue/ts2vec) for learning from unlabelled recordings.
+- [SimMTM paper and code](https://github.com/thuml/SimMTM) for masked time-series learning.
+- [Mamba code and installation requirements](https://github.com/state-spaces/mamba) for sequence modelling.
 
 ## Projects in this category
 
 Use the contents panel or the project links in the left navigation to move directly to a project.
 
-## 3.1  Contrastive learning for wearable activity recognition {#project-3-1}
+## 3.1  Recognising activities from wearable sensor data {#project-3-1}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning, then classification</span>
 <span class="meta-label">Level</span><span class="meta-value">BSc only</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light; CPU or 4 GB GPU</span>
-<span class="meta-label">Data</span><span class="meta-value">[UCI Human Activity Recognition](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones) — 30 subjects, 6 activities, 10,299 windows, 50 Hz, CC BY 4.0</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Eldele et al., [TS-TCC](https://arxiv.org/abs/2106.14112), IJCAI 2021</span>
+<span class="meta-label">Computing</span><span class="meta-value">Start with a small encoder; a GPU can help with training.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** A phone records acceleration and angular velocity while a person walks, sits or climbs stairs. Learn an encoder from the unlabelled sensor windows, freeze it, and measure how few labels a small classifier needs to recognise activities.
-:::
+**Goal**
 
-**Data.** UCI HAR is a 58 MB public download under CC BY 4.0. It contains pre-windowed 2.56-second recordings with 50% overlap and a standard subject-independent split. Keep that split.
+Recognise activities such as walking, sitting and climbing stairs from smartphone motion measurements. Investigate whether learning from unlabelled recordings reduces the amount of labelled data needed to train an activity recogniser.
 
-**Methods and code.** [TS-TCC](https://github.com/emadeldeen24/TS-TCC) or [TS2Vec](https://github.com/zhihanyue/ts2vec) — choose **one**. Use the same 1-D CNN or small Transformer encoder for the self-supervised and supervised comparisons.
+**Data and starting material**
 
-**Baselines and evaluation.** Random frozen encoder, SSL frozen linear probe, SSL fine-tuning and a fully supervised model trained from scratch. Report accuracy and macro-F1 on the subject-independent split.
+Use [UCI Human Activity Recognition](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones), which contains motion recordings from 30 people performing six activities. Keep the supplied separation of people between training and test data.
+
+- [TS-TCC paper and authors’ code](https://github.com/emadeldeen24/TS-TCC).
+
+**Methods and evaluation**
+
+Explore self-supervised time-series learning, especially contrastive learning, which encourages different valid views of the same recording to have similar representations. Compare it with a small neural network trained directly from activity labels.
+
+Evaluate recognition on people not used for training. Compare performance with small and larger labelled training sets to determine how much labelled data pretraining can replace.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **How much labelled activity data can self-supervised pretraining replace?**
-
-*Core experiment.* Compare all four conditions at 1%, 5%, 10%, 25% and 100% label budgets. Resample the labelled windows within the training subjects and report confidence intervals. Optionally test robustness by jointly rotating the accelerometer and gyroscope axes.
+**Bachelor focus.** How many activity labels can be saved through self-supervised pretraining? Include a comparison without pretraining and explain which activities are hardest to recognise.
 :::
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.2  Lead-aware masked learning for 12-lead ECG {#project-3-2}
+## 3.2  Learning from ECG recordings with fewer labels or leads {#project-3-2}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Self-supervised multivariate time-series learning, then multi-label classification</span>
 <span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc with a supplied data pipeline</span>
-<span class="meta-label">Compute</span><span class="meta-value">Moderate; 8 GB GPU recommended</span>
-<span class="meta-label">Data</span><span class="meta-value">[PTB-XL](https://physionet.org/content/ptb-xl/1.0.3/) — 21,799 ECGs, 18,869 patients, 100/500 Hz, CC BY 4.0, no credentialing</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Dong et al., [SimMTM](https://arxiv.org/abs/2302.00861), NeurIPS 2023</span>
+<span class="meta-label">Computing</span><span class="meta-value">A GPU is recommended; begin with the lower-resolution recordings.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** A 12-lead ECG observes the same cardiac event from different electrical viewpoints. Instead of masking arbitrary time patches, the model hides complete leads or anatomical lead groups and predicts their latent representations from the visible leads.
-:::
+**Goal**
 
-**Data.** PTB-XL at 100 Hz, using the official patient-aware folds: 1–8 for training, 9 for validation, 10 for testing. The dataset is fully labelled, so label budgets simulate scarcity rather than reflecting missing annotations.
+Learn useful patterns from 12-lead ECG recordings and use them to classify recorded diagnostic categories. Investigate whether learning to recover hidden leads helps when few labels or fewer leads are available.
 
-**Methods and code.** Start with [SimMTM](https://github.com/thuml/SimMTM) or [TS2Vec](https://github.com/zhihanyue/ts2vec) and a 1-D ResNet or compact Transformer. The [PTB-XL benchmark code](https://github.com/helme/ecg_ptbxl_benchmarking) provides preprocessing and supervised references.
+**Data and starting material**
 
-**Baselines and evaluation.** Random frozen encoder, frozen probe, fine-tuning and the same encoder fully supervised. Macro-AUROC on fold 10 across the five diagnostic superclasses is the primary endpoint; add macro-AUPRC for class imbalance. Report patient-level splits and several label budgets.
+Use [PTB-XL](https://physionet.org/content/ptb-xl/1.0.3/), which provides 12-lead ECG recordings and diagnostic annotations. Use its official patient-aware training, validation and test folds. Smaller label budgets will simulate limited annotation availability.
 
-::: {.scope .scope-msc}
-**Master research question.** **Does lead-aware masking improve low-label diagnosis over random temporal masking?** Develop complete-lead or anatomical-group masking, condition the predictor on lead identity, and monitor embedding variance for collapse. Ablate masking granularity and predictor depth.
-:::
+- [SimMTM paper and authors’ code](https://github.com/thuml/SimMTM).
+- [PTB-XL preprocessing and supervised benchmark](https://github.com/helme/ecg_ptbxl_benchmarking).
+
+**Methods and evaluation**
+
+Explore supervised time-series models and masked self-supervised learning, in which the model learns from hidden parts of a recording. For the Master route, compare hiding complete leads with hiding short time segments.
+
+Evaluate on patients kept separate from training. Compare diagnostic classification with different amounts of labelled data or available leads, and examine performance across diagnostic categories.
 
 ::: {.scope .scope-bsc}
-**Bachelor question.** **How does diagnostic performance change when fewer ECG leads are available?** With the supplied pipeline and one encoder, compare 12, 6 and 3 leads and lead II alone under supervised training and one established SSL method.
+**Bachelor focus.** Using the supplied pipeline, study how classification changes when fewer ECG leads are available. Compare supervised training with one established pretraining method.
+:::
+
+::: {.scope .scope-msc}
+**Master extension.** Develop lead-aware masking and test whether it improves learning from limited labels compared with ordinary temporal masking.
 :::
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.3  Self-supervised forecasting representations for energy series {#project-3-3}
+## 3.3  Transferring learned representations between energy time series {#project-3-3}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series learning, then temporal regression</span>
 <span class="meta-label">Level</span><span class="meta-value">BSc or MSc</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 4–8 GB GPU</span>
-<span class="meta-label">Data</span><span class="meta-value">[ETT](https://github.com/zhouhaoyi/ETDataset) — electricity transformer temperature, hourly (ETTh1/ETTh2) and 15-minute (ETTm1/ETTm2) subsets</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Woo et al., [CoST](https://arxiv.org/abs/2202.01575), ICLR 2022</span>
+<span class="meta-label">Computing</span><span class="meta-value">A GPU is useful; start with an hourly dataset and a small model.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Pretrain an encoder on one unlabelled energy series, freeze it, and fit a small forecasting head. Test whether the representation transfers to a different series better than training a supervised forecaster on that series.
-:::
+**Goal**
 
-**Data.** Use ETT with chronological splits and training-only scaling. ETTh1 and ETTh2 come from different transformers. The public repository uses CC BY-ND 4.0; cite it and do not redistribute modified copies.
+Learn patterns from one electricity-transformer time series and reuse them to forecast another. Investigate whether self-supervised pretraining improves predictions when only a small amount of data is available from the new transformer.
 
-**Methods and code.** [CoST](https://github.com/salesforce/CoST), [TS2Vec](https://github.com/zhihanyue/ts2vec) or [SimMTM](https://github.com/thuml/SimMTM) for pretraining. [DLinear](https://github.com/cure-lab/LTSF-Linear) is the required supervised reference; [PatchTST](https://arxiv.org/abs/2211.14730) is optional. A ridge or linear head on frozen representations is the key diagnostic.
+**Data and starting material**
 
-**Baselines and evaluation.** Seasonal-naive, DLinear, frozen SSL representation with a ridge head, and SSL fine-tuning. Report MSE and MAE at agreed horizons with identical input lengths and chronological splits, plus three seeds.
+Use the hourly ETTh1 and ETTh2 subsets of the [Electricity Transformer Temperature dataset](https://github.com/zhouhaoyi/ETDataset). They record oil temperature and load measurements from different transformers.
+
+- [CoST paper and authors’ code](https://github.com/salesforce/CoST).
+- [DLinear forecasting reference](https://github.com/cure-lab/LTSF-Linear).
+
+**Methods and evaluation**
+
+Explore self-supervised time-series learning and simple forecasting models. Start with representations that capture trend and seasonal patterns, and compare them with a forecaster trained directly on the target series.
+
+Train on earlier periods and evaluate predictions on later periods. Compare forecast error with and without transfer, using the same forecast horizons and target-data availability.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **Do self-supervised representations pretrained on one energy series transfer to a different one?**
-
-*Core experiment.* Pretrain on ETTh1, then probe and fine-tune on ETTh2. Compare with direct ETTh2 pretraining and DLinear trained on ETTh2.
-
-**Interpretation.** DLinear may outperform the SSL pipeline. Analyse whether the gap changes with forecast horizon and target-data volume.
+**Bachelor focus.** Does pretraining on one transformer improve forecasting for another, especially when target training data are limited?
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **Do decomposition-aligned positive pairs improve transfer and low-data forecasting when seasonal phase drifts?** Use a stable seasonal decomposition to select positives, compare with random cropping and frequency-domain contrast, and analyse non-stationary intervals. Validate the period estimate on ETT before adding irregular data.
+**Master extension.** Develop a way to account for changing seasonal patterns during pretraining. Test whether it improves transfer when patterns shift over time.
 :::
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.4  Self-supervised learning on heat-pump smart-meter data {#project-3-4}
+## 3.4  Learning heat-pump behaviour from smart-meter data {#project-3-4}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Time-series representation learning, then household-level classification</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc metadata-label version</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light to moderate after preprocessing</span>
-<span class="meta-label">Data</span><span class="meta-value">[HEAPO on Zenodo](https://zenodo.org/records/15056919) — 1,408 Swiss households, 15-minute and daily resolution, 2018–2024; dataset licence must be confirmed</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Brudermueller et al., [HEAPO](https://arxiv.org/abs/2503.16993), 2025</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc preferred; reduced BSc version possible</span>
+<span class="meta-label">Computing</span><span class="meta-value">A compact model is suitable after preparing the household recordings.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Pretrain on household electricity series, then test whether the representations improve prediction of a household attribute or an inspection-derived issue.
-:::
+**Goal**
 
-**Data.** The 458 MB public download contains 1,408 households; 214 have both smart-meter data and inspection information. Use the [official MIT-licensed dataloader](https://github.com/tbrumue/heapo). The Zenodo Rights field does not state a dataset licence, so confirm reuse terms before allocation. Group all splits by household.
+Learn patterns in household electricity use and investigate whether they help identify a heat-pump attribute or an issue recorded during an inspection. Test whether unlabelled households can improve predictions for a smaller group with labels.
 
-**Methods and code.** Use [TS2Vec](https://github.com/zhihanyue/ts2vec) or [SimMTM](https://github.com/thuml/SimMTM), with a 1-D CNN or InceptionTime supervised baseline. Use heat-pump type for the lower-risk task, or one inspection-derived issue only after counting usable positives among the 214 matched households.
+**Data and starting material**
 
-**Baselines and evaluation.** Compare random-frozen, frozen SSL, fine-tuned SSL and supervised encoders on identical household splits. Include weather-only and metadata-only baselines. Report balanced accuracy, macro-F1 and confidence intervals using repeated grouped cross-validation.
+Use [HEAPO on Zenodo](https://zenodo.org/records/15056919), which provides electricity recordings from 1,408 Swiss households, weather information and inspection data for a smaller subset. Select one target after checking how many households have usable labels.
 
-::: {.scope .scope-msc}
-**Master research question.** **Can unlabelled data from a large related household population improve prediction on a much smaller labelled population, and do weather- and cycle-aware views improve it further?** Compare pretraining sources — none, labelled households only, unlabelled control households, and all households — then add outdoor-temperature-matched positives or whole-cycle masking and ablate the weather conditioning.
+- [HEAPO paper and dataloader](https://github.com/tbrumue/heapo).
+- [TS2Vec representation-learning code](https://github.com/zhihanyue/ts2vec).
 
-**Feasibility condition.** An inspection-label study has only 214 matched households. Select one primary label and verify its prevalence before committing to it; otherwise use the better-covered heat-pump-type task.
-:::
+**Methods and evaluation**
+
+Explore self-supervised time-series learning and conventional classifiers using consumption summaries, weather or metadata. Compare learning from unlabelled recordings with training directly on the available labels.
+
+Keep each household entirely within one data partition. Compare classification on unseen households with different amounts of labelled data, and report uncertainty when the labelled sample is small.
 
 ::: {.scope .scope-bsc}
-**Bachelor version.** Use heat-pump type or another well-covered metadata label. Compare supervised training with one SSL encoder on household-grouped splits and report a label-efficiency curve.
+**Bachelor focus.** Use a well-covered metadata label, such as heat-pump type, to compare supervised and self-supervised learning.
 :::
+
+::: {.scope .scope-msc}
+**Master extension.** Explore learning that accounts for weather or operating cycles. Test whether it improves prediction for the smaller labelled household group.
+:::
+
+**Practical note.** The linked HEAPO dataset is released under CC BY 4.0. Credit the dataset authors and confirm that the selected target has enough labelled households before allocation.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.5  Graph self-supervised learning from vibration signals {#project-3-5}
+## 3.5  Learning from graphs built from bearing vibration signals {#project-3-5}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Graph-level classification (one graph per signal window) with cross-operating-condition transfer</span>
 <span class="meta-label">Level</span><span class="meta-value">MSc only</span>
-<span class="meta-label">Compute</span><span class="meta-value">Moderate preprocessing; small models on a 4–8 GB GPU</span>
-<span class="meta-label">Data</span><span class="meta-value">[Paderborn KAt](https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download) — ~5 GB, 32 bearings, four operating conditions, CC BY-NC 4.0</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Hou et al., [GraphMAE](https://arxiv.org/abs/2205.10803), KDD 2022 — [official code](https://github.com/THUDM/GraphMAE)</span>
+<span class="meta-label">Computing</span><span class="meta-value">Signal preparation is the main initial workload; use a compact graph model.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Convert each vibration window into a graph of fault-related frequency bands, pretrain a graph encoder without labels, and test transfer to a different load or speed condition.
-:::
+**Goal**
 
-**Graph construction.** Resample each window into the shaft-order domain. Use fixed nodes for BPFO, BPFI, BSF and FTF bands and their harmonics. Node features can include band energy, envelope amplitude, spectral kurtosis and RMS; edges can represent envelope correlation or spectral coherence. Fit thresholds on training data only.
+Turn bearing vibration recordings into graphs whose nodes describe useful frequency regions. Investigate whether relationships informed by bearing behaviour, together with learning from unlabelled recordings, help recognise faults under different speeds or loads.
 
-**Data.** Paderborn provides 64 kHz vibration, speed, torque and radial load for 32 physical bearings under four operating conditions. Download it from the [official archive](https://groups.uni-paderborn.de/kat/BearingDataCenter/). Split by bearing, not by window. CWRU may be used only to develop the preprocessing pipeline; its official site does not state a clear data licence.
+**Data and starting material**
 
-**Methods and code.** Use a GIN encoder with [GraphMAE](https://github.com/THUDM/GraphMAE). Compare with supervised GIN and a 1-D CNN. Do not remove fault-frequency nodes as a generic graph augmentation.
+Use the [Paderborn Bearing Data Center](https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download), which provides measurements from 32 bearings under four operating conditions. Each signal window becomes one graph.
 
-**Baselines and evaluation.** Compare a 1-D CNN, envelope-spectrum features with gradient boosting, supervised GIN, random-frozen GIN, and GraphMAE with frozen and fine-tuned heads. Test physics-based, similarity, random and no-edge graphs. Report accuracy and macro-F1; cross-condition transfer is primary.
+- [GraphMAE paper and authors’ code](https://github.com/THUDM/GraphMAE).
+
+**Methods and evaluation**
+
+Explore signal-processing features, graph neural networks and masked graph learning, which learns by recovering hidden graph features. Compare a graph based on bearing knowledge with one based on statistical similarity.
+
+Keep measurements from each physical bearing separate between training and test sets. Compare fault recognition across operating conditions, and test the separate value of graph connections and self-supervised pretraining.
 
 ::: {.scope .scope-msc}
-**Master research question.** **Does a speed-invariant graph built from bearing kinematics transfer across operating conditions better than a similarity graph, and does self-supervised pretraining add value once the graph is fixed?** The contribution is the graph construction and controlled ablation; GraphMAE is a baseline.
+**Master extension.** Develop a graph representation that accounts for changing bearing speed. Test whether it transfers between operating conditions better than similarity-based graphs, and whether pretraining provides an additional benefit.
 :::
-
-**Practical notes.** The dataset has only 32 independent bearings. Use bearing-grouped splits, report confidence intervals and keep the graph, SSL method and transfer experiment fixed in advance. This project is not suitable for a short BSc project.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.6  Time–frequency contrastive Mamba for cross-condition bearing diagnosis {#project-3-6}
+## 3.6  Learning bearing faults with time–frequency models and Mamba {#project-3-6}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Self-supervised time-series representation learning, then fault classification</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc with the processed dataset and a fixed comparison</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light to moderate; 4–8 GB GPU</span>
-<span class="meta-label">Data</span><span class="meta-value">[Paderborn KAt](https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download) — 32 bearings, four operating conditions, 64 kHz vibration, CC BY-NC 4.0</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Zhang et al., [TF-C](https://arxiv.org/abs/2206.08496), NeurIPS 2022 — [official code](https://github.com/mims-harvard/TFC-pretraining)</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc with prepared data and a fixed comparison</span>
+<span class="meta-label">Computing</span><span class="meta-value">A GPU is recommended; check the Mamba software requirements early.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Use Mamba as the temporal encoder in TF-C, which learns jointly from time- and frequency-domain views. Test whether the resulting representation transfers between bearing operating conditions when only a small labelled set is available.
-:::
+**Goal**
 
-**Data.** The official Paderborn archive contains vibration, motor current, speed, torque and radial load for six healthy, twelve artificially damaged and fourteen naturally damaged bearings. Begin with the processed FD-A and FD-B subsets provided through the TF-C repository. For the final evaluation, group the split by physical bearing or recording so overlapping windows cannot occur in both training and test sets.
+Learn from both vibration waveforms and their frequency content to recognise bearing faults. Investigate whether a Mamba sequence model improves transfer between operating conditions when only a small labelled dataset is available.
 
-**Methods and code.** Start from the [TF-C implementation](https://github.com/mims-harvard/TFC-pretraining) and replace its time-domain CNN or Transformer with a compact [Mamba](https://github.com/state-spaces/mamba) encoder. Retain the time–frequency contrastive objective and use a linear or small multilayer classification head.
+**Data and starting material**
 
-**Baselines and evaluation.** Compare the original TF-C encoder, supervised 1-D CNN, supervised Mamba, random-frozen Mamba, frozen TF-C–Mamba and fine-tuned TF-C–Mamba. Report macro-F1, balanced accuracy, per-class recall and at least three seeds. The primary test is transfer to a different operating condition; report several labelled-example budgets and separate results for previously observed and unseen bearings where the data permit.
+Use the [Paderborn bearing dataset](https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download). The TF-C repository links to prepared fault-diagnosis data that can support initial experiments; verify their bearing or recording identities before using them for transfer claims.
+
+- [TF-C paper, code and prepared-data instructions](https://github.com/mims-harvard/TFC-pretraining).
+- [Mamba sequence-model code](https://github.com/state-spaces/mamba).
+
+**Methods and evaluation**
+
+Explore time–frequency contrastive learning and sequence models such as convolutional networks and Mamba. Begin with the established TF-C approach and change one encoder component.
+
+Compare fault recognition across operating conditions and with different amounts of labelled data. Keep related recordings separate, and measure both recognition quality and computational cost.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **Under the same TF-C objective, does a compact Mamba encoder improve cross-condition classification or computational efficiency over the existing encoder?** Use the processed FD-A and FD-B data, fixed augmentations and identical splits. Compare accuracy, macro-F1, training time and memory without proposing a new pretraining objective.
+**Bachelor focus.** Using prepared data, does replacing the existing encoder with Mamba improve recognition or efficiency under the same learning setup?
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **Can bearing-specific time–frequency views improve the transfer of Mamba representations across operating conditions and unseen bearings?** Develop one process-informed view, such as an envelope-spectrum view centred on bearing fault frequencies, an order-normalised view or a positive pair drawn from the same bearing under different conditions. Compare it with the original TF-C augmentations and ablate the view construction.
+**Master extension.** Develop a signal view that accounts for bearing frequencies or changing speed. Test whether it improves transfer to different conditions and, where identities are available, unseen bearings.
 :::
-
-**Practical notes.** The public code and processed data provide a complete starting pipeline, but the older TF-C dependencies may need updating. Test the Mamba environment during the first project week. The raw data are several gigabytes and are needed only for the MSc signal-processing extensions.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>
 
 ---
 
-## 3.7  Correlation-graph Mamba for order-robust multivariate forecasting {#project-3-7}
+## 3.7  Using relationships between signals to improve Mamba forecasts {#project-3-7}
 
 ::: {.project-meta}
-<span class="meta-label">Task</span><span class="meta-value">Multivariate time-series forecasting</span>
-<span class="meta-label">Level</span><span class="meta-value">MSc preferred; BSc evaluation version</span>
-<span class="meta-label">Compute</span><span class="meta-value">Light to moderate on Weather; moderate on Electricity</span>
-<span class="meta-label">Data</span><span class="meta-value">[Weather and Electricity](https://github.com/thuml/Autoformer) — public forecasting benchmarks with 21 and 321 channels</span>
-<span class="meta-label">Starting paper</span><span class="meta-value">Cai et al., [MambaTS](https://arxiv.org/abs/2405.16440) — [MIT-licensed code](https://github.com/XiudingCai/MambaTS-pytorch)</span>
+<span class="meta-label">Level</span><span class="meta-value">MSc preferred; reduced BSc evaluation version possible</span>
+<span class="meta-label">Computing</span><span class="meta-value">Start with Weather; Electricity requires a larger experiment.</span>
 :::
 
-::: {.project-intro}
-**What you will do.** Represent each signal channel as a graph node, exchange information between correlated channels, and then use a shared Mamba encoder to model each node through time. Test whether explicit channel structure improves forecasting and reduces sensitivity to arbitrary channel order.
-:::
+**Goal**
 
-**Data.** Develop the method on Weather, which has 21 meteorological variables and 52,696 ten-minute observations. Confirm the result on Electricity, which contains 321 hourly electricity-demand series and 26,304 observations. Use chronological splits and fit scaling, correlations and graph thresholds on the training period only. The datasets and scripts are available through [Autoformer](https://github.com/thuml/Autoformer); [OpenTS](https://decisionintelligence.github.io/OpenTS/OpenTS-Bench/datasets/) documents their dimensions and standard protocol.
+Forecast several related measurements together, such as weather variables or electricity demand. Investigate whether explicitly connecting related signals improves a Mamba forecaster and makes its predictions less sensitive to the order in which variables are presented.
 
-**Methods and code.** Use [MambaTS](https://github.com/XiudingCai/MambaTS-pytorch) as the main code base and [S-Mamba](https://arxiv.org/abs/2403.11144) and [C-Mamba](https://arxiv.org/abs/2406.05316) as channel-modelling references. Build a sparse top-*k* correlation graph from the training data. At each time step or patch, apply a shared GCN, GraphSAGE or GAT layer across channels; then apply the same temporal Mamba encoder to every node and a shared forecasting head.
+**Data and starting material**
 
-**Baselines and evaluation.** Compare seasonal naive, [DLinear](https://github.com/cure-lab/LTSF-Linear), channel-independent Mamba, MambaTS and one existing channel-aware Mamba model. Graph controls must include identity, random and shuffled-correlation adjacency. Report MSE and MAE at standard horizons, three seeds, parameter count, training time and memory. Consistently permute the input channels, graph and outputs to measure order sensitivity, and mask channels at test time to measure robustness.
+Start with the Weather benchmark available through [Autoformer](https://github.com/thuml/Autoformer). The Electricity benchmark is a possible follow-up once the first experiment works.
+
+- [MambaTS paper and authors’ code](https://github.com/XiudingCai/MambaTS-pytorch).
+- [DLinear forecasting reference](https://github.com/cure-lab/LTSF-Linear).
+
+**Methods and evaluation**
+
+Explore simple forecasting methods, Mamba sequence models and graph-based sharing of information between variables. For the Master route, build connections using relationships estimated from training data.
+
+Evaluate forecast error on later unseen data. Compare predictions when the variable order changes or some measurements are missing, using consistent changes to inputs and outputs.
 
 ::: {.scope .scope-bsc}
-**Bachelor research question.** **How sensitive are existing Mamba forecasters to channel order, and do their channel-interaction mechanisms improve over channel-independent Mamba?** Reproduce MambaTS or S-Mamba on Weather and compare channel-independent and channel-aware variants under channel permutations and missing-channel tests. A new graph architecture is not required.
+**Bachelor focus.** How sensitive are existing Mamba forecasters to variable order, and does modelling relationships between variables help?
 :::
 
 ::: {.scope .scope-msc}
-**Master research question.** **Can a sparse correlation-graph channel mixer improve forecasting and reduce sensitivity to arbitrary variable ordering compared with existing Mamba channel-mixing methods?** Implement the graph module, match model capacity, and ablate graph type, sign handling, sparsity and message-passing depth on Weather and Electricity. A window-dependent graph is an optional extension after the fixed-graph study.
+**Master extension.** Develop a graph module connecting related signals. Test whether it improves forecasting and robustness compared with models that process channels independently or mix them sequentially.
 :::
-
-**Practical notes.** Use Weather for development and a sparse graph for Electricity. Correlation describes statistical association rather than a physical or causal link. A consistent relabelling of nodes, adjacency and outputs should not materially change a correctly implemented shared graph–Mamba model.
 
 <div class="project-back"><a href="#top">Back to category introduction ↑</a></div>

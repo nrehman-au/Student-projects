@@ -1,14 +1,14 @@
 ---
 title: "BSc and MSc Student Project Portfolio"
 subtitle: "Industrial projects, graph applications, machine learning for time series, deep-learning vision, and signal processing"
-description: "Nineteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
+description: "Eighteen projects with public or partner-supplied data, starting methods, evaluation criteria, and separate Bachelor and Master scopes."
 toc: true
 ---
 
 ::: {.hero-panel}
-## Nineteen student project options
+## Eighteen student project options
 
-Each project entry states one research question, the task, the data source and its access conditions, starting papers and code, and whether the project is offered at Bachelor level, Master level, or both.
+Choose a project by its goal, data and application. Each entry gives a brief approach, starting resources and a Bachelor focus or Master extension. The DINO project offers two application choices; choose one.
 
 [Explore the five categories](#categories){.btn .btn-primary} [Download the PDF](downloads/student-project-portfolio.pdf){.btn .btn-outline-primary}
 :::
@@ -35,7 +35,7 @@ Each project entry states one research question, the task, the data source and i
     <a class="btn btn-outline-primary" href="time-series-ssl.html">View Category 3</a>
   </section>
   <section class="category-card category-card-4">
-    <div class="category-number">Category 4 · 3 projects</div>
+    <div class="category-number">Category 4 · 2 projects</div>
     <h3>Deep-learning vision models and applications</h3>
     <p>Study pretrained visual encoders, medical segmentation and federated image restoration.</p>
     <a class="btn btn-outline-primary" href="vision-foundation-models.html">View Category 4</a>
@@ -50,15 +50,15 @@ Each project entry states one research question, the task, the data source and i
 
 ## How the projects are structured
 
-Every project states **one research question** and the core experiment that answers it. **Bachelor projects** answer an empirical question about an established method using a fixed dataset, fair baselines and a careful analysis — no new architecture is required. **Master projects** add a new mechanism, view or protocol, multiple runs and a deeper analysis.
+Each project begins with a clear **goal**, followed by **data and starting material**, a short **methods and evaluation** section and its level-specific scope. Bachelor work studies an established approach through a fair comparison. Master work develops or investigates an extension, such as improved robustness or transfer to new conditions.
 
-A controlled negative result is a valid outcome. Several projects state in advance that the expected answer to their question may be "no"; finding and explaining that is the contribution, not a failure.
+A well-supported finding that a method does not help is a valid outcome.
 
 Each project is labelled with one of three levels:
 
 | Level | Meaning |
 |---|---|
-| **BSc or MSc** | Both routes are viable; each scope box describes a separate project |
+| **BSc or MSc** | Both routes are viable; choose the scope appropriate to your degree |
 | **BSc only** | Offered at Bachelor level |
 | **MSc preferred or MSc only** | Primarily offered at Master level; some list a reduced Bachelor version |
 
@@ -74,7 +74,7 @@ Engineering problems defined with Siemens Gamesa and Tetra Pak, using operationa
 |---|---|---|---|
 | [1.1](industry-partner-projects.html#project-1-1) | Siemens Gamesa: Data-driven operational state identification for wind turbine condition monitoring | MSc preferred — reduced BSc version possible | Light to moderate |
 | [1.2](industry-partner-projects.html#project-1-2) | Siemens Gamesa: Probabilistic drivetrain configuration and kinematics identification from vibration signals | MSc preferred — reduced BSc version possible | Light to moderate |
-| [1.3](industry-partner-projects.html#project-1-3) | Tetra Pak: Regime-aware self-supervised learning for non-stationary filtration cycles | MSc preferred — reduced BSc version possible | Light to moderate |
+| [1.3](industry-partner-projects.html#project-1-3) | Tetra Pak: Learning from filtration cycles | MSc preferred — reduced BSc version possible | Light to moderate |
 
 ### [Category 2 — GNN applications for real-world data](graph-applications.html)
 
@@ -82,11 +82,11 @@ Practical graph prediction problems in engineering, science, finance and recomme
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [2.1](graph-applications.html#project-2-1) | Remaining useful life prediction for aircraft engines | BSc or MSc | Very light to light |
-| [2.2](graph-applications.html#project-2-2) | Multi-horizon traffic forecasting with data-driven graph structure | BSc or MSc | Light to moderate |
-| [2.3](graph-applications.html#project-2-3) | Illicit Bitcoin transaction detection | BSc or MSc | Light to moderate |
-| [2.4](graph-applications.html#project-2-4) | Graph-based movie recommendation with accuracy and coverage | BSc only | Very light |
-| [2.5](graph-applications.html#project-2-5) | Molecular HIV activity prediction with calibrated GNNs | BSc or MSc | Light to moderate |
+| [2.1](graph-applications.html#project-2-1) | Predicting the remaining life of aircraft engines | BSc or MSc | Very light to light |
+| [2.2](graph-applications.html#project-2-2) | Predicting traffic speed with graph neural networks | BSc or MSc | Light to moderate |
+| [2.3](graph-applications.html#project-2-3) | Detecting illicit Bitcoin transactions with graphs | BSc or MSc | Light to moderate |
+| [2.4](graph-applications.html#project-2-4) | Recommending movies with graph neural networks | BSc only | Very light |
+| [2.5](graph-applications.html#project-2-5) | Predicting molecular activity with graph neural networks | BSc or MSc | Light to moderate |
 
 ### [Category 3 — Machine learning for time-series data](time-series-ssl.html)
 
@@ -94,13 +94,13 @@ Representation learning, forecasting, classification and channel modelling for s
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [3.1](time-series-ssl.html#project-3-1) | Contrastive learning for wearable activity recognition | BSc only | Light |
-| [3.2](time-series-ssl.html#project-3-2) | Lead-aware masked learning for 12-lead ECG | MSc preferred — reduced BSc version possible | Moderate |
-| [3.3](time-series-ssl.html#project-3-3) | Self-supervised forecasting representations for energy series | BSc or MSc | Light to moderate |
-| [3.4](time-series-ssl.html#project-3-4) | Self-supervised learning on heat-pump smart-meter data | MSc preferred — reduced BSc version possible | Light to moderate after preprocessing |
-| [3.5](time-series-ssl.html#project-3-5) | Graph self-supervised learning from vibration signals | MSc only | Moderate preprocessing |
-| [3.6](time-series-ssl.html#project-3-6) | Time–frequency contrastive Mamba for cross-condition bearing diagnosis | MSc preferred — reduced BSc version possible | Light to moderate |
-| [3.7](time-series-ssl.html#project-3-7) | Correlation-graph Mamba for order-robust multivariate forecasting | MSc preferred — reduced BSc version possible | Light to moderate |
+| [3.1](time-series-ssl.html#project-3-1) | Recognising activities from wearable sensor data | BSc only | Light |
+| [3.2](time-series-ssl.html#project-3-2) | Learning from ECG recordings with fewer labels or leads | MSc preferred — reduced BSc version possible | Moderate |
+| [3.3](time-series-ssl.html#project-3-3) | Transferring learned representations between energy time series | BSc or MSc | Light to moderate |
+| [3.4](time-series-ssl.html#project-3-4) | Learning heat-pump behaviour from smart-meter data | MSc preferred — reduced BSc version possible | Light to moderate after preprocessing |
+| [3.5](time-series-ssl.html#project-3-5) | Learning from graphs built from bearing vibration signals | MSc only | Moderate preprocessing |
+| [3.6](time-series-ssl.html#project-3-6) | Learning bearing faults with time–frequency models and Mamba | MSc preferred — reduced BSc version possible | Light to moderate |
+| [3.7](time-series-ssl.html#project-3-7) | Using relationships between signals to improve Mamba forecasts | MSc preferred — reduced BSc version possible | Light to moderate |
 
 ### [Category 4 — Deep-learning vision models and applications](vision-foundation-models.html)
 
@@ -108,9 +108,8 @@ Pretrained visual representations for industrial anomaly detection and medical s
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [4.1](vision-foundation-models.html#project-4-1) | Adapting DINO backbones for industrial anomaly detection | BSc or MSc | Light to moderate |
-| [4.2](vision-foundation-models.html#project-4-2) | Adapting DINOv3 for robust abdominal CT segmentation | BSc or MSc | Moderate to high |
-| [4.3](vision-foundation-models.html#project-4-3) | Federated knowledge distillation for medical image denoising | MSc only | Moderate |
+| [4.1](vision-foundation-models.html#project-4-1) | Adapting DINO vision models for specialised image analysis | BSc or MSc | Light to moderate |
+| [4.3](vision-foundation-models.html#project-4-3) | Federated learning for medical-image denoising | MSc only | Moderate |
 
 ### [Category 5 — Signal processing and deep-unfolded models](signal-processing.html)
 
@@ -118,7 +117,7 @@ Turning classical iterative signal-processing algorithms into trainable, interpr
 
 | ID | Project | Level | Compute |
 |---|---|---|---|
-| [5.1](signal-processing.html#project-5-1) | Deep-unfolded multivariate VMD for correlated multichannel signals | **MSc only** | Light to moderate |
+| [5.1](signal-processing.html#project-5-1) | Learning to separate noisy multichannel signals | **MSc only** | Light to moderate |
 
 ## What counts as a Bachelor or Master contribution
 
@@ -131,17 +130,9 @@ Turning classical iterative signal-processing algorithms into trainable, interpr
 
 ## Shared protocol for self-supervised projects {#shared-protocol-for-self-supervised-projects}
 
-Every self-supervised or pretrained project should report these settings whenever they are meaningful:
+For projects that learn from unlabelled data, compare the pretrained model with an appropriate method trained without that pretraining. Where useful, test how performance changes when fewer labels are available. Agree the exact comparisons with the supervisor before starting.
 
-1. **Frozen linear evaluation.** Pretrain without labels, freeze the encoder and train only a lightweight head.
-2. **Fine-tuning.** Initialise from the pretrained encoder and update it with labels.
-3. **Fully supervised baseline.** Train the same encoder architecture from scratch using labels.
-4. **Random-initialisation control.** Freeze a randomly initialised encoder and train the same head.
-5. **Label-efficiency curve.** Report several label budgets, typically 1%, 5%, 10% and 100%.
-
-::: {.leakage-callout}
-**Leakage rule.** Group splits by the real independent unit: subject, patient, household, engine, bearing or process cycle—never by window. On graphs, state whether pretraining is transductive or strict inductive. On forecasting tasks, preserve chronological order.
-:::
+Keep related measurements together: all data from one person, patient, household, engine, bearing or process cycle should stay in the same partition. For forecasting, train on earlier data and evaluate on later data. Choose evaluation measures that match the task.
 
 ## Where to begin
 

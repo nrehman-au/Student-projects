@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - index.qmd
+    - industry-partner-projects.qmd
+    - graph-applications.qmd
+    - time-series-ssl.qmd
+    - vision-foundation-models.qmd
+    - signal-processing.qmd
+    - selection-guidance.qmd
   resources:
     - downloads/
 
@@ -55,51 +63,49 @@ website:
             href: industry-partner-projects.qmd#project-1-1
           - text: "1.2  Siemens Gamesa: Probabilistic drivetrain configuration and kinematics"
             href: industry-partner-projects.qmd#project-1-2
-          - text: "1.3  Tetra Pak: Regime-aware SSL for filtration cycles"
+          - text: "1.3  Tetra Pak: Learning from filtration cycles"
             href: industry-partner-projects.qmd#project-1-3
       - section: "2  GNN applications"
         href: graph-applications.qmd
         contents:
-          - text: "2.1  Remaining useful life prediction for aircraft engines"
+          - text: "2.1  Predicting the remaining life of aircraft engines"
             href: graph-applications.qmd#project-2-1
-          - text: "2.2  Multi-horizon traffic forecasting with data-driven graph structure"
+          - text: "2.2  Predicting traffic speed with graph neural networks"
             href: graph-applications.qmd#project-2-2
-          - text: "2.3  Illicit Bitcoin transaction detection"
+          - text: "2.3  Detecting illicit Bitcoin transactions with graphs"
             href: graph-applications.qmd#project-2-3
-          - text: "2.4  Graph-based movie recommendation with accuracy and coverage"
+          - text: "2.4  Recommending movies with graph neural networks"
             href: graph-applications.qmd#project-2-4
-          - text: "2.5  Molecular HIV activity prediction with calibrated GNNs"
+          - text: "2.5  Predicting molecular activity with graph neural networks"
             href: graph-applications.qmd#project-2-5
       - section: "3  Machine learning for time series"
         href: time-series-ssl.qmd
         contents:
-          - text: "3.1  Contrastive learning for wearable activity recognition"
+          - text: "3.1  Recognising activities from wearable sensor data"
             href: time-series-ssl.qmd#project-3-1
-          - text: "3.2  Lead-aware masked learning for 12-lead ECG"
+          - text: "3.2  Learning from ECG recordings with fewer labels or leads"
             href: time-series-ssl.qmd#project-3-2
-          - text: "3.3  Self-supervised forecasting representations for energy series"
+          - text: "3.3  Transferring learned representations between energy time series"
             href: time-series-ssl.qmd#project-3-3
-          - text: "3.4  Self-supervised learning on heat-pump smart-meter data"
+          - text: "3.4  Learning heat-pump behaviour from smart-meter data"
             href: time-series-ssl.qmd#project-3-4
-          - text: "3.5  Graph self-supervised learning from vibration signals"
+          - text: "3.5  Learning from graphs built from bearing vibration signals"
             href: time-series-ssl.qmd#project-3-5
-          - text: "3.6  Time–frequency contrastive Mamba for bearing diagnosis"
+          - text: "3.6  Learning bearing faults with time–frequency models and Mamba"
             href: time-series-ssl.qmd#project-3-6
-          - text: "3.7  Correlation-graph Mamba for multivariate forecasting"
+          - text: "3.7  Using relationships between signals to improve Mamba forecasts"
             href: time-series-ssl.qmd#project-3-7
       - section: "4  Deep-learning vision models"
         href: vision-foundation-models.qmd
         contents:
-          - text: "4.1  Adapting DINO backbones for industrial anomaly detection"
+          - text: "4.1  Adapting DINO vision models for specialised image analysis"
             href: vision-foundation-models.qmd#project-4-1
-          - text: "4.2  Adapting DINOv3 for robust abdominal CT segmentation"
-            href: vision-foundation-models.qmd#project-4-2
-          - text: "4.3  Federated knowledge distillation for medical image denoising"
+          - text: "4.3  Federated learning for medical-image denoising"
             href: vision-foundation-models.qmd#project-4-3
       - section: "5  Signal processing"
         href: signal-processing.qmd
         contents:
-          - text: "5.1  Deep-unfolded multivariate VMD for correlated multichannel signals"
+          - text: "5.1  Learning to separate noisy multichannel signals"
             href: signal-processing.qmd#project-5-1
       - text: "Selection guidance"
         href: selection-guidance.qmd

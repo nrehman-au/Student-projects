@@ -1,67 +1,41 @@
 ---
 title: "Selection guidance"
-description: "Choosing a project and avoiding common evaluation errors"
+description: "Choosing a manageable project and planning a fair comparison"
 toc: true
 ---
 
-## Levels
+## Choose a level
 
-Nine standard projects are available at Bachelor level: **2.1** (C-MAPSS), **2.2** (METR-LA), **2.3** (Elliptic), **2.4** (MovieLens), **2.5** (ogbg-molhiv), **3.1** (UCI-HAR), **3.3** (ETT), **4.1** (MVTec AD) and **4.2** (AMOS22). Of these, **2.4** and **3.1** are Bachelor-only; the rest also support a Master scope.
+**Eight standard projects support Bachelor work:** 2.1–2.5, 3.1, 3.3 and 4.1. Projects 2.4 and 3.1 are Bachelor-only; the others also offer a Master extension. In Project 4.1, choose either industrial inspection or medical segmentation.
 
-**3.2**, **3.4**, **3.5**, **4.3** and **5.1** are primarily Master-level projects. **3.2** and **3.4** list reduced Bachelor versions; **4.3** and **5.1** are MSc-only.
+**Projects 3.2, 3.4, 3.6 and 3.7 prefer Master students**, with reduced Bachelor versions when a prepared data pipeline or fixed comparison is available. **Projects 3.5, 4.3 and 5.1 are Master-only.**
 
-The industry projects in **Category 1** are all offered with Master level preferred. **1.1**, **1.2** and **1.3** can be reduced to Bachelor level once the partner has supplied a prepared dataset and fixed task.
+The three industry projects in Category 1 prefer Master students. A reduced Bachelor version depends on the partner supplying prepared data and an agreed task.
 
-## A simple decision process
+## Choose a topic
 
-1. Choose the **task**, not the fashionable model: node classification, link prediction, graph prediction, temporal forecasting or representation learning.
-2. Download the data and run one complete baseline on a small subset before the formal project begins.
-3. Write the research question as one sentence and identify the comparison that could falsify it.
-4. Freeze the split, primary metric and compute budget before extensive development.
-5. Treat the authors' repository as an executable specification—not as the thesis contribution.
+1. Start with an application you find interesting, such as traffic, health, industrial monitoring or recommendation.
+2. Read the goal and choose one focused question you want to answer.
+3. Check access to the data, model weights and starting code.
+4. Run a simple reference method before planning an extension.
+5. Agree the scope and computing needs with the supervisor.
 
-## Week-one feasibility checklist
+Bachelor work can make a useful contribution through a careful comparison and a clear explanation of the results. Master work should investigate an extension, such as improved robustness, transfer to new conditions or a new representation. An unchanged run of a published method is a starting point for either route.
 
-- Obtain access to the exact dataset and record its version, size, licence or data agreement, and release date or extraction period.
-- Run the simplest baseline from raw input to final metric on a small subset.
-- Identify the independent split unit and verify that it cannot cross train and test.
-- **Count how many research repositories you must adapt.** Adapting one is a Bachelor project. Adapting two is a Master project, and it is the most common reason a project runs out of time with no results.
-- **Check that the test set is large enough to separate the conditions you plan to compare.** If a grouped test fold holds only a few dozen units, confidence intervals may be wider than the effect you are looking for.
-- Estimate training time and peak memory before planning seeds or ablations.
-- For MSc work, write the question, proposed mechanism, main alternative explanation and minimum viable ablation table.
+## Data and model access
 
-## Licences and access
+The project links point to the dataset providers and reference implementations. Public access to a page or repository does not guarantee permission to redistribute its data or model weights. Check the terms on the linked source before using or sharing a resource.
 
-| Resource | Licence or status | Practical consequence |
-|---|---|---|
-| UCI-HAR | CC BY 4.0 | Open with attribution |
-| PTB-XL | CC BY 4.0 | No credentialing required |
-| ETT | Open research dataset | Check the repository terms before redistribution |
-| MovieLens 100K | GroupLens research terms | Academic use; cite the dataset |
-| OGB ogbg-molhiv | Open, MIT-licensed tooling | Use the official split and evaluator |
-| Elliptic Bitcoin | Distributor's research terms | Confirm terms before publishing results |
-| Paderborn KAt | CC BY-NC 4.0 | Non-commercial academic use |
-| MVTec AD and MVTec AD 2 | CC BY-NC-SA 4.0 | Non-commercial and share-alike |
-| DINOv2 | Apache 2.0 | Ungated |
-| DINOv3 | DINOv3 licence; gated model access | Accept the model terms and acknowledge DINOv3 in publications |
-| AMOS22 | Challenge dataset access terms | Register, keep patient-level splits and confirm redistribution terms |
-| M&Ms and ACDC | Public research datasets with registration or use conditions | Confirm access before allocation and do not redistribute source images |
-| HEAPO data | Public download; no dataset licence stated on Zenodo | Obtain written permission for thesis use; the dataloader is MIT-licensed |
-| LargeST | CC BY-NC 4.0; benchmark code MIT | Non-commercial academic use with attribution |
-| Tetra Pak process data | Partner-supplied under an approved agreement | Restricted access; confirm scope and secure environment before allocation |
-| Siemens Gamesa fleet vibration and operational data | Partner-supplied; subject to the project data agreement | Restricted access; confirm turbine counts, measurement positions and secure environment before allocation |
+- **Industry data:** Siemens Gamesa and Tetra Pak data are supplied under an agreed access arrangement.
+- **Medical data:** Check registration and use conditions for AMOS22, M&Ms and ACDC. PTB-XL provides its access conditions on PhysioNet.
+- **DINO models:** DINOv2 has publicly available weights. DINOv3 model weights require an access request and acceptance of the model terms.
+- **HEAPO:** The linked Zenodo dataset is released under CC BY 4.0; credit its authors. Check the number of usable household labels before choosing the task.
+- **Starting repositories:** Check the supported software versions and any licence before adapting code. A repository link is a reference, not a guarantee that the code will run unchanged in a current environment.
 
-## Recurring failure modes
+## Plan a fair evaluation
 
-- Comparing with a number produced by a different split, metric, horizon, shot count or evaluation level.
-- Using windows from the same physical unit in both training and test sets.
-- Comparing two published implementations and concluding something about the *method* — differences in encoder, augmentation and prior tuning are confounded with the mechanism you meant to test.
-- Reporting a difference that the test set is too small to resolve.
-- Calling an authors' repository run a research contribution.
-- Reporting only in-distribution performance when transfer or cold start is the motivation, or when the benchmark is already saturated.
-- Omitting the random frozen encoder in a self-supervised study.
-- Expanding to a second dataset before the first pipeline and evaluation protocol are stable.
+Use the same data and evaluation setup for the methods you compare. Keep all related recordings from one person, patient, household, engine, bearing or process cycle together. For forecasting, use earlier data for training and later data for evaluation.
 
-Select one primary question, fix the evaluation protocol before extensive experimentation, and report negative as well as positive results.
+Use validation data to choose model settings and keep the final test set separate. Measure the outcome that matches your goal, and explain where the method works well or fails. A result showing no improvement is valuable when the comparison is fair and the explanation is supported by evidence.
 
-The partner-supplied projects are grouped in [Category 1](industry-partner-projects.qmd): Siemens Gamesa as Projects 1.1 and 1.2, and Tetra Pak as Project 1.3. Allocation follows confirmation of data access, independent sample count and the downstream target.
+Start with one application, one dataset and a small set of methods. Add further experiments only after the first comparison works.
